@@ -1,0 +1,40 @@
+{
+  "navigation": {
+    "tours": "Turlar",
+    "hotels": "Mehmonxonalar",
+    "cars": "Avtomobillar",
+    "about": "Biz haqimizda", 
+    "bookNow": "Buyurtma berish"
+  },
+  "hero": {
+    "title": "O'zbekistonning",
+    "titleHighlight": "ajoyibligini kashf eting",
+    "subtitle": "Qadimgi Ipak yo'li shaharlari, ajoyib me'morchilik va iliq mehmondo'stlikni bizning mutaxassislar tomonidan tayyorlangan sayohat paketlari bilan boshdan kechiring.",
+    "exploreTours": "Turlarni ko'rish",
+    "watchVideo": "Videoni ko'rish",
+    "stats": {
+      "travelers": "Baxtli sayohatchilar",
+      "packages": "Sayohat paketlari",
+      "cities": "Qamrab olingan shaharlar"
+    }
+  },
+  "footer": {
+    "description": "O'zbekistonning go'zalligini bizning premium sayohat paketlarimiz bilan kashf eting. Haqiqiy madaniyat, ajoyib manzaralar va unutilmas xotiralarni boshdan kechiring.",
+    "quickLinks": "Tezkor havolalar",
+    "contactInfo": "Aloqa ma'lumotlari",
+    "aboutUs": "Biz haqimizda",
+    "tours": "Turlar",
+    "hotels": "Mehmonxonalar",
+    "carRental": "Avtomobil ijarasi",
+    "contact": "Aloqa",
+    "location": "Toshkent, O'zbekiston",
+    "phone": "+998 90 123 45 67",
+    "email": "info@sitoratours.com",
+    "hours": "Dush - Jum: 9:00 - 18:00",
+    "copyright": "© 2024 Sitora Tours. Barcha huquqlar himoyalangan."
+  },
+  "controls": {
+    "theme": "Mavzu",
+    "language": "Til"
+  }
+}

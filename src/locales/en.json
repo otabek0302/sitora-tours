@@ -1,0 +1,40 @@
+{
+  "navigation": {
+    "tours": "Tours",
+    "hotels": "Hotels", 
+    "cars": "Cars",
+    "about": "About",
+    "bookNow": "Book Now"
+  },
+  "hero": {
+    "title": "Discover the Magic of",
+    "titleHighlight": "Uzbekistan",
+    "subtitle": "Experience ancient Silk Road cities, stunning architecture, and warm hospitality with our expertly crafted tour packages.",
+    "exploreTours": "Explore Tours",
+    "watchVideo": "Watch Video",
+    "stats": {
+      "travelers": "Happy Travelers",
+      "packages": "Tour Packages", 
+      "cities": "Cities Covered"
+    }
+  },
+  "footer": {
+    "description": "Discover the beauty of Uzbekistan with our premium tour packages. Experience authentic culture, stunning landscapes, and unforgettable memories.",
+    "quickLinks": "Quick Links",
+    "contactInfo": "Contact Info",
+    "aboutUs": "About Us",
+    "tours": "Tours",
+    "hotels": "Hotels",
+    "carRental": "Car Rental",
+    "contact": "Contact",
+    "location": "Tashkent, Uzbekistan",
+    "phone": "+998 90 123 45 67",
+    "email": "info@sitoratours.com",
+    "hours": "Mon - Fri: 9:00 - 18:00",
+    "copyright": "© 2024 Sitora Tours. All rights reserved."
+  },
+  "controls": {
+    "theme": "Theme",
+    "language": "Language"
+  }
+}
