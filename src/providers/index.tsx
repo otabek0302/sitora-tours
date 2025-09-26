@@ -4,6 +4,7 @@ import { ThemeProvider } from 'next-themes';
 import { NextIntlClientProvider } from 'next-intl';
 import { Toaster } from 'sonner';
 import { useEffect, useState } from 'react';
+import { FilterProvider } from '@/contexts/filters-context';
 
 interface ProvidersProps {
   children: React.ReactNode;
@@ -21,8 +22,10 @@ export function Providers({ children, locale, messages }: ProvidersProps) {
   if (!mounted) {
     return (
       <NextIntlClientProvider locale={locale} messages={messages} timeZone="UTC">
-        {children}
-        <Toaster position="top-right" richColors />
+        <FilterProvider>
+          {children}
+          <Toaster position="top-right" richColors />
+        </FilterProvider>
       </NextIntlClientProvider>
     );
   }
@@ -30,8 +33,10 @@ export function Providers({ children, locale, messages }: ProvidersProps) {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <NextIntlClientProvider locale={locale} messages={messages} timeZone="UTC">
-        {children}
-        <Toaster position="top-right" richColors />
+        <FilterProvider>
+          {children}
+          <Toaster position="top-right" richColors />
+        </FilterProvider>
       </NextIntlClientProvider>
     </ThemeProvider>
   );
