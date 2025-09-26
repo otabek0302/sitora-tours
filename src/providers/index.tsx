@@ -20,7 +20,7 @@ export function Providers({ children, locale, messages }: ProvidersProps) {
 
   if (!mounted) {
     return (
-      <NextIntlClientProvider locale={locale} messages={messages}>
+      <NextIntlClientProvider locale={locale} messages={messages} timeZone="UTC">
         {children}
         <Toaster position="top-right" richColors />
       </NextIntlClientProvider>
@@ -29,7 +29,7 @@ export function Providers({ children, locale, messages }: ProvidersProps) {
 
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <NextIntlClientProvider locale={locale} messages={messages}>
+      <NextIntlClientProvider locale={locale} messages={messages} timeZone="UTC">
         {children}
         <Toaster position="top-right" richColors />
       </NextIntlClientProvider>

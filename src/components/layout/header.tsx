@@ -1,60 +1,63 @@
-"use client";
+'use client'
 
-import { useTranslations } from 'next-intl';
-import { ThemeSwitch } from '@/components/ui/theme-switch';
-import { LanguageSwitcher } from '@/components/ui/language-switcher';
+import Image from 'next/image'
+import Link from 'next/link'
+
+import { useTranslations } from 'next-intl'
+import { logo } from '@/assets'
+import { LanguageSwitcher, MenuSwitcher, ThemeSwitcher } from '../ui'
 
 const Header = () => {
-  const t = useTranslations('navigation');
-  
-  return (
-    <header className="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-              Sitora Tours
-            </h1>
-          </div>
+    const t = useTranslations('navigation')
 
-          {/* Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            <a
-              href="#"
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-            >
-              {t('tours')}
-            </a>
-            <a
-              href="#"
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-            >
-              {t('hotels')}
-            </a>
-            <a
-              href="#"
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-            >
-              {t('cars')}
-            </a>
-            <a
-              href="#"
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-            >
-              {t('about')}
-            </a>
-          </nav>
+    return (
+        <header className="bg-card border-border sticky top-0 z-50 border-b">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex items-center justify-between py-3 sm:py-4">
+                    {/* Logo */}
+                    <div className="flex-shrink-0">
+                        <div className="xs:h-8 xs:w-24 relative h-7 w-20 sm:h-9 sm:w-28 md:h-10 md:w-32">
+                            <Image src={logo} fill alt="Sitora Tours" className="object-contain" sizes="(max-width: 475px) 80px, (max-width: 640px) 96px, (max-width: 768px) 112px, 128px" />
+                        </div>
+                    </div>
 
-          {/* Controls */}
-          <div className="flex items-center space-x-4">
-            <LanguageSwitcher />
-            <ThemeSwitch />
-          </div>
-        </div>
-      </div>
-    </header>
-  );
-};
+                    {/* Navigation - Hidden on mobile/tablet, shown on desktop */}
+                    <nav className="hidden flex-1 items-center justify-center space-x-4 lg:flex xl:space-x-6">
+                        <Link href="/" className="text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md px-2 py-2 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium xl:px-3">
+                            <span className="block">{t('home')}</span>
+                        </Link>
+                        <Link href="/about-us" className="text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md px-2 py-2 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium xl:px-3">
+                            <span className="block">{t('about')}</span>
+                        </Link>
+                        <Link href="/tours" className="text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md px-2 py-2 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium xl:px-3">
+                            <span className="block">{t('tours')}</span>
+                        </Link>
+                        <Link href="/cities" className="text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md px-2 py-2 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium xl:px-3">
+                            <span className="block">{t('cities')}</span>
+                        </Link>
+                        <Link href="/hotels" className="text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md px-2 py-2 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium xl:px-3">
+                            <span className="block">{t('hotels')}</span>
+                        </Link>
+                        <Link href="/cars" className="text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md px-2 py-2 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium xl:px-3">
+                            <span className="block">{t('cars')}</span>
+                        </Link>
+                        <Link href="/contact-us" className="text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md px-2 py-2 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium xl:px-3">
+                            <span className="block">{t('contact')}</span>
+                        </Link>
+                    </nav>
 
-export default Header;
+                    {/* Controls */}
+                    <div className="flex items-center gap-1 sm:gap-2">
+                        <div className="hidden gap-1 sm:flex sm:gap-2">
+                            <LanguageSwitcher />
+                            <ThemeSwitcher />
+                        </div>
+                        <MenuSwitcher />
+                    </div>
+                </div>
+            </div>
+        </header>
+    )
+}
+
+export default Header

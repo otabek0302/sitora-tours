@@ -14,45 +14,73 @@ const config: Config = {
     },
     extend: {
       colors: {
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
+        border: 'var(--border)',
+        input: 'var(--input)',
+        ring: 'var(--ring)',
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
+          DEFAULT: 'var(--primary)',
+          foreground: 'var(--white)',
         },
         secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
+          DEFAULT: 'var(--secondary)',
+          foreground: 'var(--secondary-foreground)',
         },
         destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
+          DEFAULT: 'var(--destructive)',
+          foreground: 'var(--destructive-foreground)',
         },
         muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
+          DEFAULT: 'var(--muted)',
+          foreground: 'var(--muted-foreground)',
         },
         accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
+          DEFAULT: 'var(--accent)',
+          foreground: 'var(--accent-foreground)',
         },
         popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
+          DEFAULT: 'var(--popover)',
+          foreground: 'var(--popover-foreground)',
         },
         card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
+          DEFAULT: 'var(--card)',
+          foreground: 'var(--card-foreground)',
+        },
+
+        /* 🚀 SITORA TOUR BRAND COLORS */
+        sitora: {
+          primary: 'var(--color-sitora-primary)',
+          'primary-light': 'var(--color-sitora-primary-light)',
+          'primary-dark': 'var(--color-sitora-primary-dark)',
+
+          'gold-light': 'var(--color-sitora-gold-light)',
+          'gold-medium': 'var(--color-sitora-gold-medium)',
+          'gold-dark': 'var(--color-sitora-gold-dark)',
+
+          heading: 'var(--color-sitora-text-heading)',
+          subtitle: 'var(--color-sitora-text-subtitle)',
+          body: 'var(--color-sitora-text-body)',
+          muted: 'var(--color-sitora-text-muted)',
+
+          white: 'var(--color-sitora-white)',
+          black: 'var(--color-sitora-black)',
+
+          error: 'var(--color-sitora-error)',
+          warning: 'var(--color-sitora-warning)',
+          success: 'var(--color-sitora-success)',
+
+          outline: 'var(--color-sitora-outline)',
         },
       },
+
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
@@ -63,6 +91,7 @@ const config: Config = {
           to: { height: '0' },
         },
       },
+
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
@@ -70,6 +99,6 @@ const config: Config = {
     },
   },
   plugins: [require('tailwindcss-animate')],
-} satisfies Config;
+};
 
 export default config;

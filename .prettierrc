@@ -1,18 +1,10 @@
 {
-  "printWidth": 1000,
-  "tabWidth": 2,
-  "useTabs": false,
-  "semi": true,
+  "semi": false,
   "singleQuote": true,
-  "trailingComma": "es5",
+  "trailingComma": "all",
   "bracketSpacing": true,
-  "bracketSameLine": false,
-  "arrowParens": "always",
-  "endOfLine": "lf",
-  "singleAttributePerLine": false,
-  "htmlWhitespaceSensitivity": "css",
+  "printWidth": 1200,
+  "tabWidth": 4,
   "jsxSingleQuote": false,
-  "quoteProps": "as-needed",
-  "plugins": ["prettier-plugin-tailwindcss"],
-  "tailwindConfig": "./tailwind.config.ts"
+  "plugins": ["prettier-plugin-tailwindcss"]
 }
