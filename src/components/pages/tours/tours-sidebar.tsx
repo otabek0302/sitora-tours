@@ -6,19 +6,16 @@ import { Label } from '@/components/ui/label'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useTranslations } from 'next-intl'
+import { useFilters } from '@/contexts/filters-context'
 
 interface ToursFilterProps {
-    categories: any[]
-    selectedCategories: string[]
-    setSelectedCategories: (categories: string[]) => void
-    priceRange: [number, number]
-    setPriceRange: (range: [number, number]) => void
-    durationRange: [number, number]
-    setDurationRange: (range: [number, number]) => void
+    categories: string[]
 }
 
-const ToursSidebar = ({ categories, selectedCategories, setSelectedCategories, priceRange, setPriceRange, durationRange, setDurationRange }: ToursFilterProps) => {
+const ToursSidebar = ({ categories }: ToursFilterProps) => {
     const t = useTranslations('pages.tours')
+    const { state, setSelectedCategory, setPriceRange, setDurationRange, resetFilters, hasActiveFilters, activeFiltersCount } = useFilters()
+
     const [expandedSections, setExpandedSections] = useState({
         filterBy: true,
         price: true,
@@ -32,18 +29,8 @@ const ToursSidebar = ({ categories, selectedCategories, setSelectedCategories, p
         }))
     }
 
-    const handleTypeChange = (id: string, checked: boolean) => {
-        if (checked) {
-            setSelectedCategories([...selectedCategories, id])
-        } else {
-            setSelectedCategories(selectedCategories.filter((id) => id !== id.toString()))
-        }
-    }
-
-    const resetFilters = () => {
-        setSelectedCategories([])
-        setPriceRange([0, 100000])
-        setDurationRange([0, 100])
+    const handleCategoryChange = (category: string, checked: boolean) => {
+        setSelectedCategory(checked ? category : null)
     }
 
     return (
@@ -59,10 +46,10 @@ const ToursSidebar = ({ categories, selectedCategories, setSelectedCategories, p
                 {expandedSections.filterBy && (
                     <CardContent className="space-y-2 px-4 pb-3 sm:px-6 sm:pb-4">
                         {categories.map((category) => (
-                            <div key={category.id} className="flex items-center space-x-2">
-                                <Checkbox id={category.id.toString()} className="h-5 w-5" checked={selectedCategories.includes(category.id.toString())} onCheckedChange={(checked) => handleTypeChange(category.id.toString(), checked as boolean)} />
-                                <Label htmlFor={category.id.toString()} className="text-copy-lighter text-sm font-normal">
-                                    {typeof category.title === 'string' ? category.title : (category.title as any)?.en || 'Untitled'}
+                            <div key={category} className="flex items-center space-x-2">
+                                <Checkbox id={category} className="h-5 w-5" checked={state.selectedCategory === category} onCheckedChange={(checked) => handleCategoryChange(category, checked as boolean)} />
+                                <Label htmlFor={category} className="text-copy-lighter text-sm font-normal">
+                                    {category}
                                 </Label>
                             </div>
                         ))}
@@ -88,17 +75,17 @@ const ToursSidebar = ({ categories, selectedCategories, setSelectedCategories, p
                                 <Input
                                     id="min-price"
                                     type="number"
-                                    value={priceRange[0] || ''}
+                                    value={state.priceRange.min || ''}
                                     onChange={(e) => {
                                         const value = Math.max(0, parseInt(e.target.value) || 0)
-                                        if (value <= priceRange[1]) {
-                                            setPriceRange([value, priceRange[1]])
+                                        if (value <= state.priceRange.max) {
+                                            setPriceRange({ min: value, max: state.priceRange.max })
                                         }
                                     }}
                                     placeholder="0"
                                     className="rounded-xl text-sm"
                                     min={0}
-                                    max={priceRange[1]}
+                                    max={state.priceRange.max}
                                 />
                             </div>
                             <div className="flex-1">
@@ -108,14 +95,14 @@ const ToursSidebar = ({ categories, selectedCategories, setSelectedCategories, p
                                 <Input
                                     id="max-price"
                                     type="number"
-                                    value={priceRange[1] || ''}
+                                    value={state.priceRange.max || ''}
                                     onChange={(e) => {
-                                        const value = Math.max(priceRange[0], parseInt(e.target.value) || 0)
-                                        setPriceRange([priceRange[0], value])
+                                        const value = Math.max(state.priceRange.min, parseInt(e.target.value) || 0)
+                                        setPriceRange({ min: state.priceRange.min, max: value })
                                     }}
                                     placeholder="0"
                                     className="rounded-xl text-sm"
-                                    min={priceRange[0]}
+                                    min={state.priceRange.min}
                                 />
                             </div>
                         </div>
@@ -141,17 +128,17 @@ const ToursSidebar = ({ categories, selectedCategories, setSelectedCategories, p
                                 <Input
                                     id="min-length"
                                     type="number"
-                                    value={durationRange[0] || ''}
+                                    value={state.durationRange.min || ''}
                                     onChange={(e) => {
                                         const value = Math.max(0, parseInt(e.target.value) || 0)
-                                        if (value <= durationRange[1]) {
-                                            setDurationRange([value, durationRange[1]])
+                                        if (value <= state.durationRange.max) {
+                                            setDurationRange({ min: value, max: state.durationRange.max })
                                         }
                                     }}
                                     placeholder="0"
                                     className="rounded-xl text-sm"
                                     min={0}
-                                    max={durationRange[1]}
+                                    max={state.durationRange.max}
                                 />
                             </div>
                             <div className="flex-1">
@@ -161,14 +148,14 @@ const ToursSidebar = ({ categories, selectedCategories, setSelectedCategories, p
                                 <Input
                                     id="max-length"
                                     type="number"
-                                    value={durationRange[1] || ''}
+                                    value={state.durationRange.max || ''}
                                     onChange={(e) => {
-                                        const value = Math.max(durationRange[0], parseInt(e.target.value) || 0)
-                                        setDurationRange([durationRange[0], value])
+                                        const value = Math.max(state.durationRange.min, parseInt(e.target.value) || 0)
+                                        setDurationRange({ min: state.durationRange.min, max: value })
                                     }}
                                     placeholder="0"
                                     className="rounded-xl text-sm"
-                                    min={durationRange[0]}
+                                    min={state.durationRange.min}
                                 />
                             </div>
                         </div>
@@ -177,10 +164,11 @@ const ToursSidebar = ({ categories, selectedCategories, setSelectedCategories, p
             </Card>
 
             {/* Reset Button */}
-            <div className="flex justify-end">
-                <Button variant="outline" size="sm" onClick={resetFilters} className="bg-primary-light text-primary-foreground hover:bg-primary-dark transition-colors duration-200">
-                    {t('sidebar.reset') || 'Reset Filters'}
+            <div className="flex items-center justify-between">
+                <Button variant="outline" size="sm" onClick={resetFilters} disabled={!hasActiveFilters} className="bg-primary-light text-primary-foreground hover:bg-primary-dark transition-colors duration-200">
+                    {t('sidebar.reset')}
                 </Button>
+                {hasActiveFilters && <span className="text-sitora-body text-sm">{activeFiltersCount} filter(s) active</span>}
             </div>
         </div>
     )

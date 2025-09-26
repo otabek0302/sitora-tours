@@ -2,7 +2,8 @@
 
 import { useEffect, useState, useMemo } from 'react'
 import { useFilters } from '@/contexts/filters-context'
-import { fetchCities, type City, type CitiesResponse } from '@/lib/api/cities'
+import { fetchCities } from '@/lib/api/cities'
+import { City } from '@/lib/schemas'
 
 export function useFilteredCities() {
     const { state } = useFilters()
@@ -22,8 +23,8 @@ export function useFilteredCities() {
 
         // Add filters based on selected service type
         if (state.selectedServiceType === 'cities') {
-            if (state.selectedCountry) {
-                params.country = state.selectedCountry
+            if (state.selectedCategory) {
+                params.category = state.selectedCategory
             }
         }
 
@@ -59,7 +60,7 @@ export function useFilteredCities() {
     // Reset page when filters change
     useEffect(() => {
         setCurrentPage(1)
-    }, [state.selectedCountry, state.keywordSearch])
+    }, [state.selectedCategory, state.keywordSearch])
 
     return {
         cities,

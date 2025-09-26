@@ -313,7 +313,6 @@ export interface Review {
   last_name?: string | null;
   comment: string;
   rating: number;
-  tour_id?: (number | null) | Tour;
   updatedAt: string;
   createdAt: string;
 }
@@ -579,7 +578,6 @@ export interface ReviewsSelect<T extends boolean = true> {
   last_name?: T;
   comment?: T;
   rating?: T;
-  tour_id?: T;
   updatedAt?: T;
   createdAt?: T;
 }

@@ -2,7 +2,8 @@
 
 import { useEffect, useState, useMemo } from 'react'
 import { useFilters } from '@/contexts/filters-context'
-import { fetchTours, type Tour, type ToursResponse } from '@/lib/api/tours'
+import { fetchTours } from '@/lib/api/tours'
+import { Tour } from '@/lib/schemas'
 
 export function useFilteredTours() {
     const { state } = useFilters()
