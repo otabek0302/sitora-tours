@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 
 const ToursLayout = ({ children }: { children: ReactNode }) => {
-    return <>{children}</>
+  return <>{children}</>
 }
 
 export default ToursLayout

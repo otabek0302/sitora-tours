@@ -1,16 +1,28 @@
-import { useTranslations } from 'next-intl'
+'use client'
+
+import CitiesContent from '@/components/pages/cities/cities-content'
+
+import { useEffect } from 'react'
+import { useLocale } from 'next-intl'
+import { useCitiesContext } from '@/lib/stores'
 
 const CitiesPage = () => {
-    const t = useTranslations('pages.cities')
+  const locale = useLocale()
+  const { fetchCities, setLocale } = useCitiesContext()
 
-    return (
-        <section className="py-12 md:py-16">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h1 className="text-sitora-text-subtitle mb-4 text-2xl leading-tight font-bold sm:text-3xl lg:text-4xl">{t('heading')}</h1>
-                <p className="text-sitora-body sm:text-md text-sm font-normal">{t('subheading')}</p>
-            </div>
-        </section>
-    )
+  useEffect(() => {
+    setLocale(locale)
+    fetchCities()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [locale])
+
+  return (
+    <section className='py-12 md:py-16'>
+      <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
+        <CitiesContent />
+      </div>
+    </section>
+  )
 }
 
 export default CitiesPage

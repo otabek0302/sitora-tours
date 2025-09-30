@@ -177,6 +177,10 @@ export interface Media {
 export interface Category {
   id: number;
   name: string;
+  /**
+   * Auto-generated from English name
+   */
+  slug: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -187,8 +191,12 @@ export interface Category {
 export interface City {
   id: number;
   name: string;
+  /**
+   * Auto-generated from English name
+   */
+  slug: string;
   description: string;
-  image: number | Media;
+  image?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
 }
@@ -199,11 +207,15 @@ export interface City {
 export interface Tour {
   id: number;
   name: string;
+  /**
+   * Auto-generated from English name
+   */
+  slug: string;
   description: string;
   duration_days: number;
   duration_nights: number;
   price: number;
-  category: (number | Category)[];
+  category: number | Category;
   cities: (number | City)[];
   locations?:
     | {
@@ -264,6 +276,10 @@ export interface Tour {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Average rating calculated from customer reviews (0-5 stars)
+   */
+  rating?: number | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -274,8 +290,13 @@ export interface Tour {
 export interface Hotel {
   id: number;
   name: string;
+  /**
+   * Auto-generated from English name
+   */
+  slug: string;
   description: string;
-  address: string;
+  city: number | City;
+  address?: string | null;
   phone: string;
   rating?: ('1' | '2' | '3' | '4' | '5') | null;
   features?:
@@ -285,6 +306,20 @@ export interface Hotel {
       }[]
     | null;
   image: number | Media;
+  images?:
+    | {
+        image: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  policies: {
+    checkIn: string;
+    checkOut: string;
+    cancellation?: string | null;
+    pet?: string | null;
+    children?: string | null;
+    payment?: string | null;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -295,11 +330,22 @@ export interface Hotel {
 export interface Car {
   id: number;
   name: string;
+  type: string;
+  /**
+   * Auto-generated from English name
+   */
+  slug: string;
   model: string;
   brand: string;
   capacity: number;
-  price: string;
+  price: number;
   image: number | Media;
+  images?:
+    | {
+        image: number | Media;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -309,10 +355,15 @@ export interface Car {
  */
 export interface Review {
   id: number;
+  /**
+   * Auto-generated from first name
+   */
+  slug: string;
   first_name: string;
   last_name?: string | null;
   comment: string;
   rating: number;
+  tour: number | Tour;
   updatedAt: string;
   createdAt: string;
 }
@@ -445,6 +496,7 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface CategoriesSelect<T extends boolean = true> {
   name?: T;
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -454,6 +506,7 @@ export interface CategoriesSelect<T extends boolean = true> {
  */
 export interface CitiesSelect<T extends boolean = true> {
   name?: T;
+  slug?: T;
   description?: T;
   image?: T;
   updatedAt?: T;
@@ -465,6 +518,7 @@ export interface CitiesSelect<T extends boolean = true> {
  */
 export interface ToursSelect<T extends boolean = true> {
   name?: T;
+  slug?: T;
   description?: T;
   duration_days?: T;
   duration_nights?: T;
@@ -532,6 +586,7 @@ export interface ToursSelect<T extends boolean = true> {
         image?: T;
         id?: T;
       };
+  rating?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -541,7 +596,9 @@ export interface ToursSelect<T extends boolean = true> {
  */
 export interface HotelsSelect<T extends boolean = true> {
   name?: T;
+  slug?: T;
   description?: T;
+  city?: T;
   address?: T;
   phone?: T;
   rating?: T;
@@ -552,6 +609,22 @@ export interface HotelsSelect<T extends boolean = true> {
         id?: T;
       };
   image?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  policies?:
+    | T
+    | {
+        checkIn?: T;
+        checkOut?: T;
+        cancellation?: T;
+        pet?: T;
+        children?: T;
+        payment?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }
@@ -561,11 +634,19 @@ export interface HotelsSelect<T extends boolean = true> {
  */
 export interface CarsSelect<T extends boolean = true> {
   name?: T;
+  type?: T;
+  slug?: T;
   model?: T;
   brand?: T;
   capacity?: T;
   price?: T;
   image?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }
@@ -574,10 +655,12 @@ export interface CarsSelect<T extends boolean = true> {
  * via the `definition` "reviews_select".
  */
 export interface ReviewsSelect<T extends boolean = true> {
+  slug?: T;
   first_name?: T;
   last_name?: T;
   comment?: T;
   rating?: T;
+  tour?: T;
   updatedAt?: T;
   createdAt?: T;
 }

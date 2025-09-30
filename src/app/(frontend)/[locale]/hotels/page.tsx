@@ -1,16 +1,28 @@
-import { useTranslations } from 'next-intl'
+'use client'
+
+import HotelsContent from '@/components/pages/hotels/hotels-content'
+
+import { useEffect } from 'react'
+import { useLocale } from 'next-intl'
+import { useHotelsContext } from '@/lib/stores'
 
 const HotelsPage = () => {
-    const t = useTranslations('pages.hotels')
+  const locale = useLocale()
+  const { fetchHotels, setLocale } = useHotelsContext()
 
-    return (
-        <section className="py-12 md:py-16">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h1 className="text-sitora-text-subtitle mb-4 text-2xl leading-tight font-bold sm:text-3xl lg:text-4xl">{t('heading')}</h1>
-                <p className="text-sitora-body sm:text-md text-sm font-normal">{t('subheading')}</p>
-            </div>
-        </section>
-    )
+  useEffect(() => {
+    setLocale(locale)
+    fetchHotels()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [locale])
+
+  return (
+    <section className='py-12 md:py-16'>
+      <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
+        <HotelsContent />
+      </div>
+    </section>
+  )
 }
 
 export default HotelsPage

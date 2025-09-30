@@ -8,6 +8,8 @@ import { Button } from './button'
 import { Popover } from './popover'
 import { Label } from './label'
 import { Slider } from './slider'
-import { Pagination } from './pagination'
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, PaginationEllipsis } from './pagination'
+import { Checkbox } from './checkbox'
+import { Card, CardContent, CardHeader, CardTitle } from './card'
 
-export { HamburgerButton, LanguageSwitcher, MenuSwitcher, ThemeSwitcher, Pagination, Input, Button, Popover, Label, Slider, Accordion, AccordionContent, AccordionItem, AccordionTrigger }
+export { HamburgerButton, LanguageSwitcher, MenuSwitcher, ThemeSwitcher, Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, PaginationEllipsis, Input, Button, Popover, Label, Slider, Accordion, AccordionContent, AccordionItem, AccordionTrigger, Checkbox, Card, CardContent, CardHeader, CardTitle }

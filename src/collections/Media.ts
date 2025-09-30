@@ -1,4 +1,4 @@
-import { CollectionConfig } from 'payload';
+import { CollectionConfig } from 'payload'
 
 export const Media: CollectionConfig = {
   slug: 'media',
@@ -25,11 +25,11 @@ export const Media: CollectionConfig = {
     beforeValidate: [
       ({ data }) => {
         if (!data?.slug && data?.alt) {
-          data.slug = data.alt.toLowerCase().replace(/\s+/g, '-');
+          data.slug = data.alt.toLowerCase().replace(/\s+/g, '-')
         }
       },
     ],
   },
   timestamps: true,
   upload: true,
-};
+}

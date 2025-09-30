@@ -1,4 +1,4 @@
-import type { CollectionConfig } from 'payload';
+import type { CollectionConfig } from 'payload'
 
 export const Users: CollectionConfig = {
   slug: 'users',
@@ -23,9 +23,9 @@ export const Users: CollectionConfig = {
     beforeValidate: [
       ({ data }) => {
         if (!data?.slug && data?.first_name) {
-          data.slug = data.first_name.toLowerCase().replace(/\s+/g, '-');
+          data.slug = data.first_name.toLowerCase().replace(/\s+/g, '-')
         }
       },
     ],
   },
-};
+}

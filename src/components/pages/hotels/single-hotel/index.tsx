@@ -1,0 +1,5 @@
+export { default as HotelGallery } from './hotel-gallery'
+export { default as HotelInfo } from './hotel-info'
+export { default as HotelContact } from './hotel-contact'
+export { default as HotelPolicies } from './hotel-policies'
+export { default as HotelFeatures } from './hotel-features'

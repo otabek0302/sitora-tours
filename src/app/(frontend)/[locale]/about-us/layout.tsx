@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 
 const AboutUsLayout = ({ children }: { children: ReactNode }) => {
-    return <>{children}</>
+  return <>{children}</>
 }
 
 export default AboutUsLayout

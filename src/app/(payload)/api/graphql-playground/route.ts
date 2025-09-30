@@ -1,5 +1,5 @@
-import config from '@payload-config';
-import { GRAPHQL_PLAYGROUND_GET } from '@payloadcms/next/routes';
-import '@payloadcms/next/css';
+import config from '@payload-config'
+import { GRAPHQL_PLAYGROUND_GET } from '@payloadcms/next/routes'
+import '@payloadcms/next/css'
 
-export const GET = GRAPHQL_PLAYGROUND_GET(config);
+export const GET = GRAPHQL_PLAYGROUND_GET(config)

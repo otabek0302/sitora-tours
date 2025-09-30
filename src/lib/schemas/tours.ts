@@ -1,89 +1,139 @@
 import { z } from 'zod'
 
-// Base tour schema
+// Image Schema
+const ImageSchema = z.object({
+  id: z.number(),
+  url: z.string(),
+})
+
+// Base tour schema matching Payload CMS structure
+const RelationObjectSchema = z.object({
+  id: z.union([z.string(), z.number()]),
+  name: z.string().optional(),
+  slug: z.string().optional(),
+})
+
 export const TourSchema = z.object({
-    id: z.number(),
-    title: z.string(),
-    description: z.string().optional(),
-    duration: z.string(),
-    transport: z.string(),
-    type: z.string(),
-    rating: z.number().min(0).max(5),
-    reviews: z.number().min(0),
-    price: z.number().min(0),
-    image: z.string().url().optional(),
-    createdAt: z.string().datetime(),
-    updatedAt: z.string().datetime(),
-    category: z.string().optional(),
-    difficulty: z.enum(['easy', 'medium', 'hard']).optional(),
-    maxGroupSize: z.number().min(1).optional(),
-    minGroupSize: z.number().min(1).optional(),
-    includes: z.array(z.string()).optional(),
-    excludes: z.array(z.string()).optional(),
-    highlights: z.array(z.string()).optional(),
-    itinerary: z
+  id: z.union([z.number(), z.string()]),
+  name: z.string(),
+  description: z.string().optional(),
+  duration_days: z.number(),
+  duration_nights: z.number(),
+  price: z.number(),
+  slug: z.string(),
+
+  category: RelationObjectSchema.optional(),
+  cities: z.array(RelationObjectSchema).optional(),
+
+  locations: z
+    .array(
+      z.object({
+        id: z.string().optional(),
+        from: RelationObjectSchema,
+        to: RelationObjectSchema,
+        transport: z.string(),
+        fromTime: z.string(),
+        toTime: z.string(),
+        duration: z.string(),
+      }),
+    )
+    .optional(),
+
+  itinerary: z
+    .array(
+      z.object({
+        id: z.string().optional(),
+        day: z.string(),
+        activities: z.array(
+          z.object({
+            id: z.string().optional(),
+            activity: z.string(),
+          }),
+        ),
+      }),
+    )
+    .optional(),
+
+  services: z
+    .object({
+      included: z
         .array(
-            z.object({
-                day: z.number(),
-                title: z.string(),
-                description: z.string(),
-                activities: z.array(z.string()).optional(),
-            }),
+          z.object({
+            id: z.string().optional(),
+            title: z.string(),
+          }),
         )
         .optional(),
-    location: z
-        .object({
-            city: z.string(),
-            country: z.string(),
-            coordinates: z
-                .object({
-                    lat: z.number(),
-                    lng: z.number(),
-                })
-                .optional(),
-        })
+      notIncluded: z
+        .array(
+          z.object({
+            id: z.string().optional(),
+            title: z.string(),
+          }),
+        )
         .optional(),
-    isActive: z.boolean().default(true),
-    isFeatured: z.boolean().default(false),
+    })
+    .optional(),
+
+  accommodation: z
+    .array(
+      z.object({
+        id: z.string().optional(),
+        city: z.union([z.number(), RelationObjectSchema]).optional(),
+        hotel: z.array(z.union([z.number(), RelationObjectSchema])).optional(),
+      }),
+    )
+    .optional(),
+  booking_pricing: z
+    .array(
+      z.object({
+        id: z.string().optional(),
+        dateStart: z.string().optional(),
+        dateEnd: z.string().optional(),
+        pricePerAdult: z.number().optional(),
+        pricePerChild: z.number().optional(),
+      }),
+    )
+    .optional(),
+  images: z
+    .array(
+      z.object({
+        id: z.string().optional(),
+        image: ImageSchema,
+      }),
+    )
+    .optional(),
+  rating: z.number().min(0).max(5).optional(),
+
+  createdAt: z.string().optional(),
+  updatedAt: z.string().optional(),
 })
 
 // Tour list response schema
 export const ToursResponseSchema = z.object({
-    docs: z.array(TourSchema),
-    totalDocs: z.number(),
-    limit: z.number(),
-    totalPages: z.number(),
-    page: z.number(),
-    pagingCounter: z.number(),
-    hasPrevPage: z.boolean(),
-    hasNextPage: z.boolean(),
-    prevPage: z.number().nullable(),
-    nextPage: z.number().nullable(),
+  docs: z.array(TourSchema),
+  totalDocs: z.number(),
+  limit: z.number(),
+  totalPages: z.number(),
+  page: z.number(),
+  pagingCounter: z.number(),
+  hasPrevPage: z.boolean(),
+  hasNextPage: z.boolean(),
+  prevPage: z.number().nullable(),
+  nextPage: z.number().nullable(),
 })
 
-// Tour filters schema
+// Tour filters schema (internal - numbers/arrays)
 export const TourFiltersSchema = z.object({
-    category: z.string().optional(),
-    priceRange: z.tuple([z.number(), z.number()]).optional(),
-    durationRange: z.tuple([z.number(), z.number()]).optional(),
-    rating: z.number().min(0).max(5).optional(),
-    difficulty: z.enum(['easy', 'medium', 'hard']).optional(),
-    location: z.string().optional(),
-    isActive: z.boolean().optional(),
-    isFeatured: z.boolean().optional(),
-    search: z.string().optional(),
-})
-
-// Tour search params schema
-export const TourSearchParamsSchema = z.object({
-    page: z.number().min(1).default(1),
-    limit: z.number().min(1).max(100).default(10),
-    sort: z.enum(['price', 'rating', 'duration', 'createdAt', '-price', '-rating', '-duration', '-createdAt']).default('-createdAt'),
-    ...TourFiltersSchema.shape,
+  category: z.number().nullable().optional(),
+  cities: z.array(z.number()).optional(),
+  minPrice: z.number().min(0).optional(),
+  maxPrice: z.number().min(0).optional(),
+  durationMin: z.number().min(0).optional(),
+  durationMax: z.number().min(0).optional(),
 })
 
 // TypeScript types inferred from schemas
 export type Tour = z.infer<typeof TourSchema>
 export type ToursResponse = z.infer<typeof ToursResponseSchema>
 export type TourFilters = z.infer<typeof TourFiltersSchema>
-export type TourSearchParams = z.infer<typeof TourSearchParamsSchema>

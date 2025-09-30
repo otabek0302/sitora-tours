@@ -11,19 +11,19 @@ import Statistics from '@/components/pages/home/statistics'
 import Testimonials from '@/components/pages/home/testimonials'
 
 const HomePage = () => {
-    return (
-        <main>
-            <Hero />
-            <RecommendedCars />
-            <RecommendedCities />
-            <RecommendedTours />
-            <Services />
-            <SpecialTour />
-            <Statistics />
-            <Testimonials />
-            <Faq />
-        </main>
-    )
+  return (
+    <main>
+      <Hero />
+      <RecommendedCars />
+      <RecommendedCities />
+      <RecommendedTours />
+      <Services />
+      <SpecialTour />
+      <Statistics />
+      <Testimonials />
+      <Faq />
+    </main>
+  )
 }
 
 export default HomePage

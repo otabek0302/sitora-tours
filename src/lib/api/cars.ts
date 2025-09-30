@@ -1,126 +1,99 @@
-import { CarSchema, CarsResponseSchema, CarSearchParamsSchema, type Car, type CarsResponse, type CarSearchParams } from '@/lib/schemas'
+import { CarsResponseSchema, CarSchema, CarFilters, Pagination, CarsResponse, Car } from '@/lib/schemas'
+import { carsFiltersToUrlParams, validateCarsFilters } from '@/lib/utils/filters'
+import { getUniqueValues } from '@/lib/utils'
+import { apiRequest } from './index'
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api'
+// Fetch cars with filters
+export async function fetchCars(filters?: Partial<CarFilters>, pagination?: Pagination, locale?: string): Promise<CarsResponse> {
+  // Validate filters before making API call
+  if (filters && pagination && !validateCarsFilters(filters)) {
+    throw new Error('Invalid filters provided')
+  }
 
-// Fetch cars with validation
-export async function fetchCars(params: Partial<CarSearchParams> = {}): Promise<CarsResponse> {
-    try {
-        // Validate search params
-        const validatedParams = CarSearchParamsSchema.parse(params)
+  // Convert filters to URL parameters
+  const params = filters && pagination && carsFiltersToUrlParams(filters, pagination)
+  const localeParam = locale ? `locale=${locale}` : ''
 
-        // Build query string
-        const searchParams = new URLSearchParams()
-        Object.entries(validatedParams).forEach(([key, value]) => {
-            if (value !== undefined && value !== null) {
-                searchParams.append(key, value.toString())
-            }
-        })
-
-        const response = await fetch(`${API_BASE_URL}/cars?${searchParams.toString()}`)
-
-        if (!response.ok) {
-            throw new Error(`Failed to fetch cars: ${response.statusText}`)
-        }
-
-        const data = await response.json()
-
-        // Validate response with Zod
-        return CarsResponseSchema.parse(data)
-    } catch (error) {
-        console.error('Error fetching cars:', error)
-        throw error
-    }
+  try {
+    const separator = params ? '&' : '?'
+    const url = `/api/cars${params ? `?${params}` : ''}${localeParam ? `${params ? separator : '?'}${localeParam}` : ''}`
+    const data = await apiRequest<CarsResponse>(url)
+    return CarsResponseSchema.parse(data)
+  } catch (error) {
+    throw new Error('Failed to load cars. Please try again.')
+  }
 }
 
-// Fetch single car by ID
-export async function fetchCarById(id: number): Promise<Car> {
-    try {
-        const response = await fetch(`${API_BASE_URL}/cars/${id}`)
-
-        if (!response.ok) {
-            throw new Error(`Failed to fetch car: ${response.statusText}`)
-        }
-
-        const data = await response.json()
-
-        // Validate response with Zod
-        return CarSchema.parse(data)
-    } catch (error) {
-        console.error('Error fetching car:', error)
-        throw error
+// Fetch single car by slug
+export async function fetchCarBySlug(slug: string, locale?: string): Promise<Car> {
+  try {
+    const localeParam = locale ? `&locale=${locale}` : ''
+    const response = await apiRequest<any>(`/api/cars?where[slug][equals]=${slug}${localeParam}`)
+    if (!response.docs || response.docs.length === 0) {
+      throw new Error('Car not found')
     }
+    return CarSchema.parse(response.docs[0])
+  } catch (error) {
+    throw new Error('Failed to load car details. Please try again.')
+  }
 }
 
-// Fetch featured cars
-export async function fetchFeaturedCars(limit: number = 4): Promise<Car[]> {
-    try {
-        const response = await fetch(`${API_BASE_URL}/cars?isFeatured=true&limit=${limit}`)
-
-        if (!response.ok) {
-            throw new Error(`Failed to fetch featured cars: ${response.statusText}`)
-        }
-
-        const data = await response.json()
-        const validatedResponse = CarsResponseSchema.parse(data)
-
-        return validatedResponse.docs
-    } catch (error) {
-        console.error('Error fetching featured cars:', error)
-        throw error
+// Fetch recommended cars (featured cars)
+export async function fetchRecommendedCars(limit: number = 4, locale?: string): Promise<Car[]> {
+  try {
+    const localeParam = locale ? `&locale=${locale}` : ''
+    const response = await apiRequest<any>(`/api/cars?limit=${limit}&sort=-createdAt${localeParam}`)
+    if (!response.docs) {
+      return []
     }
+    return response.docs.map((car: any) => CarSchema.parse(car))
+  } catch (error) {
+    throw new Error('Failed to load recommended cars. Please try again.')
+  }
 }
 
-// Search cars
-export async function searchCars(query: string, filters: Partial<CarSearchParams> = {}): Promise<CarsResponse> {
-    try {
-        const searchParams = {
-            ...filters,
-            search: query,
-        }
-
-        return await fetchCars(searchParams)
-    } catch (error) {
-        console.error('Error searching cars:', error)
-        throw error
-    }
+// Fetch cars max price
+export async function fetchCarsMaxPrice(): Promise<number> {
+  try {
+    const data = await apiRequest<Car[]>('/api/cars?sort=price')
+    return data.reduce((max, car) => Math.max(max, car.price), 0)
+  } catch (error) {
+    throw new Error('Failed to load cars max price. Please try again.')
+  }
 }
 
-// Get car types
-export async function getCarTypes(): Promise<string[]> {
-    try {
-        const response = await fetch(`${API_BASE_URL}/cars/types`)
-
-        if (!response.ok) {
-            throw new Error(`Failed to fetch car types: ${response.statusText}`)
-        }
-
-        const data = await response.json()
-
-        // Validate that it's an array of strings
-        const types = Array.isArray(data) ? data : data.types || []
-        return types.filter((type: any) => typeof type === 'string')
-    } catch (error) {
-        console.error('Error fetching car types:', error)
-        return []
-    }
+// Fetch cars min price
+export async function fetchCarsMinPrice(): Promise<number> {
+  try {
+    const data = await apiRequest<Car[]>('/api/cars?sort=price')
+    return data.reduce((min, car) => Math.min(min, car.price), 0)
+  } catch (error) {
+    throw new Error('Failed to load cars min price. Please try again.')
+  }
 }
 
-// Get car brands
-export async function getCarBrands(): Promise<string[]> {
-    try {
-        const response = await fetch(`${API_BASE_URL}/cars/brands`)
+// Fetch cars's types
+export async function fetchCarsTypes(locale?: string): Promise<string[]> {
+  try {
+    const localeParam = locale ? `&locale=${locale}` : ''
+    const response = await apiRequest<any>(`/api/cars?sort=type${localeParam}`)
+    const data = response.docs || response
+    const types = getUniqueValues(data.map((car: Car) => car.type) as string[])
+    return types
+  } catch (error) {
+    throw new Error('Failed to load cars types. Please try again.')
+  }
+}
 
-        if (!response.ok) {
-            throw new Error(`Failed to fetch car brands: ${response.statusText}`)
-        }
-
-        const data = await response.json()
-
-        // Validate that it's an array of strings
-        const brands = Array.isArray(data) ? data : data.brands || []
-        return brands.filter((brand: any) => typeof brand === 'string')
-    } catch (error) {
-        console.error('Error fetching car brands:', error)
-        return []
-    }
+// Fetch cars's brands
+export async function fetchCarsBrands(locale?: string): Promise<string[]> {
+  try {
+    const localeParam = locale ? `&locale=${locale}` : ''
+    const response = await apiRequest<any>(`/api/cars?sort=brand${localeParam}`)
+    const data = response.docs || response
+    const brands = getUniqueValues(data.map((car: Car) => car.brand) as string[])
+    return brands
+  } catch (error) {
+    throw new Error('Failed to load cars brands. Please try again.')
+  }
 }

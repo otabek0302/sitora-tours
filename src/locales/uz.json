@@ -1,257 +1,435 @@
 {
-    "navigation": {
-        "home": "Bosh sahifa",
-        "tours": "Turlar",
-        "cities": "Shaharlar",
-        "hotels": "Mehmonxonalar",
-        "cars": "Avtomobillar",
-        "about": "Biz haqimizda",
-        "contact": "Biz bilan bog'laning"
+  "navigation": {
+    "home": "Bosh sahifa",
+    "tours": "Turlar",
+    "cities": "Shaharlar",
+    "hotels": "Mehmonxonalar",
+    "cars": "Avtomobillar",
+    "about": "Biz haqimizda",
+    "contact": "Biz bilan bog'laning"
+  },
+  "footer": {
+    "description": "O'zbekistonning go'zalligini bizning premium sayohat paketlarimiz bilan kashf eting. Haqiqiy madaniyat, ajoyib manzaralar va unutilmas xotiralarni boshdan kechiring.",
+    "navigation": "Navigatsiya",
+    "license": "Litsenziya",
+    "contact": "Aloqa",
+    "privacyPolicy": "Maxfiylik siyosati",
+    "terms": "Shartlar",
+    "emailAddress": "Elektron pochta manzili",
+    "hours": "Dush - Jum: 9:00 - 18:00",
+    "additional_info": {
+      "working_hours": "Dush - Jum: 9:00 - 18:00",
+      "address": "Toshkent, O'zbekiston"
     },
-    "footer": {
-        "description": "O'zbekistonning go'zalligini bizning premium sayohat paketlarimiz bilan kashf eting. Haqiqiy madaniyat, ajoyib manzaralar va unutilmas xotiralarni boshdan kechiring.",
-        "navigation": "Navigatsiya",
-        "license": "Litsenziya",
-        "contact": "Aloqa",
-        "privacyPolicy": "Maxfiylik siyosati",
-        "terms": "Shartlar",
-        "emailAddress": "Elektron pochta manzili",
-        "hours": "Dush - Jum: 9:00 - 18:00",
-        "additional_info": {
-            "working_hours": "Dush - Jum: 9:00 - 18:00",
-            "address": "Toshkent, O'zbekiston"
+    "copyright": "© 2024 Sitora Tours. Barcha huquqlar himoyalangan."
+  },
+  "pages": {
+    "home": {
+      "hero": {
+        "main_title": "Ajoyib joylarni kashf eting",
+        "main_subtitle": "Dunyoning eng chiroyli joylarini bizning premium sayohat paketlarimiz bilan kashf eting",
+        "main_button": "Sayohatingizni boshlang",
+        "card1_title": "Sarguzasht turlari",
+        "card1_subtitle": "Hayajonli sarguzashtlarni bosing",
+        "card2_title": "Madaniy meros",
+        "card2_subtitle": "Boy an'analarni kashf eting",
+        "card3_title": "Hashamatli sayohat",
+        "card3_subtitle": "Premium tajribalar",
+        "card4_title": "Tabiat va yovvoyi tabiat",
+        "card4_subtitle": "Tabiat bilan bog'laning"
+      },
+      "faq": {
+        "heading": "Tez-tez so'raladigan savollar",
+        "subheading": "Bizning sayohatlar, bron qilish jarayoni va sayohat talablari haqida keng tarqalgan savollarga javob toping.",
+        "questions": {
+          "booking": {
+            "question": "Sayohatni qanday bron qilaman?",
+            "answer": "Bron qilish oson! Mavjud sayohatlarimizni ko'rib chiqing, istagan sanalaringizni tanlang va onlayn bron qilish formasini to'ldiring. Barcha tafsilotlar bilan tasdiqlash xatini olasiz. Maxsus sayohatlar uchun bizga to'g'ridan-to'g'ri murojaat qiling va siz uchun shaxsiy marshrut yaratamiz."
+          },
+          "cancellation": {
+            "question": "Bekor qilish siyosatingiz qanday?",
+            "answer": "Biz moslashuvchan bekor qilish siyosatini taklif qilamiz. Sayohatdan 48 soat oldin to'liq pul qaytarish bilan bekor qilishingiz mumkin. Jo'nashdan 24-48 soat oldin bekor qilish 50% pul qaytarishni oladi. Afsuski, operatsion xarajatlar tufayli bir xil kundagi bekor qilishlar uchun pul qaytara olmaymiz."
+          },
+          "payment": {
+            "question": "Qanday to'lov usullarini qabul qilasiz?",
+            "answer": "Biz barcha asosiy kredit kartalarini (Visa, MasterCard, American Express), bank o'tkazmalarini va PayPal-ni qabul qilamiz. Guruhli bronlar uchun korporativ to'lovlarni ham qabul qilamiz. Barcha tranzaksiyalar xavfsiz va sizning himoyangiz uchun shifrlangan."
+          },
+          "groupSize": {
+            "question": "Maksimal guruh hajmi qanday?",
+            "answer": "Bizning standart guruh sayohatlari shaxsiylashtirilgan tajriba uchun 8-15 kishini qamrab oladi. Xususiy sayohatlar har qanday guruh hajmi uchun tashkil etilishi mumkin, yakka sayohatchilardan tortib 50+ kishilik katta guruhlargacha. Korporativ tadbirlar va maxsus voqealar ham tashkil qilishimiz mumkin."
+          },
+          "whatToBring": {
+            "question": "Sayohatga nima olib boraman?",
+            "answer": "Biz qulay yurish poyabzallari, ob-havoga mos kiyim, kamera, quyoshdan himoya qiluvchi krem va suv shishasini tavsiya qilamiz. Maxsus sayohatlar uchun batafsil yuk ro'yxatini beramiz. Faoliyatlar uchun zarur bo'lgan barcha asboblar sayohat narxiga kiritilgan."
+          },
+          "weather": {
+            "question": "Agar ob-havo yomon bo'lsa nima bo'ladi?",
+            "answer": "Biz ob-havo sharoitlarini diqqat bilan kuzatamiz va xavfsizlik uchun kerak bo'lsa, marshrutlarni o'zgartiramiz. Bizning sayohatlarimizning aksariyati yengil yomg'irli sharoitda ishlaydi, lekin qattiq ob-havo paytida qayta rejalashtirish yoki alternativ ichki faoliyatlarni taklif qilishimiz mumkin. Sizning xavfsizligingiz va qulayligingiz bizning ustuvorligimizdir."
+          },
+          "safety": {
+            "question": "Sayohatlaringiz xavfsizmi?",
+            "answer": "Albatta! Barcha rahbarlarimiz sertifikatlangan va tajribali mutaxassislar. Biz qattiq xavfsizlik protokollariga amal qilamiz, birinchi yordam asboblarini saqlaymiz va favqulodda vaziyatlar uchun tartibga egamiz. Biz to'liq litsenziyalangan va sug'urtalanganmiz va xavfsizlik standartlarimizni muntazam yangilaymiz."
+          },
+          "customization": {
+            "question": "Sayohatimni sozlashim mumkinmi?",
+            "answer": "Ha! Biz sizning qiziqishlaringiz, jadvalingiz va byudjetingizga moslashtirilgan maxsus sayohatlar yaratishda ixtisoslashganmiz. Tarix, madaniyat, tabiat yoki sarguzashtga e'tibor qaratmoqchi bo'lsangiz ham, bizning jamoamiz siz uchun mukammal marshrut yaratadi. Maxsus talablaringizni muhokama qilish uchun bizga murojaat qiling."
+          }
         },
-        "copyright": "© 2024 Sitora Tours. Barcha huquqlar himoyalangan."
-    },
-    "pages": {
-        "home": {
-            "hero": {
-                "main_title": "Ajoyib joylarni kashf eting",
-                "main_subtitle": "Dunyoning eng chiroyli joylarini bizning premium sayohat paketlarimiz bilan kashf eting",
-                "main_button": "Sayohatingizni boshlang",
-                "card1_title": "Sarguzasht turlari",
-                "card1_subtitle": "Hayajonli sarguzashtlarni bosing",
-                "card2_title": "Madaniy meros",
-                "card2_subtitle": "Boy an'analarni kashf eting",
-                "card3_title": "Hashamatli sayohat",
-                "card3_subtitle": "Premium tajribalar",
-                "card4_title": "Tabiat va yovvoyi tabiat",
-                "card4_subtitle": "Tabiat bilan bog'laning"
-            },
-            "faq": {
-                "heading": "Tez-tez so'raladigan savollar",
-                "subheading": "Bizning sayohatlar, bron qilish jarayoni va sayohat talablari haqida keng tarqalgan savollarga javob toping.",
-                "questions": {
-                    "booking": {
-                        "question": "Sayohatni qanday bron qilaman?",
-                        "answer": "Bron qilish oson! Mavjud sayohatlarimizni ko'rib chiqing, istagan sanalaringizni tanlang va onlayn bron qilish formasini to'ldiring. Barcha tafsilotlar bilan tasdiqlash xatini olasiz. Maxsus sayohatlar uchun bizga to'g'ridan-to'g'ri murojaat qiling va siz uchun shaxsiy marshrut yaratamiz."
-                    },
-                    "cancellation": {
-                        "question": "Bekor qilish siyosatingiz qanday?",
-                        "answer": "Biz moslashuvchan bekor qilish siyosatini taklif qilamiz. Sayohatdan 48 soat oldin to'liq pul qaytarish bilan bekor qilishingiz mumkin. Jo'nashdan 24-48 soat oldin bekor qilish 50% pul qaytarishni oladi. Afsuski, operatsion xarajatlar tufayli bir xil kundagi bekor qilishlar uchun pul qaytara olmaymiz."
-                    },
-                    "payment": {
-                        "question": "Qanday to'lov usullarini qabul qilasiz?",
-                        "answer": "Biz barcha asosiy kredit kartalarini (Visa, MasterCard, American Express), bank o'tkazmalarini va PayPal-ni qabul qilamiz. Guruhli bronlar uchun korporativ to'lovlarni ham qabul qilamiz. Barcha tranzaksiyalar xavfsiz va sizning himoyangiz uchun shifrlangan."
-                    },
-                    "groupSize": {
-                        "question": "Maksimal guruh hajmi qanday?",
-                        "answer": "Bizning standart guruh sayohatlari shaxsiylashtirilgan tajriba uchun 8-15 kishini qamrab oladi. Xususiy sayohatlar har qanday guruh hajmi uchun tashkil etilishi mumkin, yakka sayohatchilardan tortib 50+ kishilik katta guruhlargacha. Korporativ tadbirlar va maxsus voqealar ham tashkil qilishimiz mumkin."
-                    },
-                    "whatToBring": {
-                        "question": "Sayohatga nima olib boraman?",
-                        "answer": "Biz qulay yurish poyabzallari, ob-havoga mos kiyim, kamera, quyoshdan himoya qiluvchi krem va suv shishasini tavsiya qilamiz. Maxsus sayohatlar uchun batafsil yuk ro'yxatini beramiz. Faoliyatlar uchun zarur bo'lgan barcha asboblar sayohat narxiga kiritilgan."
-                    },
-                    "weather": {
-                        "question": "Agar ob-havo yomon bo'lsa nima bo'ladi?",
-                        "answer": "Biz ob-havo sharoitlarini diqqat bilan kuzatamiz va xavfsizlik uchun kerak bo'lsa, marshrutlarni o'zgartiramiz. Bizning sayohatlarimizning aksariyati yengil yomg'irli sharoitda ishlaydi, lekin qattiq ob-havo paytida qayta rejalashtirish yoki alternativ ichki faoliyatlarni taklif qilishimiz mumkin. Sizning xavfsizligingiz va qulayligingiz bizning ustuvorligimizdir."
-                    },
-                    "safety": {
-                        "question": "Sayohatlaringiz xavfsizmi?",
-                        "answer": "Albatta! Barcha rahbarlarimiz sertifikatlangan va tajribali mutaxassislar. Biz qattiq xavfsizlik protokollariga amal qilamiz, birinchi yordam asboblarini saqlaymiz va favqulodda vaziyatlar uchun tartibga egamiz. Biz to'liq litsenziyalangan va sug'urtalanganmiz va xavfsizlik standartlarimizni muntazam yangilaymiz."
-                    },
-                    "customization": {
-                        "question": "Sayohatimni sozlashim mumkinmi?",
-                        "answer": "Ha! Biz sizning qiziqishlaringiz, jadvalingiz va byudjetingizga moslashtirilgan maxsus sayohatlar yaratishda ixtisoslashganmiz. Tarix, madaniyat, tabiat yoki sarguzashtga e'tibor qaratmoqchi bo'lsangiz ham, bizning jamoamiz siz uchun mukammal marshrut yaratadi. Maxsus talablaringizni muhokama qilish uchun bizga murojaat qiling."
-                    }
-                },
-                "contact_text_1": "Hali ham savollar bormi? Yordam berish uchun bu yerdamiz!",
-                "contact_text_2": "Har qanday savol yoki yordam uchun biz bilan bog'laning.",
-                "contact_button": "Bizga xat yuboring",
-                "call_button": "Hozir qo'ng'iroq qiling"
-            },
-            "testimonials": {
-                "heading": "Sayohatchilarimiz nima deyishadi",
-                "subheading": "Biz bilan O'zbekistonni kashf etgan mamnun mijozlarimizning tajribalarini bilib oling.",
-                "add_testimonial_text": "O'z tajribangizni biz bilan baham ko'ring!",
-                "add_testimonial": "Sharh yozing",
-                "form": {
-                    "title": "Tajribangizni baham ko'ring",
-                    "subtitle": "Sitora Tours bilan bo'lgan tajribangizni baham ko'rib, boshqa sayohatchilarga yordam bering.",
-                    "name": "Ism",
-                    "namePlaceholder": "Ismingizni kiriting",
-                    "lastName": "Familiya",
-                    "lastNamePlaceholder": "Familiyangizni kiriting",
-                    "rating": "Baholash",
-                    "outOf5": "5 dan",
-                    "comment": "Sizning sharhingiz",
-                    "commentPlaceholder": "Tajribangiz haqida gapiring...",
-                    "characters": "belgi",
-                    "cancel": "Bekor qilish",
-                    "submit": "Sharh yuborish",
-                    "submitting": "Yuborilmoqda...",
-                    "success": "Rahmat! Sharhingiz muvaffaqiyatli yuborildi.",
-                    "error": "Nimadir noto'g'ri ketdi. Iltimos, qayta urinib ko'ring.",
-                    "validation": {
-                        "error": "Iltimos, barcha majburiy maydonlarni to'ldiring."
-                    }
-                }
-            },
-            "statistics": {
-                "travelers": "Oila bilan yoki yolg'iz sayohat qiling, biz to'liq qulaylik ta'minlaymiz",
-                "destinations": "Serhosil tropik landshaftlar, sof plyajlar va boshqalar bilan yo'nalishlar",
-                "years": "Yil",
-                "experience": "Shaxsiy rahbar - bu orzuingizdagi sayohatni yaratish uchun noyob imkoniyat",
-                "countries": "Davlatlar",
-                "countries_description": "Biz dunyoning 100 dan ortiq davlatlariga sayohat tashkil qilamiz"
-            },
-            "special-tour": {
-                "heading": "Eng mashhur sayohat yo'nalishlari",
-                "subheading": "Bizning eng mashhur va ajoyib yo'nalishlarimizni kashf eting",
-                "bookNow": "Buyurtma berish",
-                "tours": {
-                    "astana": {
-                        "title": "Astana shahrida bir kunlik shaxsiy sayohat",
-                        "description": "Qozog'istonning zamonaviy poytaxti bilan tanishib chiqing, uning ajoyib me'moriyati, mashhur Bayterek minorasi va kelajak shahar manzarasini ko'ring."
-                    },
-                    "samarkand": {
-                        "title": "Samarqand tarixiy kashfiyoti",
-                        "description": "Qadimgi Ipak yo'li shahri bo'ylab sayohat qiling, ulug'vor masjidlar, maqbaralar va afsonaviy Registon maydonini o'rganing."
-                    },
-                    "bukhara": {
-                        "title": "Buxoro madaniy meros sayohati",
-                        "description": "Buxoroning boy tarixiga sho'ng'ing, qadimgi madrasalar, bozorlar va me'moriy shah asarlarini ziyorat qiling."
-                    }
-                }
-            },
-            "services": {
-                "heading": "Bizning xizmatlarimiz",
-                "subheading": "Biz bizning mijozlarimiz uchun yuqori darajadagi xizmatlar taqdim etamiz, transportdan yashash joyigacha va rahbarlik bilan sayohatlargacha. Biz ham guruh sayohatlar va maxsus marshrutlar taklif qilamiz.",
-                "categories": {
-                    "transportation": {
-                        "title": "Transport",
-                        "description": "Biz parvozlar, mashina ijarasi va shaxsiy transferlar kabi keng qamrovli transport yechimlarini taklif qilamiz."
-                    },
-                    "accommodation": {
-                        "title": "Yashash joyi",
-                        "description": "Hashamatli mehmonxonalardan an'anaviy mehmonxonalargacha, biz sizning didingiz va byudjetingizga mos keladigan diqqat bilan tanlangan yashash joylarini taqdim etamiz."
-                    },
-                    "guided_tours": {
-                        "title": "Rahbarlik bilan sayohatlar",
-                        "description": "Bizning tajribali mahalliy rahbarlar tarixiy joylar, madaniy diqqatga sazovor joylar va yashirin jozibalar bo'ylab ma'lumotli ekskursiyalar o'tkazadilar."
-                    },
-                    "cultural_experience": {
-                        "title": "Madaniy tajriba",
-                        "description": "Mahalliy an'analar, oshxona va urf-odatlar bilan tanishib chiqing, haqiqiy madaniy tadbirlar, ustaxonalar va mahalliy jamiyatlar bilan aloqa orqali."
-                    }
-                },
-                "main_services_heading": "Asosiy xizmatlar",
-                "main_services": {
-                    "flight": "Aviabiletlar bron qilish",
-                    "car_rental": "Mashina ijarasi",
-                    "hotel_booking": "Mehmonxona bron qilish",
-                    "local_guide": "Mahalliy rahbar",
-                    "group_tours": "Guruhli sayohatlar",
-                    "custom_itinerary": "Maxsus marshrut"
-                },
-                "view_more": "Ko'proq ko'rish"
-            },
-            "recommended_cities": {
-                "heading": "Eng mashhur sayohat yo'nalishlari",
-                "subheading": "Dunyoning eng chiroyli shaharlari va yo'nalishlarini kashf eting",
-                "view_all": "Barcha yo'nalishlarni ko'rish"
-            },
-            "recommended_cars": {
-                "heading": "Tavsiya etilgan avtomobillar",
-                "subheading": "Mukammal sayohatingiz uchun bizning premium avtoparkimizdan tanlang",
-                "view_all": "Barcha avtomobillarni ko'rish",
-                "per_day": "kuniga",
-                "book_now": "Buyurtma berish",
-                "reviews": "sharhlar"
-            },
-            "recommended_tours": {
-                "heading": "O'zbekistondagi maxsus sayohatlar",
-                "subheading": "Markaziy Osiyo bo'ylab bizning eng mashhur va ajoyib yo'nalishlarimizni kashf eting",
-                "reviews": "sharhlar",
-                "per_person": "kishiga",
-                "book_now": "Buyurtma berish",
-                "tours": {
-                    "bukhara": {
-                        "title": "Buxoroda 4 kunlik sayohatlar",
-                        "duration": "4 kun",
-                        "transport": "Transport xizmati",
-                        "type": "Klassik"
-                    },
-                    "khiva": {
-                        "title": "Xivada ilg'or sayohat 5 kun",
-                        "duration": "5 kun",
-                        "transport": "Transport xizmati",
-                        "type": "Klassik"
-                    },
-                    "samarkand": {
-                        "title": "Samarqandda 7 kunlik sayohatlar",
-                        "duration": "7 kun",
-                        "transport": "Transport xizmati",
-                        "type": "Guruhli"
-                    },
-                    "tajikistan": {
-                        "title": "Tojikistonda 4 kunlik sayohatlar",
-                        "duration": "4 kun",
-                        "transport": "Transport xizmati",
-                        "type": "Klassik"
-                    }
-                }
-            }
-        },
-        "tours": {
-            "no_tours": "Turlar topilmadi",
-            "try_adjusting_filters": "Filtrlarni o'zgartirishga urinib ko'ring",
-            "sidebar": {
-                "filterBy": "Filtrlang",
-                "price": "Narxi",
-                "duration": "Davomiyligi",
-                "reset": "Filtrlarni tozalash",
-                "min": "Min",
-                "max": "Max"
-            }
-        },
-        "about_us": {
-            "heading": "Biz haqimizda",
-            "subheading": "Sitora Tours kompaniyasi, missiyasi va jamoasi haqida ko'proq biling"
-        },
-        "cities": {
-            "heading": "Shaharlar",
-            "subheading": "Dunyoning eng chiroyli shaharlari va yo'nalishlarini kashf eting"
-        },
-        "privacy_policy": {
-            "heading": "Maxfiylik siyosati",
-            "subheading": "Shaxsiy ma'lumotlaringizni qanday himoya qilishimiz va boshqarishimizni biling"
-        },
-        "terms-conditions": {
-            "heading": "Shartlar va shartlar",
-            "subheading": "Bizning xizmatlarimizni ishlatish uchun shartlar va shartlar haqida biling"
-        },
-        "hotels": {
-            "heading": "Mehmonxonalar",
-            "subheading": "Turingiz uchun mukammal yashash joyini toping"
-        },
-        "contact_us": {
-            "heading": "Biz bilan bog'laning",
-            "subheading": "Har qanday savol yoki so'rov uchun bizning jamoamiz bilan bog'laning"
-        },
-        "cars": {
-            "heading": "Avtomobillar",
-            "subheading": "Mukammal sayohatingiz uchun avtomobil ijaraga oling"
+        "contact_text_1": "Hali ham savollar bormi? Yordam berish uchun bu yerdamiz!",
+        "contact_text_2": "Har qanday savol yoki yordam uchun biz bilan bog'laning.",
+        "contact_button": "Bizga xat yuboring",
+        "call_button": "Hozir qo'ng'iroq qiling"
+      },
+      "testimonials": {
+        "heading": "Sayohatchilarimiz nima deyishadi",
+        "subheading": "Biz bilan O'zbekistonni kashf etgan mamnun mijozlarimizning tajribalarini bilib oling.",
+        "add_testimonial_text": "O'z tajribangizni biz bilan baham ko'ring!",
+        "add_testimonial": "Sharh yozing",
+        "form": {
+          "title": "Tajribangizni baham ko'ring",
+          "subtitle": "Sitora Tours bilan bo'lgan tajribangizni baham ko'rib, boshqa sayohatchilarga yordam bering.",
+          "name": "Ism",
+          "namePlaceholder": "Ismingizni kiriting",
+          "lastName": "Familiya",
+          "lastNamePlaceholder": "Familiyangizni kiriting",
+          "rating": "Baholash",
+          "outOf5": "5 dan",
+          "comment": "Sizning sharhingiz",
+          "commentPlaceholder": "Tajribangiz haqida gapiring...",
+          "characters": "belgi",
+          "cancel": "Bekor qilish",
+          "submit": "Sharh yuborish",
+          "submitting": "Yuborilmoqda...",
+          "success": "Rahmat! Sharhingiz muvaffaqiyatli yuborildi.",
+          "error": "Nimadir noto'g'ri ketdi. Iltimos, qayta urinib ko'ring.",
+          "validation": {
+            "error": "Iltimos, barcha majburiy maydonlarni to'ldiring."
+          }
         }
+      },
+      "statistics": {
+        "travelers": "Oila bilan yoki yolg'iz sayohat qiling, biz to'liq qulaylik ta'minlaymiz",
+        "destinations": "Serhosil tropik landshaftlar, sof plyajlar va boshqalar bilan yo'nalishlar",
+        "years": "Yil",
+        "experience": "Shaxsiy rahbar - bu orzuingizdagi sayohatni yaratish uchun noyob imkoniyat",
+        "countries": "Davlatlar",
+        "countries_description": "Biz dunyoning 100 dan ortiq davlatlariga sayohat tashkil qilamiz"
+      },
+      "special-tour": {
+        "heading": "Eng mashhur sayohat yo'nalishlari",
+        "subheading": "Bizning eng mashhur va ajoyib yo'nalishlarimizni kashf eting",
+        "bookNow": "Buyurtma berish",
+        "tours": {
+          "astana": {
+            "title": "Astana shahrida bir kunlik shaxsiy sayohat",
+            "description": "Qozog'istonning zamonaviy poytaxti bilan tanishib chiqing, uning ajoyib me'moriyati, mashhur Bayterek minorasi va kelajak shahar manzarasini ko'ring."
+          },
+          "samarkand": {
+            "title": "Samarqand tarixiy kashfiyoti",
+            "description": "Qadimgi Ipak yo'li shahri bo'ylab sayohat qiling, ulug'vor masjidlar, maqbaralar va afsonaviy Registon maydonini o'rganing."
+          },
+          "bukhara": {
+            "title": "Buxoro madaniy meros sayohati",
+            "description": "Buxoroning boy tarixiga sho'ng'ing, qadimgi madrasalar, bozorlar va me'moriy shah asarlarini ziyorat qiling."
+          }
+        }
+      },
+      "services": {
+        "heading": "Bizning xizmatlarimiz",
+        "subheading": "Biz bizning mijozlarimiz uchun yuqori darajadagi xizmatlar taqdim etamiz, transportdan yashash joyigacha va rahbarlik bilan sayohatlargacha. Biz ham guruh sayohatlar va maxsus marshrutlar taklif qilamiz.",
+        "categories": {
+          "transportation": {
+            "title": "Transport",
+            "description": "Biz parvozlar, mashina ijarasi va shaxsiy transferlar kabi keng qamrovli transport yechimlarini taklif qilamiz."
+          },
+          "accommodation": {
+            "title": "Yashash joyi",
+            "description": "Hashamatli mehmonxonalardan an'anaviy mehmonxonalargacha, biz sizning didingiz va byudjetingizga mos keladigan diqqat bilan tanlangan yashash joylarini taqdim etamiz."
+          },
+          "guided_tours": {
+            "title": "Rahbarlik bilan sayohatlar",
+            "description": "Bizning tajribali mahalliy rahbarlar tarixiy joylar, madaniy diqqatga sazovor joylar va yashirin jozibalar bo'ylab ma'lumotli ekskursiyalar o'tkazadilar."
+          },
+          "cultural_experience": {
+            "title": "Madaniy tajriba",
+            "description": "Mahalliy an'analar, oshxona va urf-odatlar bilan tanishib chiqing, haqiqiy madaniy tadbirlar, ustaxonalar va mahalliy jamiyatlar bilan aloqa orqali."
+          }
+        },
+        "main_services_heading": "Asosiy xizmatlar",
+        "main_services": {
+          "flight": "Aviabiletlar bron qilish",
+          "car_rental": "Mashina ijarasi",
+          "hotel_booking": "Mehmonxona bron qilish",
+          "local_guide": "Mahalliy rahbar",
+          "group_tours": "Guruhli sayohatlar",
+          "custom_itinerary": "Maxsus marshrut"
+        },
+        "view_more": "Ko'proq ko'rish"
+      },
+      "recommended_cities": {
+        "heading": "Eng mashhur sayohat yo'nalishlari",
+        "subheading": "Dunyoning eng chiroyli shaharlari va yo'nalishlarini kashf eting",
+        "loading": "Shaharlar yuklanmoqda...",
+        "error": "Shaharlarni yuklashda xatolik",
+        "view_all": "Barcha yo'nalishlarni ko'rish"
+      },
+      "recommended_cars": {
+        "heading": "Tavsiya etilgan avtomobillar",
+        "subheading": "Mukammal sayohatingiz uchun bizning premium avtoparkimizdan tanlang",
+        "loading": "Avtomobillar yuklanmoqda...",
+        "error": "Avtomobillarni yuklashda xatolik",
+        "view_all": "Barcha avtomobillarni ko'rish",
+        "per_day": "kuniga",
+        "book_now": "Buyurtma berish",
+        "seats": "o'rindiq",
+        "reviews": "sharhlar"
+      },
+      "recommended_tours": {
+        "heading": "O'zbekistondagi maxsus sayohatlar",
+        "subheading": "Markaziy Osiyo bo'ylab bizning eng mashhur va ajoyib yo'nalishlarimizni kashf eting",
+        "loading": "Turlar yuklanmoqda...",
+        "error": "Turlarni yuklashda xatolik",
+        "reviews": "sharhlar",
+        "per_person": "kishiga",
+        "book_now": "Buyurtma berish",
+        "days": "kunlar",
+        "day": "kun",
+        "nights": "tunlar",
+        "night": "tun",
+        "tours": {
+          "bukhara": {
+            "title": "Buxoroda 4 kunlik sayohatlar",
+            "duration": "4 kun",
+            "transport": "Transport xizmati",
+            "type": "Klassik"
+          },
+          "khiva": {
+            "title": "Xivada ilg'or sayohat 5 kun",
+            "duration": "5 kun",
+            "transport": "Transport xizmati",
+            "type": "Klassik"
+          },
+          "samarkand": {
+            "title": "Samarqandda 7 kunlik sayohatlar",
+            "duration": "7 kun",
+            "transport": "Transport xizmati",
+            "type": "Guruhli"
+          },
+          "tajikistan": {
+            "title": "Tojikistonda 4 kunlik sayohatlar",
+            "duration": "4 kun",
+            "transport": "Transport xizmati",
+            "type": "Klassik"
+          }
+        }
+      }
+    },
+    "tours": {
+      "no_tours": "Turlar topilmadi",
+      "tours_loading": "Turlar yuklanmoqda...",
+      "tours_error": "Turlarni yuklashda xatolik",
+      "tours_no_filters": "Filtrlarni o'zgartirishga urinib ko'ring",
+      "try_adjusting_filters": "Filtrlarni o'zgartirishga urinib ko'ring",
+      "per_person": "kishiga",
+      "see_details": "Batafsil",
+      "rating": "reyting",
+      "days": "kunlar",
+      "day": "kun",
+      "sidebar": {
+        "filterBy": "Filtrlash",
+        "city": "Shahar",
+        "price": "Narxi",
+        "duration": "Davomiyligi",
+        "reset": "Filtrlarni tozalash",
+        "min": "Min",
+        "max": "Max"
+      }
+    },
+    "about_us": {
+      "heading": "Biz haqimizda",
+      "subheading": "Sitora Tours kompaniyasi, missiyasi va jamoasi haqida ko'proq biling",
+      "hero_badge": "Bu qanday boshlangan",
+      "hero_title": "Bizning orzuvimiz global sayohat transformatsiyasi",
+      "hero_description": "Biz Markaziy Osiyoning asl go'zalligi va boy madaniy merosini namoyish etadigan esda qolarli sayohat tajribalarini yaratishga ishtiyoq bilan qiziqamiz. Bizning ekspert jamoamiz sizning safaringizni g'oyaviy qilishga bag'ishlangan.",
+      "destinations": "Yo'nalishlar",
+      "happy_travelers": "Baxtli sayohatchilar",
+      "rating": "Reyting",
+      "years_experience": "Yil tajriba",
+      "packages": "Sayohat paketlari",
+      "our_story_title": "Bizning hikoyamiz",
+      "our_story_description": "Sayohatga ishtiyoq va Markaziy Osiyoga chuqur muhabbat bilan asos solingan Sitora Tours o'n yildan ortiq vaqt davomida sayohatchilarni asl tajribalar bilan bog'layapti. Biz sayohatning hayotni o'zgartirish va doimiy xotiralar yaratish kuchiga ega ekanligiga ishonamiz.",
+      "our_mission_description": "Bizning missiyamiz - mahalliy madaniyatlarni hurmat qiladigan, jamoalarni qo'llab-quvvatlovchi va sayohatchilar bilan ular tashrif buyuradigan joylar o'rtasida mazmunli aloqalar yaratadigan ajoyib sayohat tajribalarini taqdim etishdir.",
+      "why_choose_us_title": "Nima uchun bizni tanlaydi",
+      "expert_guides": "Ekspert mahalliy yo'riqnomalar",
+      "expert_guides_description": "Bizning bilimdon yo'riqnomalarimiz - bu ichki hikoyalar va sizning safaringizni haqiqatan ham o'ziga xos qiladigan yashirin marvaridlar bilan bo'lishadigan ishtiyoqli mahalliy aholi.",
+      "authentic_experiences": "Asl tajribalar",
+      "authentic_experiences_description": "Biz mahalliy hayot haqida haqiqiy tushuncha beradigan haqiqiy madaniy uchrashuvlar va yo'l chetidan sarguzashtlarga e'tibor qaratamiz.",
+      "personalized_service": "Shaxsiylashtirilgan xizmat",
+      "personalized_service_description": "Har bir sayohat sizning qiziqishlaringiz, afzalliklaringiz va sayohat uslubingizga moslashtirilgan bo'lib, haqiqatan ham moslashtirilgan tajriba beradi.",
+      "our_values_title": "Bizning asosiy qadriyatlarimiz",
+      "our_values_description": "Ushbu tamoyillar biz qiladigan barcha narsalarga yo'l ko'rsatadi va har bir sayohatchi ajoyib tajriba olishini ta'minlaydi.",
+      "value_1_title": "Ishtiyoq",
+      "value_1_description": "Biz sayohatga ishtiyoq bilan qiziqamiz va Markaziy Osiyoning go'zalligini dunyo bilan baham ko'ramiz.",
+      "value_2_title": "Asl",
+      "value_2_description": "Biz mahalliy madaniyat va an'analarni hurmat qiladigan haqiqiy tajribalarni taqdim etamiz.",
+      "value_3_title": "Ishonchlilik",
+      "value_3_description": "Siz bizga xavfsiz, yaxshi tashkil etilgan va esda qolarli sayohat tajribalarini taqdim etishimizga ishonishingiz mumkin.",
+      "value_4_title": "Innovatsiya",
+      "value_4_description": "Biz doimiy ravishda xizmatlarimizni yaxshilaymiz va sizning sayohat tajribangizni yaxshilash uchun yangi usullar yaratamiz.",
+      "cta_title": "Sarguzashtingizni boshlashga tayyormisiz?",
+      "cta_description": "Sitora Tours bilan Markaziy Osiyoning sehrini kashf qilgan minglab mamnun sayohatchilar qatoriga qo'shiling.",
+      "cta_button_1": "Bizning turlarimizni o'rganing",
+      "cta_button_2": "Biz bilan bog'laning"
+    },
+    "single_tour": {
+      "loading": "Tur yuklanmoqda...",
+      "error": "Tur topilmadi",
+      "error_message": "Siz qidirayotgan tur mavjud emas",
+      "back_to_tours": "Turlarga qaytish",
+      "days": "kunlar",
+      "nights": "tunlar",
+      "travel_path": "Sayohat yo'nalishi",
+      "hours": "soat",
+      "minutes": "daqiqa",
+      "more_details": "Batafsil",
+      "transport": "Transport",
+      "departure_time": "Jo'nash vaqti",
+      "arrival_time": "Yetib kelish vaqti",
+      "duration": "Davomiyligi",
+      "itinerary": "Marshrut",
+      "services": "Xizmatlar",
+      "price_includes": "Narxga kiradi",
+      "price_not_includes": "Narxga kirmaydi",
+      "no_included_services": "Kiritilgan xizmatlar yo'q",
+      "no_excluded_services": "Chiqarilgan xizmatlar yo'q",
+      "accommodation": "Turar joy",
+      "address": "Manzil",
+      "phone": "Telefon",
+      "rating": "Reyting",
+      "stars": "yulduz",
+      "prices": "Narxlar va bron qilish",
+      "no_pricing_available": "Narx ma'lumotlari mavjud emas",
+      "departure_dates": "Jo'nash sanalari",
+      "adult": "Kattalar",
+      "child": "Bolalar",
+      "book_now": "Bron qilish",
+      "price_per_adult": "Katta kishi uchun narx",
+      "contact_us": "Biz bilan bog'laning",
+      "important_notes": "Muhim eslatmalar",
+      "prices_per_person": "Barcha narxlar kishi boshiga",
+      "child_prices_ages": "Bolalar narxi 2-11 yoshdagilar uchun",
+      "prices_may_vary": "Narxlar mavsumga qarab o'zgarishi mumkin",
+      "reviews": "Sharhlar",
+      "related_tours": "O'xshash turlar"
+    },
+    "cities": {
+      "heading": "Shaharlar",
+      "subheading": "Dunyoning eng chiroyli shaharlari va yo'nalishlarini kashf eting",
+      "cities_loading": "Shaharlar yuklanmoqda...",
+      "cities_error": "Shaharlarni yuklashda xatolik",
+      "no_cities": "Shaharlar topilmadi",
+      "cities_no_filters": "Qidiruv mezonlarini o'zgartirishga harakat qiling",
+      "explore": "Kashf qilish",
+      "see_details": "Batafsil",
+      "no_image": "Rasm yo'q",
+      "single": {
+        "loading": "Shahar tafsilotlari yuklanmoqda...",
+        "error": "Shahar topilmadi",
+        "error_message": "Siz qidirayotgan shahar mavjud emas yoki o'chirilgan.",
+        "back_to_cities": "Shaharlarga qaytish",
+        "tours_in": "Turlari",
+        "discover_tours": "{city}da {count} ajoyib {plural} kashf eting",
+        "tour": "sayohat",
+        "tours": "sayohatlar",
+        "no_tours": "Hozirda {city}da turlar mavjud emas.",
+        "check_back": "Yangi tur paketlari uchun keyinroq tekshiring!",
+        "tours_loading": "Turlar yuklanmoqda...",
+        "tours_error": "Turlarni yuklash amalga oshmadi"
+      }
+    },
+    "hotels": {
+      "heading": "Mehmonxonalar",
+      "subheading": "Qolish uchun mukammal joy toping",
+      "hotels_loading": "Mehmonxonalar yuklanmoqda...",
+      "hotels_error": "Mehmonxonalarni yuklashda xatolik",
+      "no_hotels": "Mehmonxonalar topilmadi",
+      "hotels_no_filters": "Qidiruv mezonlarini o'zgartirishga harakat qiling",
+      "see_details": "Batafsil",
+      "rating_suffix": "reyting"
+    },
+    "privacy_policy": {
+      "heading": "Maxfiylik siyosati",
+      "subheading": "Shaxsiy ma'lumotlaringizni qanday himoya qilishimiz va boshqarishimizni biling"
+    },
+    "terms-conditions": {
+      "heading": "Shartlar va shartlar",
+      "subheading": "Bizning xizmatlarimizni ishlatish uchun shartlar va shartlar haqida biling"
+    },
+    "contact_us": {
+      "heading": "Biz bilan bog'laning",
+      "subheading": "Har qanday savol yoki so'rov uchun bizning jamoamiz bilan bog'laning",
+      "contact_us": "Biz bilan bog'laning",
+      "full_name": "To'liq ism",
+      "full_name_placeholder": "Sizning to'liq ismingiz",
+      "email_address": "Elektron pochta manzili",
+      "email_placeholder": "your.email@example.com",
+      "phone_number": "Telefon raqami",
+      "phone_placeholder": "+1 (555) 123-4567",
+      "subject": "Mavzu",
+      "subject_placeholder": "Bu nima haqida?",
+      "message": "Xabar",
+      "message_placeholder": "So'rovingiz haqida ko'proq ma'lumot bering...",
+      "send_message": "Xabar yuborish",
+      "email": "Email",
+      "phone": "Telefon",
+      "office": "Ofis",
+      "business_hours": "Ish vaqti"
+    },
+    "cars": {
+      "heading": "Avtomobillar",
+      "subheading": "Mukammal sayohatingiz uchun avtomobil ijaraga oling",
+      "no_cars": "Avtomobillar topilmadi",
+      "cars_loading": "Avtomobillar yuklanmoqda...",
+      "cars_error": "Avtomobillarni yuklashda xatolik",
+      "cars_no_filters": "Filtrlarni o'zgartirishga urinib ko'ring",
+      "book_now": "Buyurtma berish",
+      "see_details": "Batafsil",
+      "per_day": "kuniga",
+      "rating": "reyting",
+      "sidebar": {
+        "filterBy": "Filtrlash",
+        "type": "Avtomobil turi",
+        "brand": "Brend",
+        "price": "Narxi",
+        "capacity": "Sig'im",
+        "reset": "Filtrlarni tozalash",
+        "min": "Min",
+        "max": "Max",
+        "noBrands": "Brendlar mavjud emas",
+        "noTypes": "Turlar mavjud emas"
+      },
+      "single": {
+        "loading": "Avtomobil tafsilotlari yuklanmoqda...",
+        "error": "Avtomobil topilmadi",
+        "error_message": "Siz qidirayotgan avtomobil mavjud emas yoki o'chirilgan.",
+        "back_to_cars": "Avtomobillarga qaytish",
+        "no_images": "Rasmlar mavjud emas",
+        "specifications": "Texnik xususiyatlar",
+        "brand": "Brend",
+        "model": "Model",
+        "type": "Turi",
+        "capacity": "Sig'im",
+        "passengers": "yo'lovchilar",
+        "rental_info": "Ijara haqida ma'lumot",
+        "price_per_day": "Kunlik narx",
+        "min_rental": "Minimal ijara muddati",
+        "min_rental_value": "1 kun",
+        "driver_requirements": "Haydovchiga talablar",
+        "driver_requirements_value": "Haqiqiy haydovchilik guvohnomasi talab qilinadi",
+        "insurance": "Sug'urta",
+        "insurance_value": "To'liq sug'urta kiritilgan",
+        "book_button": "Avtomobilni band qilish"
+      }
     }
+  }
 }

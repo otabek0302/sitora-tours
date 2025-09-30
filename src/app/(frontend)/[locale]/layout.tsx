@@ -8,23 +8,23 @@ import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 
 type Props = {
-    children: ReactNode
-    params: { locale: string }
+  children: ReactNode
+  params: { locale: string }
 }
 
 export default async function Layout({ children, params }: Props) {
-    const { locale } = await params
-    const messages = await getMessages({ locale })
+  const { locale } = await params
+  const messages = await getMessages({ locale })
 
-    return (
-        <html lang={locale}>
-            <body>
-                <Providers locale={locale} messages={messages}>
-                    <Header />
-                    {children}
-                    <Footer />
-                </Providers>
-            </body>
-        </html>
-    )
+  return (
+    <html lang={locale}>
+      <body>
+        <Providers locale={locale} messages={messages}>
+          <Header />
+          {children}
+          <Footer />
+        </Providers>
+      </body>
+    </html>
+  )
 }

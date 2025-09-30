@@ -1,256 +1,434 @@
 {
-    "navigation": {
-        "home": "Home",
-        "tours": "Tours",
-        "cities": "Cities",
-        "hotels": "Hotels",
-        "cars": "Cars",
-        "about": "About",
-        "contact": "Contact Us"
+  "navigation": {
+    "home": "Home",
+    "tours": "Tours",
+    "cities": "Cities",
+    "hotels": "Hotels",
+    "cars": "Cars",
+    "about": "About",
+    "contact": "Contact Us"
+  },
+  "footer": {
+    "description": "Discover the beauty of Uzbekistan with our premium tour packages. Experience authentic culture, stunning landscapes, and unforgettable memories.",
+    "navigation": "Navigation",
+    "license": "Licence",
+    "contact": "Contact",
+    "privacyPolicy": "Privacy Policy",
+    "terms": "Terms",
+    "emailAddress": "Email Address",
+    "additional_info": {
+      "working_hours": "Mon - Fri: 9:00 - 18:00",
+      "address": "Tashkent, Uzbekistan"
     },
-    "footer": {
-        "description": "Discover the beauty of Uzbekistan with our premium tour packages. Experience authentic culture, stunning landscapes, and unforgettable memories.",
-        "navigation": "Navigation",
-        "license": "Licence",
-        "contact": "Contact",
-        "privacyPolicy": "Privacy Policy",
-        "terms": "Terms",
-        "emailAddress": "Email Address",
-        "additional_info": {
-            "working_hours": "Mon - Fri: 9:00 - 18:00",
-            "address": "Tashkent, Uzbekistan"
+    "copyright": "© 2024 Sitora Tours. All rights reserved."
+  },
+  "pages": {
+    "home": {
+      "hero": {
+        "main_title": "Discover Amazing Places",
+        "main_subtitle": "Explore the world's most beautiful destinations with our premium travel packages",
+        "main_button": "Start Your Journey",
+        "card1_title": "Adventure Tours",
+        "card1_subtitle": "Experience thrilling adventures",
+        "card2_title": "Cultural Heritage",
+        "card2_subtitle": "Discover rich traditions",
+        "card3_title": "Luxury Travel",
+        "card3_subtitle": "Premium experiences",
+        "card4_title": "Nature & Wildlife",
+        "card4_subtitle": "Connect with nature"
+      },
+      "faq": {
+        "heading": "Frequently Asked Questions",
+        "subheading": "Find answers to common questions about our tours, booking process, and travel requirements.",
+        "questions": {
+          "booking": {
+            "question": "How do I book a tour?",
+            "answer": "Booking is easy! Simply browse our available tours, select your preferred dates, and complete the online booking form. You'll receive a confirmation email with all the details. For custom tours, contact us directly and we'll create a personalized itinerary for you."
+          },
+          "cancellation": {
+            "question": "What is your cancellation policy?",
+            "answer": "We offer flexible cancellation policies. You can cancel up to 48 hours before your tour for a full refund. Cancellations made 24-48 hours before departure receive a 50% refund. Unfortunately, we cannot provide refunds for same-day cancellations due to operational costs."
+          },
+          "payment": {
+            "question": "What payment methods do you accept?",
+            "answer": "We accept all major credit cards (Visa, MasterCard, American Express), bank transfers, and PayPal. For group bookings, we also accept corporate payments. All transactions are secure and encrypted for your protection."
+          },
+          "groupSize": {
+            "question": "What is the maximum group size?",
+            "answer": "Our standard group tours accommodate 8-15 people to ensure a personalized experience. Private tours can be arranged for any group size, from solo travelers to large groups of 50+ people. We can also organize corporate events and special occasions."
+          },
+          "whatToBring": {
+            "question": "What should I bring on the tour?",
+            "answer": "We recommend comfortable walking shoes, weather-appropriate clothing, a camera, sunscreen, and a water bottle. For specific tours, we'll provide a detailed packing list. All necessary equipment for activities is included in the tour price."
+          },
+          "weather": {
+            "question": "What if the weather is bad?",
+            "answer": "We monitor weather conditions closely and will modify itineraries if necessary for safety. Most of our tours operate in light rain, but we may reschedule or offer alternative indoor activities during severe weather. Your safety and comfort are our top priorities."
+          },
+          "safety": {
+            "question": "Are your tours safe?",
+            "answer": "Absolutely! All our guides are certified and experienced professionals. We follow strict safety protocols, maintain first aid equipment, and have emergency procedures in place. We're fully licensed and insured, and we regularly update our safety standards to ensure the highest level of protection."
+          },
+          "customization": {
+            "question": "Can I customize my tour?",
+            "answer": "Yes! We specialize in creating custom tours tailored to your interests, schedule, and budget. Whether you want to focus on history, culture, nature, or adventure, our team will design the perfect itinerary for you. Contact us to discuss your specific requirements."
+          }
         },
-        "copyright": "© 2024 Sitora Tours. All rights reserved."
-    },
-    "pages": {
-        "home": {
-            "hero": {
-                "main_title": "Discover Amazing Places",
-                "main_subtitle": "Explore the world's most beautiful destinations with our premium travel packages",
-                "main_button": "Start Your Journey",
-                "card1_title": "Adventure Tours",
-                "card1_subtitle": "Experience thrilling adventures",
-                "card2_title": "Cultural Heritage",
-                "card2_subtitle": "Discover rich traditions",
-                "card3_title": "Luxury Travel",
-                "card3_subtitle": "Premium experiences",
-                "card4_title": "Nature & Wildlife",
-                "card4_subtitle": "Connect with nature"
-            },
-            "faq": {
-                "heading": "Frequently Asked Questions",
-                "subheading": "Find answers to common questions about our tours, booking process, and travel requirements.",
-                "questions": {
-                    "booking": {
-                        "question": "How do I book a tour?",
-                        "answer": "Booking is easy! Simply browse our available tours, select your preferred dates, and complete the online booking form. You'll receive a confirmation email with all the details. For custom tours, contact us directly and we'll create a personalized itinerary for you."
-                    },
-                    "cancellation": {
-                        "question": "What is your cancellation policy?",
-                        "answer": "We offer flexible cancellation policies. You can cancel up to 48 hours before your tour for a full refund. Cancellations made 24-48 hours before departure receive a 50% refund. Unfortunately, we cannot provide refunds for same-day cancellations due to operational costs."
-                    },
-                    "payment": {
-                        "question": "What payment methods do you accept?",
-                        "answer": "We accept all major credit cards (Visa, MasterCard, American Express), bank transfers, and PayPal. For group bookings, we also accept corporate payments. All transactions are secure and encrypted for your protection."
-                    },
-                    "groupSize": {
-                        "question": "What is the maximum group size?",
-                        "answer": "Our standard group tours accommodate 8-15 people to ensure a personalized experience. Private tours can be arranged for any group size, from solo travelers to large groups of 50+ people. We can also organize corporate events and special occasions."
-                    },
-                    "whatToBring": {
-                        "question": "What should I bring on the tour?",
-                        "answer": "We recommend comfortable walking shoes, weather-appropriate clothing, a camera, sunscreen, and a water bottle. For specific tours, we'll provide a detailed packing list. All necessary equipment for activities is included in the tour price."
-                    },
-                    "weather": {
-                        "question": "What if the weather is bad?",
-                        "answer": "We monitor weather conditions closely and will modify itineraries if necessary for safety. Most of our tours operate in light rain, but we may reschedule or offer alternative indoor activities during severe weather. Your safety and comfort are our top priorities."
-                    },
-                    "safety": {
-                        "question": "Are your tours safe?",
-                        "answer": "Absolutely! All our guides are certified and experienced professionals. We follow strict safety protocols, maintain first aid equipment, and have emergency procedures in place. We're fully licensed and insured, and we regularly update our safety standards to ensure the highest level of protection."
-                    },
-                    "customization": {
-                        "question": "Can I customize my tour?",
-                        "answer": "Yes! We specialize in creating custom tours tailored to your interests, schedule, and budget. Whether you want to focus on history, culture, nature, or adventure, our team will design the perfect itinerary for you. Contact us to discuss your specific requirements."
-                    }
-                },
-                "contact_text_1": "Still have questions? We're here to help!",
-                "contact_text_2": "Contact us for any inquiries or assistance.",
-                "contact_button": "Send us an Email",
-                "call_button": "Call us Now"
-            },
-            "testimonials": {
-                "heading": "What Our Travelers Say",
-                "subheading": "Discover the experiences of our satisfied customers who have explored Uzbekistan with us.",
-                "add_testimonial_text": "Share your experience with us!",
-                "add_testimonial": "Write a Review",
-                "form": {
-                    "title": "Share Your Experience",
-                    "subtitle": "Help other travelers by sharing your experience with Sitora Tours.",
-                    "name": "First Name",
-                    "namePlaceholder": "Enter your first name",
-                    "lastName": "Last Name",
-                    "lastNamePlaceholder": "Enter your last name",
-                    "rating": "Rating",
-                    "outOf5": "out of 5",
-                    "comment": "Your Review",
-                    "commentPlaceholder": "Tell us about your experience...",
-                    "characters": "characters",
-                    "cancel": "Cancel",
-                    "submit": "Submit Review",
-                    "submitting": "Submitting...",
-                    "success": "Thank you! Your review has been submitted successfully.",
-                    "error": "Something went wrong. Please try again.",
-                    "validation": {
-                        "error": "Please fill in all required fields."
-                    }
-                }
-            },
-            "statistics": {
-                "travelers": "Travel with your family or alone, we will provide complete comfort",
-                "destinations": "Destinations with lush tropical landscapes, pristine beaches and more",
-                "years": "Years",
-                "experience": "A personalized guide is a unique opportunity to create the trip of your dreams",
-                "countries": "Countries",
-                "countries_description": "We offer tours to over 100 countries around the world"
-            },
-            "special-tour": {
-                "heading": "Top Travel Destinations",
-                "subheading": "Discover our most popular and breathtaking destinations",
-                "bookNow": "Book Now",
-                "tours": {
-                    "astana": {
-                        "title": "One-Day Private Tour in Astana",
-                        "description": "Experience the modern capital of Kazakhstan with its stunning architecture, including the iconic Baiterek Tower and the futuristic cityscape."
-                    },
-                    "samarkand": {
-                        "title": "Historic Samarkand Discovery",
-                        "description": "Journey through the ancient Silk Road city, exploring magnificent mosques, mausoleums, and the legendary Registan Square."
-                    },
-                    "bukhara": {
-                        "title": "Bukhara Cultural Heritage Tour",
-                        "description": "Immerse yourself in the rich history of Bukhara, visiting ancient madrasas, bazaars, and architectural masterpieces."
-                    }
-                }
-            },
-            "services": {
-                "heading": "Our Services",
-                "subheading": "We provide exceptional services to our clients, from transportation to accommodation and guided tours. We also offer group tours and custom itineraries.",
-                "categories": {
-                    "transportation": {
-                        "title": "Transportation",
-                        "description": "We offer comprehensive transportation solutions including flights, car rentals, and private transfers to ensure comfortable and convenient travel throughout your journey."
-                    },
-                    "accommodation": {
-                        "title": "Accommodation",
-                        "description": "From luxury hotels to traditional guesthouses, we provide carefully selected accommodations that match your preferences and budget for an authentic experience."
-                    },
-                    "guided_tours": {
-                        "title": "Guided Tours",
-                        "description": "Our expert local guides provide insightful tours of historical sites, cultural landmarks, and hidden gems, offering deep cultural understanding and memorable experiences."
-                    },
-                    "cultural_experience": {
-                        "title": "Cultural Experience",
-                        "description": "Immerse yourself in local traditions, cuisine, and customs through authentic cultural experiences, workshops, and interactions with local communities."
-                    }
-                },
-                "main_services_heading": "Main Services",
-                "main_services": {
-                    "flight": "Flight Booking",
-                    "car_rental": "Car Rental",
-                    "hotel_booking": "Hotel Booking",
-                    "local_guide": "Local Guide",
-                    "group_tours": "Group Tours",
-                    "custom_itinerary": "Custom Itinerary"
-                },
-                "view_more": "View More"
-            },
-            "recommended_cities": {
-                "heading": "Top Travel Destinations",
-                "subheading": "Explore the most beautiful cities and destinations around the world",
-                "view_all": "View All Destinations"
-            },
-            "recommended_cars": {
-                "heading": "Recommended Cars",
-                "subheading": "Choose from our premium fleet of vehicles for your perfect journey",
-                "view_all": "View All Cars",
-                "per_day": "per day",
-                "book_now": "Book Now",
-                "reviews": "reviews"
-            },
-            "recommended_tours": {
-                "heading": "Special Tours in Uzbekistan",
-                "subheading": "Discover our most popular and breathtaking destinations across Central Asia",
-                "reviews": "reviews",
-                "per_person": "per person",
-                "book_now": "Book Now",
-                "tours": {
-                    "bukhara": {
-                        "title": "4 Days Tours in Bukhara",
-                        "duration": "4 days",
-                        "transport": "Transport Facility",
-                        "type": "Classic"
-                    },
-                    "khiva": {
-                        "title": "Advanced Tour in Khiva 5 days",
-                        "duration": "5 days",
-                        "transport": "Transport Facility",
-                        "type": "Classic"
-                    },
-                    "samarkand": {
-                        "title": "7 Days Tours in Samarkand",
-                        "duration": "7 days",
-                        "transport": "Transport Facility",
-                        "type": "Group"
-                    },
-                    "tajikistan": {
-                        "title": "4 Days Tours in Tajikistan",
-                        "duration": "4 days",
-                        "transport": "Transport Facility",
-                        "type": "Classic"
-                    }
-                }
-            }
-        },
-        "tours": {
-            "no_tours": "No tours found",
-            "try_adjusting_filters": "Try adjusting your filters to find the perfect tour",
-            "sidebar": {
-                "filterBy": "Filter By",
-                "price": "Price",
-                "duration": "Duration",
-                "reset": "Reset Filters",
-                "min": "Min",
-                "max": "Max"
-            }
-        },
-        "about_us": {
-            "heading": "About Us",
-            "subheading": "Learn more about our company, mission, and the team behind Sitora Tours"
-        },
-        "cities": {
-            "heading": "Cities",
-            "subheading": "Explore the most beautiful cities and destinations around the world"
-        },
-        "privacy_policy": {
-            "heading": "Privacy Policy",
-            "subheading": "Learn how we protect and handle your personal information"
-        },
-        "terms-conditions": {
-            "heading": "Terms & Conditions",
-            "subheading": "Learn about our terms and conditions for using our services"
-        },
-        "hotels": {
-            "heading": "Hotels",
-            "subheading": "Find the perfect accommodation for your stay"
-        },
-        "contact_us": {
-            "heading": "Contact Us",
-            "subheading": "Get in touch with our team for any questions or inquiries"
-        },
-        "cars": {
-            "heading": "Cars",
-            "subheading": "Rent a car for your perfect journey"
+        "contact_text_1": "Still have questions? We're here to help!",
+        "contact_text_2": "Contact us for any inquiries or assistance.",
+        "contact_button": "Send us an Email",
+        "call_button": "Call us Now"
+      },
+      "testimonials": {
+        "heading": "What Our Travelers Say",
+        "subheading": "Discover the experiences of our satisfied customers who have explored Uzbekistan with us.",
+        "add_testimonial_text": "Share your experience with us!",
+        "add_testimonial": "Write a Review",
+        "form": {
+          "title": "Share Your Experience",
+          "subtitle": "Help other travelers by sharing your experience with Sitora Tours.",
+          "name": "First Name",
+          "namePlaceholder": "Enter your first name",
+          "lastName": "Last Name",
+          "lastNamePlaceholder": "Enter your last name",
+          "rating": "Rating",
+          "outOf5": "out of 5",
+          "comment": "Your Review",
+          "commentPlaceholder": "Tell us about your experience...",
+          "characters": "characters",
+          "cancel": "Cancel",
+          "submit": "Submit Review",
+          "submitting": "Submitting...",
+          "success": "Thank you! Your review has been submitted successfully.",
+          "error": "Something went wrong. Please try again.",
+          "validation": {
+            "error": "Please fill in all required fields."
+          }
         }
+      },
+      "statistics": {
+        "travelers": "Travel with your family or alone, we will provide complete comfort",
+        "destinations": "Destinations with lush tropical landscapes, pristine beaches and more",
+        "years": "Years",
+        "experience": "A personalized guide is a unique opportunity to create the trip of your dreams",
+        "countries": "Countries",
+        "countries_description": "We offer tours to over 100 countries around the world"
+      },
+      "special-tour": {
+        "heading": "Top Travel Destinations",
+        "subheading": "Discover our most popular and breathtaking destinations",
+        "bookNow": "Book Now",
+        "tours": {
+          "astana": {
+            "title": "One-Day Private Tour in Astana",
+            "description": "Experience the modern capital of Kazakhstan with its stunning architecture, including the iconic Baiterek Tower and the futuristic cityscape."
+          },
+          "samarkand": {
+            "title": "Historic Samarkand Discovery",
+            "description": "Journey through the ancient Silk Road city, exploring magnificent mosques, mausoleums, and the legendary Registan Square."
+          },
+          "bukhara": {
+            "title": "Bukhara Cultural Heritage Tour",
+            "description": "Immerse yourself in the rich history of Bukhara, visiting ancient madrasas, bazaars, and architectural masterpieces."
+          }
+        }
+      },
+      "services": {
+        "heading": "Our Services",
+        "subheading": "We provide exceptional services to our clients, from transportation to accommodation and guided tours. We also offer group tours and custom itineraries.",
+        "categories": {
+          "transportation": {
+            "title": "Transportation",
+            "description": "We offer comprehensive transportation solutions including flights, car rentals, and private transfers to ensure comfortable and convenient travel throughout your journey."
+          },
+          "accommodation": {
+            "title": "Accommodation",
+            "description": "From luxury hotels to traditional guesthouses, we provide carefully selected accommodations that match your preferences and budget for an authentic experience."
+          },
+          "guided_tours": {
+            "title": "Guided Tours",
+            "description": "Our expert local guides provide insightful tours of historical sites, cultural landmarks, and hidden gems, offering deep cultural understanding and memorable experiences."
+          },
+          "cultural_experience": {
+            "title": "Cultural Experience",
+            "description": "Immerse yourself in local traditions, cuisine, and customs through authentic cultural experiences, workshops, and interactions with local communities."
+          }
+        },
+        "main_services_heading": "Main Services",
+        "main_services": {
+          "flight": "Flight Booking",
+          "car_rental": "Car Rental",
+          "hotel_booking": "Hotel Booking",
+          "local_guide": "Local Guide",
+          "group_tours": "Group Tours",
+          "custom_itinerary": "Custom Itinerary"
+        },
+        "view_more": "View More"
+      },
+      "recommended_cities": {
+        "heading": "Top Travel Destinations",
+        "subheading": "Explore the most beautiful cities and destinations around the world",
+        "loading": "Loading cities...",
+        "error": "Failed to load cities",
+        "view_all": "View All Destinations"
+      },
+      "recommended_cars": {
+        "heading": "Recommended Cars",
+        "subheading": "Choose from our premium fleet of vehicles for your perfect journey",
+        "loading": "Loading cars...",
+        "error": "Failed to load cars",
+        "view_all": "View All Cars",
+        "per_day": "per day",
+        "book_now": "Book Now",
+        "seats": "seats",
+        "reviews": "reviews"
+      },
+      "recommended_tours": {
+        "heading": "Special Tours in Uzbekistan",
+        "subheading": "Discover our most popular and breathtaking destinations across Central Asia",
+        "loading": "Loading recommended tours...",
+        "error": "Failed to load tours",
+        "reviews": "reviews",
+        "per_person": "per person",
+        "book_now": "Book Now",
+        "days": "days",
+        "day": "day",
+        "nights": "nights",
+        "night": "night",
+        "tours": {
+          "bukhara": {
+            "title": "4 Days Tours in Bukhara",
+            "duration": "4 days",
+            "transport": "Transport Facility",
+            "type": "Classic"
+          },
+          "khiva": {
+            "title": "Advanced Tour in Khiva 5 days",
+            "duration": "5 days",
+            "transport": "Transport Facility",
+            "type": "Classic"
+          },
+          "samarkand": {
+            "title": "7 Days Tours in Samarkand",
+            "duration": "7 days",
+            "transport": "Transport Facility",
+            "type": "Group"
+          },
+          "tajikistan": {
+            "title": "4 Days Tours in Tajikistan",
+            "duration": "4 days",
+            "transport": "Transport Facility",
+            "type": "Classic"
+          }
+        }
+      }
+    },
+    "tours": {
+      "no_tours": "No tours found",
+      "tours_loading": "Loading tours...",
+      "tours_error": "Error loading tours",
+      "tours_no_filters": "Try adjusting your filters to find the perfect tour",
+      "try_adjusting_filters": "Try adjusting your filters to find the perfect tour",
+      "per_person": "per person",
+      "see_details": "See Details",
+      "rating": "rating",
+      "days": "days",
+      "day": "day",
+      "sidebar": {
+        "filterBy": "Filter By",
+        "city": "City",
+        "price": "Price",
+        "duration": "Duration",
+        "reset": "Reset Filters",
+        "min": "Min",
+        "max": "Max"
+      }
+    },
+    "about_us": {
+      "heading": "About Us",
+      "subheading": "Learn more about our company, mission, and the team behind Sitora Tours",
+      "hero_badge": "How It Started",
+      "hero_title": "Our Dream is Global Travel Transformation",
+      "hero_description": "We are passionate about creating unforgettable travel experiences that showcase the authentic beauty and rich cultural heritage of Central Asia. Our expert team is dedicated to making your journey extraordinary.",
+      "destinations": "Destinations",
+      "happy_travelers": "Happy Travelers",
+      "rating": "Rating",
+      "years_experience": "Years Experience",
+      "packages": "Travel Packages",
+      "our_story_title": "Our Story",
+      "our_story_description": "Founded with a passion for travel and a deep love for Central Asia, Sitora Tours has been connecting travelers with authentic experiences for over a decade. We believe that travel has the power to transform lives and create lasting memories.",
+      "our_mission_description": "Our mission is to provide exceptional travel experiences that respect local cultures, support communities, and create meaningful connections between travelers and the destinations they visit.",
+      "why_choose_us_title": "Why Choose Us",
+      "expert_guides": "Expert Local Guides",
+      "expert_guides_description": "Our knowledgeable guides are passionate locals who share insider stories and hidden gems that make your journey truly special.",
+      "authentic_experiences": "Authentic Experiences",
+      "authentic_experiences_description": "We focus on genuine cultural encounters and off-the-beaten-path adventures that provide real insights into local life.",
+      "personalized_service": "Personalized Service",
+      "personalized_service_description": "Every journey is tailored to your interests, preferences, and travel style for a truly customized experience.",
+      "our_values_title": "Our Core Values",
+      "our_values_description": "These principles guide everything we do and ensure that every traveler receives an exceptional experience.",
+      "value_1_title": "Passion",
+      "value_1_description": "We are passionate about travel and sharing the beauty of Central Asia with the world.",
+      "value_2_title": "Authenticity",
+      "value_2_description": "We provide genuine experiences that respect local cultures and traditions.",
+      "value_3_title": "Reliability",
+      "value_3_description": "You can trust us to deliver safe, well-organized, and memorable travel experiences.",
+      "value_4_title": "Innovation",
+      "value_4_description": "We continuously improve our services and create new ways to enhance your travel experience.",
+      "cta_title": "Ready to Start Your Adventure?",
+      "cta_description": "Join thousands of satisfied travelers who have discovered the magic of Central Asia with Sitora Tours.",
+      "cta_button_1": "Explore Our Tours",
+      "cta_button_2": "Contact Us"
+    },
+    "single_tour": {
+      "loading": "Loading tour...",
+      "error": "Tour not found",
+      "error_message": "The tour you're looking for doesn't exist",
+      "back_to_tours": "Back to Tours",
+      "days": "days",
+      "nights": "nights",
+      "travel_path": "Travel Path",
+      "hours": "hours",
+      "minutes": "minutes",
+      "more_details": "More Details",
+      "transport": "Transport",
+      "departure_time": "Departure Time",
+      "arrival_time": "Arrival Time",
+      "duration": "Duration",
+      "itinerary": "Itinerary",
+      "services": "Services",
+      "price_includes": "Price Includes",
+      "price_not_includes": "Price Does Not Include",
+      "no_included_services": "No included services available",
+      "no_excluded_services": "No excluded services",
+      "accommodation": "Accommodation",
+      "address": "Address",
+      "phone": "Phone",
+      "rating": "Rating",
+      "stars": "stars",
+      "prices": "Prices & Booking",
+      "no_pricing_available": "No pricing information available",
+      "departure_dates": "Departure Dates",
+      "adult": "Adult",
+      "child": "Child",
+      "book_now": "Book Now",
+      "price_per_adult": "Price Per Adult",
+      "contact_us": "Contact Us",
+      "important_notes": "Important Notes",
+      "prices_per_person": "All prices are per person",
+      "child_prices_ages": "Child prices apply for ages 2-11",
+      "prices_may_vary": "Prices may vary based on season",
+      "reviews": "Reviews",
+      "related_tours": "Related Tours"
+    },
+    "cities": {
+      "heading": "Cities",
+      "subheading": "Explore the most beautiful cities and destinations around the world",
+      "cities_loading": "Loading cities...",
+      "cities_error": "Error loading cities",
+      "no_cities": "No cities found",
+      "cities_no_filters": "Try adjusting your search criteria",
+      "explore": "Explore",
+      "see_details": "See Details",
+      "no_image": "No Image",
+      "single": {
+        "loading": "Loading city details...",
+        "error": "City not found",
+        "error_message": "The city you are looking for does not exist or has been removed.",
+        "back_to_cities": "Back to Cities",
+        "tours_in": "Tours in",
+        "discover_tours": "Discover {count} amazing {plural} in {city}",
+        "tour": "tour",
+        "tours": "tours",
+        "no_tours": "No tours available in {city} at the moment.",
+        "check_back": "Check back later for new tour packages!",
+        "tours_loading": "Loading tours...",
+        "tours_error": "Failed to load tours"
+      }
+    },
+    "hotels": {
+      "heading": "Hotels",
+      "subheading": "Find the perfect accommodation for your stay",
+      "hotels_loading": "Loading hotels...",
+      "hotels_error": "Error loading hotels",
+      "no_hotels": "No hotels found",
+      "hotels_no_filters": "Try adjusting your search criteria",
+      "see_details": "See Details",
+      "rating_suffix": "rating"
+    },
+    "privacy_policy": {
+      "heading": "Privacy Policy",
+      "subheading": "Learn how we protect and handle your personal information"
+    },
+    "terms-conditions": {
+      "heading": "Terms & Conditions",
+      "subheading": "Learn about our terms and conditions for using our services"
+    },
+    "contact_us": {
+      "heading": "Contact Us",
+      "subheading": "Get in touch with our team for any questions or inquiries",
+      "contact_us": "Contact Us",
+      "full_name": "Full Name",
+      "full_name_placeholder": "Your full name",
+      "email_address": "Email Address",
+      "email_placeholder": "your.email@example.com",
+      "phone_number": "Phone Number",
+      "phone_placeholder": "+1 (555) 123-4567",
+      "subject": "Subject",
+      "subject_placeholder": "What's this about?",
+      "message": "Message",
+      "message_placeholder": "Tell us more about your inquiry...",
+      "send_message": "Send Message",
+      "email": "Email",
+      "phone": "Phone",
+      "office": "Office",
+      "business_hours": "Business Hours"
+    },
+    "cars": {
+      "heading": "Cars",
+      "subheading": "Rent a car for your perfect journey",
+      "no_cars": "No cars found",
+      "cars_loading": "Loading cars...",
+      "cars_error": "Error loading cars",
+      "cars_no_filters": "Try adjusting your filters to find the perfect car",
+      "book_now": "Book Now",
+      "see_details": "See Details",
+      "per_day": "per day",
+      "rating": "rating",
+      "sidebar": {
+        "filterBy": "Filter By",
+        "type": "Car Type",
+        "brand": "Brand",
+        "price": "Price",
+        "capacity": "Capacity",
+        "reset": "Reset Filters",
+        "min": "Min",
+        "max": "Max",
+        "noBrands": "No brands available",
+        "noTypes": "No types available"
+      },
+      "single": {
+        "loading": "Loading car details...",
+        "error": "Car not found",
+        "error_message": "The car you are looking for does not exist or has been removed.",
+        "back_to_cars": "Back to Cars",
+        "no_images": "No Images Available",
+        "specifications": "Car Specifications",
+        "brand": "Brand",
+        "model": "Model",
+        "type": "Type",
+        "capacity": "Capacity",
+        "passengers": "passengers",
+        "rental_info": "Rental Information",
+        "price_per_day": "Price per Day",
+        "min_rental": "Minimum Rental Period",
+        "min_rental_value": "1 day",
+        "driver_requirements": "Driver Requirements",
+        "driver_requirements_value": "Valid driver's license required",
+        "insurance": "Insurance",
+        "insurance_value": "Full insurance included",
+        "book_button": "Book This Car"
+      }
     }
+  }
 }

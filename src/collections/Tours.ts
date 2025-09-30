@@ -1,4 +1,4 @@
-import { CollectionConfig } from 'payload';
+import { CollectionConfig } from 'payload'
 
 export const Tours: CollectionConfig = {
   slug: 'tours',
@@ -20,6 +20,19 @@ export const Tours: CollectionConfig = {
       required: true,
       localized: true,
       index: true,
+    },
+    {
+      name: 'slug',
+      label: 'Slug',
+      type: 'text',
+      required: true,
+      unique: true,
+      index: true,
+      admin: {
+        position: 'sidebar',
+        readOnly: true,
+        description: 'Auto-generated from English name',
+      },
     },
     {
       name: 'description',
@@ -74,7 +87,6 @@ export const Tours: CollectionConfig = {
                   name: 'category',
                   label: 'Tour Category',
                   type: 'relationship',
-                  hasMany: true,
                   relationTo: 'categories',
                   required: true,
                 },
@@ -175,15 +187,57 @@ export const Tours: CollectionConfig = {
         },
       ],
     },
+    {
+      type: 'tabs',
+      tabs: [
+        {
+          label: 'Ratings & Reviews',
+          fields: [
+            {
+              name: 'rating',
+              label: 'Average Rating',
+              type: 'number',
+              min: 0,
+              max: 5,
+              defaultValue: 0,
+              admin: {
+                description: 'Average rating calculated from customer reviews (0-5 stars)',
+              },
+            },
+          ],
+        },
+      ],
+    },
   ],
   hooks: {
     beforeValidate: [
-      ({ data }) => {
-        if (!data?.slug && data?.name) {
-          data.slug = data.name.toLowerCase().replace(/\s+/g, '-');
+      ({ data, operation }) => {
+        // Auto-generate slug from English name ONLY on create
+        if (operation === 'create' && data?.name) {
+          let englishName = ''
+
+          // Handle localized name object
+          if (typeof data.name === 'object') {
+            englishName = data.name.en || data.name.english || Object.values(data.name)[0] || ''
+          } else {
+            // Handle string name (assume it's English)
+            englishName = data.name
+          }
+
+          if (englishName) {
+            // Generate slug from English name
+            const slug = englishName
+              .toLowerCase()
+              .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
+              .replace(/\s+/g, '-') // Replace spaces with hyphens
+              .replace(/-+/g, '-') // Replace multiple hyphens with single
+              .trim()
+
+            data.slug = slug
+          }
         }
       },
     ],
   },
   timestamps: true,
-};
+}

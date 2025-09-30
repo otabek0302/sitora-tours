@@ -1,126 +1,95 @@
-import { TourSchema, ToursResponseSchema, TourSearchParamsSchema, type Tour, type ToursResponse, type TourSearchParams } from '@/lib/schemas'
+import { ToursResponseSchema, TourSchema, ToursResponse, Tour, TourFilters, Pagination } from '../schemas'
+import { filtersToUrlParams, validateFilters } from '@/lib/utils/filters'
+import { apiRequest } from './index'
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api'
+// Fetch tours with filters
+export async function fetchTours(filters?: Partial<TourFilters>, pagination?: Pagination, locale?: string): Promise<ToursResponse> {
+  // Validate filters before making API call
+  if (filters && !validateFilters(filters)) {
+    throw new Error('Invalid filters provided')
+  }
 
-// Fetch tours with validation
-export async function fetchTours(params: Partial<TourSearchParams> = {}): Promise<ToursResponse> {
-    try {
-        // Validate search params
-        const validatedParams = TourSearchParamsSchema.parse(params)
+  // Convert filters to URL parameters
+  const params = filters && pagination ? filtersToUrlParams(filters, pagination) : null
+  const localeParam = locale ? `locale=${locale}` : ''
 
-        // Build query string
-        const searchParams = new URLSearchParams()
-        Object.entries(validatedParams).forEach(([key, value]) => {
-            if (value !== undefined && value !== null) {
-                searchParams.append(key, value.toString())
-            }
-        })
-
-        const response = await fetch(`${API_BASE_URL}/tours?${searchParams.toString()}`)
-
-        if (!response.ok) {
-            throw new Error(`Failed to fetch tours: ${response.statusText}`)
-        }
-
-        const data = await response.json()
-
-        // Validate response with Zod
-        return ToursResponseSchema.parse(data)
-    } catch (error) {
-        console.error('Error fetching tours:', error)
-        throw error
-    }
+  try {
+    const separator = params ? '&' : '?'
+    const url = `/api/tours${params ? `?${params}` : ''}${localeParam ? `${params ? separator : '?'}${localeParam}` : ''}`
+    const data = await apiRequest<ToursResponse>(url)
+    return ToursResponseSchema.parse(data)
+  } catch (error) {
+    throw new Error('Failed to load tours. Please try again.')
+  }
 }
 
-// Fetch single tour by ID
-export async function fetchTourById(id: number): Promise<Tour> {
-    try {
-        const response = await fetch(`${API_BASE_URL}/tours/${id}`)
-
-        if (!response.ok) {
-            throw new Error(`Failed to fetch tour: ${response.statusText}`)
-        }
-
-        const data = await response.json()
-
-        // Validate response with Zod
-        return TourSchema.parse(data)
-    } catch (error) {
-        console.error('Error fetching tour:', error)
-        throw error
+// Fetch single tour by slug
+export async function fetchTourBySlug(slug: string, locale?: string): Promise<Tour> {
+  try {
+    const localeParam = locale ? `&locale=${locale}` : ''
+    const response = await apiRequest<any>(`/api/tours?where[slug][equals]=${slug}${localeParam}`)
+    if (!response.docs || response.docs.length === 0) {
+      throw new Error('Tour not found')
     }
+    return TourSchema.parse(response.docs[0])
+  } catch (error) {
+    throw new Error('Failed to load tour details. Please try again.')
+  }
 }
 
-// Fetch featured tours
-export async function fetchFeaturedTours(limit: number = 6): Promise<Tour[]> {
-    try {
-        const response = await fetch(`${API_BASE_URL}/tours?isFeatured=true&limit=${limit}`)
-
-        if (!response.ok) {
-            throw new Error(`Failed to fetch featured tours: ${response.statusText}`)
-        }
-
-        const data = await response.json()
-        const validatedResponse = ToursResponseSchema.parse(data)
-
-        return validatedResponse.docs
-    } catch (error) {
-        console.error('Error fetching featured tours:', error)
-        throw error
-    }
+// Fetch tours max price
+export async function fetchToursMaxPrice(): Promise<number> {
+  try {
+    const data = await apiRequest<Tour[]>('/api/tours?sort=price')
+    return data.reduce((max, tour) => Math.max(max, tour.price), 0)
+  } catch (error) {
+    throw new Error('Failed to load tours max price. Please try again.')
+  }
 }
 
-// Search tours
-export async function searchTours(query: string, filters: Partial<TourSearchParams> = {}): Promise<ToursResponse> {
-    try {
-        const searchParams = {
-            ...filters,
-            search: query,
-        }
-
-        return await fetchTours(searchParams)
-    } catch (error) {
-        console.error('Error searching tours:', error)
-        throw error
-    }
+// Fetch tours min price
+export async function fetchToursMinPrice(): Promise<number> {
+  try {
+    const data = await apiRequest<Tour[]>('/api/tours?sort=price')
+    return data.reduce((min, tour) => Math.min(min, tour.price), 0)
+  } catch (error) {
+    throw new Error('Failed to load tours min price. Please try again.')
+  }
 }
 
-// Get tour categories
-export async function getTourCategories(): Promise<string[]> {
-    try {
-        const response = await fetch(`${API_BASE_URL}/tours/categories`)
-
-        if (!response.ok) {
-            throw new Error(`Failed to fetch tour categories: ${response.statusText}`)
-        }
-
-        const data = await response.json()
-
-        // Validate that it's an array of strings
-        const categories = Array.isArray(data) ? data : data.categories || []
-        return categories.filter((cat: any) => typeof cat === 'string')
-    } catch (error) {
-        console.error('Error fetching tour categories:', error)
-        return []
+// Fetch recommended tours (featured/top-rated tours)
+export async function fetchRecommendedTours(limit: number = 6, locale?: string): Promise<Tour[]> {
+  try {
+    const localeParam = locale ? `&locale=${locale}` : ''
+    const response = await apiRequest<any>(`/api/tours?limit=${limit}&sort=-rating${localeParam}`)
+    if (!response.docs) {
+      return []
     }
+    return response.docs.map((tour: any) => TourSchema.parse(tour))
+  } catch (error) {
+    throw new Error('Failed to load recommended tours. Please try again.')
+  }
 }
 
-// Get tour difficulties
-export async function getTourDifficulties(): Promise<string[]> {
-    try {
-        const response = await fetch(`${API_BASE_URL}/tours/difficulties`)
+// Fetch related tours (same category, excluding current tour)
+export async function fetchRelatedTours(tourId: number, category?: number, limit: number = 6, locale?: string): Promise<Tour[]> {
+  try {
+    const categoryParam = category ? `&where[category][in]=${category}` : ''
+    const localeParam = locale ? `&locale=${locale}` : ''
+    const response = await apiRequest<any>(`/api/tours?limit=${limit + 1}&sort=-createdAt${categoryParam}${localeParam}`)
 
-        if (!response.ok) {
-            throw new Error(`Failed to fetch tour difficulties: ${response.statusText}`)
-        }
-
-        const data = await response.json()
-
-        // Validate that it's an array of strings
-        const difficulties = Array.isArray(data) ? data : data.difficulties || []
-        return difficulties.filter((diff: any) => typeof diff === 'string')
-    } catch (error) {
-        console.error('Error fetching tour difficulties:', error)
-        return []
+    if (!response.docs) {
+      return []
     }
+
+    // Filter out the current tour and limit results
+    const relatedTours = response.docs
+      .filter((tour: any) => tour.id !== tourId)
+      .slice(0, limit)
+      .map((tour: any) => TourSchema.parse(tour))
+
+    return relatedTours
+  } catch (error) {
+    throw new Error('Failed to load related tours. Please try again.')
+  }
 }

@@ -1,0 +1,137 @@
+'use client'
+
+import Link from 'next/link'
+import Image from 'next/image'
+
+import { Star, Clock, MapPin, Tag } from 'lucide-react'
+import { useEffect } from 'react'
+import { useTranslations, useLocale } from 'next-intl'
+import { Button } from '@/components/ui/button'
+import { useToursContext } from '@/lib/stores/tours'
+
+interface TourRelatedProps {
+  tour: {
+    id?: number | string
+    category?: any
+  }
+}
+
+const TourRelated = ({ tour }: TourRelatedProps) => {
+  const t = useTranslations('pages.single_tour')
+  const locale = useLocale()
+  const { relatedTours, relatedToursLoading, relatedToursError, fetchRelatedTours } = useToursContext()
+
+  // Extract stable IDs for dependencies
+  const tourId = typeof tour.id === 'string' ? parseInt(tour.id) : tour.id
+  const categoryId = typeof tour.category === 'object' ? tour.category?.id : tour.category
+
+  useEffect(() => {
+    if (!categoryId || !tourId || relatedTours.length > 0) {
+      return
+    }
+
+    fetchRelatedTours(tourId, categoryId, 6, locale)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tourId, categoryId])
+
+  if (relatedToursLoading) {
+    return (
+      <div className='mb-8'>
+        <div className='border-sitora-primary mx-auto mb-4 h-8 w-8 animate-spin rounded-full border-b-2'></div>
+        <p className='text-sitora-body text-sm'>{t('loading')}</p>
+      </div>
+    )
+  }
+
+  if (relatedToursError) {
+    return (
+      <div className='mb-8'>
+        <h3 className='text-sitora-error mb-2 text-lg font-semibold'>{t('error')}</h3>
+        <p className='text-sitora-body text-sm'>{relatedToursError}</p>
+      </div>
+    )
+  }
+
+  if (relatedTours.length === 0) {
+    return null
+  }
+
+  return (
+    <div className='mb-8'>
+      <h2 className='text-sitora-text-subtitle mb-6 text-lg leading-normal font-bold md:text-2xl'>{t('related_tours')}</h2>
+
+      <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
+        {relatedTours.map(relatedTour => (
+          <div key={relatedTour.id} className='bg-card border-border group overflow-hidden rounded-3xl border shadow-none transition-all duration-300 hover:shadow-sm'>
+            <Link href={`/tours/${relatedTour.slug}`}>
+              {/* Tour Image */}
+              <div className='relative h-48 w-full overflow-hidden'>
+                <Image src={relatedTour.images?.[0]?.image?.url || ''} alt={relatedTour.name || 'Tour'} fill className='object-cover transition-transform duration-500 group-hover:scale-105' sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw' />
+              </div>
+
+              {/* Tour Details */}
+              <div className='p-6'>
+                <h4 className='text-sitora-text-subtitle mb-4 line-clamp-2 text-lg font-semibold'>{relatedTour.name}</h4>
+
+                {/* Tour Info */}
+                <div className='mb-4 space-y-2'>
+                  <div className='flex items-center gap-2'>
+                    <Clock className='text-sitora-primary h-4 w-4' />
+                    <span className='text-sitora-body text-sm font-medium'>
+                      {relatedTour.duration_days} {relatedTour.duration_days > 1 ? t('days') : t('day')}
+                    </span>
+                    <span className='text-sitora-body text-sm font-medium'>/</span>
+                    <span className='text-sitora-body text-sm font-medium'>
+                      {relatedTour.duration_nights} {relatedTour.duration_nights > 1 ? t('nights') : t('night')}
+                    </span>
+                  </div>
+                  {relatedTour.category?.name && (
+                    <div className='flex items-center gap-2'>
+                      <Tag className='text-sitora-primary h-4 w-4' />
+                      <span className='text-sitora-body text-sm font-medium'>{relatedTour.category.name}</span>
+                    </div>
+                  )}
+                  {relatedTour.cities && relatedTour.cities.length > 0 && (
+                    <div className='flex items-center gap-2'>
+                      <MapPin className='text-sitora-primary h-4 w-4' />
+                      {relatedTour.cities.map((city: any, index: number) => (
+                        <span key={city.id} className='text-sitora-body text-sm font-medium'>
+                          {city.name} {relatedTour.cities && relatedTour.cities.length > 1 && index < relatedTour.cities.length - 1 ? '→' : ''}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Rating */}
+                {relatedTour.rating && relatedTour.rating > 0 && (
+                  <div className='mb-4 flex items-center gap-2'>
+                    <div className='flex items-center gap-1'>
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className={`h-4 w-4 ${i < Math.floor(relatedTour.rating || 0) ? 'text-sitora-gold-medium fill-current' : 'text-sitora-text-muted'}`} />
+                      ))}
+                    </div>
+                    <span className='text-sitora-body text-sm font-medium'>{relatedTour.rating.toFixed(1)}</span>
+                  </div>
+                )}
+
+                {/* Price */}
+                <div className='flex items-center justify-between'>
+                  <p className='flex items-center gap-2'>
+                    <span className='text-sitora-primary text-lg font-semibold'>${relatedTour.price?.toLocaleString()}</span>
+                    <span className='text-sitora-body text-xs font-normal'>{t('per_person')}</span>
+                  </p>
+                  <Button variant='default' size='sm'>
+                    {t('book_now')}
+                  </Button>
+                </div>
+              </div>
+            </Link>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export default TourRelated
