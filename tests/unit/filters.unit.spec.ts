@@ -14,8 +14,8 @@ describe('Filters - Unit Tests', () => {
       }
       const pagination = { page: 1, limit: 12, total: 0, hasNextPage: false, hasPrevPage: false }
       const params = filtersToUrlParams(filters, pagination)
-      const query = params.toString()
-
+      const query = decodeURIComponent(params.toString())
+      
       expect(query).toContain('where[category][in]=1')
       expect(query).toContain('where[cities][in]=1,2')
       expect(query).toContain('where[price][greater_than_equal]=100')
@@ -101,8 +101,8 @@ describe('Filters - Unit Tests', () => {
       }
       const pagination = { page: 1, limit: 12, total: 0, hasNextPage: false, hasPrevPage: false }
       const params = carsFiltersToUrlParams(filters, pagination)
-      const query = params.toString()
-
+      const query = decodeURIComponent(params.toString())
+      
       expect(query).toContain('where[brand][equals]=Toyota')
       expect(query).toContain('where[type][equals]=SUV')
       expect(query).toContain('where[price][greater_than_equal]=50')
@@ -117,8 +117,8 @@ describe('Filters - Unit Tests', () => {
       }
       const pagination = { page: 1, limit: 12, total: 0, hasNextPage: false, hasPrevPage: false }
       const params = carsFiltersToUrlParams(filters, pagination)
-      const query = params.toString()
-
+      const query = decodeURIComponent(params.toString())
+      
       expect(query).toContain('where[brand][equals]=Toyota')
       expect(query).not.toContain('type')
       expect(query).not.toContain('capacity')

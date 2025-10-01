@@ -14,8 +14,15 @@ describe('Schemas - Unit Tests', () => {
         duration_days: 7,
         duration_nights: 6,
         rating: 4.5,
-        category: 1,
-        cities: [1, 2],
+        category: {
+          id: 1,
+          name: 'Adventure',
+          slug: 'adventure',
+        },
+        cities: [
+          { id: 1, name: 'Samarkand', slug: 'samarkand' },
+          { id: 2, name: 'Bukhara', slug: 'bukhara' },
+        ],
         images: [],
       }
 
@@ -94,7 +101,11 @@ describe('Schemas - Unit Tests', () => {
         rating: '5',
         address: '123 Main St',
         phone: '+998901234567',
-        city: 1,
+        city: {
+          id: 1,
+          name: 'Samarkand',
+          slug: 'samarkand',
+        },
       }
 
       const result = HotelSchema.safeParse(validHotel)
