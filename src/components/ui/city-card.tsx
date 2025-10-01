@@ -12,7 +12,7 @@ interface CityCardProps {
 const CityCard = ({ city }: CityCardProps) => {
   return (
     <Link href={`/cities/${city.slug}`} className='group block'>
-      <div className='bg-card border-border relative h-[300px] cursor-pointer overflow-hidden rounded-3xl border shadow-none transition-all duration-300 hover:shadow-md lg:h-[480px]'>
+      <div className='bg-card border-border relative h-[300px] cursor-pointer overflow-hidden rounded-[26px] border shadow-none transition-all duration-300 hover:shadow-sm lg:h-[480px]'>
         {/* City Image */}
         {city.image?.url ? <Image src={city.image.url} alt={city.name} fill sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw' className='object-cover transition-transform duration-300 group-hover:scale-105' /> : <div className='from-sitora-primary/20 to-sitora-primary-dark/40 absolute inset-0 bg-gradient-to-br' />}
 

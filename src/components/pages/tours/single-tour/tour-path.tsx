@@ -41,7 +41,7 @@ const TourPath = ({ tour }: TourPathProps) => {
   }
 
   return (
-    <div className='mb-8'>
+    <div className='mb-6'>
       <h2 className='text-sitora-text-subtitle mb-6 text-lg leading-normal font-bold md:text-2xl'>{t('travel_path')}</h2>
       <div className='space-y-4'>
         {tour.locations.map((location, index) => {
@@ -50,7 +50,7 @@ const TourPath = ({ tour }: TourPathProps) => {
           const isExpanded = expandedLocation === location.id
 
           return (
-            <div key={location.id || index} className='bg-card border-sitora-primary rounded-3xl border-2 p-6'>
+            <div key={location.id || index} className='bg-card border-sitora-primary rounded-[26px] border-2 p-6 shadow-none'>
               <div className='mb-4 flex items-start justify-between'>
                 <div className='text-left'>
                   <h3 className='text-sitora-primary text-lg font-bold'>{fromCity}</h3>

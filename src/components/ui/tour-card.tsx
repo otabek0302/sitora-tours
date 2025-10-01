@@ -17,7 +17,7 @@ const ToursCard = ({ tour }: ToursCardProps) => {
   const t = useTranslations('pages.tours')
 
   return (
-    <Card className='bg-card border-border overflow-hidden rounded-3xl border shadow-none'>
+    <Card className='bg-card border-border overflow-hidden rounded-[26px] border shadow-none'>
       <div className='flex flex-col lg:flex-row'>
         {/* Tour Image */}
         <div className='relative h-48 overflow-hidden lg:h-auto lg:w-1/3'>

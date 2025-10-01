@@ -35,19 +35,6 @@ const CityTours = ({ cityId, cityName }: CityToursProps) => {
     fetchCityTours()
   }, [cityId])
 
-  if (loading) {
-    return (
-      <div className='py-8'>
-        <h2 className='text-sitora-text-heading mb-6 text-2xl font-bold sm:text-3xl'>
-          {t('tours_in')} {cityName}
-        </h2>
-        <div className='flex min-h-[200px] items-center justify-center'>
-          <div className='border-sitora-primary h-8 w-8 animate-spin rounded-full border-b-2'></div>
-        </div>
-      </div>
-    )
-  }
-
   if (error) {
     return (
       <div className='py-8'>
@@ -61,11 +48,11 @@ const CityTours = ({ cityId, cityName }: CityToursProps) => {
 
   if (!tours.length) {
     return (
-      <div className='py-8'>
+      <div className='py-6'>
         <h2 className='text-sitora-text-heading mb-6 text-2xl font-bold sm:text-3xl'>
           {t('tours_in')} {cityName}
         </h2>
-        <div className='bg-sitora-primary-light rounded-2xl p-12 text-center'>
+        <div className='bg-sitora-primary-light rounded-[26px] p-12 text-center shadow-none'>
           <p className='text-sitora-body text-lg'>{t('no_tours', { city: cityName })}</p>
           <p className='text-sitora-muted mt-2 text-sm'>{t('check_back')}</p>
         </div>
@@ -76,9 +63,9 @@ const CityTours = ({ cityId, cityName }: CityToursProps) => {
   const tourPlural = tours.length === 1 ? t('tour') : t('tours')
 
   return (
-    <div className='py-8'>
+    <div className='py-6'>
       {/* Section Title */}
-      <div className='mb-8'>
+      <div className='mb-6'>
         <h2 className='text-sitora-text-heading mb-2 text-2xl font-bold sm:text-3xl'>
           {t('tours_in')} {cityName}
         </h2>
@@ -86,7 +73,7 @@ const CityTours = ({ cityId, cityName }: CityToursProps) => {
       </div>
 
       {/* Tours Grid */}
-      <div className='grid gap-6'>
+      <div className='grid gap-4'>
         {tours.map(tour => (
           <TourCard key={tour.id} tour={tour} />
         ))}

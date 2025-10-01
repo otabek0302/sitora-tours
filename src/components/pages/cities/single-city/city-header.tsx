@@ -8,7 +8,7 @@ interface CityHeaderProps {
 
 const CityHeader = ({ city }: CityHeaderProps) => {
   return (
-    <div className='border-border mb-8 border-b pb-6'>
+    <div className='border-border mb-6 border-b pb-6'>
       <div className='space-y-4'>
         {/* City Name */}
         <h1 className='text-sitora-text-heading text-3xl font-bold sm:text-4xl lg:text-5xl'>{city.name}</h1>

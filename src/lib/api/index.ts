@@ -4,6 +4,8 @@ export * from './cars'
 export * from './categories'
 export * from './cities'
 export * from './hotels'
+export * from './pages'
+export * from './reviews'
 
 // Generic fetch wrapper with error handling
 export async function apiRequest<T>(endpoint: string, options: RequestInit = {}): Promise<T> {

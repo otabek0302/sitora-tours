@@ -9,9 +9,9 @@ const AboutHero = () => {
   const t = useTranslations('pages.about_us')
 
   return (
-    <div className='flex flex-col gap-6 lg:flex-row'>
+    <div className='flex flex-col gap-4 lg:flex-row'>
       {/* About Hero Right Side */}
-      <div className='border-border flex flex-1 flex-col justify-center space-y-4 rounded-4xl border p-12'>
+      <div className='border-border flex flex-1 flex-col justify-center space-y-4 rounded-[32px] border p-12 shadow-none'>
         <h2 className='text-sitora-text-subtitle text-right text-4xl font-bold xl:text-4xl'>{t('hero_title')}</h2>
         <p className='text-sitora-body text-justify text-sm leading-relaxed font-normal lg:text-base'>{t('hero_description')}</p>
         <p className='text-sitora-body text-justify text-sm leading-relaxed font-normal lg:text-base'>{t('hero_description')}</p>
@@ -32,24 +32,24 @@ const AboutHero = () => {
       </div>
 
       {/* About Hero Left Side */}
-      <div className='flex flex-1 flex-col gap-4 rounded-4xl'>
-        <div className='border-border relative rounded-4xl border p-4 lg:h-72'>
+      <div className='flex flex-1 flex-col gap-4 rounded-[32px]'>
+        <div className='border-border relative rounded-[32px] border p-4 shadow-none lg:h-72'>
           <Image src='/images/about-us/about-hero.png' fill alt='About Hero' className='object-cover' />
         </div>
-        <div className='border-border grid grid-cols-2 gap-4 rounded-4xl border p-4 lg:h-72'>
-          <div className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-4'>
+        <div className='border-border grid grid-cols-2 gap-4 rounded-[32px] border p-4 shadow-none lg:h-72'>
+          <div className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-4 shadow-none'>
             <h3 className='text-sitora-text-subtitle text-4xl font-bold'>5,368+</h3>
             <p className='text-sitora-body text-sm leading-relaxed font-normal lg:text-base'>{t('happy_travelers')}</p>
           </div>
-          <div className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-4'>
+          <div className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-4 shadow-none'>
             <h3 className='text-sitora-text-subtitle text-4xl font-bold'>+100</h3>
             <p className='text-sitora-body text-sm leading-relaxed font-normal lg:text-base'>{t('destinations')}</p>
           </div>
-          <div className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-4'>
+          <div className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-4 shadow-none'>
             <h3 className='text-sitora-text-subtitle text-4xl font-bold'>10+</h3>
             <p className='text-sitora-body text-sm leading-relaxed font-normal lg:text-base'>{t('years_experience')}</p>
           </div>
-          <div className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-4'>
+          <div className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-4 shadow-none'>
             <h3 className='text-sitora-text-subtitle text-4xl font-bold'>120+</h3>
             <p className='text-sitora-body text-sm leading-relaxed font-normal lg:text-base'>{t('packages')}</p>
           </div>

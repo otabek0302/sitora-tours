@@ -15,7 +15,7 @@ const TourItinerary = ({ tour }: TourItineraryProps) => {
   }
 
   return (
-    <div className='mb-8'>
+    <div className='mb-6'>
       <h2 className='text-sitora-text-subtitle mb-6 text-lg leading-normal font-bold md:text-2xl'>{t('itinerary')}</h2>
 
       <div className='relative'>

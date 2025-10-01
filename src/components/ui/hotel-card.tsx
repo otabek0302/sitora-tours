@@ -16,7 +16,7 @@ interface HotelCardProps {
 const HotelCard = ({ hotel }: HotelCardProps) => {
   const t = useTranslations('pages.hotels')
   return (
-    <Card className='bg-card border-border overflow-hidden rounded-3xl border shadow-none'>
+    <Card className='bg-card border-border overflow-hidden rounded-[26px] border shadow-none'>
       <div className='flex flex-col lg:flex-row'>
         {/* Hotel Image */}
         <div className='border-border relative overflow-hidden border-l lg:w-1/3'>

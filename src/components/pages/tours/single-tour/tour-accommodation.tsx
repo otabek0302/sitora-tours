@@ -25,16 +25,16 @@ const TourAccommodation = ({ tour }: TourAccommodationProps) => {
   }
 
   return (
-    <div className='mb-8'>
+    <div className='mb-6'>
       <h2 className='text-sitora-text-subtitle mb-6 text-lg leading-normal font-bold md:text-2xl'>{t('accommodation')}</h2>
 
-      <div className='space-y-2'>
+      <div className='space-y-4'>
         {tour.accommodation.map((item, index) => {
           const cityName = getCityName(item.city)
           const isExpanded = expandedItem === item.id
 
           return (
-            <div key={item.id || index} className='bg-card border-sitora-primary relative rounded-3xl border p-4'>
+            <div key={item.id || index} className='bg-card border-sitora-primary relative rounded-[26px] border p-4 shadow-none'>
               <div className='flex items-center justify-between'>
                 <div className='flex items-center gap-2'>
                   <span className='text-sitora-text-subtitle text-base font-bold'>{cityName}</span>

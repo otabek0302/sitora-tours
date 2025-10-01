@@ -12,9 +12,9 @@ const AboutUsPage = () => {
   const t = useTranslations('pages.about_us')
 
   return (
-    <section className='py-12 md:py-16'>
+    <section className='py-6 lg:py-8'>
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className='space-y-12'>
+        <div className='space-y-6'>
           {/* Hero Section */}
           <AboutHero />
 

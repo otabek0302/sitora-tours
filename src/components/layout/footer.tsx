@@ -66,7 +66,7 @@ const Footer = () => {
               <div>
                 <h3 className='text-sitora-primary sm:text-md mb-3 text-sm font-semibold'>{t('license')}</h3>
                 <div className='flex flex-col gap-1'>
-                  <Link href='/privacy-police' className='text-sitora-body hover:text-sitora-primary-dark rounded-md py-1 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
+                  <Link href='/privacy-policy' className='text-sitora-body hover:text-sitora-primary-dark rounded-md py-1 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
                     <span className='block'>{t('privacyPolicy')}</span>
                   </Link>
                   <Link href='/terms-conditions' className='text-sitora-body hover:text-sitora-primary-dark rounded-md py-1 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>

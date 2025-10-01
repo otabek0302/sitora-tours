@@ -1,24 +1,39 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Star, Send, Loader2 } from 'lucide-react'
 import { Button } from './button'
 import { Input } from './input'
 import { Textarea } from './textarea'
 import { Label } from './label'
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from './dialog'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './select'
+import { Skeleton } from './skeleton'
 
 import { toast } from 'sonner'
 import { useTranslations, useLocale } from 'next-intl'
-import { cleanReview, validateReview } from '@/lib/utils'
+import { useToursContext } from '@/lib/stores/tours'
+import { useReviewsContext } from '@/lib/stores/reviews'
 
 export const AddTestimonial = ({ open, setOpen }: { open: boolean; setOpen: (open: boolean) => void }) => {
   const t = useTranslations('pages.home.testimonials')
   const locale = useLocale()
+  const { tours, fetchTours, setLocale: setToursLocale, loading: toursLoading } = useToursContext()
+  const { addReview } = useReviewsContext()
+
   const [data, setData] = useState({
     first_name: '',
     last_name: '',
     rating: 0,
     comment: '',
+    tour: 0,
   })
+
+  // Fetch tours when dialog opens
+  useEffect(() => {
+    if (open) {
+      setToursLocale(locale)
+      fetchTours()
+    }
+  }, [open, locale, fetchTours, setToursLocale])
 
   const [hoveredRating, setHoveredRating] = useState(0)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -26,38 +41,42 @@ export const AddTestimonial = ({ open, setOpen }: { open: boolean; setOpen: (ope
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    if (!validateReview(data)) {
-      toast.error(t('form.validation.error'))
+    if (!data.first_name || !data.last_name || !data.rating || !data.comment || !data.tour) {
+      toast.error('Please fill all required fields')
       return
     }
 
     setIsSubmitting(true)
     try {
-      const response = await fetch(`/api/testimonials?locale=${locale}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(cleanReview(data)),
-      })
+      const reviewData = {
+        first_name: data.first_name.trim(),
+        last_name: data.last_name.trim(),
+        rating: Number(data.rating),
+        comment: data.comment.trim(),
+        tour: Number(data.tour),
+      }
 
-      if (response.ok) {
+      const success = await addReview(reviewData)
+
+      if (success) {
         toast.success(t('form.success'))
         setData({
           first_name: '',
           last_name: '',
           rating: 0,
           comment: '',
+          tour: 0,
         })
         setTimeout(() => {
           setOpen(false)
         }, 1500)
       } else {
-        await response.text()
         toast.error(t('form.error'))
       }
-    } catch (error) {
-      toast.error(t('form.error'))
+    } catch (error: any) {
+      console.error('Submit error:', error)
+      const errorMessage = error?.message || t('form.error')
+      toast.error(errorMessage)
     } finally {
       setIsSubmitting(false)
     }
@@ -83,6 +102,7 @@ export const AddTestimonial = ({ open, setOpen }: { open: boolean; setOpen: (ope
         last_name: '',
         rating: 0,
         comment: '',
+        tour: 0,
       })
       setHoveredRating(0)
     }
@@ -112,6 +132,26 @@ export const AddTestimonial = ({ open, setOpen }: { open: boolean; setOpen: (ope
           </div>
 
           <div className='space-y-2'>
+            <Label className='text-sitora-text-subtitle text-sm font-medium'>{t('form.tour')} *</Label>
+            {toursLoading ? (
+              <Skeleton className='h-10 w-full rounded-md' />
+            ) : (
+              <Select value={data.tour === 0 ? '' : data.tour.toString()} onValueChange={value => setData(prev => ({ ...prev, tour: Number(value) }))} disabled={isSubmitting}>
+                <SelectTrigger className='border-border focus:border-sitora-primary h-10 w-full rounded-md shadow-none'>
+                  <SelectValue placeholder={t('form.selectTour')} />
+                </SelectTrigger>
+                <SelectContent>
+                  {tours.map(tour => (
+                    <SelectItem key={tour.id} value={tour.id.toString()}>
+                      {tour.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            )}
+          </div>
+
+          <div className='space-y-2'>
             <Label className='text-sitora-text-subtitle text-sm font-medium'>{t('form.rating')} *</Label>
             <div className='flex items-center gap-2'>
               {[1, 2, 3, 4, 5].map(star => (
@@ -137,7 +177,7 @@ export const AddTestimonial = ({ open, setOpen }: { open: boolean; setOpen: (ope
             <Button type='button' variant='outline' onClick={() => setOpen(false)} disabled={isSubmitting} className='border-sitora-primary text-sitora-primary hover:bg-sitora-primary hover:text-sitora-white rounded-lg'>
               {t('form.cancel')}
             </Button>
-            <Button type='submit' variant='default' size='default' disabled={isSubmitting || !data.first_name || !data.last_name || !data.rating || !data.comment || data.comment.length > 500} className='bg-sitora-primary text-sitora-white hover:bg-sitora-primary-dark rounded-lg py-2.5'>
+            <Button type='submit' variant='default' size='default' disabled={isSubmitting || !data.first_name || !data.last_name || !data.rating || !data.comment || !data.tour || data.comment.length > 500} className='bg-sitora-primary text-sitora-white hover:bg-sitora-primary-dark rounded-lg py-2.5'>
               {isSubmitting ? (
                 <>
                   <Loader2 className='mr-2 h-4 w-4 animate-spin' />

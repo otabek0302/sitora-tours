@@ -10,13 +10,13 @@ interface HotelContactProps {
 
 const HotelContact = ({ hotel }: HotelContactProps) => {
   return (
-    <Card className='border-border bg-card shadow-none'>
+    <Card className='border-border bg-card rounded-[26px] shadow-none'>
       <CardHeader className='pb-4'>
         <div className='flex items-center gap-3'>
           <CardTitle className='text-sitora-text-heading text-xl font-bold'>Contact Information</CardTitle>
         </div>
       </CardHeader>
-      <CardContent className='space-y-6'>
+      <CardContent className='space-y-4'>
         {/* Address */}
         {hotel.address && (
           <div className='space-y-2'>
@@ -32,7 +32,7 @@ const HotelContact = ({ hotel }: HotelContactProps) => {
 
         {/* Phone */}
         {hotel.phone && (
-          <div className='border-border border-t pt-6'>
+          <div className='border-border border-t pt-4'>
             <div className='flex items-start gap-3'>
               <Phone className='text-sitora-primary mt-1 h-5 w-5 flex-shrink-0' />
               <div className='flex-1'>

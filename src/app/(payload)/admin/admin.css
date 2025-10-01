@@ -1,0 +1,276 @@
+/* ========================================== */
+/* 🎨 SITORA TOURS - ADMIN PANEL CUSTOM CSS */
+/* ========================================== */
+
+/* ========================================== */
+/* 🎨 CSS VARIABLES - THEME SUPPORT */
+/* ========================================== */
+
+:root {
+    color-scheme: light dark;
+
+    /* Sidebar colors */
+    --sidebar-bg: #ffffff;
+    --sidebar-border: #e5e5e5;
+
+    /* Nav link colors */
+    --nav-text: #525252;
+    --nav-text-hover: #171717;
+    --nav-bg-hover: #f5f5f5;
+
+    /* Nav active/current */
+    --nav-active-bg: rgba(255, 0, 0, 0.06);
+    --nav-active-text: #ff0000;
+    --nav-active-border: #ff0000;
+
+    /* Group labels */
+    --nav-label-text: #6a7385;
+
+    /* Logout button */
+    --logout-bg: #f5f5f5;
+    --logout-hover-bg: #ff0000;
+
+    /* Scrollbar */
+    --scrollbar-thumb: #d4d4d4;
+    --scrollbar-thumb-hover: #d4af37;
+}
+
+html[data-theme='dark'] {
+    /* Sidebar colors - dark */
+    --sidebar-bg: #262626;
+    --sidebar-border: #404040;
+
+    /* Nav link colors - dark */
+    --nav-text: #a3a3a3;
+    --nav-text-hover: #fafafa;
+    --nav-bg-hover: #404040;
+
+    /* Nav active/current - dark */
+    --nav-active-bg: rgba(255, 92, 92, 0.1);
+    --nav-active-text: #ff5c5c;
+    --nav-active-border: #ff5c5c;
+
+    /* Group labels - dark */
+    --nav-label-text: #999999;
+
+    /* Logout button - dark */
+    --logout-bg: #404040;
+    --logout-hover-bg: #ff5c5c;
+
+    /* Scrollbar - dark */
+    --scrollbar-thumb: #525252;
+    --scrollbar-thumb-hover: #d4af37;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.rs__control,
+input {
+    border-radius: 4px !important;
+    border: 1px solid var(--theme-elevation-200) !important;
+    transition: all 0.2s ease !important;
+}
+
+/* ========================================== */
+/* 🎨 MODERN SIDEBAR NAVIGATION */
+/* ========================================== */
+
+/* Sidebar container */
+.nav {
+    background: var(--sidebar-bg) !important;
+    border-right: 1px solid var(--sidebar-border) !important;
+}
+
+/* Nav group labels (Setting, Content, Client) */
+.nav-group__label {
+    font-size: 0.7rem !important;
+    font-weight: 600 !important;
+    color: var(--nav-label-text) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.5rem 1rem !important;
+    margin-top: 0.5rem;
+}
+
+/* Nav group toggle */
+.nav-group__toggle {
+    padding: 0.5rem 1rem !important;
+    margin: 0.125rem 0.75rem !important;
+    border-radius: 6px !important;
+    transition: all 0.2s ease !important;
+    background: transparent !important;
+    border-bottom: 1px solid var(--sidebar-border) !important;
+}
+
+.nav-group__toggle:hover {
+    background: var(--nav-bg-hover) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-between !important;
+
+}
+.nav-group__toggle .nav-group__label {
+    margin-top: 0 !important;
+    padding: 0 13px !important;
+}
+
+/* Nav links - Clean modern style */
+.nav__link {
+    margin: 0.125rem 0.75rem !important;
+    padding: 0.625rem 1rem !important;
+    border-radius: 6px !important;
+    transition: all 0.2s ease !important;
+    font-weight: 400 !important;
+    font-size: 0.875rem !important;
+    color: var(--nav-text) !important;
+    background: transparent !important;
+    border: none !important;
+    position: relative;
+}
+
+/* Nav link hover */
+.nav__link:hover {
+    background: var(--nav-bg-hover) !important;
+    color: var(--nav-text-hover) !important;
+}
+
+/* Nav link active/current - prominent red accent */
+.nav__link[aria-current="page"],
+.nav__link.active {
+    background: var(--nav-active-bg) !important;
+    color: var(--nav-active-text) !important;
+    font-weight: 500 !important;
+    border-left: 3px solid var(--nav-active-border) !important;
+    padding-left: calc(1rem - 3px) !important;
+}
+
+/* Logout button */
+.nav__log-out {
+    margin: 1rem 0.75rem 0.75rem !important;
+    padding: 0.625rem 1rem !important;
+    border-radius: 6px !important;
+    background: var(--logout-bg) !important;
+    transition: all 0.2s ease !important;
+    border: none !important;
+}
+
+.nav__log-out:hover {
+    background: var(--logout-hover-bg) !important;
+    color: white !important;
+}
+
+.nav__log-out:hover .stroke {
+    stroke: white !important;
+}
+
+/* Nav group content */
+.nav-group__content {
+    padding: 0.25rem 0 !important;
+}
+
+/* Scrollbar - gold accent */
+.nav__scroll::-webkit-scrollbar {
+    width: 4px;
+}
+
+.nav__scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.nav__scroll::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 2px;
+}
+
+.nav__scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+}
+
+/* ========================================== */
+/* 🎨 COLLECTION ICONS */
+/* ========================================== */
+
+.nav__link[id="nav-tours"] .nav__link-label::before {
+    content: "✈️ ";
+    margin-right: 0.5rem;
+}
+
+.nav__link[id="nav-cities"] .nav__link-label::before {
+    content: "🏙️ ";
+    margin-right: 0.5rem;
+}
+
+.nav__link[id="nav-hotels"] .nav__link-label::before {
+    content: "🏨 ";
+    margin-right: 0.5rem;
+}
+
+.nav__link[id="nav-cars"] .nav__link-label::before {
+    content: "🚗 ";
+    margin-right: 0.5rem;
+}
+
+.nav__link[id="nav-categories"] .nav__link-label::before {
+    content: "📁 ";
+    margin-right: 0.5rem;
+}
+
+.nav__link[id="nav-reviews"] .nav__link-label::before {
+    content: "⭐ ";
+    margin-right: 0.5rem;
+}
+
+.nav__link[id="nav-users"] .nav__link-label::before {
+    content: "👤 ";
+    margin-right: 0.5rem;
+}
+
+.nav__link[id="nav-media"] .nav__link-label::before {
+    content: "🖼️ ";
+    margin-right: 0.5rem;
+}
+
+.nav__link[id="nav-global-pages"] .nav__link-label::before {
+    content: "📄 ";
+    margin-right: 0.5rem;
+}
+.nav__link:hover,
+.nav__link:hover .nav__link-label::before {
+    text-decoration: none !important;
+}
+
+/* ========================================== */
+/* 🔒 PAGES GLOBAL - LOCK SECTIONS */
+/* ========================================== */
+
+/* Hide API button in Pages global */
+a.doc-tab[aria-label="API"][href*="/globals/pages/api"],
+a.btn[aria-label="API"][href*="/globals/pages/api"] {
+    display: none !important;
+}
+
+/* Hide the row actions menu (3 dots) */
+.blocks-field [class*="rowActions"],
+.blocks-field button[aria-label*="Row actions"],
+.blocks-field button[class*="popup-button"] {
+    display: none !important;
+}
+
+/* Hide Add Section button */
+.blocks-field button[class*="array-actions__button"],
+.blocks-field button:has(span:contains("Add Section")),
+.field-type-blocks>div>button {
+    display: none !important;
+}
+
+/* Hide the entire actions column if it contains action buttons */
+.blocks-field [class*="BlockRow"]>div:last-child:has(button) {
+    display: none !important;
+}
+
+/* More aggressive - hide any buttons in the sections field except collapse */
+[data-field-id="sections"] button:not([class*="collapsible"]):not([aria-label*="Collapse"]) {
+    display: none !important;
+}

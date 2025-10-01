@@ -6,7 +6,8 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
-import { Send } from 'lucide-react'
+import { Send, CheckCircle, AlertCircle } from 'lucide-react'
+import { sendTelegramMessage } from '@/lib/utils/telegram'
 
 const ContactForm = () => {
   const t = useTranslations('pages.contact_us')
@@ -17,6 +18,8 @@ const ContactForm = () => {
     subject: '',
     message: '',
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -26,17 +29,58 @@ const ContactForm = () => {
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      // Format message for Telegram
+      const message = `
+🆕 *New Contact Form Submission*
+
+👤 *Name:* ${formData.fullName}
+📧 *Email:* ${formData.email}
+📱 *Phone:* ${formData.phone || 'Not provided'}
+📋 *Subject:* ${formData.subject}
+
+💬 *Message:*
+${formData.message}
+
+⏰ *Submitted:* ${new Date().toLocaleString('en-GB', { dateStyle: 'long', timeStyle: 'short' })}
+      `.trim()
+
+      // Send to Telegram
+      await sendTelegramMessage(message)
+
+      // Success
+      setSubmitStatus('success')
+      setFormData({
+        fullName: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: '',
+      })
+
+      // Reset success message after 5 seconds
+      setTimeout(() => setSubmitStatus('idle'), 5000)
+    } catch (error) {
+      console.error('Contact form error:', error)
+      setSubmitStatus('error')
+
+      // Reset error message after 5 seconds
+      setTimeout(() => setSubmitStatus('idle'), 5000)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
     <div className='space-y-6'>
       <div>
         <h2 className='text-sitora-text-subtitle mb-2 text-2xl font-bold'>{t('contact_us')}</h2>
-        <p className='text-sitora-body text-sm'>{t('contact_us')}</p>
+        <p className='text-sitora-body text-sm'>{t('contact_description')}</p>
       </div>
 
       <form onSubmit={handleSubmit} className='space-y-6'>
@@ -82,11 +126,37 @@ const ContactForm = () => {
         </div>
 
         {/* Submit Button */}
-        <div className='flex justify-end'>
-          <Button type='submit' className='bg-sitora-primary hover:bg-sitora-primary/90 text-sitora-white px-6 py-3 text-sm font-semibold'>
-            <Send className='mr-2 h-4 w-4' />
-            {t('send_message')}
-          </Button>
+        <div className='flex flex-col gap-3'>
+          <div className='flex justify-end'>
+            <Button type='submit' size='lg' disabled={isSubmitting} className='bg-sitora-primary hover:bg-sitora-primary/90 text-sitora-white px-6 py-3 text-sm font-semibold disabled:opacity-50'>
+              {isSubmitting ? (
+                <>
+                  <div className='mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent' />
+                  {t('sending')}
+                </>
+              ) : (
+                <>
+                  <Send className='mr-2 h-4 w-4' />
+                  {t('send_message')}
+                </>
+              )}
+            </Button>
+          </div>
+
+          {/* Success/Error Messages */}
+          {submitStatus === 'success' && (
+            <div className='bg-sitora-success/10 border-sitora-success flex items-center gap-2 rounded-lg border p-3'>
+              <CheckCircle className='text-sitora-success h-5 w-5 flex-shrink-0' />
+              <p className='text-sitora-success text-sm font-medium'>{t('success_message')}</p>
+            </div>
+          )}
+
+          {submitStatus === 'error' && (
+            <div className='bg-sitora-error/10 border-sitora-error flex items-center gap-2 rounded-lg border p-3'>
+              <AlertCircle className='text-sitora-error h-5 w-5 flex-shrink-0' />
+              <p className='text-sitora-error text-sm font-medium'>{t('error_message')}</p>
+            </div>
+          )}
         </div>
       </form>
     </div>

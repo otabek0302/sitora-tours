@@ -8,14 +8,14 @@ interface HotelPoliciesProps {
 
 const HotelPolicies = ({ hotel }: HotelPoliciesProps) => {
   return (
-    <Card className='border-border bg-card shadow-none'>
+    <Card className='border-border bg-card rounded-[26px] shadow-none'>
       <CardHeader className='pb-4'>
         <div className='flex items-center gap-3'>
           <CardTitle className='text-sitora-text-heading text-xl font-bold'>Hotel Policies</CardTitle>
         </div>
       </CardHeader>
       <CardContent>
-        <div className='grid gap-6 sm:grid-cols-2'>
+        <div className='grid gap-4 sm:grid-cols-2'>
           {/* Check-in */}
           <div className='flex items-start gap-3'>
             <Clock className='text-sitora-primary mt-1 h-5 w-5 flex-shrink-0' />

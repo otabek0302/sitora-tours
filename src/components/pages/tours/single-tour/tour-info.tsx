@@ -17,7 +17,7 @@ const TourInfo = ({ tour }: TourInfoProps) => {
     .join(', ')
 
   return (
-    <div className='mb-8'>
+    <div className='mb-6'>
       <div className='mb-4'>
         {tour.name && <h1 className='text-sitora-primary mb-2 text-lg leading-normal font-bold md:text-3xl'>{tour.name}</h1>}
         <div className='text-sitora-body mb-2 flex flex-wrap items-center gap-4 text-sm font-medium'>

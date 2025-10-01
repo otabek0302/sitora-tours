@@ -1,14 +1,15 @@
 'use client'
 
-import HotelsContent from '@/components/pages/hotels/hotels-content'
-
 import { useEffect } from 'react'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { useHotelsContext } from '@/lib/stores'
+import { PageLoading, PageError, PageContainer } from '@/components/ui'
+import HotelsContent from '@/components/pages/hotels/hotels-content'
 
 const HotelsPage = () => {
   const locale = useLocale()
-  const { fetchHotels, setLocale } = useHotelsContext()
+  const t = useTranslations('pages.hotels')
+  const { fetchHotels, setLocale, loading, error } = useHotelsContext()
 
   useEffect(() => {
     setLocale(locale)
@@ -16,13 +17,15 @@ const HotelsPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale])
 
+  if (loading) return <PageLoading message={t('hotels_loading')} />
+  if (error) return <PageError title={t('hotels_error')} message={error} />
+
   return (
-    <section className='py-12 md:py-16'>
-      <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
-        <HotelsContent />
-      </div>
-    </section>
+    <PageContainer>
+      <HotelsContent />
+    </PageContainer>
   )
 }
 
 export default HotelsPage
+

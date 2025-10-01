@@ -31,7 +31,7 @@ export const useCitiesStore = create<CitiesState>((set, get) => ({
   cities: [],
   currentCity: null,
   recommendedCities: [],
-  loading: false,
+  loading: true, // Start with loading to prevent flash of empty content
   error: null,
   locale: 'en',
 

@@ -12,12 +12,12 @@ const CarSpecs = ({ car }: CarSpecsProps) => {
   const t = useTranslations('pages.cars.single')
 
   return (
-    <Card className='border-border bg-card shadow-none'>
+    <Card className='border-border bg-card rounded-[26px] shadow-none'>
       <CardHeader className='pb-4'>
         <CardTitle className='text-sitora-text-heading text-xl font-bold'>{t('specifications')}</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className='grid gap-6 sm:grid-cols-2'>
+        <div className='grid gap-4 sm:grid-cols-2'>
           {/* Brand */}
           <div className='flex items-start gap-3'>
             <span className='text-sitora-primary text-lg font-bold'>—</span>

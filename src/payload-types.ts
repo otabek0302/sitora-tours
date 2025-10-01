@@ -96,8 +96,12 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    pages: Page;
+  };
+  globalsSelect: {
+    pages: PagesSelect<false> | PagesSelect<true>;
+  };
   locale: 'uz' | 'ru' | 'en';
   user: User & {
     collection: 'users';
@@ -169,6 +173,24 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    card?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -263,10 +285,9 @@ export interface Tour {
   };
   booking_pricing?:
     | {
-        dateStart?: string | null;
-        dateEnd?: string | null;
-        pricePerAdult?: number | null;
-        pricePerChild?: number | null;
+        dateStart: string;
+        dateEnd: string;
+        pricePerPerson: number;
         id?: string | null;
       }[]
     | null;
@@ -358,7 +379,7 @@ export interface Review {
   /**
    * Auto-generated from first name
    */
-  slug: string;
+  slug?: string | null;
   first_name: string;
   last_name?: string | null;
   comment: string;
@@ -489,6 +510,30 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+  sizes?:
+    | T
+    | {
+        thumbnail?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        card?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -576,8 +621,7 @@ export interface ToursSelect<T extends boolean = true> {
     | {
         dateStart?: T;
         dateEnd?: T;
-        pricePerAdult?: T;
-        pricePerChild?: T;
+        pricePerPerson?: T;
         id?: T;
       };
   images?:
@@ -695,6 +739,147 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * 📄 Manage your website sections
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: number;
+  /**
+   * Website sections - Fixed structure, edit content only
+   */
+  sections?:
+    | (
+        | {
+            title: string;
+            subtitle: string;
+            button?: string | null;
+            image: number | Media;
+            posts?:
+              | {
+                  review?: (number | null) | Review;
+                  video?: (number | null) | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'hero';
+          }
+        | {
+            faqs?:
+              | {
+                  question: string;
+                  answer: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'faq';
+          }
+        | {
+            tours: number | Tour;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'special-offers';
+          }
+        | {
+            tours: (number | Tour)[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'recommended-tours';
+          }
+        | {
+            cities: (number | City)[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'recommended-cities';
+          }
+        | {
+            cars: (number | Car)[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'recommended-cars';
+          }
+      )[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  sections?:
+    | T
+    | {
+        hero?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              button?: T;
+              image?: T;
+              posts?:
+                | T
+                | {
+                    review?: T;
+                    video?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        faq?:
+          | T
+          | {
+              faqs?:
+                | T
+                | {
+                    question?: T;
+                    answer?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'special-offers'?:
+          | T
+          | {
+              tours?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'recommended-tours'?:
+          | T
+          | {
+              tours?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'recommended-cities'?:
+          | T
+          | {
+              cities?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'recommended-cars'?:
+          | T
+          | {
+              cars?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

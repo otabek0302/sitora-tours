@@ -28,14 +28,7 @@
         "main_title": "Discover Amazing Places",
         "main_subtitle": "Explore the world's most beautiful destinations with our premium travel packages",
         "main_button": "Start Your Journey",
-        "card1_title": "Adventure Tours",
-        "card1_subtitle": "Experience thrilling adventures",
-        "card2_title": "Cultural Heritage",
-        "card2_subtitle": "Discover rich traditions",
-        "card3_title": "Luxury Travel",
-        "card3_subtitle": "Premium experiences",
-        "card4_title": "Nature & Wildlife",
-        "card4_subtitle": "Connect with nature"
+        "no_image": "No Image"
       },
       "faq": {
         "heading": "Frequently Asked Questions",
@@ -91,6 +84,8 @@
           "namePlaceholder": "Enter your first name",
           "lastName": "Last Name",
           "lastNamePlaceholder": "Enter your last name",
+          "tour": "Select Tour",
+          "selectTour": "Choose a tour you experienced",
           "rating": "Rating",
           "outOf5": "out of 5",
           "comment": "Your Review",
@@ -118,20 +113,13 @@
         "heading": "Top Travel Destinations",
         "subheading": "Discover our most popular and breathtaking destinations",
         "bookNow": "Book Now",
-        "tours": {
-          "astana": {
-            "title": "One-Day Private Tour in Astana",
-            "description": "Experience the modern capital of Kazakhstan with its stunning architecture, including the iconic Baiterek Tower and the futuristic cityscape."
-          },
-          "samarkand": {
-            "title": "Historic Samarkand Discovery",
-            "description": "Journey through the ancient Silk Road city, exploring magnificent mosques, mausoleums, and the legendary Registan Square."
-          },
-          "bukhara": {
-            "title": "Bukhara Cultural Heritage Tour",
-            "description": "Immerse yourself in the rich history of Bukhara, visiting ancient madrasas, bazaars, and architectural masterpieces."
-          }
-        }
+        "no_image": "No Image",
+        "no_tour": "No special tour selected",
+        "day": "day",
+        "days": "days",
+        "night": "night",
+        "nights": "nights",
+        "per_person": "per person"
       },
       "services": {
         "heading": "Our Services",
@@ -170,7 +158,8 @@
         "subheading": "Explore the most beautiful cities and destinations around the world",
         "loading": "Loading cities...",
         "error": "Failed to load cities",
-        "view_all": "View All Destinations"
+        "view_all": "View All Destinations",
+        "no_image": "No Image"
       },
       "recommended_cars": {
         "heading": "Recommended Cars",
@@ -181,7 +170,8 @@
         "per_day": "per day",
         "book_now": "Book Now",
         "seats": "seats",
-        "reviews": "reviews"
+        "reviews": "reviews",
+        "no_image": "No Image"
       },
       "recommended_tours": {
         "heading": "Special Tours in Uzbekistan",
@@ -189,38 +179,14 @@
         "loading": "Loading recommended tours...",
         "error": "Failed to load tours",
         "reviews": "reviews",
+        "view_all": "View All Tours",
         "per_person": "per person",
         "book_now": "Book Now",
         "days": "days",
         "day": "day",
         "nights": "nights",
         "night": "night",
-        "tours": {
-          "bukhara": {
-            "title": "4 Days Tours in Bukhara",
-            "duration": "4 days",
-            "transport": "Transport Facility",
-            "type": "Classic"
-          },
-          "khiva": {
-            "title": "Advanced Tour in Khiva 5 days",
-            "duration": "5 days",
-            "transport": "Transport Facility",
-            "type": "Classic"
-          },
-          "samarkand": {
-            "title": "7 Days Tours in Samarkand",
-            "duration": "7 days",
-            "transport": "Transport Facility",
-            "type": "Group"
-          },
-          "tajikistan": {
-            "title": "4 Days Tours in Tajikistan",
-            "duration": "4 days",
-            "transport": "Transport Facility",
-            "type": "Classic"
-          }
-        }
+        "no_image": "No Image"
       }
     },
     "tours": {
@@ -309,17 +275,61 @@
       "prices": "Prices & Booking",
       "no_pricing_available": "No pricing information available",
       "departure_dates": "Departure Dates",
-      "adult": "Adult",
-      "child": "Child",
+      "per_person": "Per Person",
       "book_now": "Book Now",
-      "price_per_adult": "Price Per Adult",
+      "starting_price": "Starting Price",
       "contact_us": "Contact Us",
       "important_notes": "Important Notes",
       "prices_per_person": "All prices are per person",
-      "child_prices_ages": "Child prices apply for ages 2-11",
       "prices_may_vary": "Prices may vary based on season",
+      "group_discounts_available": "Group discounts available",
       "reviews": "Reviews",
       "related_tours": "Related Tours"
+    },
+    "apply_tour": {
+      "form": {
+        "title": "Apply for Tour",
+        "subtitle": "Apply for",
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "first_name_placeholder": "Enter your first name",
+        "last_name_placeholder": "Enter your last name",
+        "tour_date": "Tour Date",
+        "select_tour_date": "Select tour date",
+        "phone": "Phone Number",
+        "phone_placeholder": "+1 (555) 123-4567",
+        "email": "Email Address",
+        "email_placeholder": "your.email@example.com",
+        "cancel": "Cancel",
+        "submit": "Apply for Tour",
+        "submitting": "Submitting...",
+        "success": "Application submitted successfully! We will contact you soon.",
+        "error": "Failed to submit application. Please try again.",
+        "validation_error": "Please fill all required fields",
+        "select_date_error": "Please select a tour date"
+      }
+    },
+    "apply_car": {
+      "form": {
+        "title": "Book Car Rental",
+        "subtitle": "Book rental for",
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "first_name_placeholder": "Enter your first name",
+        "last_name_placeholder": "Enter your last name",
+        "rental_date": "Rental Date",
+        "select_date": "Select date",
+        "phone": "Phone Number",
+        "phone_placeholder": "+1 (555) 123-4567",
+        "email": "Email Address",
+        "email_placeholder": "your.email@example.com",
+        "cancel": "Cancel",
+        "submit": "Book Rental",
+        "submitting": "Submitting...",
+        "success": "Booking request submitted successfully! We will contact you soon.",
+        "error": "Failed to submit booking request. Please try again.",
+        "validation_error": "Please fill all required fields"
+      }
     },
     "cities": {
       "heading": "Cities",
@@ -368,6 +378,7 @@
       "heading": "Contact Us",
       "subheading": "Get in touch with our team for any questions or inquiries",
       "contact_us": "Contact Us",
+      "contact_description": "Fill out the form below and we'll get back to you as soon as possible.",
       "full_name": "Full Name",
       "full_name_placeholder": "Your full name",
       "email_address": "Email Address",
@@ -379,6 +390,9 @@
       "message": "Message",
       "message_placeholder": "Tell us more about your inquiry...",
       "send_message": "Send Message",
+      "sending": "Sending...",
+      "success_message": "Thank you! Your message has been sent successfully. We'll get back to you soon.",
+      "error_message": "Failed to send message. Please try again or contact us directly.",
       "email": "Email",
       "phone": "Phone",
       "office": "Office",

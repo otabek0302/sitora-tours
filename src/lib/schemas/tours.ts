@@ -90,8 +90,7 @@ export const TourSchema = z.object({
         id: z.string().optional(),
         dateStart: z.string().optional(),
         dateEnd: z.string().optional(),
-        pricePerAdult: z.number().optional(),
-        pricePerChild: z.number().optional(),
+        pricePerPerson: z.number().optional(),
       }),
     )
     .optional(),

@@ -168,10 +168,9 @@ export const Tours: CollectionConfig = {
       label: 'Booking & Pricing',
       type: 'array',
       fields: [
-        { name: 'dateStart', type: 'date' },
-        { name: 'dateEnd', type: 'date' },
-        { name: 'pricePerAdult', type: 'number' },
-        { name: 'pricePerChild', type: 'number' },
+        { name: 'dateStart', type: 'date', required: true },
+        { name: 'dateEnd', type: 'date', required: true },
+        { name: 'pricePerPerson', type: 'number', required: true },
       ],
     },
     {

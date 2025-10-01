@@ -34,35 +34,17 @@ const TourRelated = ({ tour }: TourRelatedProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tourId, categoryId])
 
-  if (relatedToursLoading) {
-    return (
-      <div className='mb-8'>
-        <div className='border-sitora-primary mx-auto mb-4 h-8 w-8 animate-spin rounded-full border-b-2'></div>
-        <p className='text-sitora-body text-sm'>{t('loading')}</p>
-      </div>
-    )
-  }
-
-  if (relatedToursError) {
-    return (
-      <div className='mb-8'>
-        <h3 className='text-sitora-error mb-2 text-lg font-semibold'>{t('error')}</h3>
-        <p className='text-sitora-body text-sm'>{relatedToursError}</p>
-      </div>
-    )
-  }
-
   if (relatedTours.length === 0) {
     return null
   }
 
   return (
-    <div className='mb-8'>
+    <div className='mb-6'>
       <h2 className='text-sitora-text-subtitle mb-6 text-lg leading-normal font-bold md:text-2xl'>{t('related_tours')}</h2>
 
-      <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
+      <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
         {relatedTours.map(relatedTour => (
-          <div key={relatedTour.id} className='bg-card border-border group overflow-hidden rounded-3xl border shadow-none transition-all duration-300 hover:shadow-sm'>
+          <div key={relatedTour.id} className='bg-card border-border group overflow-hidden rounded-[26px] border shadow-none transition-all duration-300 hover:shadow-sm'>
             <Link href={`/tours/${relatedTour.slug}`}>
               {/* Tour Image */}
               <div className='relative h-48 w-full overflow-hidden'>

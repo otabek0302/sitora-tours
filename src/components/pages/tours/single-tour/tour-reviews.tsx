@@ -73,43 +73,17 @@ const TourReviews = ({ tour }: TourReviewsProps) => {
     fetchReviews()
   }, [tourId, fetched])
 
-  if (loading) {
-    return (
-      <div className='mb-8'>
-        <h2 className='text-sitora-text-subtitle mb-6 text-lg leading-normal font-bold md:text-2xl'>{t('reviews')}</h2>
-        <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
-          {[1, 2, 3].map(i => (
-            <div key={i} className='bg-card border-sitora-border animate-pulse rounded-3xl border p-6'>
-              <div className='mb-4 flex items-start gap-4'>
-                <div className='bg-sitora-border h-12 w-12 flex-shrink-0 rounded-full' />
-                <div className='flex-1 space-y-2'>
-                  <div className='bg-sitora-border h-4 w-24 rounded' />
-                  <div className='bg-sitora-border h-3 w-32 rounded' />
-                </div>
-              </div>
-              <div className='space-y-2'>
-                <div className='bg-sitora-border h-3 w-full rounded' />
-                <div className='bg-sitora-border h-3 w-4/5 rounded' />
-                <div className='bg-sitora-border h-3 w-3/4 rounded' />
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    )
-  }
-
   if (reviews.length === 0) {
     return null
   }
 
   return (
-    <div className='mb-8'>
+    <div className='mb-6'>
       <h2 className='text-sitora-text-subtitle mb-6 text-lg leading-normal font-bold md:text-2xl'>{t('reviews')}</h2>
 
-      <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
+      <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
         {reviews.map((review, index) => (
-          <div key={review.id || index} className='bg-card border-sitora-primary rounded-3xl border p-6'>
+          <div key={review.id || index} className='bg-card border-sitora-primary rounded-[26px] border p-6 shadow-none'>
             <div className='mb-4 flex items-start gap-4'>
               <div className='flex-1'>
                 <h4 className='text-sitora-primary text-base font-bold'>{review.name}</h4>

@@ -18,11 +18,11 @@ const TourServices = ({ tour }: TourServicesProps) => {
   const { included, notIncluded } = tour.services
 
   return (
-    <div className='mb-8'>
+    <div className='mb-6'>
       <h2 className='text-sitora-text-subtitle mb-6 text-lg leading-normal font-bold md:text-2xl'>{t('services')}</h2>
 
-      <div className='grid grid-cols-1 gap-8 lg:grid-cols-2'>
-        <div className='bg-card border-sitora-primary rounded-3xl border p-6'>
+      <div className='grid grid-cols-1 gap-4 lg:grid-cols-2'>
+        <div className='bg-card border-sitora-primary rounded-[26px] border p-6 shadow-none'>
           <h3 className='mb-4 flex items-center gap-2 text-lg font-bold text-green-600'>
             <Check className='h-5 w-5' />
             {t('price_includes')}:
@@ -42,7 +42,7 @@ const TourServices = ({ tour }: TourServicesProps) => {
           )}
         </div>
 
-        <div className='bg-card border-sitora-primary rounded-3xl border p-6'>
+        <div className='bg-card border-sitora-primary rounded-[26px] border p-6 shadow-none'>
           <h3 className='mb-4 flex items-center gap-2 text-lg font-bold text-red-600'>
             <X className='h-5 w-5' />
             {t('price_not_includes')}:

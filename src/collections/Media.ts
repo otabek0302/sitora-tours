@@ -31,5 +31,22 @@ export const Media: CollectionConfig = {
     ],
   },
   timestamps: true,
-  upload: true,
+  upload: {
+    staticDir: './media',
+    mimeTypes: ['image/jpeg', 'image/png', 'video/mp4'],
+    imageSizes: [
+      {
+        name: 'thumbnail',
+        width: 400,
+        height: 300,
+        position: 'centre',
+      },
+      {
+        name: 'card',
+        width: 768,
+        height: 1024,
+        position: 'centre',
+      },
+    ],
+  },
 }

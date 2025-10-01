@@ -29,14 +29,7 @@
         "main_title": "Ajoyib joylarni kashf eting",
         "main_subtitle": "Dunyoning eng chiroyli joylarini bizning premium sayohat paketlarimiz bilan kashf eting",
         "main_button": "Sayohatingizni boshlang",
-        "card1_title": "Sarguzasht turlari",
-        "card1_subtitle": "Hayajonli sarguzashtlarni bosing",
-        "card2_title": "Madaniy meros",
-        "card2_subtitle": "Boy an'analarni kashf eting",
-        "card3_title": "Hashamatli sayohat",
-        "card3_subtitle": "Premium tajribalar",
-        "card4_title": "Tabiat va yovvoyi tabiat",
-        "card4_subtitle": "Tabiat bilan bog'laning"
+        "no_image": "Rasm yo'q"
       },
       "faq": {
         "heading": "Tez-tez so'raladigan savollar",
@@ -92,6 +85,8 @@
           "namePlaceholder": "Ismingizni kiriting",
           "lastName": "Familiya",
           "lastNamePlaceholder": "Familiyangizni kiriting",
+          "tour": "Turni tanlang",
+          "selectTour": "Siz tashrif buyurgan turni tanlang",
           "rating": "Baholash",
           "outOf5": "5 dan",
           "comment": "Sizning sharhingiz",
@@ -119,20 +114,13 @@
         "heading": "Eng mashhur sayohat yo'nalishlari",
         "subheading": "Bizning eng mashhur va ajoyib yo'nalishlarimizni kashf eting",
         "bookNow": "Buyurtma berish",
-        "tours": {
-          "astana": {
-            "title": "Astana shahrida bir kunlik shaxsiy sayohat",
-            "description": "Qozog'istonning zamonaviy poytaxti bilan tanishib chiqing, uning ajoyib me'moriyati, mashhur Bayterek minorasi va kelajak shahar manzarasini ko'ring."
-          },
-          "samarkand": {
-            "title": "Samarqand tarixiy kashfiyoti",
-            "description": "Qadimgi Ipak yo'li shahri bo'ylab sayohat qiling, ulug'vor masjidlar, maqbaralar va afsonaviy Registon maydonini o'rganing."
-          },
-          "bukhara": {
-            "title": "Buxoro madaniy meros sayohati",
-            "description": "Buxoroning boy tarixiga sho'ng'ing, qadimgi madrasalar, bozorlar va me'moriy shah asarlarini ziyorat qiling."
-          }
-        }
+        "no_tour": "Maxsus tur tanlanmagan",
+        "day": "kun",
+        "days": "kun",
+        "night": "tun",
+        "nights": "tun",
+        "per_person": "kishi boshiga",
+        "no_image": "Rasm yo'q"
       },
       "services": {
         "heading": "Bizning xizmatlarimiz",
@@ -171,7 +159,8 @@
         "subheading": "Dunyoning eng chiroyli shaharlari va yo'nalishlarini kashf eting",
         "loading": "Shaharlar yuklanmoqda...",
         "error": "Shaharlarni yuklashda xatolik",
-        "view_all": "Barcha yo'nalishlarni ko'rish"
+        "view_all": "Barcha yo'nalishlarni ko'rish",
+        "no_image": "Rasm yo'q"
       },
       "recommended_cars": {
         "heading": "Tavsiya etilgan avtomobillar",
@@ -182,7 +171,8 @@
         "per_day": "kuniga",
         "book_now": "Buyurtma berish",
         "seats": "o'rindiq",
-        "reviews": "sharhlar"
+        "reviews": "sharhlar",
+        "no_image": "Rasm yo'q"
       },
       "recommended_tours": {
         "heading": "O'zbekistondagi maxsus sayohatlar",
@@ -192,36 +182,12 @@
         "reviews": "sharhlar",
         "per_person": "kishiga",
         "book_now": "Buyurtma berish",
+        "view_all": "Barcha turlarni ko'rish",
         "days": "kunlar",
         "day": "kun",
         "nights": "tunlar",
         "night": "tun",
-        "tours": {
-          "bukhara": {
-            "title": "Buxoroda 4 kunlik sayohatlar",
-            "duration": "4 kun",
-            "transport": "Transport xizmati",
-            "type": "Klassik"
-          },
-          "khiva": {
-            "title": "Xivada ilg'or sayohat 5 kun",
-            "duration": "5 kun",
-            "transport": "Transport xizmati",
-            "type": "Klassik"
-          },
-          "samarkand": {
-            "title": "Samarqandda 7 kunlik sayohatlar",
-            "duration": "7 kun",
-            "transport": "Transport xizmati",
-            "type": "Guruhli"
-          },
-          "tajikistan": {
-            "title": "Tojikistonda 4 kunlik sayohatlar",
-            "duration": "4 kun",
-            "transport": "Transport xizmati",
-            "type": "Klassik"
-          }
-        }
+        "no_image": "Rasm yo'q"
       }
     },
     "tours": {
@@ -310,17 +276,61 @@
       "prices": "Narxlar va bron qilish",
       "no_pricing_available": "Narx ma'lumotlari mavjud emas",
       "departure_dates": "Jo'nash sanalari",
-      "adult": "Kattalar",
-      "child": "Bolalar",
+      "per_person": "Kishi boshiga",
       "book_now": "Bron qilish",
-      "price_per_adult": "Katta kishi uchun narx",
+      "starting_price": "Boshlang'ich narx",
       "contact_us": "Biz bilan bog'laning",
       "important_notes": "Muhim eslatmalar",
       "prices_per_person": "Barcha narxlar kishi boshiga",
-      "child_prices_ages": "Bolalar narxi 2-11 yoshdagilar uchun",
       "prices_may_vary": "Narxlar mavsumga qarab o'zgarishi mumkin",
+      "group_discounts_available": "Guruh chegirmalari mavjud",
       "reviews": "Sharhlar",
       "related_tours": "O'xshash turlar"
+    },
+    "apply_tour": {
+      "form": {
+        "title": "Turga ariza berish",
+        "subtitle": "Ariza berish",
+        "first_name": "Ism",
+        "last_name": "Familiya",
+        "first_name_placeholder": "Ismingizni kiriting",
+        "last_name_placeholder": "Familiyangizni kiriting",
+        "tour_date": "Tur sanasi",
+        "select_tour_date": "Tur sanasini tanlang",
+        "phone": "Telefon raqami",
+        "phone_placeholder": "+998 (90) 123-4567",
+        "email": "Elektron pochta",
+        "email_placeholder": "sizning.email@example.com",
+        "cancel": "Bekor qilish",
+        "submit": "Ariza berish",
+        "submitting": "Yuborilmoqda...",
+        "success": "Ariza muvaffaqiyatli yuborildi! Tez orada siz bilan bog'lanamiz.",
+        "error": "Arizani yuborishda xatolik yuz berdi. Iltimos, qayta urinib ko'ring.",
+        "validation_error": "Iltimos, barcha majburiy maydonlarni to'ldiring",
+        "select_date_error": "Iltimos, tur sanasini tanlang"
+      }
+    },
+    "apply_car": {
+      "form": {
+        "title": "Avtomobil ijarasini bron qilish",
+        "subtitle": "Bron qilish",
+        "first_name": "Ism",
+        "last_name": "Familiya",
+        "first_name_placeholder": "Ismingizni kiriting",
+        "last_name_placeholder": "Familiyangizni kiriting",
+        "rental_date": "Ijara sanasi",
+        "select_date": "Sanani tanlang",
+        "phone": "Telefon raqami",
+        "phone_placeholder": "+998 (90) 123-4567",
+        "email": "Elektron pochta",
+        "email_placeholder": "sizning.email@example.com",
+        "cancel": "Bekor qilish",
+        "submit": "Bron qilish",
+        "submitting": "Yuborilmoqda...",
+        "success": "Bron qilish so'rovi muvaffaqiyatli yuborildi! Tez orada siz bilan bog'lanamiz.",
+        "error": "Bron qilish so'rovini yuborishda xatolik yuz berdi. Iltimos, qayta urinib ko'ring.",
+        "validation_error": "Iltimos, barcha majburiy maydonlarni to'ldiring"
+      }
     },
     "cities": {
       "heading": "Shaharlar",
@@ -369,6 +379,7 @@
       "heading": "Biz bilan bog'laning",
       "subheading": "Har qanday savol yoki so'rov uchun bizning jamoamiz bilan bog'laning",
       "contact_us": "Biz bilan bog'laning",
+      "contact_description": "Quyidagi shaklni to'ldiring, biz imkon qadar tezroq siz bilan bog'lanamiz.",
       "full_name": "To'liq ism",
       "full_name_placeholder": "Sizning to'liq ismingiz",
       "email_address": "Elektron pochta manzili",
@@ -380,6 +391,9 @@
       "message": "Xabar",
       "message_placeholder": "So'rovingiz haqida ko'proq ma'lumot bering...",
       "send_message": "Xabar yuborish",
+      "sending": "Yuborilmoqda...",
+      "success_message": "Rahmat! Xabaringiz muvaffaqiyatli yuborildi. Tez orada siz bilan bog'lanamiz.",
+      "error_message": "Xabarni yuborib bo'lmadi. Iltimos, qaytadan urinib ko'ring yoki biz bilan bevosita bog'laning.",
       "email": "Email",
       "phone": "Telefon",
       "office": "Ofis",

@@ -11,7 +11,7 @@ const HotelFeatures = ({ hotel }: HotelFeaturesProps) => {
   }
 
   return (
-    <Card className='border-border bg-card shadow-none'>
+    <Card className='border-border bg-card rounded-[26px] shadow-none'>
       <CardHeader className='pb-4'>
         <CardTitle className='text-sitora-text-heading text-xl font-bold'>Hotel Features</CardTitle>
       </CardHeader>
