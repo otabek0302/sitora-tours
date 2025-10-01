@@ -36,28 +36,10 @@ const Hero = () => {
           <div className='bg-card border-border group relative h-[400px] cursor-pointer overflow-hidden rounded-[32px] border shadow-none transition-all duration-300 hover:shadow-sm lg:h-[500px]'>
             {/* Background Image */}
             {typeof image === 'object' && image?.url ? (
-              <Image 
-                src={image.url} 
-                alt={title} 
-                fill 
-                sizes='(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw' 
-                className='object-cover transition-transform duration-700 group-hover:scale-105' 
-                priority 
-                quality={85}
-                placeholder='blur'
-                blurDataURL='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNmM2Y0ZjYiLz48L3N2Zz4='
-              />
+              <Image src={image.url} alt={title} fill sizes='(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw' className='object-cover transition-transform duration-700 group-hover:scale-105' priority quality={85} placeholder='blur' blurDataURL='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNmM2Y0ZjYiLz48L3N2Zz4=' />
             ) : (
               <div className='bg-sitora-primary-light flex h-full w-full items-center justify-center'>
-                <Image 
-                  src='/images/home/home-hero.jpg' 
-                  alt={title} 
-                  fill 
-                  sizes='(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw' 
-                  className='object-cover' 
-                  priority 
-                  quality={85}
-                />
+                <Image src='/images/home/home-hero.jpg' alt={title} fill sizes='(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw' className='object-cover' priority quality={85} />
               </div>
             )}
 
