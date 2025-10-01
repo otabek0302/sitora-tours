@@ -12,7 +12,7 @@ services:
       - node_modules:/home/node/app/node_modules
       - media:/home/node/app/media
     working_dir: /home/node/app/
-    command: sh -c "corepack enable && corepack prepare pnpm@latest --activate && pnpm install && pnpm dev"
+    command: sh -c "corepack enable && corepack prepare pnpm@latest --activate && pnpm install && pnpm build && pnpm start"
     depends_on:
       postgres:
         condition: service_healthy

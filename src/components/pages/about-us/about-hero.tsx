@@ -33,8 +33,10 @@ const AboutHero = () => {
 
       {/* About Hero Left Side */}
       <div className='flex flex-1 flex-col gap-4 rounded-[32px]'>
-        <div className='border-border relative rounded-[32px] border p-4 shadow-none lg:h-72'>
-          <Image src='/images/about-us/about-hero.png' fill alt='About Hero' className='object-cover' />
+        <div className='border-border relative overflow-hidden rounded-[32px] border p-4 shadow-none lg:h-72'>
+          <div className='border-border relative h-full w-full overflow-hidden rounded-[26px] border'>
+            <Image src='/images/about-us/about-hero.jpg' fill alt='About Hero' className='object-cover' />
+          </div>
         </div>
         <div className='border-border grid grid-cols-2 gap-4 rounded-[32px] border p-4 shadow-none lg:h-72'>
           <div className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-4 shadow-none'>
