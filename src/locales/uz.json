@@ -445,5 +445,33 @@
         "book_button": "Avtomobilni band qilish"
       }
     }
+  },
+  "components": {
+    "cookie_consent": {
+      "title": "Cookie Sozlamalari",
+      "description": "Biz ko'rishingizni yaxshilash, shaxsiylashtirilgan kontent taqdim etish va trafikni tahlil qilish uchun cookie-fayllardan foydalanamiz. \"Hammasini qabul qilish\" tugmasini bosish orqali siz cookie-fayllardan foydalanishga rozilik bildirasiz.",
+      "privacy_policy": "Maxfiylik Siyosatimizni O'qing",
+      "buttons": {
+        "show_details": "Tafsilotlarni Ko'rsatish",
+        "hide_details": "Tafsilotlarni Yashirish",
+        "accept_all": "Hammasini Qabul Qilish",
+        "close": "Yopish",
+        "save_preferences": "Sozlamalarni Saqlash"
+      },
+      "cookies": {
+        "necessary": {
+          "title": "Zarur Cookie-fayllar",
+          "description": "Bu cookie-fayllar veb-saytning to'g'ri ishlashi uchun zarur."
+        },
+        "analytics": {
+          "title": "Analitik Cookie-fayllar",
+          "description": "Tashrif buyuruvchilar veb-sayt bilan qanday muloqot qilishini tushunishga yordam beradi."
+        },
+        "marketing": {
+          "title": "Marketing Cookie-fayllar",
+          "description": "Tashrif buyuruvchilarni veb-saytlar bo'ylab kuzatish va tegishli reklamalarni ko'rsatish uchun ishlatiladi."
+        }
+      }
+    }
   }
 }

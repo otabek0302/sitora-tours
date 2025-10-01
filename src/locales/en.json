@@ -444,5 +444,33 @@
         "book_button": "Book This Car"
       }
     }
+  },
+  "components": {
+    "cookie_consent": {
+      "title": "Cookie Preferences",
+      "description": "We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking \"Accept All\", you consent to our use of cookies.",
+      "privacy_policy": "Read our Privacy Policy",
+      "buttons": {
+        "show_details": "Show Details",
+        "hide_details": "Hide Details",
+        "accept_all": "Accept All",
+        "close": "Close",
+        "save_preferences": "Save Preferences"
+      },
+      "cookies": {
+        "necessary": {
+          "title": "Necessary Cookies",
+          "description": "These cookies are essential for the website to function properly."
+        },
+        "analytics": {
+          "title": "Analytics Cookies",
+          "description": "Help us understand how visitors interact with our website."
+        },
+        "marketing": {
+          "title": "Marketing Cookies",
+          "description": "Used to track visitors across websites to display relevant ads."
+        }
+      }
+    }
   }
 }
