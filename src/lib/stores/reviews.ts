@@ -16,7 +16,7 @@ interface ReviewsState {
 
 export const useReviewsContext = create<ReviewsState>((set, get) => ({
   reviews: [],
-  loading: true, // Start with loading to prevent flash of empty content
+  loading: false,
   error: null,
   locale: 'en',
 

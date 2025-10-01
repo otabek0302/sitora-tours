@@ -11,7 +11,7 @@ import CarsPagination from '@/components/pages/cars/cars-pagination'
 const CarsPage = () => {
   const locale = useLocale()
   const t = useTranslations('pages.cars')
-  const { fetchCars, setLocale, loading, error } = useCarsContext()
+  const { fetchCars, setLocale, loading, error, cars } = useCarsContext()
 
   useEffect(() => {
     setLocale(locale)
@@ -19,7 +19,8 @@ const CarsPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale])
 
-  if (loading) return <PageLoading message={t('cars_loading')} />
+  // Show loading only on initial load (before first fetch completes)
+  if (loading && cars.length === 0) return <PageLoading message={t('cars_loading')} />
   if (error) return <PageError title={t('cars_error')} message={error} />
 
   return (

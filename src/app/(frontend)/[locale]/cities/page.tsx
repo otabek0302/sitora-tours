@@ -9,7 +9,7 @@ import CitiesContent from '@/components/pages/cities/cities-content'
 const CitiesPage = () => {
   const locale = useLocale()
   const t = useTranslations('pages.cities')
-  const { fetchCities, setLocale, loading, error } = useCitiesContext()
+  const { fetchCities, setLocale, loading, error, cities } = useCitiesContext()
 
   useEffect(() => {
     setLocale(locale)
@@ -17,7 +17,8 @@ const CitiesPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale])
 
-  if (loading) return <PageLoading message={t('cities_loading')} />
+  // Show loading only on initial load (before first fetch completes)
+  if (loading && cities.length === 0) return <PageLoading message={t('cities_loading')} />
   if (error) return <PageError title={t('cities_error')} message={error} />
 
   return (
@@ -28,4 +29,3 @@ const CitiesPage = () => {
 }
 
 export default CitiesPage
-

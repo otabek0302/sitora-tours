@@ -11,7 +11,7 @@ import ToursPagination from '@/components/pages/tours/tours-pagination'
 const ToursPage = () => {
   const locale = useLocale()
   const t = useTranslations('pages.tours')
-  const { fetchTours, setLocale, loading, error } = useToursContext()
+  const { fetchTours, setLocale, loading, error, tours } = useToursContext()
 
   useEffect(() => {
     setLocale(locale)
@@ -19,7 +19,8 @@ const ToursPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale])
 
-  if (loading) return <PageLoading message={t('tours_loading')} />
+  // Show loading only on initial load (before first fetch completes)
+  if (loading && tours.length === 0) return <PageLoading message={t('tours_loading')} />
   if (error) return <PageError title={t('tours_error')} message={error} />
 
   return (

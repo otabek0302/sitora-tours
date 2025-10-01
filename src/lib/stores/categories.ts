@@ -23,7 +23,7 @@ interface CategoriesState {
 export const useCategoriesStore = create<CategoriesState>((set, get) => ({
   // Initial state
   categories: [],
-  loading: true, // Start with loading to prevent flash of empty content
+  loading: false,
   error: null,
   locale: 'en',
 

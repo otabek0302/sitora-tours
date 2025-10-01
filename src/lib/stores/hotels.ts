@@ -27,7 +27,7 @@ export const useHotelsStore = create<HotelsState>((set, get) => ({
   // Initial state
   hotels: [],
   currentHotel: null,
-  loading: true, // Start with loading to prevent flash of empty content
+  loading: false,
   error: null,
   locale: 'en',
 

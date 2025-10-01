@@ -1,7 +1,10 @@
-# To use this Dockerfile, you have to set `output: 'standalone'` in your next.config.mjs file.
-# From https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile
+# Sitora Tours - Production Dockerfile
+# Optimized multi-stage build for Next.js 15 + Payload CMS
 
 FROM node:22.17.0-alpine AS base
+
+# Install pnpm
+RUN corepack enable && corepack prepare pnpm@latest --activate
 
 # Install dependencies only when needed
 FROM base AS deps
@@ -48,8 +51,12 @@ ENV NODE_ENV production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-# Remove this line if you do not have this folder
+# Copy public folder
 COPY --from=builder /app/public ./public
+
+# Create media directory for uploads
+RUN mkdir -p ./media
+RUN chown -R nextjs:nodejs ./media
 
 # Set the correct permission for prerender cache
 RUN mkdir .next
@@ -60,12 +67,19 @@ RUN chown nextjs:nodejs .next
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
+# Copy media files (if any exist during build)
+COPY --from=builder --chown=nextjs:nodejs /app/media ./media
+
 USER nextjs
 
 EXPOSE 3000
 
-ENV PORT 3000
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
 
-# server.js is created by next build from the standalone output
-# https://nextjs.org/docs/pages/api-reference/next-config-js/output
-CMD HOSTNAME="0.0.0.0" node server.js
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:3000/api/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"
+
+# Start the application
+CMD ["node", "server.js"]

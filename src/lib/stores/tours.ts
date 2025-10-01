@@ -49,7 +49,7 @@ export const useToursStore = create<ToursState>((set, get) => ({
   currentTour: null,
   recommendedTours: [],
   relatedTours: [],
-  loading: true, // Start with loading to prevent flash of empty content
+  loading: false,
   error: null,
   relatedToursLoading: false,
   relatedToursError: null,
