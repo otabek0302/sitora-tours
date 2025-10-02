@@ -100,7 +100,7 @@ const Hero = () => {
                     <p className='text-sitora-body line-clamp-3 text-sm leading-relaxed'>&quot;{reviewComment}&quot;</p>
                     <div className='mt-4 flex items-center justify-start gap-1'>
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className={`h-5 w-5 ${i < (reviewRating || 0) ? 'text-sitora-gold-medium fill-current' : 'text-gray-300'}`} />
+                        <Star key={i} className={`h-5 w-5 ${i < (reviewRating || 0) ? 'text-sitora-gold-medium fill-current' : 'text-sitora-muted dark:text-muted-foreground'}`} />
                       ))}
                     </div>
                     <p className='text-sitora-body mt-2 text-right text-sm leading-relaxed'>{reviewTour}</p>

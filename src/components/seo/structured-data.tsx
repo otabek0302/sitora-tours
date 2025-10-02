@@ -23,9 +23,9 @@ export const OrganizationStructuredData = () => {
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Mir Said Baraka Street, 1',
-      addressLocality: 'Tashkent',
+      addressLocality: 'Samarkand',
       addressCountry: 'UZ',
-      postalCode: '100000',
+      postalCode: '140100',
     },
 
     // Location Coordinates

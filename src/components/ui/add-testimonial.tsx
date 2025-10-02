@@ -167,8 +167,8 @@ export const AddTestimonial = ({ open, setOpen }: { open: boolean; setOpen: (ope
             <Label htmlFor='comment' className='text-sitora-text-subtitle text-sm font-medium'>
               {t('form.comment')} *
             </Label>
-            <Textarea id='comment' value={data.comment} onChange={e => setData(prev => ({ ...prev, comment: e.target.value }))} placeholder={t('form.commentPlaceholder')} className={`border-border focus:border-sitora-primary focus:ring-sitora-primary/20 min-h-[100px] resize-none rounded-md shadow-none outline-none focus:outline-none focus-visible:ring-0 sm:min-h-[120px] ${data.comment.length >= 500 ? 'border-red-500' : ''}`} required disabled={isSubmitting} maxLength={500} />
-            <p className={`text-xs ${data.comment.length >= 500 ? 'text-red-500' : 'text-sitora-body'}`}>
+            <Textarea id='comment' value={data.comment} onChange={e => setData(prev => ({ ...prev, comment: e.target.value }))} placeholder={t('form.commentPlaceholder')} className={`border-border focus:border-sitora-primary focus:ring-sitora-primary/20 min-h-[100px] resize-none rounded-md shadow-none outline-none focus:outline-none focus-visible:ring-0 sm:min-h-[120px] ${data.comment.length >= 500 ? 'border-sitora-error' : ''}`} required disabled={isSubmitting} maxLength={500} />
+            <p className={`text-xs ${data.comment.length >= 500 ? 'text-sitora-error' : 'text-sitora-body'}`}>
               {data.comment.length}/500 {t('form.characters')}
             </p>
           </div>
