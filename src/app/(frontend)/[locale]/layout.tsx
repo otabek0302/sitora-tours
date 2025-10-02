@@ -42,7 +42,7 @@ export default async function Layout({ children, params }: Props) {
       <body>
         {/* Google Tag Manager (noscript) */}
         <noscript>
-          <iframe src='https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXXXX' height='0' width='0' style={{ display: 'none', visibility: 'hidden' }} />
+          <iframe src='https://www.googletagmanager.com/ns.html?id=GTM-MPWKBQG6' height='0' width='0' style={{ display: 'none', visibility: 'hidden' }} />
         </noscript>
 
         <Providers locale={locale} messages={messages}>
