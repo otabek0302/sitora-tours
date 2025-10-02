@@ -41,8 +41,15 @@ echo -e "${GREEN}✅ Build completed${NC}"
 
 # 5. Build & Start Docker
 echo -e "\n${YELLOW}[5/7] Setting up Docker containers...${NC}"
-docker-compose down 2>/dev/null || true
-docker-compose up -d --build
+# Support both docker-compose (v1) and docker compose (v2)
+if command -v docker-compose &> /dev/null; then
+    DOCKER_COMPOSE="docker-compose"
+else
+    DOCKER_COMPOSE="docker compose"
+fi
+
+$DOCKER_COMPOSE down 2>/dev/null || true
+$DOCKER_COMPOSE up -d --build
 echo -e "${GREEN}✅ Containers started${NC}"
 
 # 6. Run Database Migrations
@@ -66,7 +73,7 @@ if [ "$TABLE_COUNT" -lt 5 ]; then
     
     # Restart app to pick up new tables
     echo -e "${YELLOW}Restarting application...${NC}"
-    docker-compose restart app
+    $DOCKER_COMPOSE restart app
     sleep 5
 else
     echo -e "${GREEN}✅ Database already migrated (${TABLE_COUNT} tables)${NC}"
@@ -84,18 +91,18 @@ if docker ps | grep -q sitora-tour-app; then
     echo -e "\n${GREEN}🌐 Frontend:    http://localhost:3000${NC}"
     echo -e "${GREEN}🔧 Admin Panel: http://localhost:3000/admin${NC}"
     echo -e "${GREEN}🗄️  Database:    postgresql://localhost:5432/sitora_tour${NC}"
-    echo -e "${GREEN}📊 PgAdmin:     http://localhost:5050 (run: docker-compose --profile tools up pgadmin)${NC}"
+    echo -e "${GREEN}📊 PgAdmin:     http://localhost:5050 (run: $DOCKER_COMPOSE --profile tools up pgadmin)${NC}"
     echo -e "\n${YELLOW}📝 Next Steps:${NC}"
     echo -e "   1. Visit http://localhost:3000/admin"
     echo -e "   2. Create your admin account"
     echo -e "   3. Start adding content!"
     echo -e "\n${YELLOW}📋 Useful Commands:${NC}"
-    echo -e "   • View logs:    docker-compose logs -f"
-    echo -e "   • Stop:         docker-compose down"
-    echo -e "   • Restart:      docker-compose restart"
+    echo -e "   • View logs:    $DOCKER_COMPOSE logs -f"
+    echo -e "   • Stop:         $DOCKER_COMPOSE down"
+    echo -e "   • Restart:      $DOCKER_COMPOSE restart"
 else
     echo -e "${RED}❌ Deployment failed!${NC}"
-    echo -e "${YELLOW}Check logs: docker-compose logs${NC}"
+    echo -e "${YELLOW}Check logs: $DOCKER_COMPOSE logs${NC}"
     exit 1
 fi
 
