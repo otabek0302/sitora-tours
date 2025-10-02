@@ -8,6 +8,7 @@ import sharp from 'sharp'
 
 import { Users, Media, Categories, Cities, Tours, Hotels, Cars, Reviews } from './collections'
 import { Pages } from './globals'
+import { env } from './lib/env'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -26,9 +27,12 @@ export default buildConfig({
   },
   collections: [Users, Media, Categories, Cities, Tours, Hotels, Cars, Reviews],
   globals: [Pages],
-  secret: process.env.PAYLOAD_SECRET || '',
+  secret: env.PAYLOAD_SECRET,
   typescript: { outputFile: path.resolve(dirname, 'payload-types.ts') },
-  db: postgresAdapter({ pool: { connectionString: process.env.DATABASE_URI || '' } }),
+  db: postgresAdapter({
+    pool: { connectionString: env.DATABASE_URI },
+    push: true,
+  }),
   sharp,
   plugins: [payloadCloudPlugin()],
 })

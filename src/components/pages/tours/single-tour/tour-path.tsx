@@ -9,7 +9,7 @@ interface TourPathProps {
   tour: Tour
 }
 
-const getCityName = (city: any): string => {
+const getCityName = (city: number | { id: number; name?: string }): string => {
   if (typeof city === 'object' && city.name) {
     return city.name.toUpperCase()
   }
@@ -45,8 +45,8 @@ const TourPath = ({ tour }: TourPathProps) => {
       <h2 className='text-sitora-text-subtitle mb-6 text-lg leading-normal font-bold md:text-2xl'>{t('travel_path')}</h2>
       <div className='space-y-4'>
         {tour.locations.map((location, index) => {
-          const fromCity = getCityName(location.from)
-          const toCity = getCityName(location.to)
+          const fromCity = getCityName(location?.from as number | { id: number; name?: string })
+          const toCity = getCityName(location?.to as number | { id: number; name?: string })
           const isExpanded = expandedLocation === location.id
 
           return (

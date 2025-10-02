@@ -38,7 +38,7 @@ const Hero = () => {
             {typeof image === 'object' && image?.url ? (
               <Image src={image.url} alt={title} fill sizes='(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw' className='object-cover transition-transform duration-700 group-hover:scale-105' priority quality={85} placeholder='blur' blurDataURL='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNmM2Y0ZjYiLz48L3N2Zz4=' />
             ) : (
-              <div className='bg-sitora-primary-light flex h-full w-full items-center justify-center'>
+              <div className='bg-sitora-primary-light relative flex h-full w-full items-center justify-center'>
                 <Image src='/images/home/home-hero.jpg' alt={title} fill sizes='(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw' className='object-cover' priority quality={85} />
               </div>
             )}
@@ -62,21 +62,22 @@ const Hero = () => {
 
         {/* Two Cards Below Hero - Dynamic from Reviews */}
         <div className='grid grid-cols-1 gap-4 lg:grid-cols-2'>
-          {posts?.slice(0, 2).map((post: any, index: number) => {
+          {posts?.slice(0, 2).map((post, index) => {
             const review = typeof post.review === 'object' ? post.review : null
             const reviewName = review ? `${review.first_name || ''} ${review.last_name || ''}`.trim() : 'Traveler'
             const reviewComment = review?.comment || 'Amazing experience!'
             const reviewRating = review?.rating || 5
-            const reviewTour = review?.tour?.name || 'Tour'
+            const reviewTour = typeof review?.tour === 'object' ? review.tour.name : 'Tour'
+            const videoUrl = typeof post.video === 'object' ? post.video.url : undefined
 
             return (
-              <div key={post.id || index} onClick={() => post.video?.url && handleVideoClick(post.video.url, reviewName, reviewComment)} className='bg-card border-border group h-[300px] cursor-pointer overflow-hidden rounded-[26px] border shadow-none transition-all duration-300 hover:shadow-sm lg:h-[350px]'>
+              <div key={post.id || index} onClick={() => videoUrl && handleVideoClick(videoUrl, reviewName, reviewComment)} className='bg-card border-border group h-[300px] cursor-pointer overflow-hidden rounded-[26px] border shadow-none transition-all duration-300 hover:shadow-sm lg:h-[350px]'>
                 <div className='flex h-full'>
                   {/* Video Section */}
                   <div className='relative h-full w-1/2 overflow-hidden'>
-                    {post.video?.url ? (
+                    {videoUrl ? (
                       <video className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105' autoPlay muted loop playsInline>
-                        <source src={post.video?.url} type='video/mp4' />
+                        <source src={videoUrl} type='video/mp4' />
                         Your browser does not support the video tag.
                       </video>
                     ) : (

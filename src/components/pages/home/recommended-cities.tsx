@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import useEmblaCarousel from 'embla-carousel-react'
 
@@ -58,7 +57,7 @@ const RecommendedCities = () => {
         {/* Cities Slider */}
         <div className='relative'>
           <div className='embla' ref={emblaRef}>
-            <div className='embla__container flex gap-4 py-4 pl-1'>{Array.isArray(cities) && cities.map((city: any) => <RecommendedCitiesCard key={city.id} city={city} />)}</div>
+            <div className='embla__container flex gap-4 py-4 pl-1'>{Array.isArray(cities) && cities.filter(city => typeof city !== 'number').map(city => <RecommendedCitiesCard key={city.id} city={city} />)}</div>
           </div>
         </div>
 

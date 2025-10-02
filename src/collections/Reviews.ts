@@ -1,7 +1,8 @@
-import { CollectionConfig } from 'payload'
+import { CollectionConfig, PayloadRequest } from 'payload'
+import { autoGenerateUniqueSlug } from '@/lib/utils/slug'
 
 // Helper function to calculate and update tour rating
-async function updateTourRating(req: any, tourId: number) {
+async function updateTourRating(req: PayloadRequest, tourId: number) {
   // Run in background to not block the review creation
   setImmediate(async () => {
     try {
@@ -22,7 +23,7 @@ async function updateTourRating(req: any, tourId: number) {
 
       // Calculate average rating
       if (reviews.docs && reviews.docs.length > 0) {
-        const totalRating = reviews.docs.reduce((sum: number, review: any) => sum + (review.rating || 0), 0)
+        const totalRating = reviews.docs.reduce((sum: number, review: { rating?: number }) => sum + (review.rating || 0), 0)
         const averageRating = totalRating / reviews.docs.length
         const roundedRating = Math.round(averageRating * 10) / 10
 
@@ -115,23 +116,7 @@ export const Reviews: CollectionConfig = {
     },
   ],
   hooks: {
-    beforeValidate: [
-      ({ data, operation }) => {
-        // Auto-generate unique slug from first name + timestamp
-        if (data?.first_name && operation === 'create') {
-          const cleanName = data.first_name
-            .toLowerCase()
-            .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
-            .replace(/\s+/g, '-') // Replace spaces with hyphens
-            .replace(/-+/g, '-') // Replace multiple hyphens with single
-            .trim()
-
-          // Add timestamp to ensure uniqueness
-          const timestamp = Date.now()
-          data.slug = `${cleanName}-${timestamp}`
-        }
-      },
-    ],
+    beforeValidate: [autoGenerateUniqueSlug],
     afterChange: [
       async ({ req, doc }) => {
         // Update tour rating after review is created or updated

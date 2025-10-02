@@ -12,25 +12,26 @@ import { useToursContext } from '@/lib/stores/tours'
 interface TourRelatedProps {
   tour: {
     id?: number | string
-    category?: any
+    category?: number | { id: string | number; name?: string; slug?: string }
   }
 }
 
 const TourRelated = ({ tour }: TourRelatedProps) => {
   const t = useTranslations('pages.single_tour')
   const locale = useLocale()
-  const { relatedTours, relatedToursLoading, relatedToursError, fetchRelatedTours } = useToursContext()
+  const { relatedTours, fetchRelatedTours } = useToursContext()
 
   // Extract stable IDs for dependencies
   const tourId = typeof tour.id === 'string' ? parseInt(tour.id) : tour.id
   const categoryId = typeof tour.category === 'object' ? tour.category?.id : tour.category
+  const numericCategoryId = typeof categoryId === 'string' ? parseInt(categoryId) : categoryId
 
   useEffect(() => {
-    if (!categoryId || !tourId || relatedTours.length > 0) {
+    if (!numericCategoryId || !tourId || relatedTours.length > 0) {
       return
     }
 
-    fetchRelatedTours(tourId, categoryId, 6, locale)
+    fetchRelatedTours(tourId, numericCategoryId, 6, locale)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tourId, categoryId])
 
@@ -76,7 +77,7 @@ const TourRelated = ({ tour }: TourRelatedProps) => {
                   {relatedTour.cities && relatedTour.cities.length > 0 && (
                     <div className='flex items-center gap-2'>
                       <MapPin className='text-sitora-primary h-4 w-4' />
-                      {relatedTour.cities.map((city: any, index: number) => (
+                      {relatedTour.cities.map((city: { id: string | number; name?: string }, index: number) => (
                         <span key={city.id} className='text-sitora-body text-sm font-medium'>
                           {city.name} {relatedTour.cities && relatedTour.cities.length > 1 && index < relatedTour.cities.length - 1 ? '→' : ''}
                         </span>

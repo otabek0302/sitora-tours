@@ -73,9 +73,9 @@ export const AddTestimonial = ({ open, setOpen }: { open: boolean; setOpen: (ope
       } else {
         toast.error(t('form.error'))
       }
-    } catch (error: any) {
+    } catch (error) {
       console.error('Submit error:', error)
-      const errorMessage = error?.message || t('form.error')
+      const errorMessage = error instanceof Error ? error.message : t('form.error')
       toast.error(errorMessage)
     } finally {
       setIsSubmitting(false)

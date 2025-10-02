@@ -56,7 +56,7 @@ export const RecommendedToursCard = ({ tour }: { tour: Tour }) => {
             <div className='flex items-center gap-2'>
               <MapPin className='text-sitora-primary h-4 w-4' />
               {tour.cities &&
-                tour.cities.map((city: any, index: number) => (
+                tour.cities.map((city: { id: string | number; name?: string }, index: number) => (
                   <span key={city.id} className='text-sitora-body text-sm font-medium'>
                     {city.name || ''} {tour.cities && tour.cities.length > 1 && index < tour.cities.length - 1 ? '→' : ''}
                   </span>

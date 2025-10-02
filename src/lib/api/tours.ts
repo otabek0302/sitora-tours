@@ -1,4 +1,4 @@
-import { ToursResponseSchema, TourSchema, ToursResponse, Tour, TourFilters, Pagination } from '../schemas'
+import { ToursResponseSchema, TourSchema, ToursResponse, Tour, TourFilters, Pagination, PayloadResponse } from '../schemas'
 import { filtersToUrlParams, validateFilters } from '@/lib/utils/filters'
 import { apiRequest } from './index'
 
@@ -19,6 +19,7 @@ export async function fetchTours(filters?: Partial<TourFilters>, pagination?: Pa
     const data = await apiRequest<ToursResponse>(url)
     return ToursResponseSchema.parse(data)
   } catch (error) {
+    console.error('fetchTours error:', error)
     throw new Error('Failed to load tours. Please try again.')
   }
 }
@@ -27,12 +28,13 @@ export async function fetchTours(filters?: Partial<TourFilters>, pagination?: Pa
 export async function fetchTourBySlug(slug: string, locale?: string): Promise<Tour> {
   try {
     const localeParam = locale ? `&locale=${locale}` : ''
-    const response = await apiRequest<any>(`/api/tours?where[slug][equals]=${slug}${localeParam}`)
+    const response = await apiRequest<PayloadResponse<Tour>>(`/api/tours?where[slug][equals]=${slug}${localeParam}`)
     if (!response.docs || response.docs.length === 0) {
       throw new Error('Tour not found')
     }
     return TourSchema.parse(response.docs[0])
   } catch (error) {
+    console.error('fetchTourBySlug error:', error)
     throw new Error('Failed to load tour details. Please try again.')
   }
 }
@@ -43,6 +45,7 @@ export async function fetchToursMaxPrice(): Promise<number> {
     const data = await apiRequest<Tour[]>('/api/tours?sort=price')
     return data.reduce((max, tour) => Math.max(max, tour.price), 0)
   } catch (error) {
+    console.error('fetchToursMaxPrice error:', error)
     throw new Error('Failed to load tours max price. Please try again.')
   }
 }
@@ -53,6 +56,7 @@ export async function fetchToursMinPrice(): Promise<number> {
     const data = await apiRequest<Tour[]>('/api/tours?sort=price')
     return data.reduce((min, tour) => Math.min(min, tour.price), 0)
   } catch (error) {
+    console.error('fetchToursMinPrice error:', error)
     throw new Error('Failed to load tours min price. Please try again.')
   }
 }
@@ -61,12 +65,13 @@ export async function fetchToursMinPrice(): Promise<number> {
 export async function fetchRecommendedTours(limit: number = 6, locale?: string): Promise<Tour[]> {
   try {
     const localeParam = locale ? `&locale=${locale}` : ''
-    const response = await apiRequest<any>(`/api/tours?limit=${limit}&sort=-rating${localeParam}`)
+    const response = await apiRequest<PayloadResponse<Tour>>(`/api/tours?limit=${limit}&sort=-rating${localeParam}`)
     if (!response.docs) {
       return []
     }
-    return response.docs.map((tour: any) => TourSchema.parse(tour))
+    return response.docs.map(tour => TourSchema.parse(tour))
   } catch (error) {
+    console.error('fetchRecommendedTours error:', error)
     throw new Error('Failed to load recommended tours. Please try again.')
   }
 }
@@ -76,7 +81,7 @@ export async function fetchRelatedTours(tourId: number, category?: number, limit
   try {
     const categoryParam = category ? `&where[category][in]=${category}` : ''
     const localeParam = locale ? `&locale=${locale}` : ''
-    const response = await apiRequest<any>(`/api/tours?limit=${limit + 1}&sort=-createdAt${categoryParam}${localeParam}`)
+    const response = await apiRequest<PayloadResponse<Tour>>(`/api/tours?limit=${limit + 1}&sort=-createdAt${categoryParam}${localeParam}`)
 
     if (!response.docs) {
       return []
@@ -84,12 +89,13 @@ export async function fetchRelatedTours(tourId: number, category?: number, limit
 
     // Filter out the current tour and limit results
     const relatedTours = response.docs
-      .filter((tour: any) => tour.id !== tourId)
+      .filter(tour => tour.id !== tourId)
       .slice(0, limit)
-      .map((tour: any) => TourSchema.parse(tour))
+      .map(tour => TourSchema.parse(tour))
 
     return relatedTours
   } catch (error) {
+    console.error('fetchRelatedTours error:', error)
     throw new Error('Failed to load related tours. Please try again.')
   }
 }

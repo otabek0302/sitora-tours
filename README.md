@@ -187,12 +187,25 @@ docker-compose up
 This will start:
 - Next.js app on port 3000
 - PostgreSQL on port 5432
+- PgAdmin on port 5050 (optional)
 
-To do so, follow these steps:
+### Docker Setup Steps:
 
-- Modify the `MONGODB_URI` in your `.env` file to `mongodb://127.0.0.1/<dbname>`
-- Modify the `docker-compose.yml` file's `MONGODB_URI` to match the above `<dbname>`
-- Run `docker-compose up` to start the database, optionally pass `-d` to run in the background.
+1. Ensure `.env` file exists with correct values
+2. Start containers: `docker-compose up -d`
+3. Access the application at http://localhost:3000
+4. Access PgAdmin at http://localhost:5050 (if using `--profile tools`)
+
+```bash
+# Start with PgAdmin
+docker-compose --profile tools up -d
+
+# Stop containers
+docker-compose down
+
+# View logs
+docker-compose logs -f
+```
 
 ## How it works
 
@@ -212,13 +225,45 @@ See the [Collections](https://payloadcms.com/docs/configuration/collections) doc
 
   This is the uploads enabled collection. It features pre-configured sizes, focal point and manual resizing to help you manage your pictures.
 
-### Docker
+## 🗄️ Database Setup (PostgreSQL)
 
-Alternatively, you can use [Docker](https://www.docker.com) to spin up this template locally. To do so, follow these steps:
+### Local PostgreSQL
 
-1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
-1. Next run `docker-compose up`
-1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
+1. **Install PostgreSQL** (if not already installed)
+   ```bash
+   # macOS
+   brew install postgresql@16
+   
+   # Ubuntu/Debian
+   sudo apt-get install postgresql-16
+   
+   # Windows
+   # Download from https://www.postgresql.org/download/windows/
+   ```
+
+2. **Create Database**
+   ```bash
+   createdb sitora_tour
+   ```
+
+3. **Update .env**
+   ```env
+   DATABASE_URI=postgresql://postgres:password@localhost:5432/sitora_tour
+   ```
+
+4. **Run Migrations** (if any)
+   ```bash
+   pnpm payload migrate
+   ```
+
+### Using Docker
+
+Alternatively, you can use [Docker](https://www.docker.com) to run PostgreSQL:
+
+1. Ensure `.env` file exists with correct database connection string
+2. Start Docker containers: `docker-compose up -d`
+3. Access application at http://localhost:3000
+4. Create your first admin user at http://localhost:3000/admin
 
 That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
 

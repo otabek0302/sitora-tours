@@ -1,7 +1,18 @@
 // Telegram API utility
 export const sendTelegramMessage = async (message: string): Promise<boolean> => {
-  const telegramToken = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN || 'YOUR_BOT_TOKEN'
-  const chatId = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID || 'YOUR_CHAT_ID'
+  const telegramToken = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN
+  const chatId = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID
+
+  // Validate environment variables
+  if (!telegramToken || telegramToken === 'YOUR_BOT_TOKEN') {
+    console.error('❌ NEXT_PUBLIC_TELEGRAM_BOT_TOKEN is not configured')
+    throw new Error('Telegram bot token is not configured. Please set NEXT_PUBLIC_TELEGRAM_BOT_TOKEN in .env')
+  }
+
+  if (!chatId || chatId === 'YOUR_CHAT_ID') {
+    console.error('❌ NEXT_PUBLIC_TELEGRAM_CHAT_ID is not configured')
+    throw new Error('Telegram chat ID is not configured. Please set NEXT_PUBLIC_TELEGRAM_CHAT_ID in .env')
+  }
 
   const response = await fetch(`https://api.telegram.org/bot${telegramToken}/sendMessage`, {
     method: 'POST',

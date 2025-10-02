@@ -29,6 +29,14 @@
       "description": "Kechirasiz, siz qidirayotgan sahifa mavjud emas.",
       "button": "Bosh sahifaga qaytish"
     },
+    "error": {
+      "title": "Xatolik yuz berdi!",
+      "description": "Kutilmagan xatolik yuz berdi",
+      "try_again": "Qayta urinib ko'ring",
+      "go_home": "Bosh sahifaga",
+      "contact_text": "Agar muammo davom etsa, iltimos",
+      "contact_link": "qo'llab-quvvatlash xizmatimiz bilan bog'laning"
+    },
     "home": {
       "hero": {
         "main_title": "Orzular ajoyib manzillar bilan ushaladi !",

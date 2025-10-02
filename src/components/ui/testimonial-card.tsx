@@ -1,5 +1,5 @@
 import { Star } from 'lucide-react'
-import { Card, CardHeader, CardContent, CardFooter } from './card'
+import { Card, CardContent } from './card'
 import { Review } from '@/payload-types'
 
 const TestimonialCard = ({ review }: { review: Review }) => {

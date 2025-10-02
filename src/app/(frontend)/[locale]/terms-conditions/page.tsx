@@ -1,11 +1,8 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
 import { FileText, CheckCircle, XCircle, CreditCard, Users, AlertTriangle } from 'lucide-react'
 
 const TermsPage = () => {
-  const t = useTranslations('pages.terms-conditions')
-
   return (
     <section className='py-6 lg:py-8'>
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>

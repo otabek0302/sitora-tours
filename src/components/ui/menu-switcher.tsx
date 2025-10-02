@@ -50,7 +50,7 @@ export const MenuSwitcher = () => {
     <div className='relative md:hidden'>
       <HamburgerButton active={open} setActive={setOpen} />
 
-      <motion.div className={`absolute z-10 overflow-hidden rounded-xl ${decorVisible ? 'bg-sitora-white border-border border shadow-lg backdrop-blur-md' : 'bg-transparent'}`} variants={menu} animate={containerOpen ? 'open' : 'closed'} initial='closed' onAnimationComplete={definition => (!containerOpen ? setDecorVisible(false) : null)}>
+      <motion.div className={`absolute z-10 overflow-hidden rounded-xl ${decorVisible ? 'bg-sitora-white border-border border shadow-lg backdrop-blur-md' : 'bg-transparent'}`} variants={menu} animate={containerOpen ? 'open' : 'closed'} initial='closed' onAnimationComplete={_definition => (!containerOpen ? setDecorVisible(false) : null)}>
         <AnimatePresence mode='wait' onExitComplete={() => (!open ? setContainerOpen(false) : null)}>
           {open && (
             <motion.div key='menu-content' initial={{ opacity: 0, y: -10, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -10, scale: 0.98 }} transition={{ duration: 0.3 }} className='space-y-2 px-2 py-14'>

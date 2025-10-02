@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload'
+import { autoGenerateSlug } from '@/lib/utils/slug'
 
 export const Cars: CollectionConfig = {
   slug: 'cars',
@@ -89,33 +90,7 @@ export const Cars: CollectionConfig = {
     },
   ],
   hooks: {
-    beforeValidate: [
-      ({ data, operation }) => {
-        // Auto-generate slug from English name ONLY on create
-        if (operation === 'create' && data?.name) {
-          let englishName = ''
-
-          // Handle localized name object
-          if (typeof data.name === 'object') {
-            englishName = data.name.en || data.name.english || Object.values(data.name)[0] || ''
-          } else {
-            // Handle string name (assume it's English)
-            englishName = data.name
-          }
-
-          if (englishName) {
-            // Generate slug from English name
-            const slug = englishName
-              .toLowerCase()
-              .replace(/[^a-z0-9\s-]/g, '')
-              .replace(/\s+/g, '-')
-              .replace(/-+/g, '-')
-              .trim()
-            data.slug = slug
-          }
-        }
-      },
-    ],
+    beforeValidate: [autoGenerateSlug],
   },
   timestamps: true,
 }

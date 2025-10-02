@@ -1,11 +1,8 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
 import { Shield, Lock, Eye, UserCheck, Bell, Trash2 } from 'lucide-react'
 
 const PrivacyPolicyPage = () => {
-  const t = useTranslations('pages.privacy_policy')
-
   return (
     <section className='py-6 lg:py-8'>
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>

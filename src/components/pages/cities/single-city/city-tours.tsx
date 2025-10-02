@@ -13,22 +13,18 @@ interface CityToursProps {
 const CityTours = ({ cityId, cityName }: CityToursProps) => {
   const t = useTranslations('pages.cities.single')
   const [tours, setTours] = useState<Tour[]>([])
-  const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     const fetchCityTours = async () => {
       try {
-        setLoading(true)
         // TODO: Fetch tours where cities includes this cityId
         // For now, just placeholder
         const response = await fetch(`/api/tours?where[cities][in]=${cityId}`)
         const data = await response.json()
         setTours(data.docs || [])
-      } catch (err) {
-        setError('Failed to load tours')
-      } finally {
-        setLoading(false)
+      } catch (error) {
+        setError(error instanceof Error ? error.message : 'Failed to load tours')
       }
     }
 

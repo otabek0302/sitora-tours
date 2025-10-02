@@ -9,7 +9,7 @@ import { Mail, Phone, Instagram, Send } from 'lucide-react'
 
 const Footer = () => {
   const t = useTranslations('footer')
-  const tNav = useTranslations('navigation')
+  const nav = useTranslations('navigation')
 
   return (
     <footer className='bg-card border-border border-t'>
@@ -48,16 +48,16 @@ const Footer = () => {
                 <h3 className='text-sitora-primary sm:text-md mb-3 text-sm font-semibold'>{t('navigation')}</h3>
                 <div className='flex flex-col gap-1'>
                   <Link href='/' className='text-sitora-body hover:text-sitora-primary-dark rounded-md py-1 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
-                    <span className='block'>{tNav('home')}</span>
+                    <span className='block'>{nav('home')}</span>
                   </Link>
                   <Link href='/about-us' className='text-sitora-body hover:text-sitora-primary-dark rounded-md py-1 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
-                    <span className='block'>{tNav('about')}</span>
+                    <span className='block'>{nav('about')}</span>
                   </Link>
                   <Link href='/tours' className='text-sitora-body hover:text-sitora-primary-dark rounded-md py-1 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
-                    <span className='block'>{tNav('tours')}</span>
+                    <span className='block'>{nav('tours')}</span>
                   </Link>
                   <Link href='/contact-us' className='text-sitora-body hover:text-sitora-primary-dark rounded-md py-1 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
-                    <span className='block'>{tNav('contact')}</span>
+                    <span className='block'>{nav('contact')}</span>
                   </Link>
                 </div>
               </div>
@@ -136,16 +136,16 @@ const Footer = () => {
                   <h3 className='text-sitora-primary text-md mb-4 font-semibold'>{t('navigation')}</h3>
                   <div className='flex flex-col gap-2'>
                     <Link href='/' className='text-sitora-body text-md hover:text-sitora-primary-dark rounded-md py-2 leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
-                      <span className='block'>{tNav('home')}</span>
+                      <span className='block'>{nav('home')}</span>
                     </Link>
                     <Link href='/about-us' className='text-sitora-body text-md hover:text-sitora-primary-dark rounded-md py-2 leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
-                      <span className='block'>{tNav('about')}</span>
+                      <span className='block'>{nav('about')}</span>
                     </Link>
                     <Link href='/tours' className='text-sitora-body text-md hover:text-sitora-primary-dark rounded-md py-2 leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
-                      <span className='block'>{tNav('tours')}</span>
+                      <span className='block'>{nav('tours')}</span>
                     </Link>
                     <Link href='/contact-us' className='text-sitora-body text-md hover:text-sitora-primary-dark rounded-md py-2 leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
-                      <span className='block'>{tNav('contact')}</span>
+                      <span className='block'>{nav('contact')}</span>
                     </Link>
                   </div>
                 </div>

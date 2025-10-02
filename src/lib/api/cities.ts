@@ -1,4 +1,4 @@
-import { CitiesResponseSchema, CitySchema, CitiesResponse, City } from '@/lib/schemas'
+import { CitiesResponseSchema, CitySchema, CitiesResponse, City, PayloadResponse } from '@/lib/schemas'
 import { apiRequest } from './index'
 
 // Fetch cities
@@ -8,6 +8,7 @@ export async function fetchCities(locale?: string): Promise<CitiesResponse> {
     const data = await apiRequest<CitiesResponse>(`/api/cities${localeParam}`)
     return CitiesResponseSchema.parse(data)
   } catch (error) {
+    console.error('fetchCities error:', error)
     throw new Error('Failed to load cities. Please try again.')
   }
 }
@@ -16,12 +17,13 @@ export async function fetchCities(locale?: string): Promise<CitiesResponse> {
 export async function fetchCityBySlug(slug: string, locale?: string): Promise<City> {
   try {
     const localeParam = locale ? `&locale=${locale}` : ''
-    const response = await apiRequest<any>(`/api/cities?where[slug][equals]=${slug}${localeParam}`)
+    const response = await apiRequest<PayloadResponse<City>>(`/api/cities?where[slug][equals]=${slug}${localeParam}`)
     if (!response.docs || response.docs.length === 0) {
       throw new Error('City not found')
     }
     return CitySchema.parse(response.docs[0])
   } catch (error) {
+    console.error('fetchCityBySlug error:', error)
     throw new Error('Failed to load city details. Please try again.')
   }
 }
@@ -30,12 +32,13 @@ export async function fetchCityBySlug(slug: string, locale?: string): Promise<Ci
 export async function fetchRecommendedCities(limit: number = 4, locale?: string): Promise<City[]> {
   try {
     const localeParam = locale ? `&locale=${locale}` : ''
-    const response = await apiRequest<any>(`/api/cities?limit=${limit}&sort=-createdAt${localeParam}`)
+    const response = await apiRequest<PayloadResponse<City>>(`/api/cities?limit=${limit}&sort=-createdAt${localeParam}`)
     if (!response.docs) {
       return []
     }
-    return response.docs.map((city: any) => CitySchema.parse(city))
+    return response.docs.map(city => CitySchema.parse(city))
   } catch (error) {
+    console.error('fetchRecommendedCities error:', error)
     throw new Error('Failed to load recommended cities. Please try again.')
   }
 }

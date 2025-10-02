@@ -36,6 +36,7 @@ export const useReviewsContext = create<ReviewsState>((set, get) => ({
   addReview: async (review: CreateReview) => {
     try {
       const newReview = await createReview(review, get().locale)
+      set({ reviews: [...get().reviews, newReview] })
       // Refetch all reviews to ensure proper data population
       await get().fetchReviews()
       return true

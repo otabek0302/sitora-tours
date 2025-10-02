@@ -28,6 +28,14 @@
       "description": "Sorry, the page you're looking for doesn't exist.",
       "button": "Go Back Home"
     },
+    "error": {
+      "title": "Oops! Something went wrong",
+      "description": "An unexpected error occurred",
+      "try_again": "Try Again",
+      "go_home": "Go to Homepage",
+      "contact_text": "If this problem persists, please",
+      "contact_link": "contact our support team"
+    },
     "home": {
       "hero": {
         "main_title": "Where Dreams Meet Amazing Destinations",

@@ -1,10 +1,10 @@
 import { ReactNode } from 'react'
 import './global.css'
-import Script from 'next/script'
 
 import { getMessages } from 'next-intl/server'
 import { Providers } from '@/providers'
 
+import Script from 'next/script'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 import CookieConsent from '@/components/ui/cookie-consent'
@@ -15,7 +15,7 @@ type Props = {
 }
 
 export default async function Layout({ children, params }: Props) {
-  const { locale } = await params
+  const { locale = 'en' } = await params
   const messages = await getMessages({ locale })
 
   return (
@@ -27,7 +27,7 @@ export default async function Layout({ children, params }: Props) {
         {/* Google Tag Manager */}
         <Script
           id='gtm-script'
-          strategy='afterInteractive'
+          strategy='lazyOnload'
           dangerouslySetInnerHTML={{
             __html: `
               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -51,21 +51,6 @@ export default async function Layout({ children, params }: Props) {
           <Footer />
           <CookieConsent />
         </Providers>
-
-        {/* Google Analytics */}
-        <Script strategy='afterInteractive' src='https://www.googletagmanager.com/gtag/js?id=G-MPWKBQG6' />
-        <Script
-          id='gtag-init'
-          strategy='afterInteractive'
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-MPWKBQG6');
-            `,
-          }}
-        />
       </body>
     </html>
   )

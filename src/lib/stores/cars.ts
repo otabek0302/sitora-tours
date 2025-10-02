@@ -103,7 +103,7 @@ export const useCarsStore = create<CarsState>((set, get) => ({
   },
 
   fetchCars: async () => {
-    const { setLoading, setError, setCars, setPagination, filters, pagination, loading, locale } = get()
+    const { setLoading, setError, setCars, filters, pagination, loading, locale } = get()
 
     // Prevent duplicate calls if already loading
     if (loading) {

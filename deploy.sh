@@ -40,15 +40,42 @@ pnpm build
 echo -e "${GREEN}✅ Build completed${NC}"
 
 # 5. Build & Start Docker
-echo -e "\n${YELLOW}[5/6] Setting up Docker containers...${NC}"
+echo -e "\n${YELLOW}[5/7] Setting up Docker containers...${NC}"
 docker-compose down 2>/dev/null || true
 docker-compose up -d --build
 echo -e "${GREEN}✅ Containers started${NC}"
 
-# 6. Wait & Verify
-echo -e "\n${YELLOW}[6/6] Verifying deployment...${NC}"
-echo -e "${YELLOW}Waiting 15 seconds for services to initialize...${NC}"
-sleep 15
+# 6. Run Database Migrations
+echo -e "\n${YELLOW}[6/7] Running database migrations...${NC}"
+echo -e "${YELLOW}Waiting for PostgreSQL to be ready...${NC}"
+sleep 10
+
+# Check if database needs migration
+echo -e "${YELLOW}Checking database status...${NC}"
+TABLE_COUNT=$(docker exec sitora-tour-db psql -U postgres -d sitora_tour -t -c "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'public' AND table_name NOT LIKE 'payload_%';" 2>/dev/null || echo "0")
+
+if [ "$TABLE_COUNT" -lt 5 ]; then
+    echo -e "${YELLOW}📦 Database is empty or incomplete. Running migrations...${NC}"
+    pnpm payload migrate || {
+        echo -e "${RED}❌ Migration failed! Trying to recreate schema...${NC}"
+        docker exec sitora-tour-db psql -U postgres -d sitora_tour -c "DROP SCHEMA public CASCADE; CREATE SCHEMA public;" 2>/dev/null || true
+        sleep 2
+        pnpm payload migrate
+    }
+    echo -e "${GREEN}✅ Migrations completed${NC}"
+    
+    # Restart app to pick up new tables
+    echo -e "${YELLOW}Restarting application...${NC}"
+    docker-compose restart app
+    sleep 5
+else
+    echo -e "${GREEN}✅ Database already migrated (${TABLE_COUNT} tables)${NC}"
+fi
+
+# 7. Wait & Verify
+echo -e "\n${YELLOW}[7/7] Verifying deployment...${NC}"
+echo -e "${YELLOW}Waiting for services to initialize...${NC}"
+sleep 10
 
 if docker ps | grep -q sitora-tour-app; then
     echo -e "\n${GREEN}╔════════════════════════════════════════╗${NC}"

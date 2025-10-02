@@ -5,6 +5,13 @@ import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { Button } from './button'
 
+// TypeScript declaration for GTM dataLayer
+declare global {
+  interface Window {
+    dataLayer: Array<Record<string, unknown>>
+  }
+}
+
 const CookieConsent = () => {
   const t = useTranslations('components.cookie_consent')
   const [visible, setVisible] = useState(false)
@@ -40,20 +47,16 @@ const CookieConsent = () => {
     )
     setVisible(false)
 
+    // Analytics are now managed through Google Tag Manager (GTM)
+    // User consent is tracked via dataLayer events in GTM
     if (analytics) {
-      const script = document.createElement('script')
-      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-MPWKBQG6'
-      script.async = true
-      document.head.appendChild(script)
-
-      const inlineScript = document.createElement('script')
-      inlineScript.innerHTML = `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-MPWKBQG6');
-      `
-      document.head.appendChild(inlineScript)
+      // Push consent to GTM dataLayer
+      window.dataLayer = window.dataLayer || []
+      window.dataLayer.push({
+        event: 'consent_analytics',
+        consent_analytics: true,
+        consent_marketing: marketing,
+      })
     }
   }
 

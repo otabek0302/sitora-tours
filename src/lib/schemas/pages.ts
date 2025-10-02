@@ -10,13 +10,6 @@ const ImageSchema = z.object({
   url: z.string(),
 })
 
-// Relation schema
-const RelationObjectSchema = z.object({
-  id: z.number(),
-  name: z.string().optional(),
-  slug: z.string().optional(),
-})
-
 // Hero Section
 const HeroSectionSchema = z.object({
   blockType: z.literal('hero'),

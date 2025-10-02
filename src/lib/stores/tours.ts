@@ -109,7 +109,7 @@ export const useToursStore = create<ToursState>((set, get) => ({
   },
 
   fetchTours: async () => {
-    const { setLoading, setError, setTours, setPagination, filters, pagination, loading, locale } = get()
+    const { setLoading, setError, setTours, filters, pagination, loading, locale } = get()
 
     // Prevent duplicate calls if already loading
     if (loading) {

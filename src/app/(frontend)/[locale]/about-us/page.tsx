@@ -1,7 +1,5 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 import AboutHero from '@/components/pages/about-us/about-hero'
 import AboutCta from '@/components/pages/about-us/about-cta'
 import RecommendedCities from '@/components/pages/home/recommended-cities'
@@ -9,8 +7,6 @@ import RecommendedCars from '@/components/pages/home/recommended-cars'
 import RecommendedTours from '@/components/pages/home/recommended-tours'
 
 const AboutUsPage = () => {
-  const t = useTranslations('pages.about_us')
-
   return (
     <section className='py-6 lg:py-8'>
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>

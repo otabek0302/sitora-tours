@@ -9,8 +9,8 @@ interface TourAccommodationProps {
   tour: Tour
 }
 
-const getCityName = (city: any): string => {
-  if (typeof city === 'object' && city.name) {
+const getCityName = (city: number | { id: string | number; name?: string } | undefined): string => {
+  if (typeof city === 'object' && city?.name) {
     return city.name.toUpperCase()
   }
   return 'UNKNOWN'
@@ -31,7 +31,7 @@ const TourAccommodation = ({ tour }: TourAccommodationProps) => {
       <div className='space-y-4'>
         {tour.accommodation.map((item, index) => {
           const cityName = getCityName(item.city)
-          const isExpanded = expandedItem === item.id
+          const isExpanded = expandedItem === (item.id ?? index.toString())
 
           return (
             <div key={item.id || index} className='bg-card border-sitora-primary relative rounded-[26px] border p-4 shadow-none'>
@@ -50,7 +50,7 @@ const TourAccommodation = ({ tour }: TourAccommodationProps) => {
               {isExpanded && item.hotel && item.hotel.length > 0 && (
                 <div className='border-sitora-border mt-4 border-t pt-4'>
                   <div className='space-y-3'>
-                    {item.hotel.map((hotel: any, hotelIndex) => {
+                    {item.hotel.map((hotel: number | { id: string | number; name?: string; description?: string; address?: string; phone?: string; rating?: string }, hotelIndex) => {
                       if (typeof hotel === 'number') return null
                       return (
                         <div key={hotelIndex} className='bg-card rounded-lg p-3'>

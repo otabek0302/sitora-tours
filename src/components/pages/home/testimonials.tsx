@@ -8,6 +8,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { Button } from '@/components/ui'
 import { AddTestimonial } from '@/components/ui/add-testimonial'
 import { useReviewsContext } from '@/lib/stores/reviews'
+import { Review } from '@/payload-types'
 
 const Testimonials = () => {
   const t = useTranslations('pages.home.testimonials')
@@ -59,7 +60,7 @@ const Testimonials = () => {
               <div className='embla__container flex py-4'>
                 {reviews?.slice(0, 10).map((review, index) => {
                   const uniqueKey = review?.id ? `review-${review.id}` : `review-index-${index}`
-                  return <TestimonialCard key={uniqueKey} review={review as any} />
+                  return <TestimonialCard key={uniqueKey} review={review as Review} />
                 })}
               </div>
             </div>

@@ -26,12 +26,6 @@ const nextConfig = {
       },
     ],
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
 }
 
 export default withPayload(withNextIntl(nextConfig), { devBundleServerPackages: false })
