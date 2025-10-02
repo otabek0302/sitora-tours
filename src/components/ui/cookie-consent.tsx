@@ -42,7 +42,7 @@ const CookieConsent = () => {
 
     if (analytics) {
       const script = document.createElement('script')
-      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX'
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-MPWKBQG6'
       script.async = true
       document.head.appendChild(script)
 
@@ -51,7 +51,7 @@ const CookieConsent = () => {
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX');
+        gtag('config', 'G-MPWKBQG6');
       `
       document.head.appendChild(inlineScript)
     }

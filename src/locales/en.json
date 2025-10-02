@@ -23,6 +23,11 @@
     "copyright": "© 2024 Sitora Tours. All rights reserved."
   },
   "pages": {
+    "not-found": {
+      "title": "404 - Page Not Found",
+      "description": "Sorry, the page you're looking for doesn't exist.",
+      "button": "Go Back Home"
+    },
     "home": {
       "hero": {
         "main_title": "Where Dreams Meet Amazing Destinations",

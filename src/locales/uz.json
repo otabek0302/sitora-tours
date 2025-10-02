@@ -24,6 +24,11 @@
     "copyright": "© 2024 Sitora Tours. Barcha huquqlar himoyalangan."
   },
   "pages": {
+    "not-found": {
+      "title": "404 - Sahifa topilmadi",
+      "description": "Kechirasiz, siz qidirayotgan sahifa mavjud emas.",
+      "button": "Bosh sahifaga qaytish"
+    },
     "home": {
       "hero": {
         "main_title": "Orzular ajoyib manzillar bilan ushaladi !",

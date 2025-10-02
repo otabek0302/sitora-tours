@@ -53,7 +53,7 @@ export default async function Layout({ children, params }: Props) {
         </Providers>
 
         {/* Google Analytics */}
-        <Script strategy='afterInteractive' src='https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX' />
+        <Script strategy='afterInteractive' src='https://www.googletagmanager.com/gtag/js?id=G-MPWKBQG6' />
         <Script
           id='gtag-init'
           strategy='afterInteractive'
@@ -62,7 +62,7 @@ export default async function Layout({ children, params }: Props) {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-XXXXXXXXXX');
+              gtag('config', 'G-MPWKBQG6');
             `,
           }}
         />
