@@ -196,6 +196,50 @@ This will start:
 3. Access the application at http://localhost:3000
 4. Access PgAdmin at http://localhost:5050 (if using `--profile tools`)
 
+---
+
+## 🌐 VPS Deployment (Subpath)
+
+Deploy Sitora Tours on a VPS alongside other projects using Nginx reverse proxy.
+
+### Quick Deploy to VPS with Subpath
+
+**Example:** Deploy to `http://5.35.86.229/sitora/`
+
+**Port Allocation:**
+- Pay Verify: Port 8000 → `/`
+- Sitora Tours: Port 3000 → `/sitora/`
+
+**Steps:**
+
+1. **Set environment variables** in `.env` on VPS:
+   ```env
+   NEXT_PUBLIC_BASE_PATH=/sitora
+   NEXT_PUBLIC_SERVER_URL=http://5.35.86.229/sitora
+   NEXT_PUBLIC_API_URL=http://5.35.86.229/sitora
+   ```
+
+2. **Upload and build**:
+   ```bash
+   # On VPS
+   cd /var/www/sitora-tour
+   git pull origin master
+   docker compose up -d --build
+   pnpm payload migrate
+   ```
+
+3. **Configure Nginx** (copy from `nginx-vps.conf`):
+   ```bash
+   sudo nano /etc/nginx/sites-available/sitora-tour
+   # Paste content from nginx-vps.conf
+   sudo ln -s /etc/nginx/sites-available/sitora-tour /etc/nginx/sites-enabled/
+   sudo nginx -t && sudo systemctl reload nginx
+   ```
+
+4. **Access**: http://5.35.86.229/sitora/
+
+📌 **Note:** Sitora Tours runs on port 3000, proxied through Nginx to `/sitora/` path.
+
 ```bash
 # Start with PgAdmin
 docker-compose --profile tools up -d

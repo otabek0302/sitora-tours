@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     container_name: sitora-tour-app
     ports:
-      - '3000:3000'
+      - '3000:3000'  # VPS port 3000 → Container port 3000
     volumes:
       - media:/app/media
     depends_on:
@@ -19,6 +19,10 @@ services:
       - DATABASE_URI=postgresql://postgres:password@postgres:5432/sitora_tour
       # Override NODE_ENV for production builds
       - NODE_ENV=production
+      # Base path for subpath deployment (e.g., /sitora)
+      - NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH:-}
+      - NEXT_PUBLIC_SERVER_URL=${NEXT_PUBLIC_SERVER_URL:-http://localhost:3000}
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://localhost:3000}
     networks:
       - sitora-network
     restart: unless-stopped

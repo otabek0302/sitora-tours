@@ -6,6 +6,10 @@ const withNextIntl = createNextIntlPlugin('./src/i18n.ts')
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
+  // Add basePath for VPS deployment with subpath
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
+  // Ensure assets work correctly with basePath
+  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || '',
   webpack: webpackConfig => {
     webpackConfig.resolve.extensionAlias = {
       '.cjs': ['.cts', '.cjs'],
