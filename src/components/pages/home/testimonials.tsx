@@ -48,9 +48,9 @@ const Testimonials = () => {
     <section className='py-6 lg:py-8'>
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
         {/* Section Header */}
-        <div className='mb-6 text-center lg:text-left'>
-          <h2 className='text-sitora-text-subtitle mb-4 text-2xl leading-tight font-bold sm:text-3xl lg:text-4xl'>{t('heading')}</h2>
-          <p className='text-sitora-body sm:text-md mx-auto max-w-2xl text-sm font-normal lg:mx-0'>{t('subheading')}</p>
+        <div className='mb-4 text-center sm:mb-6 lg:text-left'>
+          <h2 className='text-sitora-text-subtitle mb-2 text-xl leading-tight font-bold sm:mb-4 sm:text-2xl lg:text-3xl xl:text-4xl'>{t('heading')}</h2>
+          <p className='text-sitora-body mx-auto max-w-2xl text-xs font-normal sm:text-sm lg:mx-0 lg:text-base'>{t('subheading')}</p>
         </div>
 
         {/* Testimonials Carousel */}
@@ -72,8 +72,8 @@ const Testimonials = () => {
 
         {/* Section Footer */}
         <div className='flex justify-center'>
-          <div className='mt-6 text-center lg:text-left'>
-            <p className='text-sitora-body sm:text-md mb-4 text-sm font-normal'>{t('add_testimonial_text')}</p>
+          <div className='mt-4 text-center sm:mt-6 lg:text-left'>
+            <p className='text-sitora-body mb-3 text-xs font-normal sm:mb-4 sm:text-sm lg:text-base'>{t('add_testimonial_text')}</p>
             <div className='flex flex-col items-center justify-center gap-3 sm:flex-row'>
               <Button variant='default' size='lg' onClick={() => setOpen(true)}>
                 {t('add_testimonial')}
