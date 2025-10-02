@@ -35,7 +35,7 @@ const AboutHero = () => {
       <div className='flex flex-1 flex-col gap-4 rounded-[32px]'>
         <div className='border-border relative overflow-hidden rounded-[32px] border p-4 shadow-none lg:h-72'>
           <div className='border-border relative h-full w-full overflow-hidden rounded-[26px] border'>
-            <Image src='/images/about-us/about-hero.jpg' fill alt='About Hero' className='object-cover' />
+            <Image src='/images/about-us/about-hero.jpg' fill alt='About Hero' className='object-cover' priority quality={85} sizes='(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw' />
           </div>
         </div>
         <div className='border-border grid grid-cols-2 gap-4 rounded-[32px] border p-4 shadow-none lg:h-72'>

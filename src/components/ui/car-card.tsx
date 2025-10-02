@@ -74,7 +74,7 @@ const CarsCard = ({ car }: CarsCardProps) => {
             <div className='flex items-center gap-2'>
               <div className='flex items-center gap-1'>
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className={`h-4 w-4 ${i < 4 ? 'text-sitora-gold-medium fill-current' : 'text-gray-300'}`} />
+                  <Star key={i} className={`h-4 w-4 ${i < 4 ? 'text-sitora-gold-medium fill-current' : 'text-sitora-muted dark:text-muted-foreground'}`} />
                 ))}
               </div>
               <span className='text-sitora-body text-sm'>4.5 {t('rating')}</span>

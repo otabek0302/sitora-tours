@@ -65,8 +65,8 @@ const Testimonials = () => {
               </div>
             </div>
             {/* Gradient overlays */}
-            <div className='from-sitora-white absolute top-0 left-0 h-full w-10 bg-gradient-to-r to-transparent md:w-20'></div>
-            <div className='from-sitora-white absolute top-0 right-0 h-full w-10 bg-gradient-to-l to-transparent md:w-20'></div>
+            <div className='from-background dark:from-sitora-background dark:from-sitora-background absolute top-0 left-0 h-full w-10 bg-gradient-to-r to-transparent md:w-20'></div>
+            <div className='from-background dark:from-sitora-background dark:from-sitora-background absolute top-0 right-0 h-full w-10 bg-gradient-to-l to-transparent md:w-20'></div>
           </div>
         )}
 

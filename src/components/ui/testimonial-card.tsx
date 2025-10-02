@@ -19,7 +19,7 @@ const TestimonialCard = ({ review }: { review: Review }) => {
           {/* Star Rating */}
           <div className='flex items-center justify-start gap-1'>
             {[...Array(5)].map((_, i) => (
-              <Star key={i} className={`h-5 w-5 ${i < (review?.rating || 0) ? 'text-sitora-gold-medium fill-current' : 'text-gray-300'}`} />
+              <Star key={i} className={`h-5 w-5 ${i < (review?.rating || 0) ? 'text-sitora-gold-medium fill-current' : 'text-sitora-muted dark:text-muted-foreground'}`} />
             ))}
           </div>
 
