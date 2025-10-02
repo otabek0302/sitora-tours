@@ -77,58 +77,58 @@ ${formData.message}
   }
 
   return (
-    <div className='space-y-6'>
+    <div className='space-y-4 sm:space-y-6'>
       <div>
-        <h2 className='text-sitora-text-subtitle mb-2 text-2xl font-bold'>{t('contact_us')}</h2>
-        <p className='text-sitora-body text-sm'>{t('contact_description')}</p>
+        <h2 className='text-sitora-text-subtitle mb-2 text-xl font-bold sm:text-2xl'>{t('contact_us')}</h2>
+        <p className='text-sitora-body text-xs sm:text-sm'>{t('contact_description')}</p>
       </div>
 
-      <form onSubmit={handleSubmit} className='space-y-6'>
+      <form onSubmit={handleSubmit} className='space-y-4 sm:space-y-6'>
         {/* Full Name and Email Row */}
-        <div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
+        <div className='grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4'>
           <div className='space-y-2'>
-            <Label htmlFor='fullName' className='text-sitora-text-subtitle text-sm font-semibold'>
+            <Label htmlFor='fullName' className='text-sitora-text-subtitle text-xs font-semibold sm:text-sm'>
               {t('full_name')} *
             </Label>
-            <Input id='fullName' name='fullName' type='text' placeholder={t('full_name_placeholder')} value={formData.fullName} onChange={handleInputChange} required className='border-border focus:border-sitora-primary focus:ring-sitora-primary h-11 rounded-md shadow-none outline-none focus:outline-none focus-visible:ring-0' />
+            <Input id='fullName' name='fullName' type='text' placeholder={t('full_name_placeholder')} value={formData.fullName} onChange={handleInputChange} required className='border-border focus:border-sitora-primary focus:ring-sitora-primary h-10 rounded-md shadow-none outline-none focus:outline-none focus-visible:ring-0 sm:h-11' />
           </div>
 
           <div className='space-y-2'>
-            <Label htmlFor='email' className='text-sitora-text-subtitle text-sm font-semibold'>
+            <Label htmlFor='email' className='text-sitora-text-subtitle text-xs font-semibold sm:text-sm'>
               {t('email_address')} *
             </Label>
-            <Input id='email' name='email' type='email' placeholder={t('email_placeholder')} value={formData.email} onChange={handleInputChange} required className='border-border focus:border-sitora-primary focus:ring-sitora-primary h-11 rounded-md shadow-none outline-none focus:outline-none focus-visible:ring-0' />
+            <Input id='email' name='email' type='email' placeholder={t('email_placeholder')} value={formData.email} onChange={handleInputChange} required className='border-border focus:border-sitora-primary focus:ring-sitora-primary h-10 rounded-md shadow-none outline-none focus:outline-none focus-visible:ring-0 sm:h-11' />
           </div>
         </div>
 
         {/* Phone Number */}
         <div className='space-y-2'>
-          <Label htmlFor='phone' className='text-sitora-text-subtitle text-sm font-semibold'>
+          <Label htmlFor='phone' className='text-sitora-text-subtitle text-xs font-semibold sm:text-sm'>
             {t('phone_number')}
           </Label>
-          <Input id='phone' name='phone' type='tel' placeholder={t('phone_placeholder')} value={formData.phone} onChange={handleInputChange} className='border-border focus:border-sitora-primary focus:ring-sitora-primary h-11 rounded-md shadow-none outline-none focus:outline-none focus-visible:ring-0' />
+          <Input id='phone' name='phone' type='tel' placeholder={t('phone_placeholder')} value={formData.phone} onChange={handleInputChange} className='border-border focus:border-sitora-primary focus:ring-sitora-primary h-10 rounded-md shadow-none outline-none focus:outline-none focus-visible:ring-0 sm:h-11' />
         </div>
 
         {/* Subject */}
         <div className='space-y-2'>
-          <Label htmlFor='subject' className='text-sitora-text-subtitle text-sm font-semibold'>
+          <Label htmlFor='subject' className='text-sitora-text-subtitle text-xs font-semibold sm:text-sm'>
             {t('subject')} *
           </Label>
-          <Input id='subject' name='subject' type='text' placeholder={t('subject_placeholder')} value={formData.subject} onChange={handleInputChange} required className='border-border focus:border-sitora-primary focus:ring-sitora-primary h-11 rounded-md shadow-none outline-none focus:outline-none focus-visible:ring-0' />
+          <Input id='subject' name='subject' type='text' placeholder={t('subject_placeholder')} value={formData.subject} onChange={handleInputChange} required className='border-border focus:border-sitora-primary focus:ring-sitora-primary h-10 rounded-md shadow-none outline-none focus:outline-none focus-visible:ring-0 sm:h-11' />
         </div>
 
         {/* Message */}
         <div className='space-y-2'>
-          <Label htmlFor='message' className='text-sitora-text-subtitle text-sm font-semibold'>
+          <Label htmlFor='message' className='text-sitora-text-subtitle text-xs font-semibold sm:text-sm'>
             {t('message')} *
           </Label>
-          <Textarea id='message' name='message' placeholder={t('message_placeholder')} value={formData.message} onChange={handleInputChange} required rows={5} className='border-border focus:border-sitora-primary focus:ring-sitora-primary resize-none rounded-md shadow-none outline-none focus:outline-none focus-visible:ring-0' />
+          <Textarea id='message' name='message' placeholder={t('message_placeholder')} value={formData.message} onChange={handleInputChange} required rows={5} className='border-border focus:border-sitora-primary focus:ring-sitora-primary min-h-[120px] resize-none rounded-md shadow-none outline-none focus:outline-none focus-visible:ring-0 sm:min-h-[140px]' />
         </div>
 
         {/* Submit Button */}
         <div className='flex flex-col gap-3'>
           <div className='flex justify-end'>
-            <Button type='submit' size='lg' disabled={isSubmitting} className='bg-sitora-primary hover:bg-sitora-primary/90 text-sitora-white px-6 py-3 text-sm font-semibold disabled:opacity-50'>
+            <Button type='submit' size='lg' disabled={isSubmitting} className='bg-sitora-primary hover:bg-sitora-primary/90 text-sitora-white w-full px-6 py-3 text-sm font-semibold disabled:opacity-50 sm:w-auto'>
               {isSubmitting ? (
                 <>
                   <div className='mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent' />
@@ -145,16 +145,16 @@ ${formData.message}
 
           {/* Success/Error Messages */}
           {submitStatus === 'success' && (
-            <div className='bg-sitora-success/10 border-sitora-success flex items-center gap-2 rounded-lg border p-3'>
-              <CheckCircle className='text-sitora-success h-5 w-5 flex-shrink-0' />
-              <p className='text-sitora-success text-sm font-medium'>{t('success_message')}</p>
+            <div className='bg-sitora-success/10 border-sitora-success flex items-center gap-2 rounded-lg border p-2.5 sm:p-3'>
+              <CheckCircle className='text-sitora-success h-4 w-4 flex-shrink-0 sm:h-5 sm:w-5' />
+              <p className='text-sitora-success text-xs font-medium sm:text-sm'>{t('success_message')}</p>
             </div>
           )}
 
           {submitStatus === 'error' && (
-            <div className='bg-sitora-error/10 border-sitora-error flex items-center gap-2 rounded-lg border p-3'>
-              <AlertCircle className='text-sitora-error h-5 w-5 flex-shrink-0' />
-              <p className='text-sitora-error text-sm font-medium'>{t('error_message')}</p>
+            <div className='bg-sitora-error/10 border-sitora-error flex items-center gap-2 rounded-lg border p-2.5 sm:p-3'>
+              <AlertCircle className='text-sitora-error h-4 w-4 flex-shrink-0 sm:h-5 sm:w-5' />
+              <p className='text-sitora-error text-xs font-medium sm:text-sm'>{t('error_message')}</p>
             </div>
           )}
         </div>
