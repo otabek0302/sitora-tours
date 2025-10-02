@@ -21,7 +21,11 @@ const ContactDetails = () => {
         </div>
         <div className='flex-1'>
           <h3 className='text-sitora-text-subtitle mb-1 text-sm font-semibold'>{t('phone')}</h3>
-          <p className='text-sitora-body text-sm leading-relaxed'>+998954019111</p>
+          <p className='text-sitora-body text-sm leading-relaxed'>
+            +998 91 558 99 01<br />
+            +998 93 226 99 96<br />
+            +998 93 994 44 68
+          </p>
         </div>
       </div>
       <div className='flex items-start gap-4'>
@@ -30,7 +34,7 @@ const ContactDetails = () => {
         </div>
         <div className='flex-1'>
           <h3 className='text-sitora-text-subtitle mb-1 text-sm font-semibold'>{t('office')}</h3>
-          <p className='text-sitora-body text-sm leading-relaxed'>Street Davlat Obod, 15</p>
+          <p className='text-sitora-body text-sm leading-relaxed'>Mir Said Baraka Street, 1, Tashkent, Uzbekistan</p>
         </div>
       </div>
       <div className='flex items-start gap-4'>
@@ -39,13 +43,16 @@ const ContactDetails = () => {
         </div>
         <div className='flex-1'>
           <h3 className='text-sitora-text-subtitle mb-1 text-sm font-semibold'>{t('business_hours')}</h3>
-          <p className='text-sitora-body text-sm leading-relaxed'>Monday - Friday: 9:00 AM - 6:00 PM</p>
+          <p className='text-sitora-body text-sm leading-relaxed'>
+            Monday - Friday: 09:00 - 17:00<br />
+            Saturday - Sunday: Weekend
+          </p>
         </div>
       </div>
 
       {/* Google Maps Embed */}
       <div className='border-sitora-primary h-52 overflow-hidden rounded-[26px] border shadow-none'>
-        <iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.3583658389756!2d69.27419931541726!3d41.310849979272186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b0cc379e9c3%3A0xa5a9323b7e4d1856!2sTashkent%2C%20Uzbekistan!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s' width='100%' height='100%' style={{ border: 0 }} allowFullScreen loading='lazy' referrerPolicy='no-referrer-when-downgrade' title='Sitora Tours Office Location' />
+        <iframe src='https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3072.3!2d66.944888!3d39.658391!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMznCsDM5JzMwLjIiTiA2NsKwNTYnNDAuNCJF!5e0!3m2!1sen!2s!4v1696420800000!5m2!1sen!2s' width='100%' height='100%' style={{ border: 0 }} allowFullScreen loading='lazy' referrerPolicy='no-referrer-when-downgrade' title='Sitora Tours Office - Mir Said Baraka Street, 1' />
       </div>
     </div>
   )

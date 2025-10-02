@@ -155,12 +155,12 @@ const PrivacyPolicyPage = () => {
               </p>
               <p>
                 <span className='font-semibold'>Phone:</span>{' '}
-                <a href='tel:+998901234567' className='text-sitora-primary hover:underline'>
-                  +998 90 123 4567
+                <a href='tel:+998915589901' className='text-sitora-primary hover:underline'>
+                  +998 91 558 99 01
                 </a>
               </p>
               <p>
-                <span className='font-semibold'>Address:</span> Street Davlat Obod, 15, Tashkent, Uzbekistan
+                <span className='font-semibold'>Address:</span> Mir Said Baraka Street, 1, Tashkent, Uzbekistan
               </p>
             </div>
           </div>

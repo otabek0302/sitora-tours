@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { logo } from '@/assets'
 import { Button } from '../ui'
-import { Mail, Phone, Instagram, Send } from 'lucide-react'
+import { Mail, Phone, Instagram, Facebook } from 'lucide-react'
 
 const Footer = () => {
   const t = useTranslations('footer')
@@ -33,9 +33,9 @@ const Footer = () => {
                   </Link>
                 </Button>
                 <Button variant='default' size='sm' className='group bg-sitora-primary-light hover:bg-sitora-primary shadow-none'>
-                  <Link href='tel:+998901234567' className='flex items-center justify-center gap-2 text-sm leading-tight font-normal'>
+                  <Link href='tel:+998915589901' className='flex items-center justify-center gap-2 text-sm leading-tight font-normal'>
                     <Phone className='text-sitora-primary group-hover:text-sitora-white h-4 w-4' />
-                    <span className='text-sitora-primary group-hover:text-sitora-white block'>+998901234567</span>
+                    <span className='text-sitora-primary group-hover:text-sitora-white block'>+998 91 558 99 01</span>
                   </Link>
                 </Button>
               </div>
@@ -85,13 +85,13 @@ const Footer = () => {
                   <p className='text-sitora-body text-sm font-normal'>{t('additional_info.working_hours')}</p>
                   <p className='text-sitora-body text-sm font-normal'>{t('additional_info.address')}</p>
                   <div className='mt-2 flex gap-4'>
-                    <Link href='https://instagram.com/' className='text-sitora-body flex items-center gap-2 rounded-md py-1 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
+                    <Link href='https://www.instagram.com/sitora_tour/' target='_blank' rel='noopener noreferrer' className='text-sitora-body flex items-center gap-2 rounded-md py-1 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
                       <Instagram className='text-sitora-primary h-4 w-4' />
                       <span className='block'>Instagram</span>
                     </Link>
-                    <Link href='https://t.me/' className='text-sitora-body flex items-center gap-2 rounded-md py-1 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
-                      <Send className='text-sitora-primary h-4 w-4' />
-                      <span className='block'>Telegram</span>
+                    <Link href='https://www.facebook.com/uzbekvoyage' target='_blank' rel='noopener noreferrer' className='text-sitora-body flex items-center gap-2 rounded-md py-1 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
+                      <Facebook className='text-sitora-primary h-4 w-4' />
+                      <span className='block'>Facebook</span>
                     </Link>
                   </div>
                 </div>
@@ -121,9 +121,9 @@ const Footer = () => {
                     </Link>
                   </Button>
                   <Button variant='default' size='sm' className='group bg-sitora-primary-light hover:bg-sitora-primary shadow-none'>
-                    <Link href='tel:+998901234567' className='text-md flex items-center justify-center gap-2 leading-tight font-normal'>
+                    <Link href='tel:+998915589901' className='text-md flex items-center justify-center gap-2 leading-tight font-normal'>
                       <Phone className='text-sitora-primary group-hover:text-sitora-white h-4 w-4' />
-                      <span className='text-sitora-primary group-hover:text-sitora-white block'>+998901234567</span>
+                      <span className='text-sitora-primary group-hover:text-sitora-white block'>+998 91 558 99 01</span>
                     </Link>
                   </Button>
                 </div>
@@ -172,13 +172,13 @@ const Footer = () => {
                   <div className='flex flex-col gap-2'>
                     <p className='text-sitora-body text-md font-normal'>{t('additional_info.working_hours')}</p>
                     <p className='text-sitora-body text-md font-normal'>{t('additional_info.address')}</p>
-                    <Link href='https://instagram.com/' className='text-sitora-body text-md flex items-center gap-2 rounded-md py-2 leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
+                    <Link href='https://www.instagram.com/sitora_tour/' target='_blank' rel='noopener noreferrer' className='text-sitora-body text-md flex items-center gap-2 rounded-md py-2 leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
                       <Instagram className='text-sitora-primary h-4 w-4' />
                       <span className='block'>Instagram</span>
                     </Link>
-                    <Link href='https://t.me/' className='text-sitora-body text-md flex items-center gap-2 rounded-md py-2 leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
-                      <Send className='text-sitora-primary h-4 w-4' />
-                      <span className='block'>Telegram</span>
+                    <Link href='https://www.facebook.com/uzbekvoyage' target='_blank' rel='noopener noreferrer' className='text-sitora-body text-md flex items-center gap-2 rounded-md py-2 leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
+                      <Facebook className='text-sitora-primary h-4 w-4' />
+                      <span className='block'>Facebook</span>
                     </Link>
                   </div>
                 </div>

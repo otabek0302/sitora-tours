@@ -91,9 +91,9 @@ export const MenuSwitcher = () => {
                 </Link>
               </motion.p>
               <motion.p className='border-sitora-primary bg-sitora-primary-light border-x-2 px-2 py-2'>
-                <Link href='tel:+998901234567' onClick={() => setOpen(false)} className='text-sitora-body text-md flex items-center justify-center gap-2 leading-tight font-normal'>
+                <Link href='tel:+998915589901' onClick={() => setOpen(false)} className='text-sitora-body text-md flex items-center justify-center gap-2 leading-tight font-normal'>
                   <Phone className='text-sitora-primary h-4 w-4' />
-                  <span className='text-sitora-primary block'>+998901234567</span>
+                  <span className='text-sitora-primary block'>+998 91 558 99 01</span>
                 </Link>
               </motion.p>
             </motion.div>

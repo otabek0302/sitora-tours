@@ -23,9 +23,9 @@ const AboutHero = () => {
             </Link>
           </Button>
           <Button variant='default' size='sm' className='group bg-sitora-primary-light hover:bg-sitora-primary shadow-none'>
-            <Link href='tel:+998901234567' className='text-md flex items-center justify-center gap-2 leading-tight font-normal'>
+            <Link href='tel:+998915589901' className='text-md flex items-center justify-center gap-2 leading-tight font-normal'>
               <Phone className='text-sitora-primary group-hover:text-sitora-white h-4 w-4' />
-              <span className='text-sitora-primary group-hover:text-sitora-white block'>+998901234567</span>
+              <span className='text-sitora-primary group-hover:text-sitora-white block'>+998 91 558 99 01</span>
             </Link>
           </Button>
         </div>

@@ -88,7 +88,7 @@ const Faq = () => {
                 <Link href='mailto:info@sitoratours.com' className='bg-sitora-primary text-sitora-white hover:text-sitora-primary sm:text-md border-sitora-primary inline-flex h-9 items-center justify-center rounded-2xl border px-4 py-2 text-sm font-medium transition-colors duration-200 hover:bg-transparent'>
                   {t('contact_button')}
                 </Link>
-                <Link href='tel:+998901234567' className='border-sitora-primary-light text-sitora-primary sm:text-md hover:bg-sitora-primary hover:text-sitora-white inline-flex h-9 items-center justify-center rounded-2xl border px-4 py-2 text-sm font-medium transition-colors duration-200'>
+                <Link href='tel:+998915589901' className='border-sitora-primary-light text-sitora-primary sm:text-md hover:bg-sitora-primary hover:text-sitora-white inline-flex h-9 items-center justify-center rounded-2xl border px-4 py-2 text-sm font-medium transition-colors duration-200'>
                   {t('call_button')}
                 </Link>
               </div>
