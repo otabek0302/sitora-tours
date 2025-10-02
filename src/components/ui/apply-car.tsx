@@ -110,7 +110,7 @@ export const ApplyCar = ({ open, setOpen, car }: ApplyCarProps) => {
                   {selectedDate ? format(selectedDate, 'PPP') : <span>{t('form.select_date')}</span>}
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className='w-auto p-4' align='center'>
+              <PopoverContent className='w-auto p-2 sm:p-4' align='center'>
                 <Calendar
                   mode='single'
                   selected={selectedDate}

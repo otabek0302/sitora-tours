@@ -19,7 +19,7 @@ const HotelCard = ({ hotel }: HotelCardProps) => {
     <Card className='bg-card border-border overflow-hidden rounded-[26px] border shadow-none'>
       <div className='flex flex-col lg:flex-row'>
         {/* Hotel Image */}
-        <div className='border-border relative overflow-hidden border-l lg:w-1/3'>
+        <div className='border-border relative h-72 w-full overflow-hidden rounded-[26px] border sm:h-80 lg:h-96 lg:w-1/3'>
           {hotel.image?.url ? (
             <Image src={hotel.image.url as string} alt={hotel.name} fill sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw' className='object-cover' />
           ) : (

@@ -2,7 +2,7 @@
 export const FORM_STYLES = {
   input: 'border-border focus:border-sitora-primary focus:ring-sitora-primary/20 h-10 rounded-md shadow-none outline-none focus:outline-none focus-visible:ring-0',
   label: 'text-sitora-text-subtitle text-sm font-medium',
-  dialog: 'bg-sitora-white border-border mx-auto my-4 max-h-[90vh] w-[96%] overflow-y-auto rounded-[16px!important] border p-8 shadow-sm sm:max-w-lg',
+  dialog: 'bg-card border-border mx-auto my-4 max-h-[90vh] w-[96%] overflow-y-auto rounded-[16px!important] border p-8 shadow-sm sm:max-w-lg',
   dialogTitle: 'text-sitora-text-subtitle text-2xl font-semibold',
   dialogDescription: 'text-sitora-body text-sm leading-tight font-normal',
   select: 'border-border focus:border-sitora-primary h-10 w-full rounded-md shadow-none',

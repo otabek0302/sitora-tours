@@ -9,10 +9,10 @@ const AboutHero = () => {
   const t = useTranslations('pages.about_us')
 
   return (
-    <div className='flex flex-col gap-4 lg:flex-row'>
+    <div className='flex flex-col-reverse gap-4 lg:flex-row'>
       {/* About Hero Right Side */}
       <div className='border-border flex flex-1 flex-col justify-center space-y-4 rounded-[32px] border p-6 shadow-none sm:p-8 lg:p-12'>
-        <h2 className='text-sitora-text-subtitle text-center text-2xl font-bold sm:text-3xl sm:text-right lg:text-4xl'>{t('hero_title')}</h2>
+        <h2 className='text-sitora-text-subtitle text-center text-2xl font-bold sm:text-right sm:text-3xl lg:text-4xl'>{t('hero_title')}</h2>
         <p className='text-sitora-body text-justify text-sm leading-relaxed font-normal lg:text-base'>{t('hero_description')}</p>
         <p className='text-sitora-body text-justify text-sm leading-relaxed font-normal lg:text-base'>{t('hero_description')}</p>
         <div className='flex flex-col gap-2 sm:flex-row'>
@@ -34,7 +34,7 @@ const AboutHero = () => {
       {/* About Hero Left Side */}
       <div className='flex flex-1 flex-col gap-4 rounded-[32px]'>
         <div className='border-border relative overflow-hidden rounded-[32px] border p-4 shadow-none lg:h-72'>
-          <div className='border-border relative h-full w-full overflow-hidden rounded-[26px] border'>
+          <div className='border-border relative h-52 w-full overflow-hidden rounded-[26px] border sm:h-full'>
             <Image src='/images/about-us/about-hero.jpg' fill alt='About Hero' className='object-cover' priority quality={85} sizes='(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw' />
           </div>
         </div>

@@ -48,7 +48,7 @@ const Header = () => {
 
           {/* Controls */}
           <div className='flex items-center gap-1 sm:gap-2'>
-            <div className='hidden gap-1 sm:flex sm:gap-2'>
+            <div className='flex gap-1 sm:gap-2'>
               <LanguageSwitcher />
               <ThemeSwitcher />
             </div>
