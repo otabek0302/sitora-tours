@@ -379,6 +379,28 @@
       "see_details": "Подробнее",
       "rating_suffix": "рейтинг"
     },
+    "single_hotel": {
+      "location": "Местоположение",
+      "rating": "Рейтинг",
+      "contact_info": "Контактная информация",
+      "address": "Адрес",
+      "phone": "Телефон",
+      "features": "Удобства отеля",
+      "policies": "Правила отеля",
+      "check_in": "Заезд",
+      "check_out": "Выезд",
+      "cancellation_policy": "Правила отмены",
+      "pet_policy": "Правила для животных",
+      "children_policy": "Правила для детей",
+      "payment_policy": "Условия оплаты",
+      "gallery": "Галерея",
+      "no_images": "Изображения недоступны",
+      "main_image": "Главное изображение",
+      "thumbnail": "Миниатюра",
+      "unknown_hotel": "Неизвестный отель",
+      "unknown_location": "Неизвестное местоположение",
+      "unknown_description": "Описание недоступно"
+    },
     "privacy_policy": {
       "heading": "Политика конфиденциальности",
       "subheading": "Узнайте, как мы защищаем и обрабатываем вашу личную информацию"

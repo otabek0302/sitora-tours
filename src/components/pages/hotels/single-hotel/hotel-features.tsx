@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Hotel } from '@/lib/schemas'
 
@@ -6,6 +7,8 @@ interface HotelFeaturesProps {
 }
 
 const HotelFeatures = ({ hotel }: HotelFeaturesProps) => {
+  const t = useTranslations('pages.single_hotel')
+
   if (!hotel.features || hotel.features.length === 0) {
     return null
   }
@@ -13,7 +16,7 @@ const HotelFeatures = ({ hotel }: HotelFeaturesProps) => {
   return (
     <Card className='border-border bg-card rounded-[26px] shadow-none'>
       <CardHeader className='pb-4'>
-        <CardTitle className='text-sitora-text-heading text-xl font-bold'>Hotel Features</CardTitle>
+        <CardTitle className='text-sitora-text-heading text-xl font-bold'>{t('features')}</CardTitle>
       </CardHeader>
       <CardContent>
         <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>

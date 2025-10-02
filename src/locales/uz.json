@@ -380,6 +380,28 @@
       "see_details": "Batafsil",
       "rating_suffix": "reyting"
     },
+    "single_hotel": {
+      "location": "Joylashuv",
+      "rating": "Reyting",
+      "contact_info": "Aloqa ma'lumotlari",
+      "address": "Manzil",
+      "phone": "Telefon",
+      "features": "Mehmonxona xususiyatlari",
+      "policies": "Mehmonxona qoidalari",
+      "check_in": "Kirish",
+      "check_out": "Chiqish",
+      "cancellation_policy": "Bekor qilish qoidasi",
+      "pet_policy": "Hayvonlar qoidasi",
+      "children_policy": "Bolalar qoidasi",
+      "payment_policy": "To'lov qoidasi",
+      "gallery": "Galereya",
+      "no_images": "Rasmlar mavjud emas",
+      "main_image": "Asosiy rasm",
+      "thumbnail": "Kichik rasm",
+      "unknown_hotel": "Noma'lum mehmonxona",
+      "unknown_location": "Noma'lum joylashuv",
+      "unknown_description": "Tavsif mavjud emas"
+    },
     "privacy_policy": {
       "heading": "Maxfiylik siyosati",
       "subheading": "Shaxsiy ma'lumotlaringizni qanday himoya qilishimiz va boshqarishimizni biling"

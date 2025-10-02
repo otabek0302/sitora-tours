@@ -379,6 +379,28 @@
       "see_details": "See Details",
       "rating_suffix": "rating"
     },
+    "single_hotel": {
+      "location": "Location",
+      "rating": "Rating",
+      "contact_info": "Contact Information",
+      "address": "Address",
+      "phone": "Phone",
+      "features": "Hotel Features",
+      "policies": "Hotel Policies",
+      "check_in": "Check-in",
+      "check_out": "Check-out",
+      "cancellation_policy": "Cancellation Policy",
+      "pet_policy": "Pet Policy",
+      "children_policy": "Children Policy",
+      "payment_policy": "Payment Policy",
+      "gallery": "Gallery",
+      "no_images": "No Images Available",
+      "main_image": "Main Image",
+      "thumbnail": "Thumbnail",
+      "unknown_hotel": "Unknown Hotel",
+      "unknown_location": "Unknown Location",
+      "unknown_description": "No description available"
+    },
     "privacy_policy": {
       "heading": "Privacy Policy",
       "subheading": "Learn how we protect and handle your personal information"

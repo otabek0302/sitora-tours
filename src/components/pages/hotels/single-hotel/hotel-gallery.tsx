@@ -1,6 +1,6 @@
 import Image from 'next/image'
-
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { cn } from '@/lib/utils'
 
 interface HotelGalleryProps {
@@ -9,12 +9,13 @@ interface HotelGalleryProps {
 }
 
 const HotelGallery = ({ images, name }: HotelGalleryProps) => {
+  const t = useTranslations('pages.single_hotel')
   const [selectedImage, setSelectedImage] = useState(0)
 
   if (!images || images.length === 0) {
     return (
       <div className='bg-sitora-primary-light border-border flex h-[400px] w-full items-center justify-center rounded-[32px] border shadow-none lg:h-[500px]'>
-        <span className='text-sitora-primary text-lg font-medium'>No Images Available</span>
+        <span className='text-sitora-primary text-lg font-medium'>{t('no_images')}</span>
       </div>
     )
   }

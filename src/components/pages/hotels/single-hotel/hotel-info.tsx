@@ -1,4 +1,5 @@
 import { MapPin, Star } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { Hotel } from '@/lib/schemas'
 
 interface HotelInfoProps {
@@ -6,17 +7,19 @@ interface HotelInfoProps {
 }
 
 const HotelInfo = ({ hotel }: HotelInfoProps) => {
+  const t = useTranslations('pages.single_hotel')
+
   return (
     <div className='space-y-4'>
       {/* Hotel Name */}
-      <h1 className='text-sitora-text-heading text-3xl font-bold sm:text-4xl lg:text-5xl'>{hotel.name || 'Unknown Hotel'}</h1>
+      <h1 className='text-sitora-text-heading text-3xl font-bold sm:text-4xl lg:text-5xl'>{hotel.name || t('unknown_hotel')}</h1>
 
       {/* Location and Rating */}
       <div className='flex flex-wrap items-center gap-4'>
         {/* Location */}
         <div className='flex items-center gap-2'>
           <MapPin className='text-sitora-primary h-5 w-5' />
-          <span className='text-sitora-body text-base font-medium'>{hotel.city?.name || 'Unknown Location'}</span>
+          <span className='text-sitora-body text-base font-medium'>{hotel.city?.name || t('unknown_location')}</span>
         </div>
 
         {/* Separator */}
@@ -32,7 +35,7 @@ const HotelInfo = ({ hotel }: HotelInfoProps) => {
       </div>
 
       {/* Description */}
-      {hotel.description && <p className='text-sitora-body max-w-4xl text-base leading-relaxed sm:text-lg'>{hotel.description || 'Unknown Description'}</p>}
+      {hotel.description && <p className='text-sitora-body max-w-4xl text-base leading-relaxed sm:text-lg'>{hotel.description || t('unknown_description')}</p>}
     </div>
   )
 }
