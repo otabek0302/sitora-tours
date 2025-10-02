@@ -20,7 +20,7 @@ const CarsSidebar = () => {
       <Accordion type='multiple' defaultValue={['filter', 'type']} className='space-y-4'>
         <AccordionItem value='filter' className='bg-card border-border cursor-pointer rounded-[26px] border shadow-none transition-all duration-300 hover:shadow-sm'>
           <AccordionTrigger className='text-sitora-text-subtitle sm:text-md hover:text-sitora-primary cursor-pointer px-4 py-4 text-sm font-semibold hover:no-underline sm:px-6'>{t('sidebar.filterBy')}</AccordionTrigger>
-          <AccordionContent className='space-y-2 px-6 pb-6 sm:px-6'>
+          <AccordionContent className='space-y-2 px-4 pb-6 sm:px-6'>
             {brands.length > 0 ? (
               brands.map(brand => (
                 <div key={brand} className='flex items-center space-x-2'>
@@ -38,7 +38,7 @@ const CarsSidebar = () => {
 
         <AccordionItem value='type' className='bg-card border-border cursor-pointer rounded-[26px] border shadow-none transition-all duration-300 hover:shadow-sm'>
           <AccordionTrigger className='text-sitora-text-subtitle sm:text-md hover:text-sitora-primary cursor-pointer px-4 py-4 text-sm font-semibold hover:no-underline sm:px-6'>{t('sidebar.type')}</AccordionTrigger>
-          <AccordionContent className='space-y-2 px-4 py-2 sm:px-6'>
+          <AccordionContent className='space-y-2 px-4 pb-6 sm:px-6'>
             {types.length > 0 ? (
               types.map(type => (
                 <div key={type} className='flex items-center space-x-2'>
@@ -56,7 +56,7 @@ const CarsSidebar = () => {
 
         <AccordionItem value='price' className='bg-card border-border cursor-pointer rounded-[26px] border shadow-none transition-all duration-300 hover:shadow-sm'>
           <AccordionTrigger className='text-sitora-text-subtitle sm:text-md hover:text-sitora-primary cursor-pointer px-4 py-4 text-sm font-semibold hover:no-underline sm:px-6'>{t('sidebar.price')}</AccordionTrigger>
-          <AccordionContent className='text-sitora-body sm:text-md px-4 pb-4 text-sm leading-relaxed font-normal sm:px-6'>
+          <AccordionContent className='text-sitora-body sm:text-md px-4 pb-6 text-sm leading-relaxed font-normal sm:px-6'>
             <div className='flex gap-2'>
               <div className='flex-1'>
                 <Label htmlFor='min-price' className='text-sitora-text-muted text-sm font-normal'>
@@ -76,7 +76,7 @@ const CarsSidebar = () => {
 
         <AccordionItem value='capacity' className='bg-card border-border cursor-pointer rounded-[26px] border shadow-none transition-all duration-300 hover:shadow-sm'>
           <AccordionTrigger className='text-sitora-text-subtitle sm:text-md hover:text-sitora-primary cursor-pointer px-4 py-4 text-sm font-semibold hover:no-underline sm:px-6'>{t('sidebar.capacity')}</AccordionTrigger>
-          <AccordionContent className='text-sitora-body sm:text-md px-4 pb-4 text-sm leading-relaxed font-normal sm:px-6'>
+          <AccordionContent className='text-sitora-body sm:text-md px-4 pb-6 text-sm leading-relaxed font-normal sm:px-6'>
             <div className='flex gap-2'>
               <div className='flex-1'>
                 <Label htmlFor='min-capacity' className='text-sitora-text-muted text-sm font-normal'>

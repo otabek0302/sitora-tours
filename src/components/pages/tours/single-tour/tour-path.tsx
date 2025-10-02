@@ -50,27 +50,27 @@ const TourPath = ({ tour }: TourPathProps) => {
           const isExpanded = expandedLocation === location.id
 
           return (
-            <div key={location.id || index} className='bg-card border-sitora-primary rounded-[26px] border-2 p-6 shadow-none'>
+            <div key={location.id || index} className='bg-card border-border rounded-[26px] border-2 p-6 shadow-none'>
               <div className='mb-4 flex items-start justify-between'>
                 <div className='text-left'>
-                  <h3 className='text-sitora-primary text-lg font-bold'>{fromCity}</h3>
+                  <h3 className='text-sitora-text-heading text-lg font-bold'>{fromCity}</h3>
                   <p className='text-sitora-body text-sm'>{location.fromTime}</p>
                 </div>
                 <div className='text-right'>
-                  <h3 className='text-sitora-primary text-lg font-bold'>{toCity}</h3>
+                  <h3 className='text-sitora-text-heading text-lg font-bold'>{toCity}</h3>
                   <p className='text-sitora-body text-sm'>{location.toTime}</p>
                 </div>
               </div>
 
               <div className='relative mb-4'>
-                <div className='border-sitora-primary relative border-t-2 border-dashed'>
+                <div className='border-border relative border-t-2 border-dashed'>
                   <div className='bg-card absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform px-2'>{getTransportIcon(location.transport)}</div>
                 </div>
               </div>
 
               {location.duration && (
                 <div className='mb-4 text-center'>
-                  <p className='text-sitora-primary space-x-1 font-medium'>
+                  <p className='text-sitora-text-body space-x-1 font-medium'>
                     {location.duration.includes(':') ? (
                       <>
                         <span>{location.duration.split(':')[0]}</span>

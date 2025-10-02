@@ -19,7 +19,7 @@ const TourInfo = ({ tour }: TourInfoProps) => {
   return (
     <div className='mb-6'>
       <div className='mb-4'>
-        {tour.name && <h1 className='text-sitora-primary mb-2 text-lg leading-normal font-bold md:text-3xl'>{tour.name}</h1>}
+        {tour.name && <h1 className='text-sitora-text-heading mb-2 text-lg leading-normal font-bold md:text-3xl'>{tour.name}</h1>}
         <div className='text-sitora-body mb-2 flex flex-wrap items-center gap-4 text-sm font-medium'>
           {tour.duration_days && (
             <span className='font-semibold lowercase italic'>

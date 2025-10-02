@@ -48,7 +48,7 @@ const TourPricing = ({ tour }: TourPricingProps) => {
 
       <div className='grid grid-cols-1 gap-4 lg:grid-cols-2'>
         {/* Pricing Information */}
-        <div className='bg-card border-sitora-primary rounded-[26px] border p-6 shadow-none'>
+        <div className='bg-card border-border rounded-[26px] border p-6 shadow-none'>
           <h3 className='text-sitora-primary mb-4 flex items-center gap-2 text-lg font-bold'>
             <DollarSign className='h-5 w-5' />
             {t('departure_dates')}
@@ -56,7 +56,7 @@ const TourPricing = ({ tour }: TourPricingProps) => {
 
           <div className='space-y-4'>
             {tour.booking_pricing.map((pricing, index) => (
-              <div key={pricing.id || index} className='border-sitora-border rounded-2xl border p-4'>
+              <div key={pricing.id || index} className='border-border rounded-[18px] border p-4'>
                 <div className='mb-3 flex items-center gap-2'>
                   <Calendar className='text-sitora-gold-medium h-4 w-4' />
                   <span className='text-sitora-text-subtitle text-sm font-semibold'>

@@ -34,14 +34,14 @@ const TourAccommodation = ({ tour }: TourAccommodationProps) => {
           const isExpanded = expandedItem === (item.id ?? index.toString())
 
           return (
-            <div key={item.id || index} className='bg-card border-sitora-primary relative rounded-[26px] border p-4 shadow-none'>
+            <div key={item.id || index} className='bg-card border-border relative rounded-[18px] border p-4 shadow-none'>
               <div className='flex items-center justify-between'>
                 <div className='flex items-center gap-2'>
                   <span className='text-sitora-text-subtitle text-base font-bold'>{cityName}</span>
                 </div>
 
                 {item.hotel && item.hotel.length > 0 && (
-                  <button onClick={() => setExpandedItem(isExpanded ? null : item.id || index.toString())} className='text-sitora-primary hover:text-sitora-primary/90 transition-colors'>
+                  <button onClick={() => setExpandedItem(isExpanded ? null : item.id || index.toString())} className='text-sitora-text-body hover:text-sitora-primary/90 transition-colors'>
                     <ChevronDown className={`h-4 w-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
                   </button>
                 )}

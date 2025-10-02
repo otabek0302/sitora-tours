@@ -19,7 +19,7 @@ const TourItinerary = ({ tour }: TourItineraryProps) => {
       <h2 className='text-sitora-text-subtitle mb-6 text-lg leading-normal font-bold md:text-2xl'>{t('itinerary')}</h2>
 
       <div className='relative'>
-        <div className='border-sitora-primary absolute top-6 bottom-6 left-6 w-px border-l-2 border-dotted'></div>
+        <div className='border-border absolute top-6 bottom-6 left-6 w-px border-l-2 border-dotted'></div>
 
         <div className='space-y-8'>
           {tour.itinerary.map((item, index) => (

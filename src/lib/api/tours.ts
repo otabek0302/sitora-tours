@@ -28,7 +28,8 @@ export async function fetchTours(filters?: Partial<TourFilters>, pagination?: Pa
 export async function fetchTourBySlug(slug: string, locale?: string): Promise<Tour> {
   try {
     const localeParam = locale ? `&locale=${locale}` : ''
-    const response = await apiRequest<PayloadResponse<Tour>>(`/api/tours?where[slug][equals]=${slug}${localeParam}`)
+    // depth=3 to populate: tour → accommodation → hotels (with full details)
+    const response = await apiRequest<PayloadResponse<Tour>>(`/api/tours?where[slug][equals]=${slug}&depth=3${localeParam}`)
     if (!response.docs || response.docs.length === 0) {
       throw new Error('Tour not found')
     }
@@ -65,7 +66,8 @@ export async function fetchToursMinPrice(): Promise<number> {
 export async function fetchRecommendedTours(limit: number = 6, locale?: string): Promise<Tour[]> {
   try {
     const localeParam = locale ? `&locale=${locale}` : ''
-    const response = await apiRequest<PayloadResponse<Tour>>(`/api/tours?limit=${limit}&sort=-rating${localeParam}`)
+    // depth=2 to populate categories and cities
+    const response = await apiRequest<PayloadResponse<Tour>>(`/api/tours?limit=${limit}&sort=-rating&depth=2${localeParam}`)
     if (!response.docs) {
       return []
     }
@@ -81,7 +83,8 @@ export async function fetchRelatedTours(tourId: number, category?: number, limit
   try {
     const categoryParam = category ? `&where[category][in]=${category}` : ''
     const localeParam = locale ? `&locale=${locale}` : ''
-    const response = await apiRequest<PayloadResponse<Tour>>(`/api/tours?limit=${limit + 1}&sort=-createdAt${categoryParam}${localeParam}`)
+    // depth=2 to populate categories and cities
+    const response = await apiRequest<PayloadResponse<Tour>>(`/api/tours?limit=${limit + 1}&sort=-createdAt&depth=2${categoryParam}${localeParam}`)
 
     if (!response.docs) {
       return []
