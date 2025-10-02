@@ -135,16 +135,16 @@ const Footer = () => {
                 <div className='col-span-1'>
                   <h3 className='text-sitora-primary text-md mb-4 font-semibold'>{t('navigation')}</h3>
                   <div className='flex flex-col gap-2'>
-                    <Link href='/' className='text-sitora-body text-md hover:text-sitora-primary-dark rounded-md py-2 leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
+                    <Link href='/' className='text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md py-2 text-sm leading-tight font-normal transition-all duration-300 hover:font-medium'>
                       <span className='block'>{nav('home')}</span>
                     </Link>
-                    <Link href='/about-us' className='text-sitora-body text-md hover:text-sitora-primary-dark rounded-md py-2 leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
+                    <Link href='/about-us' className='text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md py-2 text-sm leading-tight font-normal transition-all duration-300 hover:font-medium'>
                       <span className='block'>{nav('about')}</span>
                     </Link>
-                    <Link href='/tours' className='text-sitora-body text-md hover:text-sitora-primary-dark rounded-md py-2 leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
+                    <Link href='/tours' className='text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md py-2 text-sm leading-tight font-normal transition-all duration-300 hover:font-medium'>
                       <span className='block'>{nav('tours')}</span>
                     </Link>
-                    <Link href='/contact-us' className='text-sitora-body text-md hover:text-sitora-primary-dark rounded-md py-2 leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
+                    <Link href='/contact-us' className='text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md py-2 text-sm leading-tight font-normal transition-all duration-300 hover:font-medium'>
                       <span className='block'>{nav('contact')}</span>
                     </Link>
                   </div>
@@ -154,13 +154,13 @@ const Footer = () => {
                 <div className='col-span-1'>
                   <h3 className='text-sitora-primary text-md mb-4 font-semibold'>{t('license')}</h3>
                   <div className='flex flex-col gap-2'>
-                    <Link href='/privacy-policy' className='text-sitora-body text-md hover:text-sitora-primary-dark rounded-md py-2 leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
+                    <Link href='/privacy-policy' className='text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md py-2 text-sm leading-tight font-normal transition-all duration-300 hover:font-medium'>
                       <span className='block'>{t('privacyPolicy')}</span>
                     </Link>
-                    <Link href='/terms-conditions' className='text-sitora-body text-md hover:text-sitora-primary-dark rounded-md py-2 leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
+                    <Link href='/terms-conditions' className='text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md py-2 text-sm leading-tight font-normal transition-all duration-300 hover:font-medium'>
                       <span className='block'>{t('terms')}</span>
                     </Link>
-                    <Link href='mailto:info@sitoratours.com' className='text-sitora-body text-md hover:text-sitora-primary-dark rounded-md py-2 leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
+                    <Link href='mailto:info@sitoratours.com' className='text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md py-2 text-sm leading-tight font-normal transition-all duration-300 hover:font-medium'>
                       <span className='block'>{t('emailAddress')}</span>
                     </Link>
                   </div>
@@ -172,11 +172,11 @@ const Footer = () => {
                   <div className='flex flex-col gap-2'>
                     <p className='text-sitora-body text-md font-normal'>{t('additional_info.working_hours')}</p>
                     <p className='text-sitora-body text-md font-normal'>{t('additional_info.address')}</p>
-                    <Link href='https://www.instagram.com/sitora_tour/' target='_blank' rel='noopener noreferrer' className='text-sitora-body text-md flex items-center gap-2 rounded-md py-2 leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
+                    <Link href='https://www.instagram.com/sitora_tour/' target='_blank' rel='noopener noreferrer' className='text-sitora-body text-md flex items-center gap-2 rounded-md py-2 leading-tight font-normal transition-all duration-300 hover:font-medium'>
                       <Instagram className='text-sitora-primary h-4 w-4' />
                       <span className='block'>Instagram</span>
                     </Link>
-                    <Link href='https://www.facebook.com/uzbekvoyage' target='_blank' rel='noopener noreferrer' className='text-sitora-body text-md flex items-center gap-2 rounded-md py-2 leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
+                    <Link href='https://www.facebook.com/uzbekvoyage' target='_blank' rel='noopener noreferrer' className='text-sitora-body text-md flex items-center gap-2 rounded-md py-2 leading-tight font-normal transition-all duration-300 hover:font-medium'>
                       <Facebook className='text-sitora-primary h-4 w-4' />
                       <span className='block'>Facebook</span>
                     </Link>

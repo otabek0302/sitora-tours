@@ -100,7 +100,7 @@ describe('Schemas - Unit Tests', () => {
         description: 'Luxury hotel',
         rating: '5',
         address: '123 Main St',
-        phone: '+998901234567',
+        phone: '+998915589901',
         city: {
           id: 1,
           name: 'Samarkand',

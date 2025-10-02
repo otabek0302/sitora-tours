@@ -8,6 +8,7 @@ import Script from 'next/script'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 import CookieConsent from '@/components/ui/cookie-consent'
+import { OrganizationStructuredData, LocalBusinessStructuredData } from '@/components/seo/structured-data'
 
 type Props = {
   children: ReactNode
@@ -51,6 +52,10 @@ export default async function Layout({ children, params }: Props) {
           <Footer />
           <CookieConsent />
         </Providers>
+
+        {/* Structured Data for SEO */}
+        <OrganizationStructuredData />
+        <LocalBusinessStructuredData />
       </body>
     </html>
   )
