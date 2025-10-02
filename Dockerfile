@@ -67,8 +67,8 @@ RUN chown nextjs:nodejs .next
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-# Copy media files (if any exist during build)
-COPY --from=builder --chown=nextjs:nodejs /app/media ./media
+# Note: Media files are handled via Docker volume mount (see docker-compose.yml)
+# No need to copy from builder since .dockerignore excludes media/*
 
 USER nextjs
 
