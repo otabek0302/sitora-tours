@@ -44,20 +44,17 @@ const TermsPage = () => {
                 <div className='text-sitora-body space-y-3 text-sm leading-relaxed'>
                   {/* Intro paragraph */}
                   {hasIntro && <p>{t(`${key}.intro`)}</p>}
-                  
+
                   {/* Content paragraphs */}
-                  {hasContent &&
-                    t.raw(`${key}.content`).map((paragraph: string, index: number) => (
-                      <p key={index}>{paragraph}</p>
-                    ))}
-                  
+                  {hasContent && t.raw(`${key}.content`).map((paragraph: string, index: number) => <p key={index}>{paragraph}</p>)}
+
                   {/* Subtitle */}
                   {hasSubtitle && (
                     <p>
                       <strong>{t(`${key}.subtitle`)}</strong>
                     </p>
                   )}
-                  
+
                   {/* Items list */}
                   {hasItems && (
                     <ul className='ml-6 list-disc space-y-2'>
@@ -66,7 +63,7 @@ const TermsPage = () => {
                       ))}
                     </ul>
                   )}
-                  
+
                   {/* Disclaimer */}
                   {t.has(`${key}.disclaimer`) && <p className='mt-3'>{t(`${key}.disclaimer`)}</p>}
                 </div>

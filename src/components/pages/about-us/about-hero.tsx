@@ -11,11 +11,11 @@ const AboutHero = () => {
   return (
     <div className='flex flex-col gap-4 lg:flex-row'>
       {/* About Hero Right Side */}
-      <div className='border-border flex flex-1 flex-col justify-center space-y-4 rounded-[32px] border p-12 shadow-none'>
-        <h2 className='text-sitora-text-subtitle text-right text-4xl font-bold xl:text-4xl'>{t('hero_title')}</h2>
+      <div className='border-border flex flex-1 flex-col justify-center space-y-4 rounded-[32px] border p-6 shadow-none sm:p-8 lg:p-12'>
+        <h2 className='text-sitora-text-subtitle text-center text-2xl font-bold sm:text-3xl sm:text-right lg:text-4xl'>{t('hero_title')}</h2>
         <p className='text-sitora-body text-justify text-sm leading-relaxed font-normal lg:text-base'>{t('hero_description')}</p>
         <p className='text-sitora-body text-justify text-sm leading-relaxed font-normal lg:text-base'>{t('hero_description')}</p>
-        <div className='flex gap-2'>
+        <div className='flex flex-col gap-2 sm:flex-row'>
           <Button variant='default' size='sm' className='group bg-sitora-primary-light hover:bg-sitora-primary shadow-none'>
             <Link href='mailto:info@sitoratours.com' className='text-md flex items-center justify-center gap-2 leading-tight font-normal'>
               <Mail className='text-sitora-primary group-hover:text-sitora-white h-4 w-4' />
@@ -38,22 +38,22 @@ const AboutHero = () => {
             <Image src='/images/about-us/about-hero.jpg' fill alt='About Hero' className='object-cover' priority quality={85} sizes='(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw' />
           </div>
         </div>
-        <div className='border-border grid grid-cols-2 gap-4 rounded-[32px] border p-4 shadow-none lg:h-72'>
-          <div className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-4 shadow-none'>
-            <h3 className='text-sitora-text-subtitle text-4xl font-bold'>5,368+</h3>
-            <p className='text-sitora-body text-sm leading-relaxed font-normal lg:text-base'>{t('happy_travelers')}</p>
+        <div className='border-border grid grid-cols-2 gap-3 rounded-[32px] border p-3 shadow-none sm:gap-4 sm:p-4 lg:h-72'>
+          <div className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-3 shadow-none sm:p-4'>
+            <h3 className='text-sitora-text-subtitle text-2xl font-bold sm:text-3xl lg:text-4xl'>5,368+</h3>
+            <p className='text-sitora-body text-xs leading-relaxed font-normal sm:text-sm lg:text-base'>{t('happy_travelers')}</p>
           </div>
-          <div className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-4 shadow-none'>
-            <h3 className='text-sitora-text-subtitle text-4xl font-bold'>+100</h3>
-            <p className='text-sitora-body text-sm leading-relaxed font-normal lg:text-base'>{t('destinations')}</p>
+          <div className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-3 shadow-none sm:p-4'>
+            <h3 className='text-sitora-text-subtitle text-2xl font-bold sm:text-3xl lg:text-4xl'>+100</h3>
+            <p className='text-sitora-body text-xs leading-relaxed font-normal sm:text-sm lg:text-base'>{t('destinations')}</p>
           </div>
-          <div className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-4 shadow-none'>
-            <h3 className='text-sitora-text-subtitle text-4xl font-bold'>10+</h3>
-            <p className='text-sitora-body text-sm leading-relaxed font-normal lg:text-base'>{t('years_experience')}</p>
+          <div className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-3 shadow-none sm:p-4'>
+            <h3 className='text-sitora-text-subtitle text-2xl font-bold sm:text-3xl lg:text-4xl'>10+</h3>
+            <p className='text-sitora-body text-xs leading-relaxed font-normal sm:text-sm lg:text-base'>{t('years_experience')}</p>
           </div>
-          <div className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-4 shadow-none'>
-            <h3 className='text-sitora-text-subtitle text-4xl font-bold'>120+</h3>
-            <p className='text-sitora-body text-sm leading-relaxed font-normal lg:text-base'>{t('packages')}</p>
+          <div className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-3 shadow-none sm:p-4'>
+            <h3 className='text-sitora-text-subtitle text-2xl font-bold sm:text-3xl lg:text-4xl'>120+</h3>
+            <p className='text-sitora-body text-xs leading-relaxed font-normal sm:text-sm lg:text-base'>{t('packages')}</p>
           </div>
         </div>
       </div>
