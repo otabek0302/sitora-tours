@@ -482,7 +482,80 @@
     },
     "terms-conditions": {
       "heading": "Terms & Conditions",
-      "subheading": "Learn about our terms and conditions for using our services"
+      "subheading": "Learn about our terms and conditions for using our services",
+      "last_updated": "Last updated: October 1, 2025",
+      "intro": "Welcome to Sitora Tours. By accessing our website and using our services, you agree to comply with and be bound by the following terms and conditions. Please read them carefully before making any booking or using our services.",
+      "section1": {
+        "title": "1. Acceptance of Terms",
+        "content": [
+          "By using this website and our services, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions. If you do not agree with any part of these terms, you should not use our services.",
+          "We reserve the right to modify these terms at any time. Your continued use of our services after changes are posted constitutes acceptance of those changes."
+        ]
+      },
+      "section2": {
+        "title": "2. Booking and Reservations",
+        "items": [
+          "All bookings are subject to availability and confirmation",
+          "A deposit or full payment may be required to confirm your booking",
+          "Prices are quoted in USD and may be subject to change without notice",
+          "You must provide accurate and complete information when booking",
+          "Bookings are confirmed only after receiving payment confirmation",
+          "Special requests cannot be guaranteed but will be noted"
+        ]
+      },
+      "section3": {
+        "title": "3. Cancellation and Refunds",
+        "subtitle": "Cancellation Policy:",
+        "items": [
+          "Cancellations made 30+ days before departure: 100% refund (minus processing fee)",
+          "Cancellations made 15-29 days before: 50% refund",
+          "Cancellations made 7-14 days before: 25% refund",
+          "Cancellations made less than 7 days before: No refund",
+          "No-shows result in forfeiture of all payments"
+        ],
+        "disclaimer": "Refunds are processed within 14-21 business days to the original payment method."
+      },
+      "section4": {
+        "title": "4. Payment Terms",
+        "items": [
+          "We accept major credit cards, debit cards, and bank transfers",
+          "All prices are in USD unless otherwise stated",
+          "Payment must be made in full before services are rendered",
+          "Additional charges may apply for special requests or changes",
+          "Currency conversion fees may apply for international payments"
+        ]
+      },
+      "section5": {
+        "title": "5. Traveler Responsibilities",
+        "intro": "As a traveler, you are responsible for:",
+        "items": [
+          "Ensuring you have valid passports and visas",
+          "Meeting health and vaccination requirements",
+          "Arriving at meeting points on time",
+          "Respecting local customs and laws",
+          "Having appropriate travel insurance",
+          "Being in good health to participate in activities"
+        ]
+      },
+      "section6": {
+        "title": "6. Liability Limitations",
+        "intro": "Sitora Tours shall not be liable for:",
+        "items": [
+          "Delays, cancellations, or changes due to weather, natural disasters, or force majeure",
+          "Loss, damage, or theft of personal belongings",
+          "Personal injury or death not caused by our negligence",
+          "Actions or omissions of third-party service providers",
+          "Disruptions caused by political unrest or government actions"
+        ],
+        "disclaimer": "We strongly recommend purchasing comprehensive travel insurance."
+      },
+      "contact": {
+        "title": "Questions?",
+        "intro": "If you have any questions about these Terms & Conditions, please contact us:",
+        "email": "Email",
+        "phone": "Phone",
+        "address": "Address"
+      }
     },
     "contact_us": {
       "heading": "Contact Us",

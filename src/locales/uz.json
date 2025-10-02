@@ -483,7 +483,80 @@
     },
     "terms-conditions": {
       "heading": "Shartlar va shartlar",
-      "subheading": "Bizning xizmatlarimizni ishlatish uchun shartlar va shartlar haqida biling"
+      "subheading": "Bizning xizmatlarimizni ishlatish uchun shartlar va shartlar haqida biling",
+      "last_updated": "Oxirgi yangilanish: 2025-yil 1-oktabr",
+      "intro": "Sitora Tours kompaniyasiga xush kelibsiz. Veb-saytimizga kirib, xizmatlarimizdan foydalanish orqali siz quyidagi shartlar va shartlarga rioya qilishga rozisiz. Iltimos, bron qilish yoki xizmatlarimizdan foydalanishdan oldin ularni diqqat bilan o'qing.",
+      "section1": {
+        "title": "1. Shartlarni qabul qilish",
+        "content": [
+          "Ushbu veb-sayt va xizmatlarimizdan foydalanish orqali siz ushbu Shartlar va shartlarni o'qiganingizni, tushunganingizni va ularni bajarishga roziliginizni tan olasiz. Agar siz ushbu shartlarning biron bir qismiga rozi bo'lmasangiz, xizmatlarimizdan foydalanmasligingiz kerak.",
+          "Biz ushbu shartlarni istalgan vaqtda o'zgartirish huquqini saqlab qolamiz. O'zgarishlar e'lon qilinganidan keyin xizmatlarimizdan foydalanishni davom ettirishingiz ushbu o'zgarishlarni qabul qilishni anglatadi."
+        ]
+      },
+      "section2": {
+        "title": "2. Bron qilish va rezerv",
+        "items": [
+          "Barcha bronlar mavjudlik va tasdiqlanishga bog'liq",
+          "Broningizni tasdiqlash uchun depozit yoki to'liq to'lov talab qilinishi mumkin",
+          "Narxlar AQSh dollarida ko'rsatilgan va oldindan ogohlantirishsiz o'zgarishi mumkin",
+          "Bron qilishda to'g'ri va to'liq ma'lumot berishingiz kerak",
+          "Bronlar faqat to'lov tasdiqlanganidan keyin tasdiqlanadi",
+          "Maxsus so'rovlar kafolatlanmaydi, lekin qayd etiladi"
+        ]
+      },
+      "section3": {
+        "title": "3. Bekor qilish va qaytarish",
+        "subtitle": "Bekor qilish siyosati:",
+        "items": [
+          "Jo'nashdan 30+ kun oldin bekor qilish: 100% qaytarish (qayta ishlash to'lovini hisobga olmaganda)",
+          "Jo'nashdan 15-29 kun oldin bekor qilish: 50% qaytarish",
+          "Jo'nashdan 7-14 kun oldin bekor qilish: 25% qaytarish",
+          "Jo'nashdan 7 kundan kam vaqt oldin bekor qilish: Qaytarilmaydi",
+          "Kelmagan taqdirda barcha to'lovlar yo'qotiladi"
+        ],
+        "disclaimer": "Qaytarishlar asl to'lov usuliga 14-21 ish kuni ichida qayta ishlanadi."
+      },
+      "section4": {
+        "title": "4. To'lov shartlari",
+        "items": [
+          "Biz asosiy kredit kartalari, debet kartalari va bank o'tkazmalarini qabul qilamiz",
+          "Barcha narxlar boshqacha ko'rsatilmagan bo'lsa, AQSh dollarida",
+          "Xizmatlar ko'rsatilishidan oldin to'liq to'lov amalga oshirilishi kerak",
+          "Maxsus so'rovlar yoki o'zgarishlar uchun qo'shimcha to'lovlar qo'llanishi mumkin",
+          "Xalqaro to'lovlar uchun valyuta konvertatsiya to'lovlari qo'llanishi mumkin"
+        ]
+      },
+      "section5": {
+        "title": "5. Sayohatchi majburiyatlari",
+        "intro": "Sayohatchi sifatida siz quyidagilar uchun javobgarsiz:",
+        "items": [
+          "Amal qiladigan pasport va vizalarga ega bo'lish",
+          "Sog'liqni saqlash va emlash talablariga javob berish",
+          "Uchrashuv joylariga o'z vaqtida kelish",
+          "Mahalliy urf-odatlar va qonunlarga hurmat qilish",
+          "Tegishli sayohat sug'urtasiga ega bo'lish",
+          "Faoliyatlarda ishtirok etish uchun yaxshi sog'liqda bo'lish"
+        ]
+      },
+      "section6": {
+        "title": "6. Javobgarlik cheklovlari",
+        "intro": "Sitora Tours quyidagilar uchun javobgar emas:",
+        "items": [
+          "Ob-havo, tabiiy ofatlar yoki fors-major tufayli kechikishlar, bekor qilishlar yoki o'zgarishlar",
+          "Shaxsiy narsalarning yo'qolishi, shikastlanishi yoki o'g'irlanishi",
+          "Bizning ehtiyotsizligimiz sababli yuzaga kelmaydigan shaxsiy jarohat yoki o'lim",
+          "Uchinchi tomon xizmat ko'rsatuvchilarning harakatlari yoki kamchiliklari",
+          "Siyosiy tartibsizliklar yoki hukumat harakatlari sabab bo'lgan buzilishlar"
+        ],
+        "disclaimer": "Biz keng qamrovli sayohat sug'urtasini sotib olishni qat'iy tavsiya qilamiz."
+      },
+      "contact": {
+        "title": "Savollar bormi?",
+        "intro": "Agar ushbu Shartlar va shartlar haqida savollaringiz bo'lsa, biz bilan bog'laning:",
+        "email": "Elektron pochta",
+        "phone": "Telefon",
+        "address": "Manzil"
+      }
     },
     "contact_us": {
       "heading": "Biz bilan bog'laning",
