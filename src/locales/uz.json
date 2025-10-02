@@ -404,7 +404,82 @@
     },
     "privacy_policy": {
       "heading": "Maxfiylik siyosati",
-      "subheading": "Shaxsiy ma'lumotlaringizni qanday himoya qilishimiz va boshqarishimizni biling"
+      "subheading": "Shaxsiy ma'lumotlaringizni qanday himoya qilishimiz va boshqarishimizni biling",
+      "last_updated": "Oxirgi yangilanish: 2025-yil 1-oktabr",
+      "intro": "Sitora Tours kompaniyasida biz sizning maxfiyligingizni himoya qilish va shaxsiy ma'lumotlaringiz xavfsizligini ta'minlashga sodiqmiz. Ushbu Maxfiylik siyosati veb-saytimizga tashrif buyurganingizda yoki xizmatlarimizdan foydalanganingizda ma'lumotlaringizni qanday to'plash, ishlatish, oshkor qilish va himoya qilishimizni tushuntiradi.",
+      "section1": {
+        "title": "1. Biz to'playdigan ma'lumotlar",
+        "intro": "Biz sizdan to'g'ridan-to'g'ri taqdim etilgan ma'lumotlarni to'playmiz, jumladan:",
+        "items": [
+          "Ism, elektron pochta manzili, telefon raqami va to'lov ma'lumotlari",
+          "Sayohat afzalliklari va bron qilish tarixi",
+          "To'lov va tranzaksiya ma'lumotlari",
+          "Mijozlarga xizmat ko'rsatish jamoamiz bilan muloqotlar",
+          "Fikr-mulohazalar, sharhlar va so'rovnomalarga javoblar"
+        ]
+      },
+      "section2": {
+        "title": "2. Ma'lumotlaringizni qanday ishlatamiz",
+        "intro": "Biz to'plangan ma'lumotlardan quyidagilar uchun foydalanamiz:",
+        "items": [
+          "Bronlaringizni qayta ishlash va mijozlarga yordam ko'rsatish",
+          "Bron qilish tasdiqlari va sayohatga oid yangilanishlarni yuborish",
+          "Xizmatlarimizni yaxshilash va tajribangizni shaxsiylashtirish",
+          "Reklama takliflari va marketing xabarlarini yuborish (sizning roziligingiz bilan)",
+          "Qonuniy majburiyatlarga rioya qilish va firibgarlikni oldini olish"
+        ]
+      },
+      "section3": {
+        "title": "3. Ma'lumotlarni almashish",
+        "intro": "Biz sizning ma'lumotlaringizni quyidagilar bilan baham ko'rishimiz mumkin:",
+        "items": [
+          "Bizning operatsiyalarimizda yordam beradigan xizmat ko'rsatuvchilar (mehmonxonalar, transport kompaniyalari)",
+          "Tranzaksiyalarni yakunlash uchun to'lov protsessorlari",
+          "Qonun talab qilganda huquqni muhofaza qilish organlari",
+          "Sizning aniq roziligingiz bilan biznes hamkorlari"
+        ],
+        "disclaimer": "Biz sizning shaxsiy ma'lumotlaringizni uchinchi shaxslarga sotmaymiz."
+      },
+      "section4": {
+        "title": "4. Ma'lumotlar xavfsizligi",
+        "intro": "Biz shaxsiy ma'lumotlaringizni himoya qilish uchun tegishli texnik va tashkiliy choralarni qo'llaymiz, jumladan:",
+        "items": [
+          "Yuborish va saqlash paytida maxfiy ma'lumotlarni shifrlash",
+          "Muntazam xavfsizlik tekshiruvlari va yangilanishlar",
+          "Kirish nazorati va autentifikatsiya mexanizmlari",
+          "Sertifikatlangan provayderlar orqali xavfsiz to'lov ishlash"
+        ]
+      },
+      "section5": {
+        "title": "5. Sizning huquqlaringiz",
+        "intro": "Sizda quyidagi huquqlar mavjud:",
+        "items": [
+          "Shaxsiy ma'lumotlaringizga kirish va nusxa olish",
+          "Noto'g'ri yoki to'liq bo'lmagan ma'lumotlarni tuzatish",
+          "Shaxsiy ma'lumotlaringizni o'chirishni so'rash",
+          "Muayyan qayta ishlash faoliyatiga e'tiroz bildirish yoki cheklash",
+          "Marketing xabarlarga rozilikni qaytarib olish",
+          "Nazorat organiga shikoyat yuborish"
+        ]
+      },
+      "section6": {
+        "title": "6. Ma'lumotlarni saqlash",
+        "intro": "Biz sizning shaxsiy ma'lumotlaringizni faqat quyidagilar uchun zarur bo'lgan vaqt davomida saqlaymiz:",
+        "items": [
+          "Xizmatlarimizni taqdim etish va bronlarni bajarish",
+          "Qonuniy va tartibga soluvchi talablarga rioya qilish",
+          "Nizolarni hal qilish va kelishuvlarimizni bajarish",
+          "Buxgalteriya maqsadlari uchun biznes yozuvlarini saqlash"
+        ],
+        "disclaimer": "Ushbu muddatdan keyin biz ma'lumotlaringizni xavfsiz tarzda o'chiramiz yoki anonim qilamiz."
+      },
+      "contact": {
+        "title": "Biz bilan bog'laning",
+        "intro": "Agar ushbu Maxfiylik siyosati haqida savollaringiz bo'lsa yoki huquqlaringizdan foydalanmoqchi bo'lsangiz, biz bilan bog'laning:",
+        "email": "Elektron pochta",
+        "phone": "Telefon",
+        "address": "Manzil"
+      }
     },
     "terms-conditions": {
       "heading": "Shartlar va shartlar",

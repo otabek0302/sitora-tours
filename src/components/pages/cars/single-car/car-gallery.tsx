@@ -30,7 +30,7 @@ const CarGallery = ({ images, name }: CarGalleryProps) => {
       {/* Thumbnail Gallery */}
       <div className='grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8'>
         {images.slice(0, 8).map((img, index) => (
-          <button key={img.id || index} onClick={() => setSelectedImage(index)} className={cn('relative h-20 w-full overflow-hidden rounded-[26px] border-2 shadow-none transition-all duration-300 hover:scale-105 hover:shadow-sm sm:h-24', selectedImage === index ? 'border-sitora-primary' : 'border-border opacity-70 hover:opacity-100')}>
+          <button key={img.id || index} onClick={() => setSelectedImage(index)} className={cn('relative h-20 w-full overflow-hidden rounded-[18px] border-2 shadow-none transition-all duration-300 hover:scale-105 hover:shadow-sm sm:h-24', selectedImage === index ? 'border-sitora-primary' : 'border-border opacity-70 hover:opacity-100')}>
             <Image src={img.image.url} alt={`${name} thumbnail ${index + 1}`} fill sizes='(max-width: 640px) 33vw, (max-width: 768px) 25vw, (max-width: 1024px) 16vw, 12vw' className='object-cover' />
           </button>
         ))}

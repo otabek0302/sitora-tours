@@ -17,7 +17,7 @@ const HotelPolicies = ({ hotel }: HotelPoliciesProps) => {
           <CardTitle className='text-sitora-text-heading text-xl font-bold'>{t('policies')}</CardTitle>
         </div>
       </CardHeader>
-      <CardContent></CardContent>
+      <CardContent>
         <div className='grid gap-4 sm:grid-cols-2'>
           {/* Check-in */}
           <div className='flex items-start gap-3'>

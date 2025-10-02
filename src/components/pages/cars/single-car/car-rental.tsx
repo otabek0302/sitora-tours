@@ -25,7 +25,6 @@ const CarRental = ({ car }: CarRentalProps) => {
         {/* Price */}
         <div className='flex items-center justify-between'>
           <div className='flex items-start gap-3'>
-            <DollarSign className='text-sitora-primary mt-1 h-6 w-6 flex-shrink-0' />
             <div className='flex-1'>
               <h3 className='text-sitora-text-subtitle mb-1 text-sm font-semibold'>{t('price_per_day')}</h3>
               <p className='text-sitora-primary text-3xl font-bold'>${car.price}</p>

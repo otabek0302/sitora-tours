@@ -403,7 +403,82 @@
     },
     "privacy_policy": {
       "heading": "Privacy Policy",
-      "subheading": "Learn how we protect and handle your personal information"
+      "subheading": "Learn how we protect and handle your personal information",
+      "last_updated": "Last updated: October 1, 2025",
+      "intro": "At Sitora Tours, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.",
+      "section1": {
+        "title": "1. Information We Collect",
+        "intro": "We collect information that you provide directly to us, including:",
+        "items": [
+          "Name, email address, phone number, and billing information",
+          "Travel preferences and booking history",
+          "Payment and transaction information",
+          "Communications with our customer service team",
+          "Feedback, reviews, and survey responses"
+        ]
+      },
+      "section2": {
+        "title": "2. How We Use Your Information",
+        "intro": "We use the information we collect to:",
+        "items": [
+          "Process your bookings and provide customer support",
+          "Send booking confirmations and travel-related updates",
+          "Improve our services and personalize your experience",
+          "Send promotional offers and marketing communications (with your consent)",
+          "Comply with legal obligations and prevent fraud"
+        ]
+      },
+      "section3": {
+        "title": "3. Information Sharing",
+        "intro": "We may share your information with:",
+        "items": [
+          "Service providers who assist in our operations (hotels, transport companies)",
+          "Payment processors to complete transactions",
+          "Law enforcement when required by law",
+          "Business partners with your explicit consent"
+        ],
+        "disclaimer": "We do not sell your personal information to third parties."
+      },
+      "section4": {
+        "title": "4. Data Security",
+        "intro": "We implement appropriate technical and organizational measures to protect your personal information, including:",
+        "items": [
+          "Encryption of sensitive data in transit and at rest",
+          "Regular security audits and updates",
+          "Access controls and authentication mechanisms",
+          "Secure payment processing through certified providers"
+        ]
+      },
+      "section5": {
+        "title": "5. Your Rights",
+        "intro": "You have the right to:",
+        "items": [
+          "Access and receive a copy of your personal data",
+          "Correct inaccurate or incomplete information",
+          "Request deletion of your personal data",
+          "Object to or restrict certain processing activities",
+          "Withdraw consent for marketing communications",
+          "Lodge a complaint with a supervisory authority"
+        ]
+      },
+      "section6": {
+        "title": "6. Data Retention",
+        "intro": "We retain your personal information only for as long as necessary to:",
+        "items": [
+          "Provide our services and fulfill bookings",
+          "Comply with legal and regulatory requirements",
+          "Resolve disputes and enforce our agreements",
+          "Maintain business records for accounting purposes"
+        ],
+        "disclaimer": "After this period, we securely delete or anonymize your data."
+      },
+      "contact": {
+        "title": "Contact Us",
+        "intro": "If you have any questions about this Privacy Policy or wish to exercise your rights, please contact us at:",
+        "email": "Email",
+        "phone": "Phone",
+        "address": "Address"
+      }
     },
     "terms-conditions": {
       "heading": "Terms & Conditions",
