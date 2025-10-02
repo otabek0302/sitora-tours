@@ -21,6 +21,9 @@ export default async function Layout({ children, params }: Props) {
   return (
     <html lang={locale}>
       <head>
+        {/* Google Site Verification */}
+        <meta name='google-site-verification' content='j07f1HmJvncNCzLIv9aGfYmvv_AqSiImPnhkeRDpZus' />
+
         {/* Google Tag Manager */}
         <Script
           id='gtm-script'
@@ -39,12 +42,7 @@ export default async function Layout({ children, params }: Props) {
       <body>
         {/* Google Tag Manager (noscript) */}
         <noscript>
-          <iframe
-            src='https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXXXX'
-            height='0'
-            width='0'
-            style={{ display: 'none', visibility: 'hidden' }}
-          />
+          <iframe src='https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXXXX' height='0' width='0' style={{ display: 'none', visibility: 'hidden' }} />
         </noscript>
 
         <Providers locale={locale} messages={messages}>

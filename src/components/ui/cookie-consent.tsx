@@ -1,8 +1,8 @@
 'use client'
 
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
-import Link from 'next/link'
 import { Button } from './button'
 
 const CookieConsent = () => {
@@ -10,7 +10,7 @@ const CookieConsent = () => {
   const [visible, setVisible] = useState(false)
   const [showDetails, setShowDetails] = useState(false)
   const [preferences, setPreferences] = useState({
-    necessary: true, // Always true
+    necessary: true,
     analytics: false,
     marketing: false,
   })
@@ -41,7 +41,6 @@ const CookieConsent = () => {
     setVisible(false)
 
     if (analytics) {
-      // Dynamically load Google Analytics script after consent
       const script = document.createElement('script')
       script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX'
       script.async = true
@@ -104,12 +103,7 @@ const CookieConsent = () => {
                 <h4 className='font-medium'>{t('cookies.analytics.title')}</h4>
                 <p className='text-muted-foreground text-sm'>{t('cookies.analytics.description')}</p>
               </div>
-              <input
-                type='checkbox'
-                checked={preferences.analytics}
-                onChange={(e) => setPreferences({ ...preferences, analytics: e.target.checked })}
-                className='h-4 w-4 rounded border-gray-300'
-              />
+              <input type='checkbox' checked={preferences.analytics} onChange={e => setPreferences({ ...preferences, analytics: e.target.checked })} className='h-4 w-4 rounded border-gray-300' />
             </div>
 
             <div className='flex items-center justify-between'>
@@ -117,12 +111,7 @@ const CookieConsent = () => {
                 <h4 className='font-medium'>{t('cookies.marketing.title')}</h4>
                 <p className='text-muted-foreground text-sm'>{t('cookies.marketing.description')}</p>
               </div>
-              <input
-                type='checkbox'
-                checked={preferences.marketing}
-                onChange={(e) => setPreferences({ ...preferences, marketing: e.target.checked })}
-                className='h-4 w-4 rounded border-gray-300'
-              />
+              <input type='checkbox' checked={preferences.marketing} onChange={e => setPreferences({ ...preferences, marketing: e.target.checked })} className='h-4 w-4 rounded border-gray-300' />
             </div>
 
             <div className='flex justify-end gap-2 pt-2'>
@@ -138,4 +127,3 @@ const CookieConsent = () => {
 }
 
 export default CookieConsent
-
