@@ -39,10 +39,10 @@ const TourReviews = ({ tour }: TourReviewsProps) => {
 
       <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
         {reviews.slice(0, 6).map((review, index) => (
-          <div key={review.id || index} className='bg-card border-sitora-primary rounded-[26px] border p-6 shadow-none'>
+          <div key={review.id || index} className='bg-card border-border min-h-72 rounded-[18px] border p-6 shadow-none'>
             <div className='mb-4 flex items-start gap-4'>
               <div className='flex-1'>
-                <h4 className='text-sitora-primary text-base font-bold'>
+                <h4 className='text-sitora-text-heading text-base font-bold'>
                   {review.first_name} {review.last_name}
                 </h4>
                 <p className='text-sitora-primary/70 text-sm'>{review.createdAt ? formatDate(review.createdAt) : ''}</p>

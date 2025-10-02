@@ -49,9 +49,9 @@ const TourPricing = ({ tour }: TourPricingProps) => {
       <div className='grid grid-cols-1 gap-4 lg:grid-cols-2'>
         {/* Pricing Information */}
         <div className='bg-card border-border rounded-[26px] border p-6 shadow-none'>
-          <h3 className='text-sitora-primary mb-4 flex items-center gap-2 text-lg font-bold'>
-            <DollarSign className='h-5 w-5' />
-            {t('departure_dates')}
+          <h3 className='text-sitora-text-heading mb-4 flex items-center gap-2 text-lg font-bold'>
+            <DollarSign className='text-sitora-gold-medium h-5 w-5' />
+            <span className='text-sitora-text-heading text-lg font-bold'>{t('departure_dates')}</span>
           </h3>
 
           <div className='space-y-4'>
@@ -81,26 +81,26 @@ const TourPricing = ({ tour }: TourPricingProps) => {
         </div>
 
         {/* Booking Actions */}
-        <div className='bg-card border-sitora-primary rounded-[26px] border p-6 shadow-none'>
-          <h3 className='text-sitora-primary mb-4 flex items-center gap-2 text-lg font-bold'>
-            <Clock className='h-5 w-5' />
+        <div className='bg-card border-border rounded-[26px] border p-6 shadow-none'>
+          <h3 className='text-sitora-text-heading mb-4 flex items-center gap-2 text-lg font-bold'>
+            <Clock className='text-sitora-gold-medium h-5 w-5' />
             {t('book_now')}
           </h3>
 
           <div className='space-y-4'>
-            <div className='bg-sitora-primary-light rounded-2xl p-4'>
-              <h4 className='text-sitora-primary mb-2 font-semibold'>{t('starting_price')}</h4>
+            <div className='bg-sitora-primary-light rounded-[18px] p-4'>
+              <h4 className='text-sitora-text-heading mb-2 font-semibold'>{t('starting_price')}</h4>
               <div className='flex items-center justify-between'>
-                <span className='text-sitora-primary text-sm'>
+                <span className='text-sitora-text-body text-sm'>
                   {tour.duration_days} {t('days')} / {tour.duration_nights} {t('nights')}
                 </span>
-                <span className='text-sitora-primary text-2xl font-bold'>${tour.price?.toLocaleString() || '0'}</span>
+                <span className='text-sitora-text-heading text-2xl font-bold'>${tour.price?.toLocaleString() || '0'}</span>
               </div>
               <p className='text-sitora-primary mt-2 text-xs'>{t('per_person')}</p>
             </div>
 
             <div className='space-y-3'>
-              <Button variant='default' size='lg' onClick={() => setApplyOpen(true)} className='w-full rounded-2xl shadow-none'>
+              <Button variant='default' size='lg' onClick={() => setApplyOpen(true)} className='w-full rounded-[18px] shadow-none'>
                 {t('book_now')}
               </Button>
 
