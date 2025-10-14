@@ -17,12 +17,21 @@ NC='\033[0m'
 # 1. Environment Check
 echo -e "\n${YELLOW}[1/6] Checking environment...${NC}"
 if [ ! -f .env ]; then
-    echo -e "${YELLOW}📝 Creating .env from .env.example...${NC}"
-    cp .env.example .env
-    echo -e "${RED}⚠️  Please edit .env with your values, then run again!${NC}"
-    exit 1
+    if [ -f env.example ]; then
+        echo -e "${YELLOW}📝 Creating .env from env.example...${NC}"
+        cp env.example .env
+        echo -e "${GREEN}✅ .env file created (using default values)${NC}"
+    elif [ -f .env.example ]; then
+        echo -e "${YELLOW}📝 Creating .env from .env.example...${NC}"
+        cp .env.example .env
+        echo -e "${GREEN}✅ .env file created (using default values)${NC}"
+    else
+        echo -e "${RED}❌ No env.example or .env.example found!${NC}"
+        exit 1
+    fi
+else
+    echo -e "${GREEN}✅ Environment file found${NC}"
 fi
-echo -e "${GREEN}✅ Environment file found${NC}"
 
 # 2. Install Dependencies
 echo -e "\n${YELLOW}[2/6] Installing dependencies...${NC}"
