@@ -29,7 +29,7 @@ const Hero = () => {
   }
 
   return (
-    <section className='py-6 lg:py-8'>
+    <section className='py-2'>
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
         {/* Main Hero Card */}
         <div className='mb-6'>
@@ -62,53 +62,56 @@ const Hero = () => {
 
         {/* Two Cards Below Hero - Dynamic from Reviews */}
         <div className='grid grid-cols-1 gap-4 lg:grid-cols-2'>
-          {posts?.slice(0, 2).map((post, index) => {
-            const review = typeof post.review === 'object' ? post.review : null
-            const reviewName = review ? `${review.first_name || ''} ${review.last_name || ''}`.trim() : 'Traveler'
-            const reviewComment = review?.comment || 'Amazing experience!'
-            const reviewRating = review?.rating || 5
-            const reviewTour = typeof review?.tour === 'object' ? review.tour.name : 'Tour'
-            const videoUrl = typeof post.video === 'object' ? post.video.url : undefined
+          {posts
+            ?.filter(post => post.review && post.review !== null && post.video && post.video !== null)
+            .slice(0, 2)
+            .map((post, index) => {
+              const review = typeof post.review === 'object' && post.review !== null ? post.review : null
+              const reviewName = review ? `${review.first_name || ''} ${review.last_name || ''}`.trim() : 'Traveler'
+              const reviewComment = review?.comment || 'Amazing experience!'
+              const reviewRating = review?.rating || 5
+              const reviewTour = typeof review?.tour === 'object' ? review.tour.name : 'Tour'
+              const videoUrl = typeof post.video === 'object' && post.video !== null ? post.video.url : undefined
 
-            return (
-              <div key={post.id || index} onClick={() => videoUrl && handleVideoClick(videoUrl, reviewName, reviewComment)} className='bg-card border-border group h-[300px] cursor-pointer overflow-hidden rounded-[26px] border shadow-none transition-all duration-300 hover:shadow-sm lg:h-[350px]'>
-                <div className='flex h-full'>
-                  {/* Video Section */}
-                  <div className='relative h-full w-1/2 overflow-hidden'>
-                    {videoUrl ? (
-                      <video className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105' autoPlay muted loop playsInline>
-                        <source src={videoUrl} type='video/mp4' />
-                        Your browser does not support the video tag.
-                      </video>
-                    ) : (
-                      <div className='bg-sitora-text-muted/10 flex h-full w-full items-center justify-center'>
-                        <Play className='text-sitora-text-muted h-12 w-12' />
-                      </div>
-                    )}
+              return (
+                <div key={post.id || index} onClick={() => videoUrl && handleVideoClick(videoUrl, reviewName, reviewComment)} className='bg-card border-border group h-[300px] cursor-pointer overflow-hidden rounded-[26px] border shadow-none transition-all duration-300 hover:shadow-sm lg:h-[350px]'>
+                  <div className='flex h-full'>
+                    {/* Video Section */}
+                    <div className='border-border relative h-full w-1/2 overflow-hidden border-r'>
+                      {videoUrl ? (
+                        <video className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105' autoPlay muted loop playsInline>
+                          <source src={videoUrl} type='video/mp4' />
+                          Your browser does not support the video tag.
+                        </video>
+                      ) : (
+                        <div className='bg-sitora-text-muted/10 flex h-full w-full items-center justify-center'>
+                          <Play className='text-sitora-text-muted h-12 w-12' />
+                        </div>
+                      )}
 
-                    {/* Play Button Overlay */}
-                    <div className='absolute inset-0 flex items-center justify-center'>
-                      <div className='bg-sitora-white/90 hover:bg-sitora-white rounded-full p-4 backdrop-blur-sm transition-all duration-300 group-hover:scale-110'>
-                        <Play className='text-sitora-primary h-6 w-6 fill-current' />
+                      {/* Play Button Overlay */}
+                      <div className='absolute inset-0 flex items-center justify-center'>
+                        <div className='bg-sitora-white/90 hover:bg-sitora-white rounded-full p-4 backdrop-blur-sm transition-all duration-300 group-hover:scale-110'>
+                          <Play className='text-sitora-primary h-6 w-6 fill-current' />
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Review Content Section */}
-                  <div className='flex w-1/2 flex-col justify-center p-6'>
-                    <h4 className='text-sitora-text-subtitle mb-2 text-base font-bold'>{reviewName}</h4>
-                    <p className='text-sitora-body line-clamp-3 text-sm leading-relaxed'>&quot;{reviewComment}&quot;</p>
-                    <div className='mt-4 flex items-center justify-start gap-1'>
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className={`h-5 w-5 ${i < (reviewRating || 0) ? 'text-sitora-gold-medium fill-current' : 'text-sitora-muted dark:text-muted-foreground'}`} />
-                      ))}
+                    {/* Review Content Section */}
+                    <div className='flex w-1/2 flex-col justify-center p-6'>
+                      <h4 className='text-sitora-text-subtitle mb-2 text-base font-bold'>{reviewName}</h4>
+                      <p className='text-sitora-body line-clamp-3 text-sm leading-relaxed'>&quot;{reviewComment}&quot;</p>
+                      <div className='mt-4 flex items-center justify-start gap-1'>
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className={`h-5 w-5 ${i < (reviewRating || 0) ? 'text-sitora-gold-medium fill-current' : 'text-sitora-muted dark:text-muted-foreground'}`} />
+                        ))}
+                      </div>
+                      <p className='text-sitora-body mt-2 text-right text-sm leading-relaxed'>{reviewTour}</p>
                     </div>
-                    <p className='text-sitora-body mt-2 text-right text-sm leading-relaxed'>{reviewTour}</p>
                   </div>
                 </div>
-              </div>
-            )
-          })}
+              )
+            })}
         </div>
 
         {/* Video Dialog */}
@@ -124,7 +127,7 @@ const Hero = () => {
               {/* Video Player */}
               {selectedVideo && (
                 <div className='relative aspect-video w-full overflow-hidden rounded-[26px]'>
-                  <video className='h-full w-full object-cover' controls autoPlay>
+                  <video className='h-full w-full object-contain' controls autoPlay>
                     <source src={selectedVideo.url} type='video/mp4' />
                     Your browser does not support the video tag.
                   </video>

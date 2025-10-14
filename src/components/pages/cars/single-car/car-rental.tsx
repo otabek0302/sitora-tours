@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { useTranslations } from 'next-intl'
-import { DollarSign } from 'lucide-react'
 import { Car } from '@/lib/schemas'
 import { Button } from '@/components/ui/button'
 import { ApplyCar } from '@/components/ui'

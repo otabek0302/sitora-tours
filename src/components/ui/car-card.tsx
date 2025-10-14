@@ -46,11 +46,7 @@ const CarsCard = ({ car }: CarsCardProps) => {
         <div className='flex-1 p-6'>
           <CardHeader className='mb-4 p-0'>
             <CardTitle className='text-sitora-text-subtitle mb-2 text-xl font-bold'>{car.name}</CardTitle>
-            {car.brand && car.model && (
-              <p className='text-sitora-body text-sm leading-relaxed'>
-                {car.brand} {car.model}
-              </p>
-            )}
+            {car.brand && car.model && <p className='text-sitora-body text-sm leading-relaxed'>{car.brand}</p>}
           </CardHeader>
 
           <CardContent className='space-y-4 p-0'>
@@ -58,15 +54,15 @@ const CarsCard = ({ car }: CarsCardProps) => {
             <div className='text-sitora-body flex flex-wrap gap-4 text-sm'>
               <div className='flex items-center gap-1'>
                 <Users className='h-4 w-4' />
-                <span>{car.capacity} passengers</span>
+                <span>{car.capacity || '5'} passengers</span>
               </div>
               <div className='flex items-center gap-1'>
                 <Fuel className='h-4 w-4' />
-                <span>Petrol</span>
+                <span>{car.type || 'Petrol'}</span>
               </div>
               <div className='flex items-center gap-1'>
                 <Settings className='h-4 w-4' />
-                <span>Automatic</span>
+                <span>{car.model || 'Automatic'}</span>
               </div>
             </div>
 

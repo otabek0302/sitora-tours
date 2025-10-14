@@ -782,25 +782,25 @@ export interface Page {
             blockType: 'faq';
           }
         | {
-            tours: number | Tour;
+            tours?: (number | null) | Tour;
             id?: string | null;
             blockName?: string | null;
             blockType: 'special-offers';
           }
         | {
-            tours: (number | Tour)[];
+            tours?: (number | Tour)[] | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'recommended-tours';
           }
         | {
-            cities: (number | City)[];
+            cities?: (number | City)[] | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'recommended-cities';
           }
         | {
-            cars: (number | Car)[];
+            cars?: (number | Car)[] | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'recommended-cars';

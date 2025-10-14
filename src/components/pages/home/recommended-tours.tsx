@@ -54,7 +54,7 @@ const RecommendedTours = () => {
         {/* Tours Slider */}
         <div className='relative'>
           <div className='embla' ref={emblaRef}>
-            <div className='embla__container flex gap-4 py-4'>{Array.isArray(tours) && tours.filter(tour => typeof tour !== 'number').map(tour => <RecommendedToursCard key={tour.id} tour={tour} />)}</div>
+            <div className='embla__container flex gap-4 py-4'>{Array.isArray(tours) && tours.filter(tour => typeof tour !== 'number' && tour !== null).map(tour => <RecommendedToursCard key={tour.id} tour={tour} />)}</div>
           </div>
         </div>
 

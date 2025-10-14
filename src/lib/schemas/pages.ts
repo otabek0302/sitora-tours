@@ -18,13 +18,13 @@ const HeroSectionSchema = z.object({
   title: z.string().optional(),
   subtitle: z.string().optional(),
   button: z.string().optional(),
-  image: z.union([z.number(), ImageSchema]).optional(),
+  image: z.union([z.number(), ImageSchema, z.null()]).optional().nullable(),
   posts: z
     .array(
       z.object({
         id: z.string().optional(),
-        review: z.union([z.number(), ReviewSchema]).optional(),
-        video: z.union([z.number(), ImageSchema]).optional(),
+        review: z.union([z.number(), ReviewSchema, z.null()]).optional().nullable(),
+        video: z.union([z.number(), ImageSchema, z.null()]).optional().nullable(),
       }),
     )
     .optional(),
@@ -51,7 +51,7 @@ const SpecialOffersSectionSchema = z.object({
   blockType: z.literal('special-offers'),
   blockName: z.string().optional(),
   id: z.string().optional(),
-  tours: z.union([z.number(), TourSchema]).optional(),
+  tours: z.union([z.number(), TourSchema, z.null()]).optional().nullable(),
 })
 
 // Recommended Tours Section
@@ -59,7 +59,10 @@ const RecommendedToursSectionSchema = z.object({
   blockType: z.literal('recommended-tours'),
   blockName: z.string().optional(),
   id: z.string().optional(),
-  tours: z.union([z.array(z.union([z.number(), TourSchema])), z.number(), TourSchema]).optional(),
+  tours: z
+    .union([z.array(z.union([z.number(), TourSchema, z.null()])), z.number(), TourSchema, z.null()])
+    .optional()
+    .nullable(),
 })
 
 // Recommended Cities Section
@@ -67,7 +70,10 @@ const RecommendedCitiesSectionSchema = z.object({
   blockType: z.literal('recommended-cities'),
   blockName: z.string().optional(),
   id: z.string().optional(),
-  cities: z.union([z.array(z.union([z.number(), CitySchema])), z.number(), CitySchema]).optional(),
+  cities: z
+    .union([z.array(z.union([z.number(), CitySchema, z.null()])), z.number(), CitySchema, z.null()])
+    .optional()
+    .nullable(),
 })
 
 // Recommended Cars Section
@@ -75,7 +81,10 @@ const RecommendedCarsSectionSchema = z.object({
   blockType: z.literal('recommended-cars'),
   blockName: z.string().optional(),
   id: z.string().optional(),
-  cars: z.union([z.array(z.union([z.number(), CarSchema])), z.number(), CarSchema]).optional(),
+  cars: z
+    .union([z.array(z.union([z.number(), CarSchema, z.null()])), z.number(), CarSchema, z.null()])
+    .optional()
+    .nullable(),
 })
 
 // Union of all section types
