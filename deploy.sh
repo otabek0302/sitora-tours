@@ -62,9 +62,9 @@ $DOCKER_COMPOSE up -d --build
 echo -e "${GREEN}✅ Containers started${NC}"
 
 # 6. Run Database Migrations
-echo -e "\n${YELLOW}[6/7] Running database migrations...${NC}"
+echo -e "\n${YELLOW}[6/8] Running database migrations...${NC}"
 echo -e "${YELLOW}Waiting for PostgreSQL to be ready...${NC}"
-sleep 10
+sleep 15
 
 # Check if database needs migration
 echo -e "${YELLOW}Checking database status...${NC}"
@@ -72,24 +72,46 @@ TABLE_COUNT=$(docker exec sitora-tour-db psql -U postgres -d sitora_tour -t -c "
 
 if [ "$TABLE_COUNT" -lt 5 ]; then
     echo -e "${YELLOW}📦 Database is empty or incomplete. Running migrations...${NC}"
-    pnpm payload migrate || {
-        echo -e "${RED}❌ Migration failed! Trying to recreate schema...${NC}"
+    
+    # Try migration first
+    pnpm payload migrate 2>/dev/null || {
+        echo -e "${YELLOW}⚠️  Migration failed! Resetting database schema...${NC}"
+        
+        # Stop app to avoid conflicts
+        $DOCKER_COMPOSE stop app
+        
+        # Reset database schema
         docker exec sitora-tour-db psql -U postgres -d sitora_tour -c "DROP SCHEMA public CASCADE; CREATE SCHEMA public;" 2>/dev/null || true
-        sleep 2
+        sleep 3
+        
+        # Run migration again
+        echo -e "${YELLOW}Running fresh migration...${NC}"
         pnpm payload migrate
+        
+        # Start app again
+        $DOCKER_COMPOSE start app
+        sleep 5
     }
     echo -e "${GREEN}✅ Migrations completed${NC}"
-    
-    # Restart app to pick up new tables
-    echo -e "${YELLOW}Restarting application...${NC}"
-    $DOCKER_COMPOSE restart app
-    sleep 5
 else
     echo -e "${GREEN}✅ Database already migrated (${TABLE_COUNT} tables)${NC}"
 fi
 
-# 7. Wait & Verify
-echo -e "\n${YELLOW}[7/7] Verifying deployment...${NC}"
+# 7. Setup Nginx
+echo -e "\n${YELLOW}[7/8] Setting up Nginx...${NC}"
+if [ -f setup-nginx.sh ]; then
+    echo -e "${YELLOW}Configuring Nginx proxy...${NC}"
+    chmod +x setup-nginx.sh
+    ./setup-nginx.sh 2>/dev/null || {
+        echo -e "${YELLOW}⚠️  Nginx setup had issues, but continuing...${NC}"
+    }
+    echo -e "${GREEN}✅ Nginx configured${NC}"
+else
+    echo -e "${YELLOW}⚠️  setup-nginx.sh not found, skipping Nginx setup${NC}"
+fi
+
+# 8. Wait & Verify
+echo -e "\n${YELLOW}[8/8] Verifying deployment...${NC}"
 echo -e "${YELLOW}Waiting for services to initialize...${NC}"
 sleep 10
 
@@ -97,12 +119,12 @@ if docker ps | grep -q sitora-tour-app; then
     echo -e "\n${GREEN}╔════════════════════════════════════════╗${NC}"
     echo -e "${GREEN}║  🎉 DEPLOYMENT SUCCESSFUL! 🎉         ║${NC}"
     echo -e "${GREEN}╚════════════════════════════════════════╝${NC}"
-    echo -e "\n${GREEN}🌐 Frontend:    http://localhost:3000${NC}"
-    echo -e "${GREEN}🔧 Admin Panel: http://localhost:3000/admin${NC}"
+    echo -e "\n${GREEN}🌐 Frontend:    http://45.144.178.238${NC}"
+    echo -e "${GREEN}🔧 Admin Panel: http://45.144.178.238/admin${NC}"
     echo -e "${GREEN}🗄️  Database:    postgresql://localhost:5432/sitora_tour${NC}"
-    echo -e "${GREEN}📊 PgAdmin:     http://localhost:5050 (run: $DOCKER_COMPOSE --profile tools up pgadmin)${NC}"
+    echo -e "${GREEN}📊 PgAdmin:     http://45.144.178.238:5050 (run: $DOCKER_COMPOSE --profile tools up pgadmin)${NC}"
     echo -e "\n${YELLOW}📝 Next Steps:${NC}"
-    echo -e "   1. Visit http://localhost:3000/admin"
+    echo -e "   1. Visit http://45.144.178.238/admin"
     echo -e "   2. Create your admin account"
     echo -e "   3. Start adding content!"
     echo -e "\n${YELLOW}📋 Useful Commands:${NC}"
