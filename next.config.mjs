@@ -10,6 +10,13 @@ const nextConfig = {
   basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
   // Ensure assets work correctly with basePath
   assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || '',
+  // Skip type checking during build (types are checked by IDE)
+  typescript: {
+    ignoreBuildErrors: false,
+  },
+  eslint: {
+    ignoreDuringBuilds: false,
+  },
   webpack: webpackConfig => {
     webpackConfig.resolve.extensionAlias = {
       '.cjs': ['.cts', '.cjs'],
