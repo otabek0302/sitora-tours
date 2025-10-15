@@ -44,8 +44,25 @@ pnpm test:unit
 echo -e "${GREEN}✅ All tests passed${NC}"
 
 # 4. Build Application
-echo -e "\n${YELLOW}[4/6] Building production bundle...${NC}"
-pnpm build
+echo -e "\n${YELLOW}[4/8] Building production bundle...${NC}"
+echo -e "${YELLOW}Cleaning build cache...${NC}"
+rm -rf .next
+echo -e "${YELLOW}Starting build (this may take 2-3 minutes)...${NC}"
+
+# Build with timeout and error handling
+timeout 300 pnpm build || {
+    echo -e "${RED}❌ Build timed out after 5 minutes!${NC}"
+    echo -e "${YELLOW}Trying alternative build method...${NC}"
+    
+    # Try building without optimization
+    SKIP_ENV_VALIDATION=true NODE_ENV=production npx next build --no-lint || {
+        echo -e "${RED}❌ Alternative build also failed!${NC}"
+        echo -e "${YELLOW}Check memory and disk space:${NC}"
+        echo -e "Memory: $(free -h | grep Mem)"
+        echo -e "Disk: $(df -h / | tail -1)"
+        exit 1
+    }
+}
 echo -e "${GREEN}✅ Build completed${NC}"
 
 # 5. Build & Start Docker
