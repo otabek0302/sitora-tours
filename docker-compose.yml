@@ -39,6 +39,8 @@ services:
       - .:/app
     command: >
       sh -c "
+        corepack enable &&
+        corepack prepare pnpm@latest --activate &&
         if [ ! -d node_modules ]; then pnpm install; fi &&
         pnpm payload migrate &&
         pnpm payload start
