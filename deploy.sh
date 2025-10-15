@@ -198,7 +198,7 @@ if [ "$CURRENT_STEP" -lt 6 ]; then
         
         # Try migration inside Docker container (where 'postgres' hostname exists)
         echo -e "${YELLOW}Running migration inside Docker container...${NC}"
-        docker exec sitora-tour-app pnpm payload migrate 2>/dev/null || {
+        docker exec sitora-tour-app sh -c "cd /app && npx payload migrate" 2>/dev/null || {
             echo -e "${YELLOW}⚠️  Migration failed! Resetting database schema...${NC}"
             
             # Stop app to avoid conflicts
@@ -214,7 +214,7 @@ if [ "$CURRENT_STEP" -lt 6 ]; then
             
             # Run migration again inside container
             echo -e "${YELLOW}Running fresh migration inside container...${NC}"
-            docker exec sitora-tour-app pnpm payload migrate || {
+            docker exec sitora-tour-app sh -c "cd /app && npx payload migrate" || {
                 echo -e "${RED}❌ Migration still failed! Trying localhost connection...${NC}"
                 
                 # Create temporary .env for localhost connection
@@ -276,18 +276,36 @@ if [ "$CURRENT_STEP" -lt 8 ]; then
     echo -e "${YELLOW}Waiting for services to initialize...${NC}"
     sleep 10
 
-    # Health check loop
+    # Health check loop with better diagnostics
     echo -e "${YELLOW}⏳ Waiting for app health check...${NC}"
     for i in $(seq 1 30); do
         if docker ps | grep -q sitora-tour-app; then
-            # Check if container is healthy
+            # Check container status
+            CONTAINER_STATUS=$(docker inspect --format='{{.State.Status}}' sitora-tour-app 2>/dev/null || echo "not_found")
             HEALTH=$(docker inspect --format='{{json .State.Health.Status}}' sitora-tour-app 2>/dev/null || echo "unknown")
-            if [[ "$HEALTH" == "\"healthy\"" || "$HEALTH" == "unknown" ]]; then
-                echo -e "${GREEN}✅ App is running${NC}"
+            
+            # Check if app is responding on port 3000
+            if curl -s http://localhost:3000 > /dev/null 2>&1; then
+                echo -e "${GREEN}✅ App is responding on port 3000${NC}"
                 break
             fi
+            
+            # If container is running but not responding, show more info
+            if [[ "$CONTAINER_STATUS" == "running" ]]; then
+                echo -e "${YELLOW}   Attempt $i/30 - Container running, waiting for app to respond...${NC}"
+                echo -e "${YELLOW}   Container status: $CONTAINER_STATUS, Health: $HEALTH${NC}"
+                
+                # Show recent logs for debugging
+                if [ $i -eq 10 ] || [ $i -eq 20 ]; then
+                    echo -e "${YELLOW}   Recent app logs:${NC}"
+                    docker logs --tail 5 sitora-tour-app 2>/dev/null || echo "   No logs available"
+                fi
+            else
+                echo -e "${YELLOW}   Attempt $i/30 - Container status: $CONTAINER_STATUS${NC}"
+            fi
+        else
+            echo -e "${YELLOW}   Attempt $i/30 - Container not found${NC}"
         fi
-        echo -e "${YELLOW}   Attempt $i/30 - waiting for app to be ready...${NC}"
         sleep 10
     done
 
