@@ -50,19 +50,16 @@ rm -rf .next
 echo -e "${YELLOW}Starting build (this may take 2-3 minutes)...${NC}"
 
 # Build with timeout and error handling
-timeout 300 pnpm build || {
+timeout 600 pnpm build || {
     echo -e "${RED}❌ Build timed out after 10 minutes!${NC}"
-    echo -e "${YELLOW}Trying minimal build script...${NC}"
+    echo -e "${YELLOW}Trying alternative build method...${NC}"
     
-    # Use minimal build script
-    ./minimal-build.sh || {
-        echo -e "${RED}❌ All build methods failed!${NC}"
-        echo -e "${YELLOW}VPS Memory: $(free -h | grep Mem)${NC}"
-        echo -e "${YELLOW}VPS Disk: $(df -h / | tail -1)${NC}"
-        echo -e "${YELLOW}💡 Solutions:${NC}"
-        echo -e "   1. Add swap: sudo fallocate -l 2G /swapfile && sudo chmod 600 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile"
-        echo -e "   2. Upgrade VPS to 4GB+ RAM"
-        echo -e "   3. Use GitHub Actions to build and deploy"
+    # Try building without optimization
+    SKIP_ENV_VALIDATION=true NODE_ENV=production npx next build --no-lint || {
+        echo -e "${RED}❌ Alternative build also failed!${NC}"
+        echo -e "${YELLOW}Check memory and disk space:${NC}"
+        echo -e "Memory: $(free -h | grep Mem)"
+        echo -e "Disk: $(df -h / | tail -1)"
         exit 1
     }
 }

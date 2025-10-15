@@ -14,56 +14,16 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  experimental: {
-    // Disable memory-intensive optimizations for VPS
-    optimizeCss: false,
-    // Reduce memory usage
-    memoryBasedWorkersCount: true,
-    workerThreads: false,
-    // Disable other memory-intensive features
-    webpackBuildWorker: false,
-    serverComponentsExternalPackages: [],
+  webpack: webpackConfig => {
+    webpackConfig.resolve.extensionAlias = {
+      '.cjs': ['.cts', '.cjs'],
+      '.js': ['.ts', '.tsx', '.js', '.jsx'],
+      '.mjs': ['.mts', '.mjs'],
+    }
+    return webpackConfig
   },
-  // Disable SWC for memory savings
-  swcMinify: false,
-  // Reduce build concurrency
-  webpack: (config, { isServer }) => {
-    config.watchOptions = {
-      ...config.watchOptions,
-      aggregateTimeout: 300,
-      poll: false,
-    }
-
-    // Reduce parallelism for memory efficiency
-    config.parallelism = 1
-
-    // Memory optimization
-    config.optimization = {
-      ...config.optimization,
-      splitChunks: {
-        chunks: 'all',
-        cacheGroups: {
-          default: false,
-          vendors: false,
-          vendor: {
-            name: 'vendor',
-            chunks: 'all',
-            test: /node_modules/,
-            priority: 20,
-          },
-          common: {
-            name: 'common',
-            minChunks: 2,
-            chunks: 'all',
-            priority: 10,
-            reuseExistingChunk: true,
-            enforce: true,
-          },
-        },
-      },
-    }
-
-    return config
+  experimental: {
+    optimizeCss: true,
   },
   images: {
     remotePatterns: [
@@ -73,8 +33,6 @@ const nextConfig = {
       },
     ],
   },
-  // Disable source maps to save memory
-  productionBrowserSourceMaps: false,
 }
 
 export default withPayload(withNextIntl(nextConfig), { devBundleServerPackages: false })
