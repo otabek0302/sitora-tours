@@ -70,10 +70,6 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 # Copy Payload CMS configuration file
 COPY --from=builder --chown=nextjs:nodejs /app/src/payload.config.ts ./src/payload.config.ts
 
-# Copy startup script
-COPY --chown=nextjs:nodejs start.sh ./start.sh
-RUN chmod +x ./start.sh
-
 # Note: Media files are handled via Docker volume mount (see docker-compose.yml)
 # No need to copy from builder since .dockerignore excludes media/*
 
@@ -89,4 +85,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
   CMD node -e "require('http').get('http://localhost:3000/api/globals/pages', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"
 
 # Start the application
-CMD ["./start.sh"]
+CMD ["node", "server.js"]
