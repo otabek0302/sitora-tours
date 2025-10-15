@@ -11,11 +11,17 @@ services:
       - '3000:3000'
     volumes:
       - media:/app/media
+      - .:/app  # Mount source for migrations
+    command: >
+      sh -c "
+        corepack enable &&
+        corepack prepare pnpm@latest --activate &&
+        pnpm payload migrate &&
+        node server.js
+      "
     depends_on:
       postgres:
         condition: service_healthy
-      cms:
-        condition: service_started
     env_file:
       - .env
     environment:
@@ -24,40 +30,7 @@ services:
       - NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH:-}
       - NEXT_PUBLIC_SERVER_URL=${NEXT_PUBLIC_SERVER_URL:-http://45.144.178.238}
       - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://45.144.178.238/api}
-    networks:
-      - sitora-network
-    restart: unless-stopped
-
-  # ───────────────────────────────
-  # Payload CMS Backend (API)
-  # ───────────────────────────────
-  cms:
-    image: node:18-alpine
-    container_name: sitora-tour-cms
-    working_dir: /app
-    volumes:
-      - .:/app
-    command: >
-      sh -c "
-        corepack enable &&
-        corepack prepare pnpm@latest --activate &&
-        if [ ! -d node_modules ]; then pnpm install; fi &&
-        pnpm payload migrate &&
-        pnpm payload run --config src/payload.config.ts
-      "
-    ports:
-      - '4000:4000'
-    env_file:
-      - .env
-    environment:
-      - NODE_ENV=production
-      - PAYLOAD_CONFIG_PATH=src/payload.config.ts
-      - DATABASE_URI=postgresql://postgres:sitoratours2024@postgres:5432/sitora_tour
       - PAYLOAD_SECRET=${PAYLOAD_SECRET:-supersecret}
-      - PAYLOAD_PUBLIC_SERVER_URL=http://45.144.178.238
-    depends_on:
-      postgres:
-        condition: service_healthy
     networks:
       - sitora-network
     restart: unless-stopped
