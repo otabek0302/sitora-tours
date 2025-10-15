@@ -43,7 +43,7 @@ services:
         corepack prepare pnpm@latest --activate &&
         if [ ! -d node_modules ]; then pnpm install; fi &&
         pnpm payload migrate &&
-        pnpm payload run
+        pnpm payload run --config src/payload.config.ts
       "
     ports:
       - '4000:4000'
