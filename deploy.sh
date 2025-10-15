@@ -248,6 +248,16 @@ if [ "$CURRENT_STEP" -lt 7 ]; then
     echo -e "\n${YELLOW}[7/8] Setting up Nginx...${NC}"
     echo -e "${YELLOW}Configuring Nginx proxy...${NC}"
 
+    # Check if Nginx is installed
+    if ! command -v nginx &> /dev/null; then
+        echo -e "${RED}❌ Nginx is not installed!${NC}"
+        echo -e "${YELLOW}Installing Nginx...${NC}"
+        sudo apt update && sudo apt install -y nginx || {
+            echo -e "${RED}❌ Failed to install Nginx!${NC}"
+            exit 1
+        }
+    fi
+
     # Detect Nginx configuration directory structure
     echo -e "${YELLOW}Detecting Nginx configuration structure...${NC}"
     
@@ -260,9 +270,21 @@ if [ "$CURRENT_STEP" -lt 7 ]; then
         NGINX_ENABLED_DIR="/etc/nginx/conf.d"
         echo -e "${GREEN}✅ Found conf.d directory${NC}"
     else
-        echo -e "${RED}❌ Cannot find Nginx configuration directory!${NC}"
-        echo -e "${YELLOW}Please check your Nginx installation${NC}"
-        exit 1
+        echo -e "${YELLOW}⚠️  Nginx directories not found, creating them...${NC}"
+        
+        # Create the standard Ubuntu/Debian Nginx structure
+        sudo mkdir -p /etc/nginx/sites-available
+        sudo mkdir -p /etc/nginx/sites-enabled
+        
+        # Update nginx.conf to include sites-enabled
+        if ! grep -q "include /etc/nginx/sites-enabled" /etc/nginx/nginx.conf; then
+            echo -e "${YELLOW}Adding sites-enabled include to nginx.conf...${NC}"
+            sudo sed -i '/http {/a\\tinclude /etc/nginx/sites-enabled/*;' /etc/nginx/nginx.conf
+        fi
+        
+        NGINX_CONFIG_DIR="/etc/nginx/sites-available"
+        NGINX_ENABLED_DIR="/etc/nginx/sites-enabled"
+        echo -e "${GREEN}✅ Created Nginx directory structure${NC}"
     fi
 
     # Copy nginx configuration with proper permissions
