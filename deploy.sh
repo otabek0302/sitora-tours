@@ -248,21 +248,42 @@ if [ "$CURRENT_STEP" -lt 7 ]; then
     echo -e "\n${YELLOW}[7/8] Setting up Nginx...${NC}"
     echo -e "${YELLOW}Configuring Nginx proxy...${NC}"
 
-    # Copy nginx configuration
-    sudo cp nginx.conf /etc/nginx/sites-available/sitora-tours 2>/dev/null || {
-        echo -e "${YELLOW}⚠️  Could not copy nginx config (need sudo), but continuing...${NC}"
+    # Copy nginx configuration with proper permissions
+    echo -e "${YELLOW}Copying Nginx configuration...${NC}"
+    sudo cp nginx.conf /etc/nginx/sites-available/sitora-tours || {
+        echo -e "${RED}❌ Failed to copy nginx config!${NC}"
+        echo -e "${YELLOW}Please run: sudo cp nginx.conf /etc/nginx/sites-available/sitora-tours${NC}"
+        exit 1
     }
 
     # Create symbolic link
-    sudo ln -sf /etc/nginx/sites-available/sitora-tours /etc/nginx/sites-enabled/ 2>/dev/null || true
+    echo -e "${YELLOW}Creating Nginx site link...${NC}"
+    sudo ln -sf /etc/nginx/sites-available/sitora-tours /etc/nginx/sites-enabled/ || {
+        echo -e "${RED}❌ Failed to create site link!${NC}"
+        exit 1
+    }
 
     # Remove default nginx site
-    sudo rm -f /etc/nginx/sites-enabled/default 2>/dev/null || true
+    echo -e "${YELLOW}Removing default Nginx site...${NC}"
+    sudo rm -f /etc/nginx/sites-enabled/default
 
-    # Test and reload nginx
-    sudo nginx -t 2>/dev/null && sudo systemctl reload nginx 2>/dev/null || {
-        echo -e "${YELLOW}⚠️  Nginx setup had issues, but app will work on port 3000${NC}"
+    # Test nginx configuration
+    echo -e "${YELLOW}Testing Nginx configuration...${NC}"
+    sudo nginx -t || {
+        echo -e "${RED}❌ Nginx configuration test failed!${NC}"
+        echo -e "${YELLOW}Check the nginx.conf file for syntax errors${NC}"
+        exit 1
     }
+
+    # Reload nginx
+    echo -e "${YELLOW}Reloading Nginx...${NC}"
+    sudo systemctl reload nginx || {
+        echo -e "${RED}❌ Failed to reload Nginx!${NC}"
+        echo -e "${YELLOW}Try: sudo systemctl restart nginx${NC}"
+        exit 1
+    }
+
+    echo -e "${GREEN}✅ Nginx configured and reloaded${NC}"
 
     echo -e "${GREEN}✅ Nginx configured${NC}"
     save_state 7
