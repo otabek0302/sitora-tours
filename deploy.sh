@@ -248,24 +248,43 @@ if [ "$CURRENT_STEP" -lt 7 ]; then
     echo -e "\n${YELLOW}[7/8] Setting up Nginx...${NC}"
     echo -e "${YELLOW}Configuring Nginx proxy...${NC}"
 
+    # Detect Nginx configuration directory structure
+    echo -e "${YELLOW}Detecting Nginx configuration structure...${NC}"
+    
+    if [ -d "/etc/nginx/sites-available" ]; then
+        NGINX_CONFIG_DIR="/etc/nginx/sites-available"
+        NGINX_ENABLED_DIR="/etc/nginx/sites-enabled"
+        echo -e "${GREEN}✅ Found sites-available directory${NC}"
+    elif [ -d "/etc/nginx/conf.d" ]; then
+        NGINX_CONFIG_DIR="/etc/nginx/conf.d"
+        NGINX_ENABLED_DIR="/etc/nginx/conf.d"
+        echo -e "${GREEN}✅ Found conf.d directory${NC}"
+    else
+        echo -e "${RED}❌ Cannot find Nginx configuration directory!${NC}"
+        echo -e "${YELLOW}Please check your Nginx installation${NC}"
+        exit 1
+    fi
+
     # Copy nginx configuration with proper permissions
-    echo -e "${YELLOW}Copying Nginx configuration...${NC}"
-    sudo cp nginx.conf /etc/nginx/sites-available/sitora-tours || {
+    echo -e "${YELLOW}Copying Nginx configuration to $NGINX_CONFIG_DIR...${NC}"
+    sudo cp nginx.conf "$NGINX_CONFIG_DIR/sitora-tours.conf" || {
         echo -e "${RED}❌ Failed to copy nginx config!${NC}"
-        echo -e "${YELLOW}Please run: sudo cp nginx.conf /etc/nginx/sites-available/sitora-tours${NC}"
+        echo -e "${YELLOW}Please run: sudo cp nginx.conf $NGINX_CONFIG_DIR/sitora-tours.conf${NC}"
         exit 1
     }
 
-    # Create symbolic link
-    echo -e "${YELLOW}Creating Nginx site link...${NC}"
-    sudo ln -sf /etc/nginx/sites-available/sitora-tours /etc/nginx/sites-enabled/ || {
-        echo -e "${RED}❌ Failed to create site link!${NC}"
-        exit 1
-    }
+    # Create symbolic link (only for sites-available/sites-enabled structure)
+    if [ "$NGINX_CONFIG_DIR" != "$NGINX_ENABLED_DIR" ]; then
+        echo -e "${YELLOW}Creating Nginx site link...${NC}"
+        sudo ln -sf "$NGINX_CONFIG_DIR/sitora-tours.conf" "$NGINX_ENABLED_DIR/" || {
+            echo -e "${RED}❌ Failed to create site link!${NC}"
+            exit 1
+        }
 
-    # Remove default nginx site
-    echo -e "${YELLOW}Removing default Nginx site...${NC}"
-    sudo rm -f /etc/nginx/sites-enabled/default
+        # Remove default nginx site
+        echo -e "${YELLOW}Removing default Nginx site...${NC}"
+        sudo rm -f "$NGINX_ENABLED_DIR/default"
+    fi
 
     # Test nginx configuration
     echo -e "${YELLOW}Testing Nginx configuration...${NC}"
