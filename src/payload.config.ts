@@ -43,5 +43,5 @@ export default buildConfig({
   csrf: ['http://localhost:3000', 'http://45.144.178.238:3000', 'http://45.144.178.238', 'http://ubuntu.orb.local', 'https://sitoratour.uz', 'https://www.sitoratour.uz', 'http://www.sitoratour.com', 'https://www.sitoratour.com'],
 
   // Express middleware CORS settings
-  serverURL: env.NEXT_PUBLIC_SERVER_URL || 'http://45.144.178.238',
+  serverURL: 'http://45.144.178.238',
 })
