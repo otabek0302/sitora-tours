@@ -326,6 +326,13 @@ if [ "$CURRENT_STEP" -lt 7 ]; then
 
     echo -e "${GREEN}✅ Nginx configured and reloaded${NC}"
 
+    # Restart the app container to apply CORS configuration changes
+    echo -e "${YELLOW}Restarting app container to apply CORS configuration...${NC}"
+    $DOCKER_COMPOSE restart app || {
+        echo -e "${YELLOW}⚠️  Could not restart app container, but continuing...${NC}"
+    }
+    sleep 5
+
     echo -e "${GREEN}✅ Nginx configured${NC}"
     save_state 7
 else
