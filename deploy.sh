@@ -196,8 +196,9 @@ if [ "$CURRENT_STEP" -lt 6 ]; then
     if [ "$TABLE_COUNT" -lt 5 ]; then
         echo -e "${YELLOW}📦 Database is empty or incomplete. Running migrations...${NC}"
         
-        # Try migration first
-        pnpm payload migrate 2>/dev/null || {
+        # Try migration inside Docker container (where 'postgres' hostname exists)
+        echo -e "${YELLOW}Running migration inside Docker container...${NC}"
+        docker exec sitora-tour-app pnpm payload migrate 2>/dev/null || {
             echo -e "${YELLOW}⚠️  Migration failed! Resetting database schema...${NC}"
             
             # Stop app to avoid conflicts
@@ -207,13 +208,31 @@ if [ "$CURRENT_STEP" -lt 6 ]; then
             docker exec sitora-tour-db psql -U postgres -d sitora_tour -c "DROP SCHEMA public CASCADE; CREATE SCHEMA public;" 2>/dev/null || true
             sleep 3
             
-            # Run migration again
-            echo -e "${YELLOW}Running fresh migration...${NC}"
-            pnpm payload migrate
-            
             # Start app again
             $DOCKER_COMPOSE start app
-            sleep 5
+            sleep 10
+            
+            # Run migration again inside container
+            echo -e "${YELLOW}Running fresh migration inside container...${NC}"
+            docker exec sitora-tour-app pnpm payload migrate || {
+                echo -e "${RED}❌ Migration still failed! Trying localhost connection...${NC}"
+                
+                # Create temporary .env for localhost connection
+                echo -e "${YELLOW}Creating temporary localhost database connection...${NC}"
+                cp .env .env.backup 2>/dev/null || true
+                sed 's/postgresql:\/\/postgres:sitoratours2024@postgres:5432\/sitora_tour/postgresql:\/\/postgres:sitoratours2024@localhost:5432\/sitora_tour/' .env > .env.tmp
+                mv .env.tmp .env
+                
+                # Try migration with localhost
+                pnpm payload migrate || {
+                    echo -e "${RED}❌ Localhost migration also failed!${NC}"
+                    echo -e "${YELLOW}Restoring original .env and continuing...${NC}"
+                    mv .env.backup .env 2>/dev/null || true
+                }
+                
+                # Restore original .env
+                mv .env.backup .env 2>/dev/null || true
+            }
         }
         echo -e "${GREEN}✅ Migrations completed${NC}"
     else
