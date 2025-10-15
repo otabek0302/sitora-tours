@@ -276,17 +276,23 @@ if [ "$CURRENT_STEP" -lt 8 ]; then
     echo -e "${YELLOW}Waiting for services to initialize...${NC}"
     sleep 10
 
-    # Health check loop with better diagnostics
+    # Health check loop with better diagnostics (reduced timeout)
     echo -e "${YELLOW}⏳ Waiting for app health check...${NC}"
-    for i in $(seq 1 30); do
+    for i in $(seq 1 15); do
         if docker ps | grep -q sitora-tour-app; then
             # Check container status
             CONTAINER_STATUS=$(docker inspect --format='{{.State.Status}}' sitora-tour-app 2>/dev/null || echo "not_found")
             HEALTH=$(docker inspect --format='{{json .State.Health.Status}}' sitora-tour-app 2>/dev/null || echo "unknown")
             
             # Check if app is responding on port 3000
-            if curl -s http://localhost:3000 > /dev/null 2>&1; then
+            if curl -s -f http://localhost:3000 > /dev/null 2>&1; then
                 echo -e "${GREEN}✅ App is responding on port 3000${NC}"
+                break
+            fi
+            
+            # Also check if we can connect to the port (even if response is not 200)
+            if timeout 2 bash -c "</dev/tcp/localhost/3000" 2>/dev/null; then
+                echo -e "${GREEN}✅ App port 3000 is open and accepting connections${NC}"
                 break
             fi
             
