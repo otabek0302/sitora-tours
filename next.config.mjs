@@ -21,10 +21,41 @@ const nextConfig = {
       '.mjs': ['.mts', '.mjs'],
     }
 
+    // Memory optimization for VPS
+    webpackConfig.optimization = {
+      ...webpackConfig.optimization,
+      splitChunks: {
+        chunks: 'all',
+        cacheGroups: {
+          default: false,
+          vendors: false,
+          // Reduce chunk size for memory efficiency
+          vendor: {
+            name: 'vendor',
+            chunks: 'all',
+            test: /node_modules/,
+            priority: 20,
+          },
+          common: {
+            name: 'common',
+            minChunks: 2,
+            chunks: 'all',
+            priority: 10,
+            reuseExistingChunk: true,
+            enforce: true,
+          },
+        },
+      },
+    }
+
     return webpackConfig
   },
   experimental: {
-    optimizeCss: true,
+    // Disable memory-intensive optimizations for VPS
+    optimizeCss: false,
+    // Reduce memory usage
+    memoryBasedWorkersCount: true,
+    workerThreads: false,
   },
   images: {
     remotePatterns: [
@@ -34,6 +65,8 @@ const nextConfig = {
       },
     ],
   },
+  // Disable source maps to save memory
+  productionBrowserSourceMaps: false,
 }
 
 export default withPayload(withNextIntl(nextConfig), { devBundleServerPackages: false })
