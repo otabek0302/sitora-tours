@@ -66,12 +66,17 @@ timeout 300 pnpm build || {
 echo -e "${GREEN}✅ Build completed${NC}"
 
 # 5. Build & Start Docker
-echo -e "\n${YELLOW}[5/7] Setting up Docker containers...${NC}"
-# Support both docker-compose (v1) and docker compose (v2)
-if command -v docker-compose &> /dev/null; then
-    DOCKER_COMPOSE="docker-compose"
-else
+echo -e "\n${YELLOW}[5/8] Setting up Docker containers...${NC}"
+# Detect Docker Compose version
+if docker compose version &> /dev/null; then
     DOCKER_COMPOSE="docker compose"
+    echo -e "${GREEN}✅ Using Docker Compose v2 (plugin)${NC}"
+elif docker-compose version &> /dev/null; then
+    DOCKER_COMPOSE="docker-compose"
+    echo -e "${GREEN}✅ Using Docker Compose v1 (legacy)${NC}"
+else
+    echo -e "${RED}❌ Docker Compose not found!${NC}"
+    exit 1
 fi
 
 $DOCKER_COMPOSE down 2>/dev/null || true
@@ -116,16 +121,25 @@ fi
 
 # 7. Setup Nginx
 echo -e "\n${YELLOW}[7/8] Setting up Nginx...${NC}"
-if [ -f setup-nginx.sh ]; then
-    echo -e "${YELLOW}Configuring Nginx proxy...${NC}"
-    chmod +x setup-nginx.sh
-    ./setup-nginx.sh 2>/dev/null || {
-        echo -e "${YELLOW}⚠️  Nginx setup had issues, but continuing...${NC}"
-    }
-    echo -e "${GREEN}✅ Nginx configured${NC}"
-else
-    echo -e "${YELLOW}⚠️  setup-nginx.sh not found, skipping Nginx setup${NC}"
-fi
+echo -e "${YELLOW}Configuring Nginx proxy...${NC}"
+
+# Copy nginx configuration
+sudo cp nginx.conf /etc/nginx/sites-available/sitora-tours 2>/dev/null || {
+    echo -e "${YELLOW}⚠️  Could not copy nginx config (need sudo), but continuing...${NC}"
+}
+
+# Create symbolic link
+sudo ln -sf /etc/nginx/sites-available/sitora-tours /etc/nginx/sites-enabled/ 2>/dev/null || true
+
+# Remove default nginx site
+sudo rm -f /etc/nginx/sites-enabled/default 2>/dev/null || true
+
+# Test and reload nginx
+sudo nginx -t 2>/dev/null && sudo systemctl reload nginx 2>/dev/null || {
+    echo -e "${YELLOW}⚠️  Nginx setup had issues, but app will work on port 3000${NC}"
+}
+
+echo -e "${GREEN}✅ Nginx configured${NC}"
 
 # 8. Wait & Verify
 echo -e "\n${YELLOW}[8/8] Verifying deployment...${NC}"
@@ -144,6 +158,7 @@ if docker ps | grep -q sitora-tour-app; then
     echo -e "   1. Visit http://45.144.178.238/admin"
     echo -e "   2. Create your admin account"
     echo -e "   3. Start adding content!"
+    echo -e "\n${YELLOW}💡 If port 80 doesn't work, try: http://45.144.178.238:3000${NC}"
     echo -e "\n${YELLOW}📋 Useful Commands:${NC}"
     echo -e "   • View logs:    $DOCKER_COMPOSE logs -f"
     echo -e "   • Stop:         $DOCKER_COMPOSE down"

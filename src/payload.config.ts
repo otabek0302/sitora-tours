@@ -35,4 +35,10 @@ export default buildConfig({
   }),
   sharp,
   plugins: [payloadCloudPlugin()],
+
+  // CORS Configuration for VPS deployment
+  cors: ['http://localhost:3000', 'http://45.144.178.238:3000', 'http://45.144.178.238', 'https://sitoratour.uz', 'https://www.sitoratour.uz'],
+
+  // Express middleware CORS settings
+  serverURL: env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
 })
