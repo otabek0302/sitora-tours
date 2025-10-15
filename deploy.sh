@@ -50,7 +50,7 @@ rm -rf .next
 echo -e "${YELLOW}Starting build (this may take 2-3 minutes)...${NC}"
 
 # Build with timeout and error handling
-timeout 600 pnpm build || {
+timeout 300 pnpm build || {
     echo -e "${RED}❌ Build timed out after 10 minutes!${NC}"
     echo -e "${YELLOW}Trying alternative build method...${NC}"
     
