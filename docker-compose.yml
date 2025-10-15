@@ -11,14 +11,6 @@ services:
       - '3000:3000'
     volumes:
       - media:/app/media
-      - .:/app  # Mount source for migrations
-    command: >
-      sh -c "
-        corepack enable &&
-        corepack prepare pnpm@latest --activate &&
-        pnpm payload migrate &&
-        node server.js
-      "
     depends_on:
       postgres:
         condition: service_healthy
