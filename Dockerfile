@@ -67,6 +67,9 @@ RUN chown nextjs:nodejs .next
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
+# Copy Payload CMS configuration file
+COPY --from=builder --chown=nextjs:nodejs /app/src/payload.config.ts ./src/payload.config.ts
+
 # Note: Media files are handled via Docker volume mount (see docker-compose.yml)
 # No need to copy from builder since .dockerignore excludes media/*
 
