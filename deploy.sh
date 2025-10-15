@@ -5,6 +5,11 @@
 # Features: Resumable, SSH-safe, Health checks
 
 set -e
+set -o pipefail
+
+# Ensure PNPM works when run under sudo/root
+export PNPM_HOME="${HOME}/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
 
 echo "🚀 Sitora Tours - Automated Deployment"
 echo "======================================"
@@ -27,6 +32,9 @@ CURRENT_STEP=$(load_state)
 
 # Handle SSH disconnection gracefully
 trap 'echo -e "\n⚠️  SSH disconnected — you can safely rerun ./deploy.sh to resume from step $CURRENT_STEP."' SIGHUP SIGTERM
+
+# Ensure cleanup even on Ctrl-C / SIGINT
+trap 'echo -e "\n🧹 Cleaning up temporary state..."; cleanup_state; exit 1' INT
 
 # Logging setup
 exec > >(tee -a "$LOG_FILE") 2>&1
@@ -93,19 +101,25 @@ if [ "$CURRENT_STEP" -lt 4 ]; then
     echo -e "${YELLOW}Starting SSH-safe build (this may take 2-3 minutes)...${NC}"
     echo -e "${YELLOW}💡 If SSH disconnects, rerun ./deploy.sh to resume${NC}"
     
+    # Approve Tailwind builds to avoid warnings
+    pnpm approve-builds --yes 2>/dev/null || true
+    
     # SSH-safe build using nohup and background process
-    nohup pnpm build > build.log 2>&1 &
+    nohup pnpm build >> "$LOG_FILE" 2>&1 &
     BUILD_PID=$!
     
-    # Wait for build with timeout
-    for i in {1..600}; do
-        if ! kill -0 $BUILD_PID 2>/dev/null; then
+    # Wait for build with timeout (fixed logic)
+    for i in $(seq 1 600); do
+        if ! kill -0 "$BUILD_PID" 2>/dev/null; then
             # Process finished, check exit status
-            if wait $BUILD_PID; then
+            wait "$BUILD_PID"
+            BUILD_EXIT=$?
+            if [ "$BUILD_EXIT" -eq 0 ]; then
                 echo -e "${GREEN}✅ Build completed successfully${NC}"
                 break
             else
-                echo -e "${RED}❌ Build failed! Trying alternative method...${NC}"
+                echo -e "${RED}❌ Build failed with exit code $BUILD_EXIT${NC}"
+                echo -e "${YELLOW}Trying alternative build method...${NC}"
                 # Try alternative build
                 SKIP_ENV_VALIDATION=true NODE_ENV=production npx next build --no-lint || {
                     echo -e "${RED}❌ Alternative build also failed!${NC}"
@@ -122,9 +136,9 @@ if [ "$CURRENT_STEP" -lt 4 ]; then
     done
     
     # If we reach here and process is still running, it timed out
-    if kill -0 $BUILD_PID 2>/dev/null; then
+    if kill -0 "$BUILD_PID" 2>/dev/null; then
         echo -e "${RED}❌ Build timed out after 10 minutes!${NC}"
-        kill $BUILD_PID 2>/dev/null || true
+        kill "$BUILD_PID" 2>/dev/null || true
         echo -e "${YELLOW}Trying alternative build method...${NC}"
         SKIP_ENV_VALIDATION=true NODE_ENV=production npx next build --no-lint || {
             echo -e "${RED}❌ Alternative build also failed!${NC}"
@@ -245,7 +259,7 @@ if [ "$CURRENT_STEP" -lt 8 ]; then
 
     # Health check loop
     echo -e "${YELLOW}⏳ Waiting for app health check...${NC}"
-    for i in {1..30}; do
+    for i in $(seq 1 30); do
         if docker ps | grep -q sitora-tour-app; then
             # Check if container is healthy
             HEALTH=$(docker inspect --format='{{json .State.Health.Status}}' sitora-tour-app 2>/dev/null || echo "unknown")
