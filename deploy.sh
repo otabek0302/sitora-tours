@@ -50,24 +50,20 @@ rm -rf .next
 echo -e "${YELLOW}Starting build (this may take 2-3 minutes)...${NC}"
 
 # Build with timeout and error handling
-timeout 600 pnpm build || {
+timeout 300 pnpm build || {
     echo -e "${RED}❌ Build timed out after 10 minutes!${NC}"
-    echo -e "${YELLOW}Trying alternative build method...${NC}"
+    echo -e "${YELLOW}Trying minimal build script...${NC}"
     
-    # Try building with minimal memory usage
-    SKIP_ENV_VALIDATION=true NODE_ENV=production NODE_OPTIONS="--max-old-space-size=1024" npx next build --no-lint || {
-        echo -e "${YELLOW}⚠️  Trying ultra-minimal build...${NC}"
-        
-        # Ultra-minimal build for very low memory VPS
-        SKIP_ENV_VALIDATION=true NODE_ENV=production NODE_OPTIONS="--max-old-space-size=512" npx next build --no-lint --experimental-build-mode=compile || {
-            echo -e "${RED}❌ All build methods failed!${NC}"
-            echo -e "${YELLOW}VPS Memory: $(free -h | grep Mem)${NC}"
-            echo -e "${YELLOW}VPS Disk: $(df -h / | tail -1)${NC}"
-            echo -e "${YELLOW}💡 Try:${NC}"
-            echo -e "   1. Add swap: sudo fallocate -l 2G /swapfile && sudo chmod 600 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile"
-            echo -e "   2. Or upgrade VPS to 4GB+ RAM"
-            exit 1
-        }
+    # Use minimal build script
+    ./minimal-build.sh || {
+        echo -e "${RED}❌ All build methods failed!${NC}"
+        echo -e "${YELLOW}VPS Memory: $(free -h | grep Mem)${NC}"
+        echo -e "${YELLOW}VPS Disk: $(df -h / | tail -1)${NC}"
+        echo -e "${YELLOW}💡 Solutions:${NC}"
+        echo -e "   1. Add swap: sudo fallocate -l 2G /swapfile && sudo chmod 600 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile"
+        echo -e "   2. Upgrade VPS to 4GB+ RAM"
+        echo -e "   3. Use GitHub Actions to build and deploy"
+        exit 1
     }
 }
 echo -e "${GREEN}✅ Build completed${NC}"
