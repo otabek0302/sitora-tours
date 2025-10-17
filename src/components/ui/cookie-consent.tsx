@@ -98,7 +98,7 @@ const CookieConsent = () => {
                 <h4 className='font-medium'>{t('cookies.necessary.title')}</h4>
                 <p className='text-muted-foreground text-sm'>{t('cookies.necessary.description')}</p>
               </div>
-              <input type='checkbox' checked={preferences.necessary} disabled className='h-4 w-4 rounded border-gray-300' />
+              <input type='checkbox' checked={preferences.necessary} disabled className='h-4 w-4 rounded border-border' />
             </div>
 
             <div className='flex items-center justify-between'>
@@ -106,7 +106,7 @@ const CookieConsent = () => {
                 <h4 className='font-medium'>{t('cookies.analytics.title')}</h4>
                 <p className='text-muted-foreground text-sm'>{t('cookies.analytics.description')}</p>
               </div>
-              <input type='checkbox' checked={preferences.analytics} onChange={e => setPreferences({ ...preferences, analytics: e.target.checked })} className='h-4 w-4 rounded border-gray-300' />
+              <input type='checkbox' checked={preferences.analytics} onChange={e => setPreferences({ ...preferences, analytics: e.target.checked })} className='h-4 w-4 rounded border-border' />
             </div>
 
             <div className='flex items-center justify-between'>
@@ -114,7 +114,7 @@ const CookieConsent = () => {
                 <h4 className='font-medium'>{t('cookies.marketing.title')}</h4>
                 <p className='text-muted-foreground text-sm'>{t('cookies.marketing.description')}</p>
               </div>
-              <input type='checkbox' checked={preferences.marketing} onChange={e => setPreferences({ ...preferences, marketing: e.target.checked })} className='h-4 w-4 rounded border-gray-300' />
+              <input type='checkbox' checked={preferences.marketing} onChange={e => setPreferences({ ...preferences, marketing: e.target.checked })} className='h-4 w-4 rounded border-border' />
             </div>
 
             <div className='flex justify-end gap-2 pt-2'>

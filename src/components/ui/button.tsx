@@ -9,12 +9,12 @@ const buttonVariants = cva('inline-flex items-center justify-center gap-2 whites
     variant: {
       default: 'bg-sitora-primary text-sitora-white hover:text-sitora-primary sm:text-md border-sitora-primary inline-flex items-center justify-center rounded-lg border px-6 py-3 text-sm font-medium transition-colors duration-200 hover:bg-transparent',
       secondary: 'bg-sitora-gold-medium text-sitora-black shadow-sm hover:bg-sitora-gold-dark',
-      outline: 'border border-sitora-primary text-sitora-primary bg-transparent hover:bg-sitora-primary hover:text-white',
+      outline: 'border border-sitora-primary text-sitora-primary bg-transparent hover:bg-sitora-primary hover:text-sitora-white',
       ghost: 'bg-transparent text-sitora-primary hover:bg-sitora-primary-light hover:text-sitora-white',
       text: 'bg-transparent text-sitora-primary hover:underline',
       destructive: 'bg-sitora-error text-white shadow-sm hover:bg-sitora-error/80',
       link: 'text-sitora-primary underline-offset-4 hover:underline',
-      whiteOutline: 'bg-background border border-sitora-primary text-sitora-primary hover:bg-sitora-primary hover:text-white',
+      whiteOutline: 'bg-background border border-sitora-primary text-sitora-primary hover:bg-sitora-primary hover:text-sitora-white',
     },
     size: {
       default: 'h-9 px-4 py-2',

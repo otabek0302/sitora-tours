@@ -35,7 +35,7 @@ const CarsCard = ({ car }: CarsCardProps) => {
 
           {/* Rating Badge */}
           <div className='absolute top-4 right-4'>
-            <div className='bg-sitora-white/90 flex items-center gap-1 rounded-full px-2 py-1 backdrop-blur-sm'>
+            <div className='bg-background/90 flex items-center gap-1 rounded-full px-2 py-1 backdrop-blur-sm'>
               <Star className='text-sitora-gold-medium h-3 w-3 fill-current' />
               <span className='text-sitora-text-subtitle text-xs font-semibold'>4.5</span>
             </div>
