@@ -14,7 +14,7 @@ const buttonVariants = cva('inline-flex items-center justify-center gap-2 whites
       text: 'bg-transparent text-sitora-primary hover:underline',
       destructive: 'bg-sitora-error text-white shadow-sm hover:bg-sitora-error/80',
       link: 'text-sitora-primary underline-offset-4 hover:underline',
-      whiteOutline: 'bg-white border border-sitora-primary text-sitora-primary hover:bg-sitora-primary hover:text-white',
+      whiteOutline: 'bg-background border border-sitora-primary text-sitora-primary hover:bg-sitora-primary hover:text-white',
     },
     size: {
       default: 'h-9 px-4 py-2',
