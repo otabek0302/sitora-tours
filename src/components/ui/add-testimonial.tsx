@@ -140,10 +140,10 @@ export const AddTestimonial = ({ open, setOpen }: { open: boolean; setOpen: (ope
                 <SelectTrigger className='border-border focus:border-sitora-primary h-10 w-full rounded-md shadow-none'>
                   <SelectValue placeholder={t('form.selectTour')} />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className='min-w-[16rem] max-w-[24rem]'>
                   {tours.map(tour => (
-                    <SelectItem key={tour.id} value={tour.id.toString()}>
-                      {tour.name}
+                    <SelectItem key={tour.id} value={tour.id.toString()} title={tour.name}>
+                      <div className='truncate'>{tour.name}</div>
                     </SelectItem>
                   ))}
                 </SelectContent>
