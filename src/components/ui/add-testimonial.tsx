@@ -110,13 +110,13 @@ export const AddTestimonial = ({ open, setOpen }: { open: boolean; setOpen: (ope
 
   return (
     <Dialog open={open} onOpenChange={handleDialogChange}>
-      <DialogContent className='bg-background border-border mx-auto my-4 max-h-[90vh] w-[96%] overflow-y-auto rounded-[16px!important] border p-8 shadow-sm sm:max-w-lg'>
+      <DialogContent className='bg-background border-border mx-auto my-4 max-h-[90vh] w-[96%] overflow-x-hidden overflow-y-auto rounded-[16px!important] border p-8 shadow-sm sm:max-w-lg'>
         <DialogHeader className='text-center'>
           <DialogTitle className='text-sitora-text-subtitle text-2xl font-semibold'>{t('form.title')}</DialogTitle>
           <DialogDescription className='text-sitora-body text-sm leading-tight font-normal'>{t('form.subtitle')}</DialogDescription>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} className='space-y-6'>
+        <form onSubmit={handleSubmit} className='space-y-6 overflow-x-hidden overflow-y-auto'>
           <div className='space-y-2'>
             <Label htmlFor='first_name' className='text-sitora-text-subtitle text-sm font-medium'>
               {t('form.name')} *
@@ -140,7 +140,7 @@ export const AddTestimonial = ({ open, setOpen }: { open: boolean; setOpen: (ope
                 <SelectTrigger className='border-border focus:border-sitora-primary h-10 w-full rounded-md shadow-none'>
                   <SelectValue placeholder={t('form.selectTour')} />
                 </SelectTrigger>
-                <SelectContent className='max-w-[24rem] min-w-[16rem]'>
+                <SelectContent className='max-w-[24rem] min-w-[16rem] overflow-x-hidden overflow-y-auto'>
                   {tours.map(tour => (
                     <SelectItem key={tour.id} value={tour.id.toString()} title={tour.name}>
                       <div className='truncate'>{tour.name}</div>
