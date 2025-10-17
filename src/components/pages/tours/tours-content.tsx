@@ -2,10 +2,13 @@ import ToursCard from '../../ui/tour-card'
 
 import { useTranslations } from 'next-intl'
 import { useToursContext } from '@/lib/stores/tours'
+import { PageLoading } from '@/components/ui'
 
 const ToursContent = () => {
   const t = useTranslations('pages.tours')
-  const { tours } = useToursContext()
+  const { tours, loading } = useToursContext()
+
+  if (loading && tours.length === 0) return <PageLoading message={t('tours_loading')} />
 
   if (!tours.length) {
     return (
