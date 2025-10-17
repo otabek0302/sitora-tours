@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button, Checkbox, Input, Label } from '@/components/ui'
 import { useToursContext } from '@/lib/stores/tours'
@@ -12,6 +12,9 @@ const ToursSidebar = () => {
   const { filters, setFilters, resetFilters, activeFilter } = useToursContext()
   const { categories, fetchCategories, setLocale: setCategoriesLocale } = useCategoriesContext()
   const { cities, fetchCities, setLocale: setCitiesLocale } = useCitiesContext()
+  
+  // State to control accordion open/close state
+  const [accordionValue, setAccordionValue] = useState<string[]>(['filter', 'city'])
 
   useEffect(() => {
     setCategoriesLocale(locale)
@@ -32,7 +35,7 @@ const ToursSidebar = () => {
 
   return (
     <div className='space-y-4'>
-      <Accordion type='multiple' defaultValue={['filter', 'city']} className='space-y-4'>
+      <Accordion type='multiple' value={accordionValue} onValueChange={setAccordionValue} className='space-y-4'>
         <AccordionItem value='filter' className='bg-card border-border cursor-pointer rounded-[26px] border shadow-none transition-all duration-300 hover:shadow-sm'>
           <AccordionTrigger className='text-sitora-text-subtitle sm:text-md hover:text-sitora-primary cursor-pointer px-4 py-4 text-sm font-semibold hover:no-underline sm:px-6'>{t('sidebar.filterBy')}</AccordionTrigger>
           <AccordionContent className='space-y-2 px-4 pb-6 sm:px-6'>
