@@ -12,7 +12,7 @@ const ToursSidebar = () => {
   const { filters, setFilters, resetFilters, activeFilter } = useToursContext()
   const { categories, fetchCategories, setLocale: setCategoriesLocale } = useCategoriesContext()
   const { cities, fetchCities, setLocale: setCitiesLocale } = useCitiesContext()
-  
+
   // State to control accordion open/close state
   const [accordionValue, setAccordionValue] = useState<string[]>(['filter', 'city'])
 

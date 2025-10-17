@@ -8,7 +8,7 @@ import { useCarsContext } from '@/lib/stores/cars'
 const CarsSidebar = () => {
   const t = useTranslations('pages.cars')
   const { filters, setFilters, resetFilters, activeFilter, types, brands, fetchCarsTypes, fetchCarsBrands, locale } = useCarsContext()
-  
+
   // State to control accordion open/close state
   const [accordionValue, setAccordionValue] = useState<string[]>(['filter', 'type'])
 
