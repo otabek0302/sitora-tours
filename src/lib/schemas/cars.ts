@@ -6,35 +6,68 @@ const ImageSchema = z.object({
   url: z.string(),
 })
 
-// Car Pricing Schema
-const CarPricingSchema = z.object({
-  pricePerDayInCity: z.number(),
-  transferAirportHotelAirport: z.number().optional(),
-  transferHotelDinnerHotel: z.number().optional(),
-  longRouteFrom7Days: z.number().optional(),
-})
+// Car Pricing Schema - flexible for migration period
+const CarPricingSchema = z
+  .object({
+    pricePerDayInCity: z.number().nullable().optional(),
+    transferAirportHotelAirport: z.number().nullable().optional(),
+    transferHotelDinnerHotel: z.number().nullable().optional(),
+    longRouteFrom7Days: z.number().nullable().optional(),
+  })
+  .nullable()
+  .optional()
 
-// Car Schema
-export const CarSchema = z.object({
-  id: z.number(),
-  name: z.string(),
-  type: z.string(),
-  slug: z.string(),
-  brand: z.string(),
-  capacity: z.number(),
-  pricing: CarPricingSchema,
-  image: ImageSchema.nullish(),
-  images: z
-    .array(
-      z.object({
-        id: z.string().optional(),
-        image: ImageSchema,
-      }),
-    )
-    .optional(),
-  createdAt: z.string().optional(),
-  updatedAt: z.string().optional(),
-})
+// Car Schema with backward compatibility
+export const CarSchema = z
+  .object({
+    id: z.number(),
+    name: z.string(),
+    type: z.string(),
+    slug: z.string(),
+    brand: z.string(),
+    capacity: z.number(),
+    // Support both old (price) and new (pricing) structures during migration
+    price: z.number().optional(), // Old field for backward compatibility
+    pricing: CarPricingSchema,
+    image: ImageSchema.nullish(),
+    images: z
+      .array(
+        z.object({
+          id: z.string().optional(),
+          image: ImageSchema,
+        }),
+      )
+      .optional(),
+    createdAt: z.string().optional(),
+    updatedAt: z.string().optional(),
+  })
+  .transform(data => {
+    // Transform old price to new pricing structure if needed
+    if (data.price && !data.pricing?.pricePerDayInCity) {
+      return {
+        ...data,
+        pricing: {
+          pricePerDayInCity: data.price,
+          transferAirportHotelAirport: data.pricing?.transferAirportHotelAirport ?? null,
+          transferHotelDinnerHotel: data.pricing?.transferHotelDinnerHotel ?? null,
+          longRouteFrom7Days: data.pricing?.longRouteFrom7Days ?? null,
+        },
+      }
+    }
+    // Ensure pricing object exists even if all fields are null
+    if (!data.pricing) {
+      return {
+        ...data,
+        pricing: {
+          pricePerDayInCity: null,
+          transferAirportHotelAirport: null,
+          transferHotelDinnerHotel: null,
+          longRouteFrom7Days: null,
+        },
+      }
+    }
+    return data
+  })
 
 // Cars Response Schema
 export const CarsResponseSchema = z.object({
