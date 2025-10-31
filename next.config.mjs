@@ -39,6 +39,22 @@ const nextConfig = {
         protocol: 'http',
         hostname: 'localhost',
       },
+      {
+        protocol: 'http',
+        hostname: 'sitoratour.com',
+      },
+      {
+        protocol: 'http',
+        hostname: 'www.sitoratour.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'sitoratour.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.sitoratour.com',
+      },
     ],
   },
 }
