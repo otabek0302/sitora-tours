@@ -18,44 +18,56 @@ const CarRental = ({ car }: CarRentalProps) => {
   return (
     <Card className='border-border bg-card rounded-[26px] shadow-none'>
       <CardHeader className='pb-4'>
-        <CardTitle className='text-sitora-text-heading text-xl font-bold'>{t('rental_info')}</CardTitle>
+        <CardTitle className='text-sitora-text-heading text-xl font-bold'>{t('pricing_and_booking')}</CardTitle>
       </CardHeader>
       <CardContent className='space-y-4'>
-        {/* Price */}
-        <div className='flex items-center justify-between'>
-          <div className='flex items-start gap-3'>
-            <div className='flex-1'>
-              <h3 className='text-sitora-text-subtitle mb-1 text-sm font-semibold'>{t('price_per_day')}</h3>
-              <p className='text-sitora-primary text-3xl font-bold'>${car.price}</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Rental Policies */}
-        <div className='border-border space-y-4 border-t pt-6'>
-          <div className='flex items-start gap-3'>
-            <span className='text-sitora-primary text-lg font-bold'>—</span>
-            <div className='flex-1'>
-              <h3 className='text-sitora-text-subtitle mb-1 text-sm font-semibold'>{t('min_rental')}</h3>
-              <p className='text-sitora-body text-base'>{t('min_rental_value')}</p>
+        {/* Pricing Options */}
+        <div className='space-y-4'>
+          {/* Price per day in the city */}
+          <div className='flex items-center justify-between'>
+            <div className='flex items-start gap-3'>
+              <div className='flex-1'>
+                <h3 className='text-sitora-text-subtitle mb-1 text-sm font-semibold'>{t('price_per_day')}</h3>
+                <p className='text-sitora-primary text-3xl font-bold'>${car.pricing?.pricePerDayInCity || 0}</p>
+              </div>
             </div>
           </div>
 
-          <div className='flex items-start gap-3'>
-            <span className='text-sitora-primary text-lg font-bold'>—</span>
-            <div className='flex-1'>
-              <h3 className='text-sitora-text-subtitle mb-1 text-sm font-semibold'>{t('driver_requirements')}</h3>
-              <p className='text-sitora-body text-base'>{t('driver_requirements_value')}</p>
+          {/* Transfer: airport - hotel - airport */}
+          {car.pricing?.transferAirportHotelAirport && (
+            <div className='border-border flex items-center justify-between border-t pt-4'>
+              <div className='flex items-start gap-3'>
+                <div className='flex-1'>
+                  <h3 className='text-sitora-text-subtitle mb-1 text-sm font-semibold'>{t('transfer_airport_hotel')}</h3>
+                  <p className='text-sitora-primary text-2xl font-bold'>${car.pricing.transferAirportHotelAirport}</p>
+                </div>
+              </div>
             </div>
-          </div>
+          )}
 
-          <div className='flex items-start gap-3'>
-            <span className='text-sitora-primary text-lg font-bold'>—</span>
-            <div className='flex-1'>
-              <h3 className='text-sitora-text-subtitle mb-1 text-sm font-semibold'>{t('insurance')}</h3>
-              <p className='text-sitora-body text-base'>{t('insurance_value')}</p>
+          {/* Transfer: hotel - dinner - hotel */}
+          {car.pricing?.transferHotelDinnerHotel && (
+            <div className='border-border flex items-center justify-between border-t pt-4'>
+              <div className='flex items-start gap-3'>
+                <div className='flex-1'>
+                  <h3 className='text-sitora-text-subtitle mb-1 text-sm font-semibold'>{t('transfer_hotel_dinner')}</h3>
+                  <p className='text-sitora-primary text-2xl font-bold'>${car.pricing.transferHotelDinnerHotel}</p>
+                </div>
+              </div>
             </div>
-          </div>
+          )}
+
+          {/* On a long route (from 7 days) */}
+          {car.pricing?.longRouteFrom7Days && (
+            <div className='border-border flex items-center justify-between border-t pt-4'>
+              <div className='flex items-start gap-3'>
+                <div className='flex-1'>
+                  <h3 className='text-sitora-text-subtitle mb-1 text-sm font-semibold'>{t('long_route_7days')}</h3>
+                  <p className='text-sitora-primary text-2xl font-bold'>${car.pricing.longRouteFrom7Days}</p>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Book Button */}

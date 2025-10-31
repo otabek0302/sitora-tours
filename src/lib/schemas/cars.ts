@@ -6,16 +6,23 @@ const ImageSchema = z.object({
   url: z.string(),
 })
 
+// Car Pricing Schema
+const CarPricingSchema = z.object({
+  pricePerDayInCity: z.number(),
+  transferAirportHotelAirport: z.number().optional(),
+  transferHotelDinnerHotel: z.number().optional(),
+  longRouteFrom7Days: z.number().optional(),
+})
+
 // Car Schema
 export const CarSchema = z.object({
   id: z.number(),
   name: z.string(),
   type: z.string(),
   slug: z.string(),
-  model: z.string(),
   brand: z.string(),
   capacity: z.number(),
-  price: z.number(),
+  pricing: CarPricingSchema,
   image: ImageSchema.nullish(),
   images: z
     .array(
@@ -49,6 +56,9 @@ export const CarFiltersSchema = z.object({
   minCapacity: z.number().optional(),
   maxCapacity: z.number().optional(),
 })
+
+// Export pricing type
+export type CarPricing = z.infer<typeof CarPricingSchema>
 
 // Export types
 export type Car = z.infer<typeof CarSchema>

@@ -61,9 +61,9 @@ export function carsFiltersToUrlParams(filters: Partial<CarFilters>, pagination:
   // Brand filter
   if (filters.brand) params.set('where[brand][equals]', filters.brand.toString())
 
-  // Price range filters
-  if (filters.minPrice !== undefined && filters.minPrice > 0) params.set('where[price][greater_than_equal]', filters.minPrice.toString())
-  if (filters.maxPrice !== undefined && filters.maxPrice < 10000) params.set('where[price][less_than_equal]', filters.maxPrice.toString())
+  // Price range filters - filter by pricing.pricePerDayInCity
+  if (filters.minPrice !== undefined && filters.minPrice > 0) params.set('where[pricing.pricePerDayInCity][greater_than_equal]', filters.minPrice.toString())
+  if (filters.maxPrice !== undefined && filters.maxPrice < 10000) params.set('where[pricing.pricePerDayInCity][less_than_equal]', filters.maxPrice.toString())
 
   // Capacity range filters
   if (filters.minCapacity !== undefined && filters.minCapacity > 0) params.set('where[capacity][greater_than_equal]', filters.minCapacity.toString())

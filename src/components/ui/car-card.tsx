@@ -46,7 +46,7 @@ const CarsCard = ({ car }: CarsCardProps) => {
         <div className='flex-1 p-6'>
           <CardHeader className='mb-4 p-0'>
             <CardTitle className='text-sitora-text-subtitle mb-2 text-xl font-bold'>{car.name}</CardTitle>
-            {car.brand && car.model && <p className='text-sitora-body text-sm leading-relaxed'>{car.brand}</p>}
+            {car.brand && <p className='text-sitora-body text-sm leading-relaxed'>{car.brand}</p>}
           </CardHeader>
 
           <CardContent className='space-y-4 p-0'>
@@ -59,10 +59,6 @@ const CarsCard = ({ car }: CarsCardProps) => {
               <div className='flex items-center gap-1'>
                 <Fuel className='h-4 w-4' />
                 <span>{car.type || 'Petrol'}</span>
-              </div>
-              <div className='flex items-center gap-1'>
-                <Settings className='h-4 w-4' />
-                <span>{car.model || 'Automatic'}</span>
               </div>
             </div>
 
@@ -79,7 +75,7 @@ const CarsCard = ({ car }: CarsCardProps) => {
             {/* Price and Book Button */}
             <div className='border-border flex items-center justify-between border-t pt-4'>
               <div className='flex flex-col'>
-                <span className='text-sitora-primary text-2xl font-bold'>${car.price || 0}</span>
+                <span className='text-sitora-primary text-2xl font-bold'>${car.pricing?.pricePerDayInCity || 0}</span>
                 <span className='text-sitora-body text-sm font-normal'>{t('per_day')}</span>
               </div>
               <Button variant='default' size='sm' className='group shadow-none'>

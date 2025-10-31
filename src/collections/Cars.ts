@@ -44,13 +44,6 @@ export const Cars: CollectionConfig = {
       },
     },
     {
-      name: 'model',
-      label: 'Car Model',
-      type: 'text',
-      required: true,
-      localized: true,
-    },
-    {
       name: 'brand',
       label: 'Car Brand',
       type: 'text',
@@ -63,10 +56,35 @@ export const Cars: CollectionConfig = {
       required: true,
     },
     {
-      name: 'price',
-      label: 'Car Price',
-      type: 'number',
-      required: true,
+      name: 'pricing',
+      label: 'Pricing',
+      type: 'group',
+      fields: [
+        {
+          name: 'pricePerDayInCity',
+          label: 'Price per day in the city',
+          type: 'number',
+          required: true,
+        },
+        {
+          name: 'transferAirportHotelAirport',
+          label: 'Transfer: (airport - hotel - airport)',
+          type: 'number',
+          required: false,
+        },
+        {
+          name: 'transferHotelDinnerHotel',
+          label: 'Transfer: (hotel - dinner - hotel)',
+          type: 'number',
+          required: false,
+        },
+        {
+          name: 'longRouteFrom7Days',
+          label: 'On a long route (from 7 days)',
+          type: 'number',
+          required: false,
+        },
+      ],
     },
     {
       name: 'image',

@@ -57,7 +57,7 @@ export const RecommendedCarsCard = ({ car }: { car: Car }) => {
           {/* Price and Book Button */}
           <div className='border-sitora-border flex items-center justify-between border-t pt-4'>
             <div className='flex flex-col'>
-              <span className='text-sitora-primary text-2xl font-bold'>${car.price}</span>
+              <span className='text-sitora-primary text-2xl font-bold'>${car.pricing?.pricePerDayInCity || 0}</span>
               <span className='text-sitora-body text-sm font-normal'>{t('per_day')}</span>
             </div>
             <Button variant='default' size='sm' onClick={handleBookNow}>

@@ -27,15 +27,6 @@ const CarSpecs = ({ car }: CarSpecsProps) => {
             </div>
           </div>
 
-          {/* Model */}
-          <div className='flex items-start gap-3'>
-            <span className='text-sitora-primary text-lg font-bold'>—</span>
-            <div className='flex-1'>
-              <h3 className='text-sitora-text-subtitle mb-1 text-sm font-semibold'>{t('model')}</h3>
-              <p className='text-sitora-body text-base'>{car.model}</p>
-            </div>
-          </div>
-
           {/* Type */}
           <div className='flex items-start gap-3'>
             <span className='text-sitora-primary text-lg font-bold'>—</span>

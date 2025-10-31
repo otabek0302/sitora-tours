@@ -13,13 +13,13 @@ const CarInfo = ({ car }: CarInfoProps) => {
       {/* Car Name */}
       <h1 className='text-sitora-text-heading text-3xl font-bold sm:text-4xl lg:text-5xl'>{car.name}</h1>
 
-      {/* Brand, Model and Type */}
+      {/* Brand and Type */}
       <div className='flex flex-wrap items-center gap-4'>
-        {/* Brand & Model */}
+        {/* Brand */}
         <div className='flex items-center gap-2'>
           <CarIcon className='text-sitora-primary h-5 w-5' />
           <span className='text-sitora-body text-base font-medium'>
-            {car.brand} {car.model}
+            {car.brand}
           </span>
         </div>
 

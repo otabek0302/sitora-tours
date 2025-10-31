@@ -18,8 +18,9 @@ interface ApplyCarProps {
     id: string | number
     name: string
     brand?: string
-    model?: string
-    price?: number
+    pricing?: {
+      pricePerDayInCity?: number
+    }
   }
 }
 
@@ -52,7 +53,7 @@ export const ApplyCar = ({ open, setOpen, car }: ApplyCarProps) => {
     setIsSubmitting(true)
 
     try {
-      const message = `🚗 *New Car Rental Request*\n\n🚙 *Car:* ${car.name}\n${car.brand ? `🏷️ *Brand:* ${car.brand}\n` : ''}${car.model ? `📋 *Model:* ${car.model}\n` : ''}💰 *Price:* $${car.price?.toLocaleString() || 'N/A'} per day\n📅 *Rental Date:* ${format(selectedDate, 'PPP')}\n\n👤 *Customer Details*\n📝 First Name: ${formData.firstName}\n📝 Last Name: ${formData.lastName}\n📞 Phone: ${formData.phone}\n📧 Email: ${formData.email}\n\n⏰ *Applied at:* ${new Date().toLocaleString()}`
+      const message = `🚗 *New Car Rental Request*\n\n🚙 *Car:* ${car.name}\n${car.brand ? `🏷️ *Brand:* ${car.brand}\n` : ''}💰 *Price:* $${car.pricing?.pricePerDayInCity?.toLocaleString() || 'N/A'} per day\n📅 *Rental Date:* ${format(selectedDate, 'PPP')}\n\n👤 *Customer Details*\n📝 First Name: ${formData.firstName}\n📝 Last Name: ${formData.lastName}\n📞 Phone: ${formData.phone}\n📧 Email: ${formData.email}\n\n⏰ *Applied at:* ${new Date().toLocaleString()}`
 
       await sendTelegramMessage(message)
       toast.success(t('form.success'))
