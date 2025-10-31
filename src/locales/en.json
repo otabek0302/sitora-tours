@@ -18,7 +18,7 @@
     "emailAddress": "Email Address",
     "additional_info": {
       "working_hours": "Mon - Fri: 09:00 - 17:00 | Sat - Sun: Weekend",
-      "address": "Mir Said Baraka Street, 1, Tashkent, Uzbekistan"
+      "address": "Mir Said Baraka Street, 1, Samarkand, Uzbekistan"
     },
     "copyright": "© 2024 Sitora Tours. All rights reserved."
   },
@@ -265,7 +265,9 @@
       "error_message": "The tour you're looking for doesn't exist",
       "back_to_tours": "Back to Tours",
       "days": "days",
+      "day": "day",
       "nights": "nights",
+      "night": "night",
       "travel_path": "Travel Path",
       "hours": "hours",
       "minutes": "minutes",

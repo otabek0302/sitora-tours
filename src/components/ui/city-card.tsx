@@ -22,7 +22,20 @@ const CityCard = ({ city }: CityCardProps) => {
         {/* Content */}
         <div className='text-sitora-white absolute right-0 bottom-0 left-0 p-6'>
           <h3 className='mb-2 text-xl font-bold lg:text-2xl'>{city.name}</h3>
-          {city.description && <p className='text-sm font-normal opacity-90 lg:text-base'>{city.description}</p>}
+          {city.description && (
+            <p className='text-sm font-normal opacity-90 transition-all duration-300 lg:text-base group-hover:opacity-100'>
+              {/* Short text - shown by default */}
+              <span className='group-hover:hidden'>
+                {city.description.length > 100 ? `${city.description.substring(0, 100)}...` : city.description}
+              </span>
+              {/* Medium text - shown on hover (if description is longer than 100 chars) */}
+              {city.description.length > 100 && (
+                <span className='hidden group-hover:inline'>
+                  {city.description.length > 250 ? `${city.description.substring(0, 250)}...` : city.description}
+                </span>
+              )}
+            </p>
+          )}
         </div>
       </div>
     </Link>

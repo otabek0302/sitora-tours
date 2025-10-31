@@ -34,7 +34,7 @@ const ContactDetails = () => {
         </div>
         <div className='flex-1'>
           <h3 className='text-sitora-text-subtitle mb-1 text-xs font-semibold sm:text-sm'>{t('office')}</h3>
-          <p className='text-sitora-body text-xs leading-relaxed sm:text-sm'>Mir Said Baraka Street, 1, Tashkent, Uzbekistan</p>
+          <p className='text-sitora-body text-xs leading-relaxed sm:text-sm'>Mir Said Baraka Street, 1, Samarkand, Uzbekistan</p>
         </div>
       </div>
       <div className='flex items-start gap-3 sm:gap-4'>

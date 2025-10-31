@@ -140,7 +140,7 @@ export const LocalBusinessStructuredData = () => {
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Mir Said Baraka Street, 1',
-      addressLocality: 'Tashkent',
+      addressLocality: 'Samarkand',
       addressCountry: 'UZ',
     },
 

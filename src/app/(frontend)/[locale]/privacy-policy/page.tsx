@@ -70,7 +70,7 @@ const PrivacyPolicyPage = () => {
               </a>
             </p>
             <p>
-              <span className='font-semibold'>{t('contact.address')}:</span> Mir Said Baraka Street, 1, Tashkent, Uzbekistan
+              <span className='font-semibold'>{t('contact.address')}:</span> Mir Said Baraka Street, 1, Samarkand, Uzbekistan
             </p>
           </div>
         </div>

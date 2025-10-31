@@ -19,7 +19,7 @@
     "hours": "Dush - Jum: 09:00 - 17:00 | Shan - Yak: Dam olish",
     "additional_info": {
       "working_hours": "Dush - Jum: 09:00 - 17:00 | Shan - Yak: Dam olish",
-      "address": "Mir Said Baraka ko'chasi, 1, Toshkent, O'zbekiston"
+      "address": "Mir Said Baraka ko'chasi, 1, Samarqand, O'zbekiston"
     },
     "copyright": "© 2024 Sitora Tours. Barcha huquqlar himoyalangan."
   },
@@ -266,7 +266,9 @@
       "error_message": "Siz qidirayotgan tur mavjud emas",
       "back_to_tours": "Turlarga qaytish",
       "days": "kunlar",
+      "day": "kun",
       "nights": "tunlar",
+      "night": "tun",
       "travel_path": "Sayohat yo'nalishi",
       "hours": "soat",
       "minutes": "daqiqa",

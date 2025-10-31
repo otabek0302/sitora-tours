@@ -37,11 +37,11 @@ export default buildConfig({
   plugins: [payloadCloudPlugin()],
 
   // CORS Configuration for VPS deployment
-  cors: ['http://localhost:3000', 'http://45.144.178.238:3000', 'http://45.144.178.238', 'http://ubuntu.orb.local', 'https://sitoratour.uz', 'https://www.sitoratour.uz', 'http://www.sitoratour.com', 'https://www.sitoratour.com'],
+  cors: ['http://localhost:3000', 'http://localhost:3000/en', 'http://45.144.178.238:3000', 'http://45.144.178.238', 'http://ubuntu.orb.local', 'https://sitoratour.uz', 'https://www.sitoratour.uz', 'http://www.sitoratour.com', 'https://www.sitoratour.com', 'http://sitoratour.com', 'http://sitoratour.com/en', 'https://sitoratour.com', 'https://sitoratour.com/en'],
 
   // CSRF Configuration (same as CORS)
-  csrf: ['http://localhost:3000', 'http://45.144.178.238:3000', 'http://45.144.178.238', 'http://ubuntu.orb.local', 'https://sitoratour.uz', 'https://www.sitoratour.uz', 'http://www.sitoratour.com', 'https://www.sitoratour.com'],
+  csrf: ['http://localhost:3000', 'http://localhost:3000/en', 'http://45.144.178.238:3000', 'http://45.144.178.238', 'http://ubuntu.orb.local', 'https://sitoratour.uz', 'https://www.sitoratour.uz', 'http://www.sitoratour.com', 'https://www.sitoratour.com', 'http://sitoratour.com', 'http://sitoratour.com/en', 'https://sitoratour.com', 'https://sitoratour.com/en'],
 
   // Express middleware CORS settings
-  serverURL: 'http://45.144.178.238',
+  serverURL: 'http://www.sitoratour.com',
 })

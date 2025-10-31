@@ -67,10 +67,17 @@ const ToursCard = ({ tour }: ToursCardProps) => {
                   <span>{tour.locations[0].transport}</span>
                 </div>
               )}
-              {tour.locations?.[0]?.from.name && (
-                <div className='flex items-center gap-1'>
-                  <MapPin className='text-sitora-primary h-4 w-4' />
-                  <span>{tour.locations[0].from.name}</span>
+              {tour.cities && tour.cities.length > 0 && (
+                <div className='flex items-center gap-1 flex-wrap'>
+                  <MapPin className='text-sitora-primary h-4 w-4 flex-shrink-0' />
+                  <span className='flex items-center gap-1 flex-wrap'>
+                    {tour.cities.map((city: { id: string | number; name?: string }, index: number) => (
+                      <span key={city.id}>
+                        {city.name || ''}
+                        {index < tour.cities.length - 1 && <span className='mx-1'>→</span>}
+                      </span>
+                    ))}
+                  </span>
                 </div>
               )}
             </div>

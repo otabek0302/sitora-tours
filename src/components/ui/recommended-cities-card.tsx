@@ -27,8 +27,22 @@ export const RecommendedCitiesCard = ({ city }: { city: City }) => {
           <div className='text-sitora-white absolute right-0 bottom-0 left-0 p-6'>
             <h3 className='mb-2 text-xl font-bold'>{city.name || ''}</h3>
             <p className='text-sm font-normal opacity-90 transition-all duration-300 group-hover:opacity-100'>
-              {city.description ? <span className='group-hover:hidden'>{city.description.length > 100 ? `${city.description.substring(0, 100)}...` : city.description}</span> : <span className='group-hover:hidden'>{t('no_description')}</span>}
-              {city.description && city.description.length > 100 && <span className='hidden group-hover:inline'>{city.description}</span>}
+              {city.description ? (
+                <>
+                  {/* Short text - shown by default */}
+                  <span className='group-hover:hidden'>
+                    {city.description.length > 100 ? `${city.description.substring(0, 100)}...` : city.description}
+                  </span>
+                  {/* Medium text - shown on hover (if description is longer than 100 chars) */}
+                  {city.description.length > 100 && (
+                    <span className='hidden group-hover:inline'>
+                      {city.description.length > 250 ? `${city.description.substring(0, 250)}...` : city.description}
+                    </span>
+                  )}
+                </>
+              ) : (
+                <span className='group-hover:hidden'>{t('no_description')}</span>
+              )}
             </p>
           </div>
         </div>
