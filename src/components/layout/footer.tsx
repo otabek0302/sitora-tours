@@ -53,9 +53,6 @@ const Footer = () => {
                   <Link href='/about-us' className='text-sitora-body hover:text-sitora-primary-dark rounded-md py-1 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
                     <span className='block'>{nav('about')}</span>
                   </Link>
-                  <Link href='/tours' className='text-sitora-body hover:text-sitora-primary-dark rounded-md py-1 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
-                    <span className='block'>{nav('tours')}</span>
-                  </Link>
                   <Link href='/local-tours' className='text-sitora-body hover:text-sitora-primary-dark rounded-md py-1 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
                     <span className='block'>{nav('local_tours')}</span>
                   </Link>
@@ -150,9 +147,6 @@ const Footer = () => {
                     </Link>
                     <Link href='/about-us' className='text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md py-2 text-sm leading-tight font-normal transition-all duration-300 hover:font-medium'>
                       <span className='block'>{nav('about')}</span>
-                    </Link>
-                    <Link href='/tours' className='text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md py-2 text-sm leading-tight font-normal transition-all duration-300 hover:font-medium'>
-                      <span className='block'>{nav('tours')}</span>
                     </Link>
                     <Link href='/local-tours' className='text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md py-2 text-sm leading-tight font-normal transition-all duration-300 hover:font-medium'>
                       <span className='block'>{nav('local_tours')}</span>

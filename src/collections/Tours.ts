@@ -184,8 +184,9 @@ export const Tours: CollectionConfig = {
       label: 'Booking & Pricing',
       type: 'array',
       fields: [
-        { name: 'dateStart', type: 'date', required: true },
-        { name: 'dateEnd', type: 'date', required: true },
+        { name: 'dateStart', type: 'date', required: false },
+        { name: 'dateEnd', type: 'date', required: false },
+        { name: 'numberOfPersons', label: 'Number of Persons', type: 'number', required: false, admin: { description: 'Number of persons for this pricing option' } },
         { name: 'pricePerPerson', type: 'number', required: true },
       ],
     },

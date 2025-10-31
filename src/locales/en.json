@@ -293,6 +293,8 @@
       "no_pricing_available": "No pricing information available",
       "departure_dates": "Departure Dates",
       "per_person": "Per Person",
+      "person": "person",
+      "persons": "persons",
       "book_now": "Book Now",
       "starting_price": "Starting Price",
       "contact_us": "Contact Us",

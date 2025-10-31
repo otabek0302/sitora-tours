@@ -29,9 +29,6 @@ const Header = () => {
             <Link href='/about-us' className='text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md px-2 py-2 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium xl:px-3'>
               <span className='block'>{t('about')}</span>
             </Link>
-            <Link href='/tours' className='text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md px-2 py-2 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium xl:px-3'>
-              <span className='block'>{t('tours')}</span>
-            </Link>
             <Link href='/local-tours' className='text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md px-2 py-2 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium xl:px-3'>
               <span className='block'>{t('local_tours')}</span>
             </Link>
@@ -40,9 +37,6 @@ const Header = () => {
             </Link>
             <Link href='/cities' className='text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md px-2 py-2 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium xl:px-3'>
               <span className='block'>{t('cities')}</span>
-            </Link>
-            <Link href='/hotels' className='text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md px-2 py-2 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium xl:px-3'>
-              <span className='block'>{t('hotels')}</span>
             </Link>
             <Link href='/cars' className='text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md px-2 py-2 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium xl:px-3'>
               <span className='block'>{t('cars')}</span>

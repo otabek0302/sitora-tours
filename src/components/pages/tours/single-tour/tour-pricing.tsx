@@ -55,28 +55,41 @@ const TourPricing = ({ tour }: TourPricingProps) => {
           </h3>
 
           <div className='space-y-4'>
-            {tour.booking_pricing.map((pricing, index) => (
-              <div key={pricing.id || index} className='border-border rounded-[18px] border p-4'>
-                <div className='mb-3 flex items-center gap-2'>
-                  <Calendar className='text-sitora-gold-medium h-4 w-4' />
-                  <span className='text-sitora-text-subtitle text-sm font-semibold'>
-                    {formatDate(pricing.dateStart)} - {formatDate(pricing.dateEnd)}
-                  </span>
-                </div>
-
-                <div className='space-y-2'>
-                  {pricing.pricePerPerson && (
-                    <div className='flex items-center justify-between'>
-                      <div className='flex items-center gap-2'>
-                        <Users className='text-sitora-gold-medium h-4 w-4' />
-                        <span className='text-sitora-body text-sm'>{t('per_person')}</span>
-                      </div>
-                      <span className='text-sitora-primary text-xl font-bold'>${formatPrice(pricing.pricePerPerson)}</span>
+            {tour.booking_pricing.map((pricing, index) => {
+              const hasDates = pricing.dateStart && pricing.dateEnd
+              const hasPersons = pricing.numberOfPersons && pricing.numberOfPersons > 0
+              
+              return (
+                <div key={pricing.id || index} className='border-border rounded-[18px] border p-4'>
+                  {/* Dates - only show if both dates exist */}
+                  {hasDates && (
+                    <div className='mb-3 flex items-center gap-2'>
+                      <Calendar className='text-sitora-gold-medium h-4 w-4' />
+                      <span className='text-sitora-text-subtitle text-sm font-semibold'>
+                        {formatDate(pricing.dateStart)} - {formatDate(pricing.dateEnd)}
+                      </span>
                     </div>
                   )}
+
+                  <div className='space-y-2'>
+                    {pricing.pricePerPerson && (
+                      <div className='flex items-center justify-between'>
+                        <div className='flex items-center gap-2'>
+                          <Users className='text-sitora-gold-medium h-4 w-4' />
+                          <span className='text-sitora-body text-sm'>
+                            {hasPersons 
+                              ? `${pricing.numberOfPersons} ${pricing.numberOfPersons === 1 ? t('person') : t('persons')}`
+                              : t('per_person')
+                            }
+                          </span>
+                        </div>
+                        <span className='text-sitora-primary text-xl font-bold'>${formatPrice(pricing.pricePerPerson)}</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
 
