@@ -46,7 +46,7 @@ export const OrganizationStructuredData = () => {
     ],
 
     // Social Media
-    sameAs: ['https://www.instagram.com/sitora_tour/', 'https://www.facebook.com/uzbekvoyage'],
+    sameAs: ['https://www.instagram.com/sitora_tour/', 'https://www.facebook.com/uzbekvoyage', 'https://t.me/sitoratour'],
 
     // Service Areas
     areaServed: [

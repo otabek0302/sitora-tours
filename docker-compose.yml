@@ -20,9 +20,9 @@ services:
       - DATABASE_URI=postgresql://postgres:sitoratours2024@postgres:5432/sitora_tour
       - NODE_ENV=production
       - NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH:-}
-      - NEXT_PUBLIC_SERVER_URL=${NEXT_PUBLIC_SERVER_URL:-http://sitoratour.com}
-      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://sitoratour.com/api}
-      - PAYLOAD_PUBLIC_SERVER_URL=${PAYLOAD_PUBLIC_SERVER_URL:-http://sitoratour.com}
+      - NEXT_PUBLIC_SERVER_URL=${NEXT_PUBLIC_SERVER_URL:-https://sitoratour.com}
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-https://sitoratour.com/api}
+      - PAYLOAD_PUBLIC_SERVER_URL=${PAYLOAD_PUBLIC_SERVER_URL:-https://sitoratour.com}
       - PAYLOAD_SECRET=${PAYLOAD_SECRET:-supersecret}
     networks:
       - sitora-network

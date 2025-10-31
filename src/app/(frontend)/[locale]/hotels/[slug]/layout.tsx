@@ -1,5 +1,13 @@
-const SingleHotelLayout = ({ children }: { children: React.ReactNode }) => {
-  return <>{children}</>
+import { ReactNode } from 'react'
+import { generateMetadata as generateHotelMetadata } from './metadata'
+
+type Props = {
+  children: ReactNode
+  params: Promise<{ slug: string; locale: string }>
 }
 
-export default SingleHotelLayout
+export { generateHotelMetadata as generateMetadata }
+
+export default function HotelLayout({ children }: Props) {
+  return <>{children}</>
+}

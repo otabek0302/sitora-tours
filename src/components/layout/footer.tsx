@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { logo } from '@/assets'
 import { Button } from '../ui'
-import { Mail, Phone, Instagram, Facebook } from 'lucide-react'
+import { Mail, Phone, Instagram, Facebook, Send } from 'lucide-react'
 
 const Footer = () => {
   const t = useTranslations('footer')
@@ -93,6 +93,10 @@ const Footer = () => {
                       <Facebook className='text-sitora-primary h-4 w-4' />
                       <span className='block'>Facebook</span>
                     </Link>
+                    <Link href='https://t.me/sitoratour' target='_blank' rel='noopener noreferrer' className='text-sitora-body flex items-center gap-2 rounded-md py-1 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
+                      <Send className='text-sitora-primary h-4 w-4' />
+                      <span className='block'>Telegram</span>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -179,6 +183,10 @@ const Footer = () => {
                     <Link href='https://www.facebook.com/uzbekvoyage' target='_blank' rel='noopener noreferrer' className='text-sitora-body text-md flex items-center gap-2 rounded-md py-2 leading-tight font-normal transition-all duration-300 hover:font-medium'>
                       <Facebook className='text-sitora-primary h-4 w-4' />
                       <span className='block'>Facebook</span>
+                    </Link>
+                    <Link href='https://t.me/sitoratour' target='_blank' rel='noopener noreferrer' className='text-sitora-body text-md flex items-center gap-2 rounded-md py-2 leading-tight font-normal transition-all duration-300 hover:font-medium'>
+                      <Send className='text-sitora-primary h-4 w-4' />
+                      <span className='block'>Telegram</span>
                     </Link>
                   </div>
                 </div>

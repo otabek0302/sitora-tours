@@ -9,21 +9,21 @@ export async function generateMetadata(): Promise<Metadata> {
     description: 'Explore the beauty of Uzbekistan with Sitora Tours. Discover ancient cities, cultural heritage, luxury hotels, and unforgettable adventures across Central Asia.',
     robots: 'index, follow',
     applicationName: 'Sitora Tours',
-    authors: [{ name: 'Sitora Tours', url: 'https://sitoratours.uz' }],
+    authors: [{ name: 'Sitora Tours', url: 'https://sitoratour.com' }],
     generator: 'Next.js',
     keywords: ['Sitora Tours', 'Uzbekistan Tours', 'Travel Uzbekistan', 'Silk Road Tours', 'Samarkand Tours', 'Bukhara Tours', 'Tashkent Tours', 'Central Asia Travel', 'Uzbekistan Hotels', 'Car Rental Uzbekistan', 'Tourism Uzbekistan', 'Cultural Tours', 'Adventure Travel', 'Luxury Tours Uzbekistan'],
     creator: 'Sitora Tours',
     publisher: 'Sitora Tours',
-    metadataBase: new URL('https://sitoratours.uz'),
+    metadataBase: new URL('https://sitoratour.com'),
     verification: {
-      google: 'j07f1HmJvncNCzLIv9aGfYmvv_AqSiImPnhkeRDpZus',
+      google: 'x42UmBlyopuNe0jXYQJAHc-Vy-h09Q9pMg0d7oJdVVM',
     },
     alternates: {
-      canonical: 'https://sitoratours.uz',
+      canonical: 'https://sitoratour.com',
       languages: {
-        en: 'https://sitoratours.uz/en',
-        ru: 'https://sitoratours.uz/ru',
-        uz: 'https://sitoratours.uz/uz',
+        en: 'https://sitoratour.com/en',
+        ru: 'https://sitoratour.com/ru',
+        uz: 'https://sitoratour.com/uz',
       },
     },
 
@@ -31,12 +31,12 @@ export async function generateMetadata(): Promise<Metadata> {
       title: 'Sitora Tours - Discover Uzbekistan with Premium Travel Experiences',
       description: 'Explore the beauty of Uzbekistan with Sitora Tours. Discover ancient cities, cultural heritage, luxury hotels, and unforgettable adventures.',
       type: 'website',
-      url: 'https://sitoratours.uz/',
+      url: 'https://sitoratour.com/',
       siteName: 'Sitora Tours',
       locale: 'en-US',
       images: [
         {
-          url: 'https://sitoratours.uz/og-image.jpg',
+          url: 'https://sitoratour.com/og-image.jpg',
           width: 1200,
           height: 630,
           alt: 'Sitora Tours - Discover Amazing Uzbekistan',
@@ -48,7 +48,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: 'summary_large_image',
       title: 'Sitora Tours - Discover Uzbekistan with Premium Travel Experiences',
       description: 'Explore the beauty of Uzbekistan with Sitora Tours. Ancient cities, cultural heritage, and unforgettable adventures.',
-      images: ['https://sitoratours.uz/og-image.jpg'],
+      images: ['https://sitoratour.com/og-image.jpg'],
     },
 
     icons: {

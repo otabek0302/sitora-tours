@@ -23,7 +23,7 @@ export default async function Layout({ children, params }: Props) {
     <html lang={locale}>
       <head>
         {/* Google Site Verification */}
-        <meta name='google-site-verification' content='j07f1HmJvncNCzLIv9aGfYmvv_AqSiImPnhkeRDpZus' />
+        <meta name='google-site-verification' content='x42UmBlyopuNe0jXYQJAHc-Vy-h09Q9pMg0d7oJdVVM' />
 
         {/* Google Tag Manager */}
         <Script
