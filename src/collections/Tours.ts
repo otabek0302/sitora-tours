@@ -106,6 +106,21 @@ export const Tours: CollectionConfig = {
       ],
     },
     {
+      name: 'tourType',
+      label: 'Tour Type',
+      type: 'select',
+      required: true,
+      defaultValue: 'local',
+      options: [
+        { label: 'Local Tours (Узбекистан)', value: 'local' },
+        { label: 'Abroad Tours (За рубежом)', value: 'abroad' },
+      ],
+      admin: {
+        position: 'sidebar',
+        description: 'Select whether this tour is within Uzbekistan (local) or abroad',
+      },
+    },
+    {
       name: 'locations',
       label: 'Travel Path (e.g., Samarkand → Tashkent)',
       type: 'array',
@@ -116,9 +131,9 @@ export const Tours: CollectionConfig = {
         {
           type: 'row',
           fields: [
-            { name: 'fromTime', type: 'text', required: true },
-            { name: 'toTime', type: 'text', required: true },
-            { name: 'duration', type: 'text', required: true },
+            { name: 'fromTime', type: 'text', required: false },
+            { name: 'toTime', type: 'text', required: false },
+            { name: 'duration', type: 'text', required: false },
           ],
         },
       ],

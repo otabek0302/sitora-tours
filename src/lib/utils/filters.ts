@@ -12,6 +12,9 @@ export function filtersToUrlParams(filters: Partial<TourFilters>, pagination: Pa
   // Category filters using Payload's 'in' operator
   if (filters.category && filters.category !== null) params.set('where[category][in]', filters.category.toString())
 
+  // Tour Type filter
+  if (filters.tourType) params.set('where[tourType][equals]', filters.tourType)
+
   // City filters using Payload's 'in' operator
   if (filters.cities && filters.cities.length > 0) params.set('where[cities][in]', filters.cities.join(','))
 

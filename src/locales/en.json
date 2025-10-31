@@ -2,6 +2,8 @@
   "navigation": {
     "home": "Home",
     "tours": "Tours",
+    "local_tours": "Local Tours",
+    "abroad_tours": "Abroad Tours",
     "cities": "Cities",
     "hotels": "Hotels",
     "cars": "Cars",

@@ -54,11 +54,11 @@ const TourPath = ({ tour }: TourPathProps) => {
               <div className='mb-4 flex items-start justify-between'>
                 <div className='text-left'>
                   <h3 className='text-sitora-text-heading text-lg font-bold'>{fromCity}</h3>
-                  <p className='text-sitora-body text-sm'>{location.fromTime}</p>
+                  {location.fromTime && <p className='text-sitora-body text-sm'>{location.fromTime}</p>}
                 </div>
                 <div className='text-right'>
                   <h3 className='text-sitora-text-heading text-lg font-bold'>{toCity}</h3>
-                  <p className='text-sitora-body text-sm'>{location.toTime}</p>
+                  {location.toTime && <p className='text-sitora-body text-sm'>{location.toTime}</p>}
                 </div>
               </div>
 

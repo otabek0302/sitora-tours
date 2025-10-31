@@ -57,6 +57,7 @@ export const useToursStore = create<ToursState>((set, get) => ({
   filters: {
     category: null,
     cities: [],
+    tourType: undefined,
     minPrice: 0,
     maxPrice: 10000,
     durationMin: 0,
@@ -98,6 +99,7 @@ export const useToursStore = create<ToursState>((set, get) => ({
       filters: {
         category: null,
         cities: [],
+        tourType: undefined,
         minPrice: 0,
         maxPrice: 10000,
         durationMin: 0,
@@ -142,7 +144,7 @@ export const useToursStore = create<ToursState>((set, get) => ({
 
   activeFilter: () => {
     const { filters } = get()
-    return Boolean(filters.category || (filters.cities && filters.cities.length > 0) || filters.minPrice !== 0 || filters.maxPrice !== 10000 || filters.durationMin !== 0 || filters.durationMax !== 30)
+    return Boolean(filters.category || filters.tourType || (filters.cities && filters.cities.length > 0) || filters.minPrice !== 0 || filters.maxPrice !== 10000 || filters.durationMin !== 0 || filters.durationMax !== 30)
   },
 
   fetchTourBySlug: async (slug: string) => {

@@ -24,6 +24,7 @@ export const TourSchema = z.object({
 
   category: RelationObjectSchema.optional(),
   cities: z.array(RelationObjectSchema).optional(),
+  tourType: z.enum(['local', 'abroad']).optional(),
 
   locations: z
     .array(
@@ -32,9 +33,9 @@ export const TourSchema = z.object({
         from: RelationObjectSchema,
         to: RelationObjectSchema,
         transport: z.string(),
-        fromTime: z.string(),
-        toTime: z.string(),
-        duration: z.string(),
+        fromTime: z.string().optional(),
+        toTime: z.string().optional(),
+        duration: z.string().optional(),
       }),
     )
     .optional(),
@@ -126,6 +127,7 @@ export const ToursResponseSchema = z.object({
 export const TourFiltersSchema = z.object({
   category: z.number().nullable().optional(),
   cities: z.array(z.number()).optional(),
+  tourType: z.enum(['local', 'abroad']).optional(),
   minPrice: z.number().min(0).optional(),
   maxPrice: z.number().min(0).optional(),
   durationMin: z.number().min(0).optional(),

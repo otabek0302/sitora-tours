@@ -32,6 +32,12 @@ const Header = () => {
             <Link href='/tours' className='text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md px-2 py-2 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium xl:px-3'>
               <span className='block'>{t('tours')}</span>
             </Link>
+            <Link href='/local-tours' className='text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md px-2 py-2 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium xl:px-3'>
+              <span className='block'>{t('local_tours')}</span>
+            </Link>
+            <Link href='/abroad-tours' className='text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md px-2 py-2 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium xl:px-3'>
+              <span className='block'>{t('abroad_tours')}</span>
+            </Link>
             <Link href='/cities' className='text-sitora-body xl:text-md hover:text-sitora-primary-dark rounded-md px-2 py-2 text-sm leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium xl:px-3'>
               <span className='block'>{t('cities')}</span>
             </Link>

@@ -2,6 +2,8 @@
   "navigation": {
     "home": "Главная",
     "tours": "Туры",
+    "local_tours": "Туры по Узбекистану",
+    "abroad_tours": "Туры за рубеж",
     "cities": "Города",
     "hotels": "Отели",
     "cars": "Автомобили",

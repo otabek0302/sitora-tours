@@ -2,6 +2,8 @@
   "navigation": {
     "home": "Bosh sahifa",
     "tours": "Turlar",
+    "local_tours": "O'zbekiston bo'ylab turlar",
+    "abroad_tours": "Chet elga turlar",
     "cities": "Shaharlar",
     "hotels": "Mehmonxonalar",
     "cars": "Avtomobillar",
