@@ -89,9 +89,9 @@ export const TourSchema = z.object({
     .array(
       z.object({
         id: z.string().optional(),
-        dateStart: z.string().optional(),
-        dateEnd: z.string().optional(),
-        numberOfPersons: z.number().optional(),
+        dateStart: z.string().nullable().optional(),
+        dateEnd: z.string().nullable().optional(),
+        numberOfPersons: z.number().nullable().optional(),
         pricePerPerson: z.number().optional(),
       }),
     )
