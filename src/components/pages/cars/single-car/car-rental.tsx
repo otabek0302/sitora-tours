@@ -72,14 +72,23 @@ const CarRental = ({ car }: CarRentalProps) => {
 
         {/* Book Button */}
         <div className='border-border border-t pt-4'>
-          <Button size='lg' onClick={() => setApplyOpen(true)} className='bg-sitora-primary hover:bg-sitora-primary/90 text-sitora-white w-full text-base'>
+          <Button size='lg' onClick={() => setApplyOpen(true)} className='bg-sitora-primary hover:bg-sitora-primary/90 hover:text-sitora-white text-sitora-white w-full text-base'>
             {t('book_button')}
           </Button>
         </div>
       </CardContent>
 
       {/* Apply Car Modal */}
-      <ApplyCar open={applyOpen} setOpen={setApplyOpen} car={car} />
+      <ApplyCar
+        open={applyOpen}
+        setOpen={setApplyOpen}
+        car={{
+          id: car.id,
+          name: car.name,
+          brand: car.brand,
+          pricing: car.pricing?.pricePerDayInCity ? { pricePerDayInCity: car.pricing.pricePerDayInCity } : undefined,
+        }}
+      />
     </Card>
   )
 }

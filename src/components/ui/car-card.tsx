@@ -81,12 +81,14 @@ const CarsCard = ({ car }: CarsCardProps) => {
                   <span className='text-sitora-primary text-2xl font-bold'>${car.pricing?.pricePerDayInCity || 0}</span>
                   <span className='text-sitora-body text-sm font-normal'>{t('per_day')}</span>
                 </div>
-                <Button variant='default' size='sm' className='group shadow-none'>
-                  <Link href={`/cars/${car.slug}`} className='text-md flex items-center justify-center gap-2 leading-tight font-normal'>
-                    <span className='text-sitora-white group-hover:text-sitora-primary block'>{t('see_details')}</span>
-                    <ArrowRight className='text-sitora-white group-hover:text-sitora-primary h-4 w-4' />
-                  </Link>
-                </Button>
+                <div className='flex items-center justify-end'>
+                  <Button variant='default' size='sm' className='group shadow-none'>
+                    <Link href={`/cars/${car.slug}`} className='text-md flex items-center justify-center gap-2 leading-tight font-normal'>
+                      <span className='text-sitora-white group-hover:text-sitora-primary block'>{t('see_details')}</span>
+                      <ArrowRight className='text-sitora-white group-hover:text-sitora-primary h-4 w-4' />
+                    </Link>
+                  </Button>
+                </div>
               </div>
 
               {/* Desktop: Show all pricing options */}
@@ -94,39 +96,31 @@ const CarsCard = ({ car }: CarsCardProps) => {
                 <div className='mb-4 space-y-3'>
                   {/* Price per day */}
                   <div className='flex items-center justify-between'>
-                    <div className='flex flex-col'>
-                      <span className='text-sitora-body text-xs font-medium'>{t('per_day')}</span>
-                      <span className='text-sitora-primary text-2xl font-bold'>${car.pricing?.pricePerDayInCity || 0}</span>
-                    </div>
+                    <span className='text-sitora-body text-xs font-medium'>{t('per_day')}</span>
+                    <span className='text-sitora-primary text-2xl font-bold'>${car.pricing?.pricePerDayInCity || 0}</span>
                   </div>
 
                   {/* Transfer: airport - hotel - airport */}
                   {car.pricing?.transferAirportHotelAirport && (
                     <div className='border-border flex items-center justify-between border-t pt-3'>
-                      <div className='flex flex-col'>
-                        <span className='text-sitora-body text-xs font-medium'>{tSingle('transfer_airport_hotel')}</span>
-                        <span className='text-sitora-primary text-xl font-bold'>${car.pricing.transferAirportHotelAirport}</span>
-                      </div>
+                      <span className='text-sitora-body text-xs font-medium'>{tSingle('transfer_airport_hotel')}</span>
+                      <span className='text-sitora-primary text-xl font-bold'>${car.pricing.transferAirportHotelAirport}</span>
                     </div>
                   )}
 
                   {/* Transfer: hotel - dinner - hotel */}
                   {car.pricing?.transferHotelDinnerHotel && (
                     <div className='border-border flex items-center justify-between border-t pt-3'>
-                      <div className='flex flex-col'>
-                        <span className='text-sitora-body text-xs font-medium'>{tSingle('transfer_hotel_dinner')}</span>
-                        <span className='text-sitora-primary text-xl font-bold'>${car.pricing.transferHotelDinnerHotel}</span>
-                      </div>
+                      <span className='text-sitora-body text-xs font-medium'>{tSingle('transfer_hotel_dinner')}</span>
+                      <span className='text-sitora-primary text-xl font-bold'>${car.pricing.transferHotelDinnerHotel}</span>
                     </div>
                   )}
 
                   {/* On a long route (from 7 days) */}
                   {car.pricing?.longRouteFrom7Days && (
                     <div className='border-border flex items-center justify-between border-t pt-3'>
-                      <div className='flex flex-col'>
-                        <span className='text-sitora-body text-xs font-medium'>{tSingle('long_route_7days')}</span>
-                        <span className='text-sitora-primary text-xl font-bold'>${car.pricing.longRouteFrom7Days}</span>
-                      </div>
+                      <span className='text-sitora-body text-xs font-medium'>{tSingle('long_route_7days')}</span>
+                      <span className='text-sitora-primary text-xl font-bold'>${car.pricing.longRouteFrom7Days}</span>
                     </div>
                   )}
                 </div>
