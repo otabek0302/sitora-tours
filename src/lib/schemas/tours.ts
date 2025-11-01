@@ -81,7 +81,25 @@ export const TourSchema = z.object({
       z.object({
         id: z.string().optional(),
         city: z.union([z.number(), RelationObjectSchema]).optional(),
-        hotel: z.array(z.union([z.number(), RelationObjectSchema])).optional(),
+        hotel: z
+          .array(
+            z.union([
+              z.number(),
+              RelationObjectSchema,
+              z.object({
+                id: z.union([z.string(), z.number()]),
+                name: z.string().optional(),
+                slug: z.string().optional(),
+                description: z.string().optional(),
+                address: z.string().optional(),
+                phone: z.string().optional(),
+                rating: z.string().optional(),
+                website: z.string().optional(),
+                email: z.string().optional(),
+              }),
+            ]),
+          )
+          .optional(),
       }),
     )
     .optional(),
@@ -89,9 +107,9 @@ export const TourSchema = z.object({
     .array(
       z.object({
         id: z.string().optional(),
-        dateStart: z.string().nullable().optional(),
-        dateEnd: z.string().nullable().optional(),
-        numberOfPersons: z.number().nullable().optional(),
+        dateStart: z.string().nullish(),
+        dateEnd: z.string().nullish(),
+        numberOfPersons: z.number().nullish(),
         pricePerPerson: z.number().optional(),
       }),
     )

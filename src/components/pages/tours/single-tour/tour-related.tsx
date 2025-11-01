@@ -61,11 +61,13 @@ const TourRelated = ({ tour }: TourRelatedProps) => {
                   <div className='flex items-center gap-2'>
                     <Clock className='text-sitora-primary h-4 w-4' />
                     <span className='text-sitora-body text-sm font-medium'>
-                      {relatedTour.duration_days} {relatedTour.duration_days > 1 ? t('days') : t('day')}
-                    </span>
-                    <span className='text-sitora-body text-sm font-medium'>/</span>
-                    <span className='text-sitora-body text-sm font-medium'>
-                      {relatedTour.duration_nights} {relatedTour.duration_nights > 1 ? t('nights') : t('night')}
+                      {relatedTour.duration_days} {relatedTour.duration_days !== 1 ? t('days') : t('day')}
+                      {relatedTour.duration_nights && relatedTour.duration_nights > 0 && (
+                        <>
+                          {' / '}
+                          {relatedTour.duration_nights} {relatedTour.duration_nights !== 1 ? t('nights') : t('night')}
+                        </>
+                      )}
                     </span>
                   </div>
                   {relatedTour.category?.name && (

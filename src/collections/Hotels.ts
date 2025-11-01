@@ -62,6 +62,24 @@ export const Hotels: CollectionConfig = {
       required: true,
     },
     {
+      name: 'website',
+      label: 'Hotel Website',
+      type: 'text',
+      required: false,
+      admin: {
+        description: 'Hotel website URL (e.g., https://example.com)',
+      },
+    },
+    {
+      name: 'email',
+      label: 'Hotel Email',
+      type: 'email',
+      required: false,
+      admin: {
+        description: 'Hotel contact email',
+      },
+    },
+    {
       name: 'rating',
       label: 'Hotel Rating',
       type: 'select',

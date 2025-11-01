@@ -54,7 +54,29 @@ const SpecialOffersSectionSchema = z.object({
   tours: z.union([z.number(), TourSchema, z.null()]).optional().nullable(),
 })
 
-// Recommended Tours Section
+// Recommended Local Tours Section
+const RecommendedLocalToursSectionSchema = z.object({
+  blockType: z.literal('recommended-local-tours'),
+  blockName: z.string().optional(),
+  id: z.string().optional(),
+  tours: z
+    .union([z.array(z.union([z.number(), TourSchema, z.null()])), z.number(), TourSchema, z.null()])
+    .optional()
+    .nullable(),
+})
+
+// Recommended Abroad Tours Section
+const RecommendedAbroadToursSectionSchema = z.object({
+  blockType: z.literal('recommended-abroad-tours'),
+  blockName: z.string().optional(),
+  id: z.string().optional(),
+  tours: z
+    .union([z.array(z.union([z.number(), TourSchema, z.null()])), z.number(), TourSchema, z.null()])
+    .optional()
+    .nullable(),
+})
+
+// Legacy Recommended Tours Section (for backward compatibility)
 const RecommendedToursSectionSchema = z.object({
   blockType: z.literal('recommended-tours'),
   blockName: z.string().optional(),
@@ -88,7 +110,16 @@ const RecommendedCarsSectionSchema = z.object({
 })
 
 // Union of all section types
-const SectionSchema = z.discriminatedUnion('blockType', [HeroSectionSchema, FAQSectionSchema, SpecialOffersSectionSchema, RecommendedToursSectionSchema, RecommendedCitiesSectionSchema, RecommendedCarsSectionSchema])
+const SectionSchema = z.discriminatedUnion('blockType', [
+  HeroSectionSchema,
+  FAQSectionSchema,
+  SpecialOffersSectionSchema,
+  RecommendedLocalToursSectionSchema,
+  RecommendedAbroadToursSectionSchema,
+  RecommendedToursSectionSchema, // Legacy, for backward compatibility
+  RecommendedCitiesSectionSchema,
+  RecommendedCarsSectionSchema,
+])
 
 // Pages schema
 export const PagesSchema = z.object({
@@ -103,6 +134,8 @@ export type Section = z.infer<typeof SectionSchema>
 export type HeroSection = z.infer<typeof HeroSectionSchema>
 export type FAQSection = z.infer<typeof FAQSectionSchema>
 export type SpecialOffersSection = z.infer<typeof SpecialOffersSectionSchema>
-export type RecommendedToursSection = z.infer<typeof RecommendedToursSectionSchema>
+export type RecommendedLocalToursSection = z.infer<typeof RecommendedLocalToursSectionSchema>
+export type RecommendedAbroadToursSection = z.infer<typeof RecommendedAbroadToursSectionSchema>
+export type RecommendedToursSection = z.infer<typeof RecommendedToursSectionSchema> // Legacy
 export type RecommendedCitiesSection = z.infer<typeof RecommendedCitiesSectionSchema>
 export type RecommendedCarsSection = z.infer<typeof RecommendedCarsSectionSchema>

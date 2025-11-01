@@ -8,11 +8,9 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Button, RecommendedToursCard } from '@/components/ui'
 import { usePagesContext } from '@/lib/stores/pages'
 
-const RecommendedTours = () => {
+// Tour slider component
+const TourSlider = ({ tours, heading, subheading, viewAllLink, viewAllText }: { tours: any[]; heading: string; subheading?: string; viewAllLink: string; viewAllText: string }) => {
   const t = useTranslations('pages.home.recommended_tours')
-  const { getRecommendedToursSection } = usePagesContext()
-  const { tours = [] } = getRecommendedToursSection() || {}
-
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     containScroll: 'keepSnaps',
@@ -26,7 +24,13 @@ const RecommendedTours = () => {
     if (emblaApi) emblaApi.scrollNext()
   }
 
-  if (Array.isArray(tours) && tours.length === 0) {
+  if (!Array.isArray(tours) || tours.length === 0) {
+    return null
+  }
+
+  const validTours = tours.filter(tour => typeof tour !== 'number' && tour !== null && tour !== undefined)
+
+  if (validTours.length === 0) {
     return null
   }
 
@@ -36,8 +40,8 @@ const RecommendedTours = () => {
         {/* Section Header */}
         <div className='mb-6 flex items-center justify-between'>
           <div className='text-center lg:text-left'>
-            <h2 className='text-sitora-text-subtitle mb-4 text-2xl leading-tight font-bold sm:text-3xl lg:text-4xl'>{t('heading')}</h2>
-            <p className='text-sitora-body sm:text-md mx-auto max-w-2xl text-sm font-normal lg:mx-0'>{t('subheading')}</p>
+            <h2 className='text-sitora-text-subtitle mb-4 text-2xl leading-tight font-bold sm:text-3xl lg:text-4xl'>{heading}</h2>
+            {subheading && <p className='text-sitora-body sm:text-md mx-auto max-w-2xl text-sm font-normal lg:mx-0'>{subheading}</p>}
           </div>
 
           {/* Navigation Controls */}
@@ -54,18 +58,45 @@ const RecommendedTours = () => {
         {/* Tours Slider */}
         <div className='relative'>
           <div className='embla' ref={emblaRef}>
-            <div className='embla__container flex gap-4 py-4'>{Array.isArray(tours) && tours.filter(tour => typeof tour !== 'number' && tour !== null).map(tour => <RecommendedToursCard key={tour.id} tour={tour} />)}</div>
+            <div className='embla__container flex gap-4 py-4'>
+              {validTours.map(tour => (
+                <RecommendedToursCard key={tour.id} tour={tour} />
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Section Footer */}
         <div className='mt-6 text-center'>
           <Button variant='default' size='lg' asChild>
-            <Link href='/tours'>{t('view_all')}</Link>
+            <Link href={viewAllLink}>{viewAllText}</Link>
           </Button>
         </div>
       </div>
     </section>
+  )
+}
+
+const RecommendedTours = () => {
+  const t = useTranslations('pages.home.recommended_tours')
+  const tNav = useTranslations('navigation')
+  const { getRecommendedLocalToursSection, getRecommendedAbroadToursSection } = usePagesContext()
+
+  // Get tours from separate sections
+  const localSection = getRecommendedLocalToursSection()
+  const abroadSection = getRecommendedAbroadToursSection()
+
+  const localTours = localSection?.tours ? (Array.isArray(localSection.tours) ? localSection.tours : [localSection.tours]).filter((tour: any) => typeof tour !== 'number' && tour !== null && tour !== undefined) : []
+  const abroadTours = abroadSection?.tours ? (Array.isArray(abroadSection.tours) ? abroadSection.tours : [abroadSection.tours]).filter((tour: any) => typeof tour !== 'number' && tour !== null && tour !== undefined) : []
+
+  return (
+    <>
+      {/* Local Tours Section */}
+      {localTours.length > 0 && <TourSlider tours={localTours} heading={tNav('local_tours')} subheading={t('subheading')} viewAllLink='/local-tours' viewAllText={t('view_all')} />}
+
+      {/* Abroad Tours Section */}
+      {abroadTours.length > 0 && <TourSlider tours={abroadTours} heading={tNav('abroad_tours')} subheading={t('subheading')} viewAllLink='/abroad-tours' viewAllText={t('view_all')} />}
+    </>
   )
 }
 

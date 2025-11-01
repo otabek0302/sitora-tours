@@ -15,6 +15,7 @@ interface CarsCardProps {
 
 const CarsCard = ({ car }: CarsCardProps) => {
   const t = useTranslations('pages.cars')
+  const tSingle = useTranslations('pages.cars.single')
   return (
     <Card className='bg-card border-border overflow-hidden rounded-[26px] border shadow-none'>
       <div className='flex flex-col lg:flex-row'>
@@ -73,17 +74,70 @@ const CarsCard = ({ car }: CarsCardProps) => {
             </div>
 
             {/* Price and Book Button */}
-            <div className='border-border flex items-center justify-between border-t pt-4'>
-              <div className='flex flex-col'>
-                <span className='text-sitora-primary text-2xl font-bold'>${car.pricing?.pricePerDayInCity || 0}</span>
-                <span className='text-sitora-body text-sm font-normal'>{t('per_day')}</span>
+            <div className='border-border border-t pt-4'>
+              {/* Mobile/Tablet: Show only per day price */}
+              <div className='flex items-center justify-between lg:hidden'>
+                <div className='flex flex-col'>
+                  <span className='text-sitora-primary text-2xl font-bold'>${car.pricing?.pricePerDayInCity || 0}</span>
+                  <span className='text-sitora-body text-sm font-normal'>{t('per_day')}</span>
+                </div>
+                <Button variant='default' size='sm' className='group shadow-none'>
+                  <Link href={`/cars/${car.slug}`} className='text-md flex items-center justify-center gap-2 leading-tight font-normal'>
+                    <span className='text-sitora-white group-hover:text-sitora-primary block'>{t('see_details')}</span>
+                    <ArrowRight className='text-sitora-white group-hover:text-sitora-primary h-4 w-4' />
+                  </Link>
+                </Button>
               </div>
-              <Button variant='default' size='sm' className='group shadow-none'>
-                <Link href={`/cars/${car.slug}`} className='text-md flex items-center justify-center gap-2 leading-tight font-normal'>
-                  <span className='text-sitora-white group-hover:text-sitora-primary block'>{t('see_details')}</span>
-                  <ArrowRight className='text-sitora-white group-hover:text-sitora-primary h-4 w-4' />
-                </Link>
-              </Button>
+
+              {/* Desktop: Show all pricing options */}
+              <div className='hidden lg:block'>
+                <div className='mb-4 space-y-3'>
+                  {/* Price per day */}
+                  <div className='flex items-center justify-between'>
+                    <div className='flex flex-col'>
+                      <span className='text-sitora-body text-xs font-medium'>{t('per_day')}</span>
+                      <span className='text-sitora-primary text-2xl font-bold'>${car.pricing?.pricePerDayInCity || 0}</span>
+                    </div>
+                  </div>
+
+                  {/* Transfer: airport - hotel - airport */}
+                  {car.pricing?.transferAirportHotelAirport && (
+                    <div className='border-border flex items-center justify-between border-t pt-3'>
+                      <div className='flex flex-col'>
+                        <span className='text-sitora-body text-xs font-medium'>{tSingle('transfer_airport_hotel')}</span>
+                        <span className='text-sitora-primary text-xl font-bold'>${car.pricing.transferAirportHotelAirport}</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Transfer: hotel - dinner - hotel */}
+                  {car.pricing?.transferHotelDinnerHotel && (
+                    <div className='border-border flex items-center justify-between border-t pt-3'>
+                      <div className='flex flex-col'>
+                        <span className='text-sitora-body text-xs font-medium'>{tSingle('transfer_hotel_dinner')}</span>
+                        <span className='text-sitora-primary text-xl font-bold'>${car.pricing.transferHotelDinnerHotel}</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* On a long route (from 7 days) */}
+                  {car.pricing?.longRouteFrom7Days && (
+                    <div className='border-border flex items-center justify-between border-t pt-3'>
+                      <div className='flex flex-col'>
+                        <span className='text-sitora-body text-xs font-medium'>{tSingle('long_route_7days')}</span>
+                        <span className='text-sitora-primary text-xl font-bold'>${car.pricing.longRouteFrom7Days}</span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <Button variant='default' size='sm' className='group w-full shadow-none'>
+                  <Link href={`/cars/${car.slug}`} className='text-md flex items-center justify-center gap-2 leading-tight font-normal'>
+                    <span className='text-sitora-white group-hover:text-sitora-primary block'>{t('see_details')}</span>
+                    <ArrowRight className='text-sitora-white group-hover:text-sitora-primary h-4 w-4' />
+                  </Link>
+                </Button>
+              </div>
             </div>
           </CardContent>
         </div>

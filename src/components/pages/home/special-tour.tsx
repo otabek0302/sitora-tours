@@ -66,7 +66,13 @@ const SpecialTour = () => {
                 <div className='flex items-center gap-2'>
                   <Clock className='text-sitora-white h-4 w-4' />
                   <span className='text-sitora-white text-sm'>
-                    {tour.duration_days} {tour.duration_days > 1 ? t('days') : t('day')} / {tour.duration_nights} {tour.duration_nights > 1 ? t('nights') : t('night')}
+                    {tour.duration_days} {tour.duration_days !== 1 ? t('days') : t('day')}
+                    {tour.duration_nights && tour.duration_nights > 0 && (
+                      <>
+                        {' / '}
+                        {tour.duration_nights} {tour.duration_nights !== 1 ? t('nights') : t('night')}
+                      </>
+                    )}
                   </span>
                 </div>
 

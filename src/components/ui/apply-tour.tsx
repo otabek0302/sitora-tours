@@ -19,8 +19,9 @@ interface ApplyTourProps {
     duration_nights?: number
     booking_pricing?: Array<{
       id?: string
-      dateStart?: string
-      dateEnd?: string
+      dateStart?: string | null
+      dateEnd?: string | null
+      numberOfPersons?: number | null
       pricePerPerson?: number
     }>
   }
@@ -41,6 +42,31 @@ export const ApplyTour = ({ open, setOpen, tour }: ApplyTourProps) => {
 
   const resetForm = () => setFormData({ firstName: '', lastName: '', phone: '', email: '', selectedDate: '' })
 
+  // Helper function to format booking option text
+  const formatBookingOptionText = (booking: { dateStart?: string | null; dateEnd?: string | null; pricePerPerson?: number }) => {
+    // Check if dates are valid
+    const startDate = booking.dateStart ? new Date(booking.dateStart) : null
+    const endDate = booking.dateEnd ? new Date(booking.dateEnd) : null
+    const isValidStartDate = startDate && !isNaN(startDate.getTime())
+    const isValidEndDate = endDate && !isNaN(endDate.getTime())
+
+    // Format date range or use tour name
+    let dateText: string
+    if (isValidStartDate && isValidEndDate) {
+      const startFormatted = startDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+      const endFormatted = endDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+      dateText = `${startFormatted} - ${endFormatted}`
+    } else {
+      // Show tour name if dates are invalid, truncate if too long
+      const tourName = tour.name.length > 30 ? `${tour.name.substring(0, 30)}...` : tour.name
+      dateText = tourName
+    }
+
+    const priceText = booking.pricePerPerson ? `$${booking.pricePerPerson.toLocaleString()}` : 'N/A'
+
+    return { dateText, priceText, fullText: `${dateText} (${priceText})` }
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
@@ -56,10 +82,30 @@ export const ApplyTour = ({ open, setOpen, tour }: ApplyTourProps) => {
 
     try {
       const selectedBooking = tour.booking_pricing?.find(b => b.id === formData.selectedDate)
-      const tourDateInfo = selectedBooking ? formatDateRange(selectedBooking.dateStart || '', selectedBooking.dateEnd || '') : 'Not specified'
-      const tourLength = selectedBooking ? calculateDays(selectedBooking.dateStart || '', selectedBooking.dateEnd || '') : tour.duration_days || 'N/A'
+      
+      // Check if dates are valid
+      const startDate = selectedBooking?.dateStart ? new Date(selectedBooking.dateStart) : null
+      const endDate = selectedBooking?.dateEnd ? new Date(selectedBooking.dateEnd) : null
+      const isValidStartDate = startDate && !isNaN(startDate.getTime())
+      const isValidEndDate = endDate && !isNaN(endDate.getTime())
+      const hasValidDates = isValidStartDate && isValidEndDate
 
-      const message = `🎯 *New Tour Application*\n\n🏷️ *Tour:* ${tour.name}\n💰 *Price:* $${selectedBooking?.pricePerPerson?.toLocaleString() || tour.price?.toLocaleString() || 'N/A'} per person\n⏱️ *Duration:* ${tourLength} days${tour.duration_nights ? ` / ${tour.duration_nights} nights` : ''}\n📅 *Tour Dates:* ${tourDateInfo}\n\n👤 *Applicant Details*\n📝 First Name: ${formData.firstName}\n📝 Last Name: ${formData.lastName}\n📞 Phone: ${formData.phone}\n📧 Email: ${formData.email}\n\n⏰ *Applied at:* ${new Date().toLocaleString()}`
+      // Build date/person info
+      let dateOrPersonInfo = ''
+      if (hasValidDates && selectedBooking) {
+        // If dates are available, send dates
+        dateOrPersonInfo = `📅 *Tour Dates:* ${formatDateRange(selectedBooking.dateStart || '', selectedBooking.dateEnd || '')}`
+      } else if (selectedBooking?.numberOfPersons && selectedBooking.numberOfPersons > 0) {
+        // If dates not available, send number of persons
+        dateOrPersonInfo = `👥 *Number of Persons:* ${selectedBooking.numberOfPersons}`
+      } else {
+        // Fallback
+        dateOrPersonInfo = '📅 *Tour Dates:* Not specified'
+      }
+
+      const tourLength = hasValidDates && selectedBooking ? calculateDays(selectedBooking.dateStart || '', selectedBooking.dateEnd || '') : tour.duration_days || 'N/A'
+
+      const message = `🎯 *New Tour Application*\n\n🏷️ *Tour:* ${tour.name}\n💰 *Price:* $${selectedBooking?.pricePerPerson?.toLocaleString() || tour.price?.toLocaleString() || 'N/A'} per person\n⏱️ *Duration:* ${tourLength} days${tour.duration_nights ? ` / ${tour.duration_nights} nights` : ''}\n${dateOrPersonInfo}\n\n👤 *Applicant Details*\n📝 First Name: ${formData.firstName}\n📝 Last Name: ${formData.lastName}\n📞 Phone: ${formData.phone}\n📧 Email: ${formData.email}\n\n⏰ *Applied at:* ${new Date().toLocaleString()}`
 
       await sendTelegramMessage(message)
       toast.success(t('form.success'))
@@ -118,11 +164,15 @@ export const ApplyTour = ({ open, setOpen, tour }: ApplyTourProps) => {
                   <SelectValue placeholder={t('form.select_tour_date')} />
                 </SelectTrigger>
                 <SelectContent>
-                  {tour.booking_pricing?.map((booking, index) => (
-                    <SelectItem key={booking.id || `booking-${index}`} value={booking.id || `booking-${index}`}>
-                      {new Date(booking.dateStart || '').toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })} - {new Date(booking.dateEnd || '').toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })} (${booking.pricePerPerson?.toLocaleString() || 'N/A'})
-                    </SelectItem>
-                  ))}
+                  {tour.booking_pricing?.map((booking, index) => {
+                    const { fullText, dateText } = formatBookingOptionText(booking)
+
+                    return (
+                      <SelectItem key={booking.id || `booking-${index}`} value={booking.id || `booking-${index}`} title={fullText}>
+                        {fullText}
+                      </SelectItem>
+                    )
+                  })}
                 </SelectContent>
               </Select>
             </div>

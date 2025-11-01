@@ -18,7 +18,8 @@ export const Pages: GlobalConfig = {
             { blockType: 'hero', blockName: 'Hero Section' },
             { blockType: 'faq', blockName: 'FAQ Section' },
             { blockType: 'special-offers', blockName: 'Special Offers' },
-            { blockType: 'recommended-tours', blockName: 'Recommended Tours' },
+            { blockType: 'recommended-local-tours', blockName: 'Recommended Local Tours' },
+            { blockType: 'recommended-abroad-tours', blockName: 'Recommended Abroad Tours' },
             { blockType: 'recommended-cities', blockName: 'Recommended Cities' },
             { blockType: 'recommended-cars', blockName: 'Recommended Cars' },
           ]
@@ -31,8 +32,8 @@ export const Pages: GlobalConfig = {
     {
       name: 'sections',
       type: 'blocks',
-      minRows: 6,
-      maxRows: 6,
+      minRows: 7,
+      maxRows: 7,
       admin: {
         description: 'Website sections - Fixed structure, edit content only',
         initCollapsed: false,
@@ -142,14 +143,32 @@ export const Pages: GlobalConfig = {
           ],
         },
         {
-          slug: 'recommended-tours',
+          slug: 'recommended-local-tours',
           labels: {
-            singular: 'Recommended Tours Section',
-            plural: 'Recommended Tours Sections',
+            singular: 'Recommended Local Tours Section',
+            plural: 'Recommended Local Tours Sections',
           },
           fields: [
             {
-              label: 'Tours',
+              label: 'Local Tours',
+              name: 'tours',
+              type: 'relationship',
+              relationTo: 'tours',
+              hasMany: true,
+              minRows: 1,
+              maxRows: 6,
+            },
+          ],
+        },
+        {
+          slug: 'recommended-abroad-tours',
+          labels: {
+            singular: 'Recommended Abroad Tours Section',
+            plural: 'Recommended Abroad Tours Sections',
+          },
+          fields: [
+            {
+              label: 'Abroad Tours',
               name: 'tours',
               type: 'relationship',
               relationTo: 'tours',

@@ -288,6 +288,9 @@
       "accommodation": "Turar joy",
       "address": "Manzil",
       "phone": "Telefon",
+      "website": "Veb-sayt",
+      "email": "Elektron pochta",
+      "website_email": "Veb-sayt/Elektron pochta",
       "rating": "Reyting",
       "stars": "yulduz",
       "prices": "Narxlar va bron qilish",
@@ -416,67 +419,33 @@
       "section1": {
         "title": "1. Biz to'playdigan ma'lumotlar",
         "intro": "Biz sizdan to'g'ridan-to'g'ri taqdim etilgan ma'lumotlarni to'playmiz, jumladan:",
-        "items": [
-          "Ism, elektron pochta manzili, telefon raqami va to'lov ma'lumotlari",
-          "Sayohat afzalliklari va bron qilish tarixi",
-          "To'lov va tranzaksiya ma'lumotlari",
-          "Mijozlarga xizmat ko'rsatish jamoamiz bilan muloqotlar",
-          "Fikr-mulohazalar, sharhlar va so'rovnomalarga javoblar"
-        ]
+        "items": ["Ism, elektron pochta manzili, telefon raqami va to'lov ma'lumotlari", "Sayohat afzalliklari va bron qilish tarixi", "To'lov va tranzaksiya ma'lumotlari", "Mijozlarga xizmat ko'rsatish jamoamiz bilan muloqotlar", "Fikr-mulohazalar, sharhlar va so'rovnomalarga javoblar"]
       },
       "section2": {
         "title": "2. Ma'lumotlaringizni qanday ishlatamiz",
         "intro": "Biz to'plangan ma'lumotlardan quyidagilar uchun foydalanamiz:",
-        "items": [
-          "Bronlaringizni qayta ishlash va mijozlarga yordam ko'rsatish",
-          "Bron qilish tasdiqlari va sayohatga oid yangilanishlarni yuborish",
-          "Xizmatlarimizni yaxshilash va tajribangizni shaxsiylashtirish",
-          "Reklama takliflari va marketing xabarlarini yuborish (sizning roziligingiz bilan)",
-          "Qonuniy majburiyatlarga rioya qilish va firibgarlikni oldini olish"
-        ]
+        "items": ["Bronlaringizni qayta ishlash va mijozlarga yordam ko'rsatish", "Bron qilish tasdiqlari va sayohatga oid yangilanishlarni yuborish", "Xizmatlarimizni yaxshilash va tajribangizni shaxsiylashtirish", "Reklama takliflari va marketing xabarlarini yuborish (sizning roziligingiz bilan)", "Qonuniy majburiyatlarga rioya qilish va firibgarlikni oldini olish"]
       },
       "section3": {
         "title": "3. Ma'lumotlarni almashish",
         "intro": "Biz sizning ma'lumotlaringizni quyidagilar bilan baham ko'rishimiz mumkin:",
-        "items": [
-          "Bizning operatsiyalarimizda yordam beradigan xizmat ko'rsatuvchilar (mehmonxonalar, transport kompaniyalari)",
-          "Tranzaksiyalarni yakunlash uchun to'lov protsessorlari",
-          "Qonun talab qilganda huquqni muhofaza qilish organlari",
-          "Sizning aniq roziligingiz bilan biznes hamkorlari"
-        ],
+        "items": ["Bizning operatsiyalarimizda yordam beradigan xizmat ko'rsatuvchilar (mehmonxonalar, transport kompaniyalari)", "Tranzaksiyalarni yakunlash uchun to'lov protsessorlari", "Qonun talab qilganda huquqni muhofaza qilish organlari", "Sizning aniq roziligingiz bilan biznes hamkorlari"],
         "disclaimer": "Biz sizning shaxsiy ma'lumotlaringizni uchinchi shaxslarga sotmaymiz."
       },
       "section4": {
         "title": "4. Ma'lumotlar xavfsizligi",
         "intro": "Biz shaxsiy ma'lumotlaringizni himoya qilish uchun tegishli texnik va tashkiliy choralarni qo'llaymiz, jumladan:",
-        "items": [
-          "Yuborish va saqlash paytida maxfiy ma'lumotlarni shifrlash",
-          "Muntazam xavfsizlik tekshiruvlari va yangilanishlar",
-          "Kirish nazorati va autentifikatsiya mexanizmlari",
-          "Sertifikatlangan provayderlar orqali xavfsiz to'lov ishlash"
-        ]
+        "items": ["Yuborish va saqlash paytida maxfiy ma'lumotlarni shifrlash", "Muntazam xavfsizlik tekshiruvlari va yangilanishlar", "Kirish nazorati va autentifikatsiya mexanizmlari", "Sertifikatlangan provayderlar orqali xavfsiz to'lov ishlash"]
       },
       "section5": {
         "title": "5. Sizning huquqlaringiz",
         "intro": "Sizda quyidagi huquqlar mavjud:",
-        "items": [
-          "Shaxsiy ma'lumotlaringizga kirish va nusxa olish",
-          "Noto'g'ri yoki to'liq bo'lmagan ma'lumotlarni tuzatish",
-          "Shaxsiy ma'lumotlaringizni o'chirishni so'rash",
-          "Muayyan qayta ishlash faoliyatiga e'tiroz bildirish yoki cheklash",
-          "Marketing xabarlarga rozilikni qaytarib olish",
-          "Nazorat organiga shikoyat yuborish"
-        ]
+        "items": ["Shaxsiy ma'lumotlaringizga kirish va nusxa olish", "Noto'g'ri yoki to'liq bo'lmagan ma'lumotlarni tuzatish", "Shaxsiy ma'lumotlaringizni o'chirishni so'rash", "Muayyan qayta ishlash faoliyatiga e'tiroz bildirish yoki cheklash", "Marketing xabarlarga rozilikni qaytarib olish", "Nazorat organiga shikoyat yuborish"]
       },
       "section6": {
         "title": "6. Ma'lumotlarni saqlash",
         "intro": "Biz sizning shaxsiy ma'lumotlaringizni faqat quyidagilar uchun zarur bo'lgan vaqt davomida saqlaymiz:",
-        "items": [
-          "Xizmatlarimizni taqdim etish va bronlarni bajarish",
-          "Qonuniy va tartibga soluvchi talablarga rioya qilish",
-          "Nizolarni hal qilish va kelishuvlarimizni bajarish",
-          "Buxgalteriya maqsadlari uchun biznes yozuvlarini saqlash"
-        ],
+        "items": ["Xizmatlarimizni taqdim etish va bronlarni bajarish", "Qonuniy va tartibga soluvchi talablarga rioya qilish", "Nizolarni hal qilish va kelishuvlarimizni bajarish", "Buxgalteriya maqsadlari uchun biznes yozuvlarini saqlash"],
         "disclaimer": "Ushbu muddatdan keyin biz ma'lumotlaringizni xavfsiz tarzda o'chiramiz yoki anonim qilamiz."
       },
       "contact": {
@@ -494,66 +463,31 @@
       "intro": "Sitora Tours kompaniyasiga xush kelibsiz. Veb-saytimizga kirib, xizmatlarimizdan foydalanish orqali siz quyidagi shartlar va shartlarga rioya qilishga rozisiz. Iltimos, bron qilish yoki xizmatlarimizdan foydalanishdan oldin ularni diqqat bilan o'qing.",
       "section1": {
         "title": "1. Shartlarni qabul qilish",
-        "content": [
-          "Ushbu veb-sayt va xizmatlarimizdan foydalanish orqali siz ushbu Shartlar va shartlarni o'qiganingizni, tushunganingizni va ularni bajarishga roziliginizni tan olasiz. Agar siz ushbu shartlarning biron bir qismiga rozi bo'lmasangiz, xizmatlarimizdan foydalanmasligingiz kerak.",
-          "Biz ushbu shartlarni istalgan vaqtda o'zgartirish huquqini saqlab qolamiz. O'zgarishlar e'lon qilinganidan keyin xizmatlarimizdan foydalanishni davom ettirishingiz ushbu o'zgarishlarni qabul qilishni anglatadi."
-        ]
+        "content": ["Ushbu veb-sayt va xizmatlarimizdan foydalanish orqali siz ushbu Shartlar va shartlarni o'qiganingizni, tushunganingizni va ularni bajarishga roziliginizni tan olasiz. Agar siz ushbu shartlarning biron bir qismiga rozi bo'lmasangiz, xizmatlarimizdan foydalanmasligingiz kerak.", "Biz ushbu shartlarni istalgan vaqtda o'zgartirish huquqini saqlab qolamiz. O'zgarishlar e'lon qilinganidan keyin xizmatlarimizdan foydalanishni davom ettirishingiz ushbu o'zgarishlarni qabul qilishni anglatadi."]
       },
       "section2": {
         "title": "2. Bron qilish va rezerv",
-        "items": [
-          "Barcha bronlar mavjudlik va tasdiqlanishga bog'liq",
-          "Broningizni tasdiqlash uchun depozit yoki to'liq to'lov talab qilinishi mumkin",
-          "Narxlar AQSh dollarida ko'rsatilgan va oldindan ogohlantirishsiz o'zgarishi mumkin",
-          "Bron qilishda to'g'ri va to'liq ma'lumot berishingiz kerak",
-          "Bronlar faqat to'lov tasdiqlanganidan keyin tasdiqlanadi",
-          "Maxsus so'rovlar kafolatlanmaydi, lekin qayd etiladi"
-        ]
+        "items": ["Barcha bronlar mavjudlik va tasdiqlanishga bog'liq", "Broningizni tasdiqlash uchun depozit yoki to'liq to'lov talab qilinishi mumkin", "Narxlar AQSh dollarida ko'rsatilgan va oldindan ogohlantirishsiz o'zgarishi mumkin", "Bron qilishda to'g'ri va to'liq ma'lumot berishingiz kerak", "Bronlar faqat to'lov tasdiqlanganidan keyin tasdiqlanadi", "Maxsus so'rovlar kafolatlanmaydi, lekin qayd etiladi"]
       },
       "section3": {
         "title": "3. Bekor qilish va qaytarish",
         "subtitle": "Bekor qilish siyosati:",
-        "items": [
-          "Jo'nashdan 30+ kun oldin bekor qilish: 100% qaytarish (qayta ishlash to'lovini hisobga olmaganda)",
-          "Jo'nashdan 15-29 kun oldin bekor qilish: 50% qaytarish",
-          "Jo'nashdan 7-14 kun oldin bekor qilish: 25% qaytarish",
-          "Jo'nashdan 7 kundan kam vaqt oldin bekor qilish: Qaytarilmaydi",
-          "Kelmagan taqdirda barcha to'lovlar yo'qotiladi"
-        ],
+        "items": ["Jo'nashdan 30+ kun oldin bekor qilish: 100% qaytarish (qayta ishlash to'lovini hisobga olmaganda)", "Jo'nashdan 15-29 kun oldin bekor qilish: 50% qaytarish", "Jo'nashdan 7-14 kun oldin bekor qilish: 25% qaytarish", "Jo'nashdan 7 kundan kam vaqt oldin bekor qilish: Qaytarilmaydi", "Kelmagan taqdirda barcha to'lovlar yo'qotiladi"],
         "disclaimer": "Qaytarishlar asl to'lov usuliga 14-21 ish kuni ichida qayta ishlanadi."
       },
       "section4": {
         "title": "4. To'lov shartlari",
-        "items": [
-          "Biz asosiy kredit kartalari, debet kartalari va bank o'tkazmalarini qabul qilamiz",
-          "Barcha narxlar boshqacha ko'rsatilmagan bo'lsa, AQSh dollarida",
-          "Xizmatlar ko'rsatilishidan oldin to'liq to'lov amalga oshirilishi kerak",
-          "Maxsus so'rovlar yoki o'zgarishlar uchun qo'shimcha to'lovlar qo'llanishi mumkin",
-          "Xalqaro to'lovlar uchun valyuta konvertatsiya to'lovlari qo'llanishi mumkin"
-        ]
+        "items": ["Biz asosiy kredit kartalari, debet kartalari va bank o'tkazmalarini qabul qilamiz", "Barcha narxlar boshqacha ko'rsatilmagan bo'lsa, AQSh dollarida", "Xizmatlar ko'rsatilishidan oldin to'liq to'lov amalga oshirilishi kerak", "Maxsus so'rovlar yoki o'zgarishlar uchun qo'shimcha to'lovlar qo'llanishi mumkin", "Xalqaro to'lovlar uchun valyuta konvertatsiya to'lovlari qo'llanishi mumkin"]
       },
       "section5": {
         "title": "5. Sayohatchi majburiyatlari",
         "intro": "Sayohatchi sifatida siz quyidagilar uchun javobgarsiz:",
-        "items": [
-          "Amal qiladigan pasport va vizalarga ega bo'lish",
-          "Sog'liqni saqlash va emlash talablariga javob berish",
-          "Uchrashuv joylariga o'z vaqtida kelish",
-          "Mahalliy urf-odatlar va qonunlarga hurmat qilish",
-          "Tegishli sayohat sug'urtasiga ega bo'lish",
-          "Faoliyatlarda ishtirok etish uchun yaxshi sog'liqda bo'lish"
-        ]
+        "items": ["Amal qiladigan pasport va vizalarga ega bo'lish", "Sog'liqni saqlash va emlash talablariga javob berish", "Uchrashuv joylariga o'z vaqtida kelish", "Mahalliy urf-odatlar va qonunlarga hurmat qilish", "Tegishli sayohat sug'urtasiga ega bo'lish", "Faoliyatlarda ishtirok etish uchun yaxshi sog'liqda bo'lish"]
       },
       "section6": {
         "title": "6. Javobgarlik cheklovlari",
         "intro": "Sitora Tours quyidagilar uchun javobgar emas:",
-        "items": [
-          "Ob-havo, tabiiy ofatlar yoki fors-major tufayli kechikishlar, bekor qilishlar yoki o'zgarishlar",
-          "Shaxsiy narsalarning yo'qolishi, shikastlanishi yoki o'g'irlanishi",
-          "Bizning ehtiyotsizligimiz sababli yuzaga kelmaydigan shaxsiy jarohat yoki o'lim",
-          "Uchinchi tomon xizmat ko'rsatuvchilarning harakatlari yoki kamchiliklari",
-          "Siyosiy tartibsizliklar yoki hukumat harakatlari sabab bo'lgan buzilishlar"
-        ],
+        "items": ["Ob-havo, tabiiy ofatlar yoki fors-major tufayli kechikishlar, bekor qilishlar yoki o'zgarishlar", "Shaxsiy narsalarning yo'qolishi, shikastlanishi yoki o'g'irlanishi", "Bizning ehtiyotsizligimiz sababli yuzaga kelmaydigan shaxsiy jarohat yoki o'lim", "Uchinchi tomon xizmat ko'rsatuvchilarning harakatlari yoki kamchiliklari", "Siyosiy tartibsizliklar yoki hukumat harakatlari sabab bo'lgan buzilishlar"],
         "disclaimer": "Biz keng qamrovli sayohat sug'urtasini sotib olishni qat'iy tavsiya qilamiz."
       },
       "contact": {

@@ -45,9 +45,15 @@ export const RecommendedToursCard = ({ tour }: { tour: Tour }) => {
           <div className='mb-4 space-y-2'>
             <div className='flex items-center gap-2'>
               <Clock className='text-sitora-primary h-4 w-4' />
-              <span className='text-sitora-body text-sm font-medium'>{tour.duration_days > 1 ? t('days') : t('day')}</span>
-              <span className='text-sitora-body text-sm font-medium'>/</span>
-              <span className='text-sitora-body text-sm font-medium'>{tour.duration_nights > 1 ? t('nights') : t('night')}</span>
+              <span className='text-sitora-body text-sm font-medium'>
+                {tour.duration_days} {tour.duration_days !== 1 ? t('days') : t('day')}
+                {tour.duration_nights && tour.duration_nights > 0 && (
+                  <>
+                    {' / '}
+                    {tour.duration_nights} {tour.duration_nights !== 1 ? t('nights') : t('night')}
+                  </>
+                )}
+              </span>
             </div>
             <div className='flex items-center gap-2'>
               <Tag className='text-sitora-primary h-4 w-4' />

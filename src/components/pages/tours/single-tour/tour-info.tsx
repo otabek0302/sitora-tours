@@ -23,7 +23,13 @@ const TourInfo = ({ tour }: TourInfoProps) => {
         <div className='text-sitora-body mb-2 flex flex-wrap items-center gap-4 text-sm font-medium'>
           {tour.duration_days && (
             <span className='font-semibold lowercase italic'>
-              {tour.duration_days} {t('days')} / {tour.duration_nights} {t('nights')}
+              {tour.duration_days} {tour.duration_days !== 1 ? t('days') : t('day')}
+              {tour.duration_nights && tour.duration_nights > 0 && (
+                <>
+                  {' / '}
+                  {tour.duration_nights} {tour.duration_nights !== 1 ? t('nights') : t('night')}
+                </>
+              )}
             </span>
           )}
           {tour.category?.name && (

@@ -50,26 +50,45 @@ const TourAccommodation = ({ tour }: TourAccommodationProps) => {
               {isExpanded && item.hotel && item.hotel.length > 0 && (
                 <div className='border-sitora-border mt-4 border-t pt-4'>
                   <div className='space-y-3'>
-                    {item.hotel.map((hotel: number | { id: string | number; name?: string; description?: string; address?: string; phone?: string; rating?: string }, hotelIndex) => {
+                    {item.hotel.map((hotel: number | { id: string | number; name?: string; description?: string; address?: string; phone?: string; rating?: string; website?: string; email?: string; slug?: string }, hotelIndex) => {
                       if (typeof hotel === 'number') return null
                       return (
-                        <div key={hotelIndex} className='bg-card rounded-lg p-3'>
-                          <h4 className='text-sitora-text-subtitle mb-2 font-semibold'>{hotel.name}</h4>
-                          {hotel.description && <p className='text-sitora-body mb-2 text-sm'>{hotel.description}</p>}
-                          <div className='space-y-1 text-sm'>
+                        <div key={hotelIndex} className='bg-card border-border rounded-lg border p-4'>
+                          <h4 className='text-sitora-text-subtitle mb-2 text-lg font-semibold'>{hotel.name}</h4>
+                          {hotel.description && <p className='text-sitora-body mb-3 text-sm leading-relaxed'>{hotel.description}</p>}
+                          <div className='space-y-2 text-sm'>
                             {hotel.address && (
                               <p className='text-sitora-body'>
-                                <span className='font-medium'>{t('address')}:</span> {hotel.address}
+                                <span className='text-sitora-text-subtitle font-medium'>{t('address')}:</span> <span className='ml-1'>{hotel.address}</span>
                               </p>
                             )}
                             {hotel.phone && (
                               <p className='text-sitora-body'>
-                                <span className='font-medium'>{t('phone')}:</span> {hotel.phone}
+                                <span className='text-sitora-text-subtitle font-medium'>{t('phone')}:</span> <span className='ml-1'>{hotel.phone}</span>
+                              </p>
+                            )}
+                            {(hotel.website || hotel.email) && (
+                              <p className='text-sitora-body'>
+                                <span className='text-sitora-text-subtitle font-medium'>{hotel.website && hotel.email ? t('website_email') : hotel.website ? t('website') : t('email')}:</span>{' '}
+                                {hotel.website && (
+                                  <a href={hotel.website.startsWith('http') ? hotel.website : `https://${hotel.website}`} target='_blank' rel='noopener noreferrer' className='text-sitora-primary hover:text-sitora-primary-dark ml-1 underline'>
+                                    {hotel.website}
+                                  </a>
+                                )}
+                                {hotel.website && hotel.email && ' / '}
+                                {hotel.email && (
+                                  <a href={`mailto:${hotel.email}`} className='text-sitora-primary hover:text-sitora-primary-dark ml-1 underline'>
+                                    {hotel.email}
+                                  </a>
+                                )}
                               </p>
                             )}
                             {hotel.rating && (
                               <p className='text-sitora-body'>
-                                <span className='font-medium'>{t('rating')}:</span> {hotel.rating} {t('stars')}
+                                <span className='text-sitora-text-subtitle font-medium'>{t('rating')}:</span>{' '}
+                                <span className='ml-1'>
+                                  {hotel.rating} {t('stars')}
+                                </span>
                               </p>
                             )}
                           </div>

@@ -56,17 +56,28 @@ const TourPricing = ({ tour }: TourPricingProps) => {
 
           <div className='space-y-4'>
             {tour.booking_pricing.map((pricing, index) => {
-              const hasDates = pricing.dateStart && pricing.dateEnd
+              const startDate = pricing.dateStart ? new Date(pricing.dateStart) : null
+              const endDate = pricing.dateEnd ? new Date(pricing.dateEnd) : null
+              const isValidStartDate = startDate && !isNaN(startDate.getTime())
+              const isValidEndDate = endDate && !isNaN(endDate.getTime())
+              const hasDates = isValidStartDate && isValidEndDate
               const hasPersons = pricing.numberOfPersons && pricing.numberOfPersons > 0
-              
+
               return (
                 <div key={pricing.id || index} className='border-border rounded-[18px] border p-4'>
-                  {/* Dates - only show if both dates exist */}
-                  {hasDates && (
+                  {/* Dates or Tour Name - show dates if valid, otherwise show tour name */}
+                  {hasDates ? (
                     <div className='mb-3 flex items-center gap-2'>
                       <Calendar className='text-sitora-gold-medium h-4 w-4' />
                       <span className='text-sitora-text-subtitle text-sm font-semibold'>
                         {formatDate(pricing.dateStart)} - {formatDate(pricing.dateEnd)}
+                      </span>
+                    </div>
+                  ) : (
+                    <div className='mb-3 flex items-center gap-2'>
+                      <Calendar className='text-sitora-gold-medium h-4 w-4' />
+                      <span className='text-sitora-text-subtitle truncate text-sm font-semibold' title={tour.name}>
+                        {tour.name.length > 50 ? `${tour.name.substring(0, 50)}...` : tour.name}
                       </span>
                     </div>
                   )}
@@ -76,12 +87,7 @@ const TourPricing = ({ tour }: TourPricingProps) => {
                       <div className='flex items-center justify-between'>
                         <div className='flex items-center gap-2'>
                           <Users className='text-sitora-gold-medium h-4 w-4' />
-                          <span className='text-sitora-body text-sm'>
-                            {hasPersons 
-                              ? `${pricing.numberOfPersons} ${pricing.numberOfPersons === 1 ? t('person') : t('persons')}`
-                              : t('per_person')
-                            }
-                          </span>
+                          <span className='text-sitora-body text-sm'>{hasPersons ? `${pricing.numberOfPersons} ${pricing.numberOfPersons === 1 ? t('person') : t('persons')}` : t('per_person')}</span>
                         </div>
                         <span className='text-sitora-primary text-xl font-bold'>${formatPrice(pricing.pricePerPerson)}</span>
                       </div>
@@ -105,7 +111,13 @@ const TourPricing = ({ tour }: TourPricingProps) => {
               <h4 className='text-sitora-text-heading mb-2 font-semibold'>{t('starting_price')}</h4>
               <div className='flex items-center justify-between'>
                 <span className='text-sitora-text-body text-sm'>
-                  {tour.duration_days} {t('days')} / {tour.duration_nights} {t('nights')}
+                  {tour.duration_days} {tour.duration_days !== 1 ? t('days') : t('day')}
+                  {tour.duration_nights && tour.duration_nights > 0 && (
+                    <>
+                      {' / '}
+                      {tour.duration_nights} {tour.duration_nights !== 1 ? t('nights') : t('night')}
+                    </>
+                  )}
                 </span>
                 <span className='text-sitora-text-heading text-2xl font-bold'>${tour.price?.toLocaleString() || '0'}</span>
               </div>

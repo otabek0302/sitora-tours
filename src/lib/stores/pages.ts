@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { Pages, HeroSection, FAQSection, SpecialOffersSection, RecommendedToursSection, RecommendedCitiesSection, RecommendedCarsSection } from '@/lib/schemas/pages'
+import { Pages, HeroSection, FAQSection, SpecialOffersSection, RecommendedLocalToursSection, RecommendedAbroadToursSection, RecommendedToursSection, RecommendedCitiesSection, RecommendedCarsSection } from '@/lib/schemas/pages'
 import { fetchPages as fetchPagesAPI } from '@/lib/api/pages'
 
 interface PagesState {
@@ -22,7 +22,9 @@ interface PagesState {
   getHeroSection: () => HeroSection | undefined
   getFAQSection: () => FAQSection | undefined
   getSpecialOffersSection: () => SpecialOffersSection | undefined
-  getRecommendedToursSection: () => RecommendedToursSection | undefined
+  getRecommendedLocalToursSection: () => RecommendedLocalToursSection | undefined
+  getRecommendedAbroadToursSection: () => RecommendedAbroadToursSection | undefined
+  getRecommendedToursSection: () => RecommendedToursSection | undefined // Legacy
   getRecommendedCitiesSection: () => RecommendedCitiesSection | undefined
   getRecommendedCarsSection: () => RecommendedCarsSection | undefined
 }
@@ -72,6 +74,16 @@ export const usePagesStore = create<PagesState>((set, get) => ({
   getSpecialOffersSection: () => {
     const { pages } = get()
     return pages?.sections?.find(section => section.blockType === 'special-offers') as SpecialOffersSection | undefined
+  },
+
+  getRecommendedLocalToursSection: () => {
+    const { pages } = get()
+    return pages?.sections?.find(section => section.blockType === 'recommended-local-tours') as RecommendedLocalToursSection | undefined
+  },
+
+  getRecommendedAbroadToursSection: () => {
+    const { pages } = get()
+    return pages?.sections?.find(section => section.blockType === 'recommended-abroad-tours') as RecommendedAbroadToursSection | undefined
   },
 
   getRecommendedToursSection: () => {

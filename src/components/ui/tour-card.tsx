@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Clock, Car, Star, MapPin, ArrowRight } from 'lucide-react'
+import { Clock, Star, MapPin, ArrowRight } from 'lucide-react'
 import { Tour } from '@/lib/schemas'
 import { Button } from '@/components/ui/button'
 
@@ -37,12 +37,14 @@ const ToursCard = ({ tour }: ToursCardProps) => {
           )}
 
           {/* Rating Badge */}
+          {tour.rating && tour.rating > 0 && (
           <div className='absolute top-4 right-4'>
-            <div className='bg-background/90 flex items-center gap-1 rounded-full px-2 py-1 backdrop-blur-sm'>
+              <div className='bg-background/90 flex items-center gap-1 rounded-full px-2 py-1 backdrop-blur-sm'>
               <Star className='text-sitora-gold-medium h-3 w-3 fill-current' />
-              <span className='text-sitora-text-subtitle text-xs font-semibold'>{tour.rating ? tour.rating.toFixed(1) : '0.0'}</span>
+                <span className='text-sitora-text-subtitle text-xs font-semibold'>{tour.rating.toFixed(1)}</span>
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Tour Content */}
@@ -59,14 +61,14 @@ const ToursCard = ({ tour }: ToursCardProps) => {
                 <Clock className='text-sitora-primary h-4 w-4' />
                 <span>
                   {tour.duration_days} {tour.duration_days !== 1 ? t('days') : t('day')}
+                  {tour.duration_nights && tour.duration_nights > 0 && (
+                    <>
+                      {' / '}
+                      {tour.duration_nights} {tour.duration_nights !== 1 ? t('nights') : t('night')}
+                    </>
+                  )}
                 </span>
               </div>
-              {tour.locations?.[0]?.transport && (
-                <div className='flex items-center gap-1'>
-                  <Car className='text-sitora-primary h-4 w-4' />
-                  <span>{tour.locations[0].transport}</span>
-                </div>
-              )}
               {tour.cities && tour.cities.length > 0 && (
                 <div className='flex items-center gap-1 flex-wrap'>
                   <MapPin className='text-sitora-primary h-4 w-4 flex-shrink-0' />
