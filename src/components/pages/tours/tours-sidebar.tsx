@@ -36,7 +36,7 @@ const ToursSidebar = () => {
   return (
     <div className='space-y-4'>
       <Accordion type='multiple' value={accordionValue} onValueChange={setAccordionValue} className='space-y-4'>
-        <AccordionItem value='filter' className='bg-card border-border cursor-pointer rounded-[26px] border shadow-none transition-all duration-300 hover:shadow-sm'>
+        <AccordionItem value='filter' className='bg-card border-border cursor-pointer rounded-2xl border shadow-none transition-all duration-300 hover:shadow-sm'>
           <AccordionTrigger className='text-sitora-text-subtitle sm:text-md hover:text-sitora-primary cursor-pointer px-4 py-4 text-sm font-semibold hover:no-underline sm:px-6'>{t('sidebar.filterBy')}</AccordionTrigger>
           <AccordionContent className='space-y-2 px-4 pb-6 sm:px-6'>
             {categories.map(category => (
@@ -49,7 +49,7 @@ const ToursSidebar = () => {
             ))}
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value='city' className='bg-card border-border cursor-pointer rounded-[26px] border shadow-none transition-all duration-300 hover:shadow-sm'>
+        <AccordionItem value='city' className='bg-card border-border cursor-pointer rounded-2xl border shadow-none transition-all duration-300 hover:shadow-sm'>
           <AccordionTrigger className='text-sitora-text-subtitle sm:text-md hover:text-sitora-primary cursor-pointer px-4 py-4 text-sm font-semibold hover:no-underline sm:px-6'>{t('sidebar.city')}</AccordionTrigger>
           <AccordionContent className='space-y-2 px-4 pb-6 sm:px-6'>
             {cities.map(city => (
@@ -62,7 +62,7 @@ const ToursSidebar = () => {
             ))}
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value='price' className='bg-card border-border cursor-pointer rounded-[26px] border shadow-none transition-all duration-300 hover:shadow-sm'>
+        <AccordionItem value='price' className='bg-card border-border cursor-pointer rounded-2xl border shadow-none transition-all duration-300 hover:shadow-sm'>
           <AccordionTrigger className='text-sitora-text-subtitle sm:text-md hover:text-sitora-primary cursor-pointer px-4 py-4 text-sm font-semibold hover:no-underline sm:px-6'>{t('sidebar.price')}</AccordionTrigger>
           <AccordionContent className='text-sitora-body sm:text-md px-4 pb-6 text-sm leading-relaxed font-normal sm:px-6'>
             <div className='flex gap-2'>
@@ -81,7 +81,7 @@ const ToursSidebar = () => {
             </div>
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value='duration' className='bg-card border-border cursor-pointer rounded-[26px] border shadow-none transition-all duration-300 hover:shadow-sm'>
+        <AccordionItem value='duration' className='bg-card border-border cursor-pointer rounded-2xl border shadow-none transition-all duration-300 hover:shadow-sm'>
           <AccordionTrigger className='text-sitora-text-subtitle sm:text-md hover:text-sitora-primary cursor-pointer px-4 py-4 text-sm font-semibold hover:no-underline sm:px-6'>{t('sidebar.duration')}</AccordionTrigger>
           <AccordionContent className='text-sitora-body sm:text-md px-4 pb-6 text-sm leading-relaxed font-normal sm:px-6'>
             <div className='flex gap-2'>

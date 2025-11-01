@@ -73,11 +73,11 @@ const CarRental = ({ car }: CarRentalProps) => {
         </div>
 
         {/* Book Button */}
-        <div className='border-border border-t pt-4'>
-          <Button variant='default' size='lg' onClick={() => setApplyOpen(true)} className='w-full rounded-[18px] shadow-none'>
+        <div className='border-border space-y-3 border-t pt-4'>
+          <Button variant='default' size='lg' onClick={() => setApplyOpen(true)} className='w-full rounded-xl shadow-none'>
             {t('book_now')}
           </Button>
-          <Button variant='outline' size='lg' className='border-sitora-primary text-sitora-primary hover:bg-sitora-primary hover:text-sitora-white w-full rounded-2xl shadow-none' asChild>
+          <Button variant='outline' size='lg' className='border-sitora-primary text-sitora-primary hover:bg-sitora-primary hover:text-sitora-white w-full rounded-xl shadow-none' asChild>
             <Link href='/contact-us'>{t('contact_us')}</Link>
           </Button>
         </div>

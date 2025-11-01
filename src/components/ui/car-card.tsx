@@ -20,7 +20,7 @@ const CarsCard = ({ car }: CarsCardProps) => {
     <Card className='bg-card border-border overflow-hidden rounded-[26px] border shadow-none'>
       <div className='flex flex-col lg:flex-row'>
         {/* Car Image */}
-        <div className='border-border relative h-72 w-full overflow-hidden rounded-[26px] border sm:h-80 lg:w-1/3'>
+        <div className='border-border relative h-full min-h-72 w-full overflow-hidden rounded-[26px] border sm:h-80 lg:w-1/3'>
           {car.image ? (
             <Image src={car.image.url} alt={car.name} fill sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw' className='object-cover' />
           ) : (
@@ -95,14 +95,14 @@ const CarsCard = ({ car }: CarsCardProps) => {
               <div className='hidden lg:block'>
                 <div className='mb-4 grid grid-cols-4 gap-4 space-y-3'>
                   {/* Price per day */}
-                  <div className='col-span-1 border-l'>
+                  <div className='col-span-1 space-x-1 border-r'>
                     <span className='text-sitora-primary text-2xl font-bold'>${car.pricing?.pricePerDayInCity || 0}</span>
                     <span className='text-sitora-body text-right text-xs font-medium'>{t('per_day')}</span>
                   </div>
 
                   {/* Transfer: airport - hotel - airport */}
                   {car.pricing?.transferAirportHotelAirport && (
-                    <div className='col-span-1 border-l'>
+                    <div className='col-span-1 space-x-1 border-r'>
                       <span className='text-sitora-primary text-xl font-bold'>${car.pricing.transferAirportHotelAirport}</span>
                       <span className='text-sitora-body text-right text-xs font-medium'>{tSingle('transfer_airport_hotel')}</span>
                     </div>
@@ -110,7 +110,7 @@ const CarsCard = ({ car }: CarsCardProps) => {
 
                   {/* Transfer: hotel - dinner - hotel */}
                   {car.pricing?.transferHotelDinnerHotel && (
-                    <div className='col-span-1 border-l'>
+                    <div className='col-span-1 space-x-1 border-r'>
                       <span className='text-sitora-primary text-xl font-bold'>${car.pricing.transferHotelDinnerHotel}</span>
                       <span className='text-sitora-body text-right text-xs font-medium'>{tSingle('transfer_hotel_dinner')}</span>
                     </div>
@@ -118,19 +118,21 @@ const CarsCard = ({ car }: CarsCardProps) => {
 
                   {/* On a long route (from 7 days) */}
                   {car.pricing?.longRouteFrom7Days && (
-                    <div className='col-span-1'>
+                    <div className='col-span-1 space-x-1'>
                       <span className='text-sitora-primary text-xl font-bold'>${car.pricing.longRouteFrom7Days}</span>
                       <span className='text-sitora-body text-right text-xs font-medium'>{tSingle('long_route_7days')}</span>
                     </div>
                   )}
                 </div>
 
-                <Button variant='default' size='sm' className='group w-full shadow-none'>
-                  <Link href={`/cars/${car.slug}`} className='text-md flex items-center justify-center gap-2 leading-tight font-normal'>
-                    <span className='text-sitora-white group-hover:text-sitora-primary block'>{t('see_details')}</span>
-                    <ArrowRight className='text-sitora-white group-hover:text-sitora-primary h-4 w-4' />
-                  </Link>
-                </Button>
+                <div className='flex items-center justify-end'>
+                  <Button variant='default' size='sm' className='group w-fit shadow-none'>
+                    <Link href={`/cars/${car.slug}`} className='text-md flex items-center justify-center gap-2 leading-tight font-normal'>
+                      <span className='text-sitora-white group-hover:text-sitora-primary block'>{t('see_details')}</span>
+                      <ArrowRight className='text-sitora-white group-hover:text-sitora-primary h-4 w-4' />
+                    </Link>
+                  </Button>
+                </div>
               </div>
             </div>
           </CardContent>
