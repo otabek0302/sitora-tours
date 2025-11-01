@@ -70,7 +70,7 @@ const Faq = () => {
           {/* FAQ Accordion */}
           <Accordion type='single' collapsible className='space-y-4'>
             {faq_items.map((item, index) => (
-              <AccordionItem key={item.id || `faq-${index}`} value={item.id || `faq-${index}`} className='bg-card border-border cursor-pointer rounded-[26px] border shadow-none transition-all duration-300 hover:shadow-sm'>
+              <AccordionItem key={item.id || `faq-${index}`} value={item.id || `faq-${index}`} className='bg-card border-border cursor-pointer rounded-xl border shadow-none transition-all duration-300 hover:shadow-sm md:rounded-2xl'>
                 <AccordionTrigger className='text-sitora-text-subtitle sm:text-md hover:text-sitora-primary px-4 py-4 text-sm font-semibold hover:no-underline sm:px-6'>{item.question || ''}</AccordionTrigger>
                 <AccordionContent className='text-sitora-body sm:text-md px-4 pb-4 text-sm leading-relaxed font-normal sm:px-6'>{item.answer || ''}</AccordionContent>
               </AccordionItem>
@@ -85,10 +85,10 @@ const Faq = () => {
                 <span>{t('contact_text_2')}</span>
               </p>
               <div className='flex flex-col items-center justify-center gap-3 sm:flex-row'>
-                <Link href='mailto:info@sitoratours.com' className='bg-sitora-primary text-sitora-white hover:text-sitora-primary sm:text-md border-sitora-primary inline-flex h-9 items-center justify-center rounded-2xl border px-4 py-2 text-sm font-medium transition-colors duration-200 hover:bg-transparent'>
+                <Link href='mailto:info@sitoratours.com' className='bg-sitora-primary text-sitora-white hover:text-sitora-primary sm:text-md border-sitora-primary inline-flex h-9 items-center justify-center rounded-xl border px-4 py-2 text-sm font-medium transition-colors duration-200 hover:bg-transparent md:rounded-2xl'>
                   {t('contact_button')}
                 </Link>
-                <Link href='tel:+998915589901' className='border-sitora-primary-light text-sitora-primary sm:text-md hover:bg-sitora-primary hover:text-sitora-white inline-flex h-9 items-center justify-center rounded-2xl border px-4 py-2 text-sm font-medium transition-colors duration-200'>
+                <Link href='tel:+998915589901' className='border-sitora-primary-light text-sitora-primary sm:text-md hover:bg-sitora-primary hover:text-sitora-white inline-flex h-9 items-center justify-center rounded-xl border px-4 py-2 text-sm font-medium transition-colors duration-200 md:rounded-2xl'>
                   {t('call_button')}
                 </Link>
               </div>

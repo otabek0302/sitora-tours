@@ -34,7 +34,7 @@ const Hero = () => {
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
         {/* Main Hero Card */}
         <div className='mb-6'>
-          <div className='bg-card border-border group relative h-[400px] cursor-pointer overflow-hidden rounded-[32px] border shadow-none transition-all duration-300 hover:shadow-sm lg:h-[500px]'>
+          <div className='bg-card border-border group relative h-[80vh] cursor-pointer overflow-hidden rounded-[32px] border shadow-none transition-all duration-300 hover:shadow-sm lg:h-[500px]'>
             {/* Background Image */}
             {typeof image === 'object' && image?.url ? (
               <Image src={image.url} alt={title} fill sizes='(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw' className='object-cover transition-transform duration-700 group-hover:scale-105' priority quality={85} placeholder='blur' blurDataURL='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNmM2Y0ZjYiLz48L3N2Zz4=' />
@@ -51,8 +51,8 @@ const Hero = () => {
             <div className='absolute inset-0 flex items-center'>
               <div className='max-w-2xl px-8 lg:px-12'>
                 <h1 className='text-sitora-white mb-6 text-4xl leading-tight font-bold lg:text-6xl'>{title}</h1>
-                <p className='text-sitora-white mb-8 text-lg leading-relaxed opacity-90 lg:text-xl'>{subtitle}</p>
-                <Button variant='default' size='lg' className='group-btn hover:text-sitora-primary rounded-2xl shadow-none hover:bg-transparent' asChild>
+                <p className='text-sitora-white mb-8 text-xs leading-relaxed opacity-90 md:text-lg lg:text-xl'>{subtitle}</p>
+                <Button variant='default' size='lg' className='group-btn hover:text-sitora-primary rounded-xl shadow-none hover:bg-transparent md:rounded-2xl' asChild>
                   <Link href='/contact-us' className='flex items-center'>
                     {button}
                     <ArrowRight className='group-btn-hover:text-sitora-primary group-btn-hover:translate-x-1 ml-2 h-5 w-5 transition-transform' />
@@ -80,7 +80,7 @@ const Hero = () => {
                 <div key={post.id || index} onClick={() => videoUrl && handleVideoClick(videoUrl, reviewName, reviewComment)} className='bg-card border-border group h-[300px] cursor-pointer overflow-hidden rounded-[26px] border shadow-none transition-all duration-300 hover:shadow-sm lg:h-[350px]'>
                   <div className='flex h-full'>
                     {/* Video Section */}
-                    <div className='border-border relative h-full w-1/2 overflow-hidden border-r'>
+                    <div className='border-border relative h-full w-full overflow-hidden border-r md:w-1/2'>
                       {videoUrl ? (
                         <video className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105' autoPlay muted loop playsInline>
                           <source src={videoUrl} type='video/mp4' />
@@ -101,7 +101,7 @@ const Hero = () => {
                     </div>
 
                     {/* Review Content Section */}
-                    <div className='flex w-1/2 flex-col justify-center p-6'>
+                    <div className='flex w-full flex-col justify-center p-6 md:w-1/2'>
                       <h4 className='text-sitora-text-subtitle mb-2 text-base font-bold'>{reviewName}</h4>
                       <p className='text-sitora-body line-clamp-3 text-sm leading-relaxed'>&quot;{reviewComment}&quot;</p>
                       <div className='mt-4 flex items-center justify-start gap-1'>

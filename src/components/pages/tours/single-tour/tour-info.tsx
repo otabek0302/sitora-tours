@@ -39,10 +39,12 @@ const TourInfo = ({ tour }: TourInfoProps) => {
             </>
           )}
           {cities && (
-            <>
-              <span className='text-sitora-body text-sm font-medium'>|</span>
-              <span className='italic'>{cities}</span>
-            </>
+            <div className='flex flex-wrap items-center gap-1'>
+              <p className='flex items-center gap-1'>
+                <span className='text-sitora-body text-sm font-medium'>|</span>
+                <span className='italic'>{cities}</span>
+              </p>
+            </div>
           )}
           {tour.rating && Number(tour.rating) > 0 && (
             <>

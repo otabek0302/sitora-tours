@@ -51,7 +51,7 @@ const ToursCard = ({ tour }: ToursCardProps) => {
         <div className='flex flex-1 flex-col p-6'>
           <CardHeader className='mb-4 p-0'>
             {/* Fixed height for title - allows 2 lines with line-clamp */}
-            <CardTitle className='text-sitora-text-subtitle mb-2 line-clamp-2 min-h-[3.5rem] text-xl leading-tight font-bold'>{tour.name}</CardTitle>
+            <CardTitle className='text-sitora-text-subtitle mb-2 line-clamp-2 text-xl leading-tight font-bold md:min-h-[3.5rem]'>{tour.name}</CardTitle>
             {/* Fixed height for description - always shows 3 lines or empty space */}
             <div className='min-h-[4.5rem]'>{tour.description ? <p className='text-sitora-body line-clamp-3 text-sm leading-relaxed'>{tour.description}</p> : <div className='h-full' />}</div>
           </CardHeader>
@@ -72,16 +72,16 @@ const ToursCard = ({ tour }: ToursCardProps) => {
                 </span>
               </div>
               {tour.cities && tour.cities.length > 0 && (
-                <div className='flex flex-wrap items-center gap-1'>
+                <div className='flex items-center gap-1'>
                   <MapPin className='text-sitora-primary h-4 w-4 flex-shrink-0' />
-                  <span className='flex flex-wrap items-center gap-1'>
+                  <div className='flex flex-wrap items-center gap-1'>
                     {tour.cities.map((city: { id: string | number; name?: string }, index: number) => (
-                      <span key={city.id}>
+                      <span key={city.id} className='flex items-center gap-1'>
                         {city.name || ''}
                         {index < (tour.cities?.length || 0) - 1 && <span className='mx-1'>→</span>}
                       </span>
                     ))}
-                  </span>
+                  </div>
                 </div>
               )}
             </div>

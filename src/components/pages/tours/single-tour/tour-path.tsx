@@ -48,7 +48,9 @@ const TourPath = ({ tour }: TourPathProps) => {
 
               <div className='relative mb-4'>
                 <div className='border-border relative border-t-2 border-dashed'>
-                  <div className='bg-card absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform px-2'><ArrowRight className='text-sitora-primary h-6 w-6' /></div>
+                  <div className='bg-card absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform px-2'>
+                    <ArrowRight className='text-sitora-primary h-4 w-4 md:h-6 md:w-6' />
+                  </div>
                 </div>
               </div>
 
