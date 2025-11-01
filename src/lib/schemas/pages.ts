@@ -13,7 +13,7 @@ const ImageSchema = z.object({
 // Hero Section
 const HeroSectionSchema = z.object({
   blockType: z.literal('hero'),
-  blockName: z.string().optional(),
+  blockName: z.string().nullish(),
   id: z.string().optional(),
   title: z.string().optional(),
   subtitle: z.string().optional(),
@@ -33,7 +33,7 @@ const HeroSectionSchema = z.object({
 // FAQ Section
 const FAQSectionSchema = z.object({
   blockType: z.literal('faq'),
-  blockName: z.string().optional(),
+  blockName: z.string().nullish(),
   id: z.string().optional(),
   faqs: z
     .array(
@@ -49,7 +49,7 @@ const FAQSectionSchema = z.object({
 // Special Offers Section
 const SpecialOffersSectionSchema = z.object({
   blockType: z.literal('special-offers'),
-  blockName: z.string().optional(),
+  blockName: z.string().nullish(),
   id: z.string().optional(),
   tours: z.union([z.number(), TourSchema, z.null()]).optional().nullable(),
 })
@@ -57,7 +57,7 @@ const SpecialOffersSectionSchema = z.object({
 // Recommended Local Tours Section
 const RecommendedLocalToursSectionSchema = z.object({
   blockType: z.literal('recommended-local-tours'),
-  blockName: z.string().optional(),
+  blockName: z.string().nullish(),
   id: z.string().optional(),
   tours: z
     .union([z.array(z.union([z.number(), TourSchema, z.null()])), z.number(), TourSchema, z.null()])
@@ -68,7 +68,7 @@ const RecommendedLocalToursSectionSchema = z.object({
 // Recommended Abroad Tours Section
 const RecommendedAbroadToursSectionSchema = z.object({
   blockType: z.literal('recommended-abroad-tours'),
-  blockName: z.string().optional(),
+  blockName: z.string().nullish(),
   id: z.string().optional(),
   tours: z
     .union([z.array(z.union([z.number(), TourSchema, z.null()])), z.number(), TourSchema, z.null()])
@@ -79,7 +79,7 @@ const RecommendedAbroadToursSectionSchema = z.object({
 // Legacy Recommended Tours Section (for backward compatibility)
 const RecommendedToursSectionSchema = z.object({
   blockType: z.literal('recommended-tours'),
-  blockName: z.string().optional(),
+  blockName: z.string().nullish(),
   id: z.string().optional(),
   tours: z
     .union([z.array(z.union([z.number(), TourSchema, z.null()])), z.number(), TourSchema, z.null()])
@@ -90,7 +90,7 @@ const RecommendedToursSectionSchema = z.object({
 // Recommended Cities Section
 const RecommendedCitiesSectionSchema = z.object({
   blockType: z.literal('recommended-cities'),
-  blockName: z.string().optional(),
+  blockName: z.string().nullish(),
   id: z.string().optional(),
   cities: z
     .union([z.array(z.union([z.number(), CitySchema, z.null()])), z.number(), CitySchema, z.null()])
@@ -101,7 +101,7 @@ const RecommendedCitiesSectionSchema = z.object({
 // Recommended Cars Section
 const RecommendedCarsSectionSchema = z.object({
   blockType: z.literal('recommended-cars'),
-  blockName: z.string().optional(),
+  blockName: z.string().nullish(),
   id: z.string().optional(),
   cars: z
     .union([z.array(z.union([z.number(), CarSchema, z.null()])), z.number(), CarSchema, z.null()])
