@@ -112,9 +112,13 @@ const TourPricing = ({ tour }: TourPricingProps) => {
               <h4 className='text-sitora-text-heading mb-2 font-semibold'>{t('starting_price')}</h4>
               <div className='flex items-center justify-between'>
                 <span className='text-sitora-text-body text-sm'>
-                  {tour.duration_days && tour.duration_days !== 1 ? t('days') : t('day')}
-                  {tour.duration_nights && ' / '}
-                  {tour.duration_nights && tour.duration_nights > 0 && (tour.duration_nights !== 1 ? t('nights') : t('night'))}
+                  {tour.duration_days} {tour.duration_days !== 1 ? t('days') : t('day')}
+                  {tour.duration_nights && tour.duration_nights > 0 && (
+                    <>
+                      {' / '}
+                      {tour.duration_nights} {tour.duration_nights !== 1 ? t('nights') : t('night')}
+                    </>
+                  )}
                 </span>
                 <span className='text-sitora-text-heading text-2xl font-bold'>${tour.price?.toLocaleString() || '0'}</span>
               </div>

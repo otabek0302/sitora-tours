@@ -20,7 +20,7 @@ const CarsCard = ({ car }: CarsCardProps) => {
     <Card className='bg-card border-border overflow-hidden rounded-[26px] border shadow-none'>
       <div className='flex flex-col lg:flex-row'>
         {/* Car Image */}
-        <div className='border-border relative h-full min-h-72 w-full overflow-hidden rounded-[26px] border sm:h-80 lg:w-1/3'>
+        <div className='border-border relative h-full min-h-72 w-full overflow-hidden rounded-[26px] border sm:h-[360px] lg:w-1/3'>
           {car.image ? (
             <Image src={car.image.url} alt={car.name} fill sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw' className='object-cover' />
           ) : (

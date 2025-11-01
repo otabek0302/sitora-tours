@@ -239,14 +239,18 @@ export interface Tour {
   price: number;
   category: number | Category;
   cities: (number | City)[];
+  /**
+   * Select whether this tour is within Uzbekistan (local) or abroad
+   */
+  tourType: 'local' | 'abroad';
   locations?:
     | {
         from: number | City;
         to: number | City;
         transport: string;
-        fromTime: string;
-        toTime: string;
-        duration: string;
+        fromTime?: string | null;
+        toTime?: string | null;
+        duration?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -285,8 +289,12 @@ export interface Tour {
   };
   booking_pricing?:
     | {
-        dateStart: string;
-        dateEnd: string;
+        dateStart?: string | null;
+        dateEnd?: string | null;
+        /**
+         * Number of persons for this pricing option
+         */
+        numberOfPersons?: number | null;
         pricePerPerson: number;
         id?: string | null;
       }[]
@@ -319,6 +327,14 @@ export interface Hotel {
   city: number | City;
   address?: string | null;
   phone: string;
+  /**
+   * Hotel website URL (e.g., https://example.com)
+   */
+  website?: string | null;
+  /**
+   * Hotel contact email
+   */
+  email?: string | null;
   rating?: ('1' | '2' | '3' | '4' | '5') | null;
   features?:
     | {
@@ -356,10 +372,14 @@ export interface Car {
    * Auto-generated from English name
    */
   slug: string;
-  model: string;
   brand: string;
   capacity: number;
-  price: number;
+  pricing: {
+    pricePerDayInCity: number;
+    transferAirportHotelAirport?: number | null;
+    transferHotelDinnerHotel?: number | null;
+    longRouteFrom7Days?: number | null;
+  };
   image: number | Media;
   images?:
     | {
@@ -570,6 +590,7 @@ export interface ToursSelect<T extends boolean = true> {
   price?: T;
   category?: T;
   cities?: T;
+  tourType?: T;
   locations?:
     | T
     | {
@@ -621,6 +642,7 @@ export interface ToursSelect<T extends boolean = true> {
     | {
         dateStart?: T;
         dateEnd?: T;
+        numberOfPersons?: T;
         pricePerPerson?: T;
         id?: T;
       };
@@ -645,6 +667,8 @@ export interface HotelsSelect<T extends boolean = true> {
   city?: T;
   address?: T;
   phone?: T;
+  website?: T;
+  email?: T;
   rating?: T;
   features?:
     | T
@@ -680,10 +704,16 @@ export interface CarsSelect<T extends boolean = true> {
   name?: T;
   type?: T;
   slug?: T;
-  model?: T;
   brand?: T;
   capacity?: T;
-  price?: T;
+  pricing?:
+    | T
+    | {
+        pricePerDayInCity?: T;
+        transferAirportHotelAirport?: T;
+        transferHotelDinnerHotel?: T;
+        longRouteFrom7Days?: T;
+      };
   image?: T;
   images?:
     | T
@@ -791,7 +821,13 @@ export interface Page {
             tours?: (number | Tour)[] | null;
             id?: string | null;
             blockName?: string | null;
-            blockType: 'recommended-tours';
+            blockType: 'recommended-local-tours';
+          }
+        | {
+            tours?: (number | Tour)[] | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'recommended-abroad-tours';
           }
         | {
             cities?: (number | City)[] | null;
@@ -855,7 +891,14 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        'recommended-tours'?:
+        'recommended-local-tours'?:
+          | T
+          | {
+              tours?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'recommended-abroad-tours'?:
           | T
           | {
               tours?: T;
