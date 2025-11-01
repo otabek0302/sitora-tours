@@ -1,11 +1,13 @@
 'use client'
 
+import Link from 'next/link'
+
 import { useState } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { useTranslations } from 'next-intl'
-import { Car } from '@/lib/schemas'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { ApplyCar } from '@/components/ui'
+import { Car } from '@/lib/schemas'
 
 interface CarRentalProps {
   car: Car
@@ -72,23 +74,17 @@ const CarRental = ({ car }: CarRentalProps) => {
 
         {/* Book Button */}
         <div className='border-border border-t pt-4'>
-          <Button size='lg' onClick={() => setApplyOpen(true)} className='bg-sitora-primary hover:bg-sitora-primary/90 hover:text-sitora-white text-sitora-white w-full text-base'>
-            {t('book_button')}
+          <Button variant='default' size='lg' onClick={() => setApplyOpen(true)} className='w-full rounded-[18px] shadow-none'>
+            {t('book_now')}
+          </Button>
+          <Button variant='outline' size='lg' className='border-sitora-primary text-sitora-primary hover:bg-sitora-primary hover:text-sitora-white w-full rounded-2xl shadow-none' asChild>
+            <Link href='/contact-us'>{t('contact_us')}</Link>
           </Button>
         </div>
       </CardContent>
 
       {/* Apply Car Modal */}
-      <ApplyCar
-        open={applyOpen}
-        setOpen={setApplyOpen}
-        car={{
-          id: car.id,
-          name: car.name,
-          brand: car.brand,
-          pricing: car.pricing?.pricePerDayInCity ? { pricePerDayInCity: car.pricing.pricePerDayInCity } : undefined,
-        }}
-      />
+      <ApplyCar open={applyOpen} setOpen={setApplyOpen} car={{ id: car.id, name: car.name, brand: car.brand, pricing: car.pricing?.pricePerDayInCity ? { pricePerDayInCity: car.pricing.pricePerDayInCity } : undefined }} />
     </Card>
   )
 }

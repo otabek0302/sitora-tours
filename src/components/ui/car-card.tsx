@@ -82,8 +82,8 @@ const CarsCard = ({ car }: CarsCardProps) => {
                   <span className='text-sitora-body text-sm font-normal'>{t('per_day')}</span>
                 </div>
                 <div className='flex items-center justify-end'>
-                  <Button variant='default' size='sm' className='group shadow-none'>
-                    <Link href={`/cars/${car.slug}`} className='text-md flex items-center justify-center gap-2 leading-tight font-normal'>
+                  <Button variant='default' size='sm' className='group w-fit shadow-none'>
+                    <Link href={`/cars/${car.slug}`} className='text-md flex w-full items-center justify-center gap-2 leading-tight font-normal'>
                       <span className='text-sitora-white group-hover:text-sitora-primary block'>{t('see_details')}</span>
                       <ArrowRight className='text-sitora-white group-hover:text-sitora-primary h-4 w-4' />
                     </Link>
@@ -93,34 +93,34 @@ const CarsCard = ({ car }: CarsCardProps) => {
 
               {/* Desktop: Show all pricing options */}
               <div className='hidden lg:block'>
-                <div className='mb-4 space-y-3'>
+                <div className='mb-4 grid grid-cols-4 gap-4 space-y-3'>
                   {/* Price per day */}
-                  <div className='flex items-center justify-between'>
-                    <span className='text-sitora-body text-xs font-medium'>{t('per_day')}</span>
+                  <div className='col-span-1 border-l'>
                     <span className='text-sitora-primary text-2xl font-bold'>${car.pricing?.pricePerDayInCity || 0}</span>
+                    <span className='text-sitora-body text-right text-xs font-medium'>{t('per_day')}</span>
                   </div>
 
                   {/* Transfer: airport - hotel - airport */}
                   {car.pricing?.transferAirportHotelAirport && (
-                    <div className='border-border flex items-center justify-between border-t pt-3'>
-                      <span className='text-sitora-body text-xs font-medium'>{tSingle('transfer_airport_hotel')}</span>
+                    <div className='col-span-1 border-l'>
                       <span className='text-sitora-primary text-xl font-bold'>${car.pricing.transferAirportHotelAirport}</span>
+                      <span className='text-sitora-body text-right text-xs font-medium'>{tSingle('transfer_airport_hotel')}</span>
                     </div>
                   )}
 
                   {/* Transfer: hotel - dinner - hotel */}
                   {car.pricing?.transferHotelDinnerHotel && (
-                    <div className='border-border flex items-center justify-between border-t pt-3'>
-                      <span className='text-sitora-body text-xs font-medium'>{tSingle('transfer_hotel_dinner')}</span>
+                    <div className='col-span-1 border-l'>
                       <span className='text-sitora-primary text-xl font-bold'>${car.pricing.transferHotelDinnerHotel}</span>
+                      <span className='text-sitora-body text-right text-xs font-medium'>{tSingle('transfer_hotel_dinner')}</span>
                     </div>
                   )}
 
                   {/* On a long route (from 7 days) */}
                   {car.pricing?.longRouteFrom7Days && (
-                    <div className='border-border flex items-center justify-between border-t pt-3'>
-                      <span className='text-sitora-body text-xs font-medium'>{tSingle('long_route_7days')}</span>
+                    <div className='col-span-1'>
                       <span className='text-sitora-primary text-xl font-bold'>${car.pricing.longRouteFrom7Days}</span>
+                      <span className='text-sitora-body text-right text-xs font-medium'>{tSingle('long_route_7days')}</span>
                     </div>
                   )}
                 </div>
