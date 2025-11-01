@@ -78,7 +78,7 @@ const TourRelated = ({ tour }: TourRelatedProps) => {
                   )}
                   {relatedTour.cities && relatedTour.cities.length > 0 && (
                     <div className='flex items-start gap-1'>
-                      <MapPin className='text-sitora-primary mt-0.5 h-4 w-4 flex-shrink-0 md:mt-0' />
+                      <MapPin className='text-sitora-primary mt-1 h-4 w-4 flex-shrink-0 md:mt-0' />
                       <div className='flex flex-wrap items-center gap-1'>
                         {relatedTour.cities.map((city: { id: string | number; name?: string }, index: number) => (
                           <span key={city.id} className='flex items-center gap-1'>

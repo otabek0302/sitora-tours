@@ -39,7 +39,7 @@ export const RecommendedToursCard = ({ tour }: { tour: Tour }) => {
         <div className='flex h-full flex-col p-6'>
           <Link href={`/tours/${tour.slug}`}>
             {/* Fixed height for title - allows 2 lines */}
-            <h3 className='text-sitora-text-subtitle hover:text-sitora-primary mb-4 min-h-[3.5rem] line-clamp-2 text-lg font-semibold leading-tight transition-colors'>{tour?.name || ''}</h3>
+            <h3 className='text-sitora-text-subtitle hover:text-sitora-primary mb-4 line-clamp-2 min-h-[3.5rem] text-lg leading-tight font-semibold transition-colors'>{tour?.name || ''}</h3>
           </Link>
 
           {/* Tour Info */}
@@ -60,14 +60,17 @@ export const RecommendedToursCard = ({ tour }: { tour: Tour }) => {
               <Tag className='text-sitora-primary h-4 w-4' />
               <span className='text-sitora-body text-sm font-medium'>{tour.category?.name || ''}</span>
             </div>
-            <div className='flex items-center gap-2'>
-              <MapPin className='text-sitora-primary h-4 w-4' />
-              {tour.cities &&
-                tour.cities.map((city: { id: string | number; name?: string }, index: number) => (
-                  <span key={city.id} className='text-sitora-body text-sm font-medium'>
-                    {city.name || ''} {tour.cities && tour.cities.length > 1 && index < tour.cities.length - 1 ? '→' : ''}
-                  </span>
-                ))}
+            <div className='flex items-start gap-1'>
+              <MapPin className='text-sitora-primary mt-0.5 h-4 w-4 flex-shrink-0 md:mt-0' />
+              <div className='flex flex-wrap items-center gap-1'>
+                {tour.cities &&
+                  tour.cities.map((city: { id: string | number; name?: string }, index: number) => (
+                    <span key={city.id} className='flex items-center gap-1'>
+                      {city.name || ''}
+                      {index < (tour.cities?.length || 0) - 1 && <span className='mx-1'>→</span>}
+                    </span>
+                  ))}
+              </div>
             </div>
           </div>
           {/* Rating - Only show if rating exists and is greater than 0 */}
