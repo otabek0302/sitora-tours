@@ -58,10 +58,10 @@ const ToursCard = ({ tour }: ToursCardProps) => {
 
           <CardContent className='flex flex-1 flex-col gap-4 p-0'>
             {/* Tour Details */}
-            <div className='text-sitora-body flex flex-wrap gap-4 text-sm'>
-              <div className='flex items-center gap-1'>
+            <div className='mb-4 space-y-2'>
+              <div className='flex items-center gap-2'>
                 <Clock className='text-sitora-primary h-4 w-4' />
-                <span>
+                <span className='text-sitora-body text-sm font-medium'>
                   {tour.duration_days} {tour.duration_days !== 1 ? t('days') : t('day')}
                   {tour.duration_nights != null && Number(tour.duration_nights) > 0 && (
                     <>
@@ -78,16 +78,13 @@ const ToursCard = ({ tour }: ToursCardProps) => {
                 </div>
               )}
               {tour.cities && tour.cities.length > 0 && (
-                <div className='flex items-start gap-1'>
-                  <MapPin className='text-sitora-primary mt-0.5 h-4 w-4 flex-shrink-0 md:mt-0' />
-                  <div className='flex flex-wrap items-center gap-1'>
-                    {tour.cities.map((city: { id: string | number; name?: string }, index: number) => (
-                      <span key={city.id} className='flex items-center gap-1'>
-                        {city.name || ''}
-                        {index < (tour.cities?.length || 0) - 1 && <span className='mx-1'>→</span>}
-                      </span>
-                    ))}
-                  </div>
+                <div className='flex items-center gap-2'>
+                  <MapPin className='text-sitora-primary h-4 w-4' />
+                  {tour.cities.map((city: { id: string | number; name?: string }, index: number) => (
+                    <span key={city.id} className='text-sitora-body text-sm font-medium'>
+                      {city.name || ''} {tour.cities && tour.cities.length > 1 && index < tour.cities.length - 1 ? '→' : ''}
+                    </span>
+                  ))}
                 </div>
               )}
             </div>
