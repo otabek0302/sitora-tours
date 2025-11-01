@@ -48,7 +48,7 @@ const TourRelated = ({ tour }: TourRelatedProps) => {
           <div key={relatedTour.id} className='bg-card border-border group overflow-hidden rounded-[26px] border shadow-none transition-all duration-300 hover:shadow-sm'>
             <Link href={`/tours/${relatedTour.slug}`}>
               {/* Tour Image */}
-              <div className='relative h-48 w-full overflow-hidden'>
+              <div className='relative h-48 w-full overflow-hidden rounded-[26px] md:rounded-none'>
                 <Image src={relatedTour.images?.[0]?.image?.url || ''} alt={relatedTour.name || 'Tour'} fill className='object-cover transition-transform duration-500 group-hover:scale-105' sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw' />
               </div>
 
@@ -78,7 +78,7 @@ const TourRelated = ({ tour }: TourRelatedProps) => {
                   )}
                   {relatedTour.cities && relatedTour.cities.length > 0 && (
                     <div className='flex items-start gap-1'>
-                      <MapPin className='text-sitora-primary h-4 w-4 flex-shrink-0' />
+                      <MapPin className='text-sitora-primary mt-0.5 h-4 w-4 flex-shrink-0 md:mt-0' />
                       <div className='flex flex-wrap items-center gap-1'>
                         {relatedTour.cities.map((city: { id: string | number; name?: string }, index: number) => (
                           <span key={city.id} className='flex items-center gap-1'>

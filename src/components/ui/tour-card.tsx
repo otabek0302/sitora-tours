@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Clock, Star, MapPin, ArrowRight } from 'lucide-react'
+import { Clock, Star, MapPin, ArrowRight, Tag } from 'lucide-react'
 import { Tour } from '@/lib/schemas'
 import { Button } from '@/components/ui/button'
 
@@ -20,7 +20,7 @@ const ToursCard = ({ tour }: ToursCardProps) => {
     <Card className='bg-card border-border h-full overflow-hidden rounded-[26px] border shadow-none'>
       <div className='flex h-full flex-col lg:flex-row'>
         {/* Tour Image */}
-        <div className='relative h-48 overflow-hidden lg:h-auto lg:w-1/3'>
+        <div className='relative h-48 overflow-hidden rounded-[26px] md:rounded-none lg:h-auto lg:w-1/3'>
           {tour.images && tour.images.length > 0 && tour.images[0]?.image ? (
             <Image src={tour.images[0].image.url} alt={tour.name} fill sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw' className='object-cover' />
           ) : (
@@ -53,7 +53,7 @@ const ToursCard = ({ tour }: ToursCardProps) => {
             {/* Fixed height for title - allows 2 lines with line-clamp */}
             <CardTitle className='text-sitora-text-subtitle mb-2 line-clamp-2 text-xl leading-tight font-bold md:min-h-[3.5rem]'>{tour.name}</CardTitle>
             {/* Fixed height for description - always shows 3 lines or empty space */}
-            <div className='min-h-[4.5rem]'>{tour.description ? <p className='text-sitora-body line-clamp-3 text-sm leading-relaxed'>{tour.description}</p> : <div className='h-full' />}</div>
+            <div className='md:min-h-[4.5rem]'>{tour.description ? <p className='text-sitora-body line-clamp-3 text-sm leading-relaxed'>{tour.description}</p> : <div className='h-full' />}</div>
           </CardHeader>
 
           <CardContent className='flex flex-1 flex-col gap-4 p-0'>
@@ -71,9 +71,15 @@ const ToursCard = ({ tour }: ToursCardProps) => {
                   )}
                 </span>
               </div>
+              {tour.category?.name && (
+                <div className='flex items-center gap-2'>
+                  <Tag className='text-sitora-primary h-4 w-4' />
+                  <span className='text-sitora-body text-sm font-medium'>{tour.category.name}</span>
+                </div>
+              )}
               {tour.cities && tour.cities.length > 0 && (
                 <div className='flex items-start gap-1'>
-                  <MapPin className='text-sitora-primary h-4 w-4 flex-shrink-0' />
+                  <MapPin className='text-sitora-primary mt-0.5 h-4 w-4 flex-shrink-0 md:mt-0' />
                   <div className='flex flex-wrap items-center gap-1'>
                     {tour.cities.map((city: { id: string | number; name?: string }, index: number) => (
                       <span key={city.id} className='flex items-center gap-1'>

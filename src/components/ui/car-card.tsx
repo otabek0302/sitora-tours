@@ -22,7 +22,7 @@ const CarsCard = ({ car }: CarsCardProps) => {
         {/* Car Image */}
         <div className='border-border relative h-full min-h-72 w-full overflow-hidden rounded-[26px] border sm:h-[350px] lg:w-1/3'>
           {car.image ? (
-            <Image src={car.image.url} alt={car.name} fill sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw' className='object-cover' />
+            <Image src={car.image.url} alt={car.name} fill sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw' className='rounded-[26px] object-cover md:rounded-none' />
           ) : (
             <div className='bg-sitora-primary-light flex h-full w-full items-center justify-center'>
               <span className='text-sitora-primary text-sm font-medium'>No Image</span>

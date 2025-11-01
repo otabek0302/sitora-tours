@@ -80,7 +80,7 @@ const Hero = () => {
                 <div key={post.id || index} onClick={() => videoUrl && handleVideoClick(videoUrl, reviewName, reviewComment)} className='bg-card border-border group h-[300px] cursor-pointer overflow-hidden rounded-[26px] border shadow-none transition-all duration-300 hover:shadow-sm lg:h-[350px]'>
                   <div className='flex h-full flex-col md:flex-row'>
                     {/* Video Section */}
-                    <div className='border-border relative h-full w-full overflow-hidden border-r md:w-1/2'>
+                    <div className='border-border relative h-52 w-full overflow-hidden rounded-[26px] border-r md:h-full md:w-1/2 md:rounded-none'>
                       {videoUrl ? (
                         <video className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105' autoPlay muted loop playsInline>
                           <source src={videoUrl} type='video/mp4' />
