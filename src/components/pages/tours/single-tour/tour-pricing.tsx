@@ -120,17 +120,19 @@ const TourPricing = ({ tour }: TourPricingProps) => {
                     </>
                   )}
                 </span>
-                <span className='text-sitora-text-heading text-2xl font-bold'>${tour.price?.toLocaleString() || '0'}</span>
+                <div className='flex flex-col items-end justify-end gap-2'>
+                  <span className='text-sitora-text-heading text-2xl font-bold'>${tour.price?.toLocaleString() || '0'}</span>
+                  <p className='text-sitora-primary text-xs font-normal'>{t('per_person')}</p>
+                </div>
               </div>
-              <p className='text-sitora-primary mt-2 text-xs'>{t('per_person')}</p>
             </div>
 
             <div className='space-y-3'>
-              <Button variant='default' size='lg' onClick={() => setApplyOpen(true)} className='w-full rounded-2xl shadow-none'>
+              <Button variant='default' size='lg' onClick={() => setApplyOpen(true)} className='w-full rounded-xl shadow-none'>
                 {t('book_now')}
               </Button>
 
-              <Button variant='outline' size='lg' className='border-sitora-primary text-sitora-primary hover:bg-sitora-primary hover:text-sitora-white w-full rounded-2xl shadow-none' asChild>
+              <Button variant='outline' size='lg' className='border-sitora-primary text-sitora-primary hover:bg-sitora-primary hover:text-sitora-white w-full rounded-xl shadow-none' asChild>
                 <Link href='/contact-us'>{t('contact_us')}</Link>
               </Button>
             </div>

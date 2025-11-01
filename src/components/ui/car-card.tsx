@@ -33,14 +33,6 @@ const CarsCard = ({ car }: CarsCardProps) => {
           <div className='absolute top-4 left-4'>
             <span className='bg-sitora-primary/90 text-sitora-white rounded-full px-3 py-1 text-xs font-semibold backdrop-blur-sm'>{car.type}</span>
           </div>
-
-          {/* Rating Badge */}
-          <div className='absolute top-4 right-4'>
-            <div className='bg-background/90 flex items-center gap-1 rounded-full px-2 py-1 backdrop-blur-sm'>
-              <Star className='text-sitora-gold-medium h-3 w-3 fill-current' />
-              <span className='text-sitora-text-subtitle text-xs font-semibold'>4.5</span>
-            </div>
-          </div>
         </div>
 
         {/* Car Content */}
@@ -61,16 +53,6 @@ const CarsCard = ({ car }: CarsCardProps) => {
                 <Fuel className='h-4 w-4' />
                 <span>{car.type || 'Petrol'}</span>
               </div>
-            </div>
-
-            {/* Rating and Reviews */}
-            <div className='flex items-center gap-2'>
-              <div className='flex items-center gap-1'>
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className={`h-4 w-4 ${i < 4 ? 'text-sitora-gold-medium fill-current' : 'text-sitora-muted dark:text-muted-foreground'}`} />
-                ))}
-              </div>
-              <span className='text-sitora-body text-sm'>4.5 {t('rating')}</span>
             </div>
 
             {/* Price and Book Button */}

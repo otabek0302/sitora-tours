@@ -89,14 +89,14 @@ const TourRelated = ({ tour }: TourRelatedProps) => {
                 </div>
 
                 {/* Rating */}
-                {relatedTour.rating && relatedTour.rating > 0 && (
+                {relatedTour?.rating && relatedTour?.rating > 0 && (
                   <div className='mb-4 flex items-center gap-2'>
                     <div className='flex items-center gap-1'>
                       {[...Array(5)].map((_, i) => (
                         <Star key={i} className={`h-4 w-4 ${i < Math.floor(relatedTour.rating || 0) ? 'text-sitora-gold-medium fill-current' : 'text-sitora-text-muted'}`} />
                       ))}
                     </div>
-                    <span className='text-sitora-body text-sm font-medium'>{relatedTour.rating.toFixed(1)}</span>
+                    <span className='text-sitora-body text-sm font-medium'>{relatedTour?.rating.toFixed(1)}</span>
                   </div>
                 )}
 

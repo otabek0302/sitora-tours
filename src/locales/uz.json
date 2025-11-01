@@ -216,6 +216,8 @@
       "rating": "reyting",
       "days": "kunlar",
       "day": "kun",
+      "nights": "tunlar",
+      "night": "tun",
       "sidebar": {
         "filterBy": "Filtrlash",
         "city": "Shahar",

@@ -215,6 +215,8 @@
       "rating": "rating",
       "days": "days",
       "day": "day",
+      "nights": "nights",
+      "night": "night",
       "sidebar": {
         "filterBy": "Filter By",
         "city": "City",
