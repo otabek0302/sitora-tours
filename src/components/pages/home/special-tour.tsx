@@ -67,7 +67,7 @@ const SpecialTour = () => {
                   <Clock className='text-sitora-white h-4 w-4' />
                   <span className='text-sitora-white text-sm'>
                     {tour.duration_days} {tour.duration_days !== 1 ? t('days') : t('day')}
-                    {tour.duration_nights && tour.duration_nights > 0 && (
+                    {tour.duration_nights != null && Number(tour.duration_nights) > 0 && (
                       <>
                         {' / '}
                         {tour.duration_nights} {tour.duration_nights !== 1 ? t('nights') : t('night')}

@@ -113,7 +113,7 @@ const TourPricing = ({ tour }: TourPricingProps) => {
               <div className='flex items-center justify-between'>
                 <span className='text-sitora-text-body text-sm'>
                   {tour.duration_days} {tour.duration_days !== 1 ? t('days') : t('day')}
-                  {tour.duration_nights && tour.duration_nights > 0 && (
+                  {tour.duration_nights != null && Number(tour.duration_nights) > 0 && (
                     <>
                       {' / '}
                       {tour.duration_nights} {tour.duration_nights !== 1 ? t('nights') : t('night')}

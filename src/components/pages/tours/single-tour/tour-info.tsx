@@ -24,7 +24,7 @@ const TourInfo = ({ tour }: TourInfoProps) => {
           {tour.duration_days && (
             <span className='font-semibold lowercase italic'>
               {tour.duration_days} {tour.duration_days !== 1 ? t('days') : t('day')}
-              {tour.duration_nights && tour.duration_nights > 0 && (
+              {tour.duration_nights != null && Number(tour.duration_nights) > 0 && (
                 <>
                   {' / '}
                   {tour.duration_nights} {tour.duration_nights !== 1 ? t('nights') : t('night')}

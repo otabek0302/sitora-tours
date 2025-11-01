@@ -63,7 +63,7 @@ const ToursCard = ({ tour }: ToursCardProps) => {
                 <Clock className='text-sitora-primary h-4 w-4' />
                 <span>
                   {tour.duration_days} {tour.duration_days !== 1 ? t('days') : t('day')}
-                  {tour.duration_nights && tour.duration_nights > 0 && (
+                  {tour.duration_nights != null && Number(tour.duration_nights) > 0 && (
                     <>
                       {' / '}
                       {tour.duration_nights} {tour.duration_nights !== 1 ? t('nights') : t('night')}
