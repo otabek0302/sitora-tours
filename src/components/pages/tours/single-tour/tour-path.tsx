@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronDown, Plane, Train, Bus } from 'lucide-react'
+import { ChevronDown, ArrowRight } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { Tour } from '@/lib/schemas'
 
@@ -14,22 +14,6 @@ const getCityName = (city: number | { id: number; name?: string }): string => {
     return city.name.toUpperCase()
   }
   return 'UNKNOWN'
-}
-
-const getTransportIcon = (transport?: string) => {
-  if (!transport) return <Plane className='text-sitora-primary h-6 w-6' />
-
-  const transportLower = transport.toLowerCase()
-
-  if (transportLower.includes('train') || transportLower.includes('rail')) {
-    return <Train className='text-sitora-primary h-6 w-6' />
-  }
-
-  if (transportLower.includes('bus') || transportLower.includes('coach')) {
-    return <Bus className='text-sitora-primary h-6 w-6' />
-  }
-
-  return <Plane className='text-sitora-primary h-6 w-6' />
 }
 
 const TourPath = ({ tour }: TourPathProps) => {
@@ -64,7 +48,7 @@ const TourPath = ({ tour }: TourPathProps) => {
 
               <div className='relative mb-4'>
                 <div className='border-border relative border-t-2 border-dashed'>
-                  <div className='bg-card absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform px-2'>{getTransportIcon(location.transport)}</div>
+                  <div className='bg-card absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform px-2'><ArrowRight className='text-sitora-primary h-6 w-6' /></div>
                 </div>
               </div>
 
@@ -73,8 +57,12 @@ const TourPath = ({ tour }: TourPathProps) => {
                   <p className='text-sitora-text-body space-x-1 font-medium'>
                     {location.duration.includes(':') ? (
                       <>
-                        <span>{location.duration.split(':')[0]}</span>
-                        <span>{t('hours')}</span>
+                        {location.duration.split(':')[0] !== '00' && location.duration.split(':')[0] !== '0' && (
+                          <>
+                            <span>{location.duration.split(':')[0]}</span>
+                            <span>{t('hours')}</span>
+                          </>
+                        )}
                         <span>{location.duration.split(':')[1]}</span>
                         <span>{t('minutes')}</span>
                       </>
