@@ -8,6 +8,7 @@ import { Button } from '@/components/ui'
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
 import { ArrowRight, Play, Star, X } from 'lucide-react'
 import { usePagesContext } from '@/lib/stores/pages'
+import Link from 'next/link'
 
 const Hero = () => {
   const t = useTranslations('pages.home.hero')
@@ -51,9 +52,9 @@ const Hero = () => {
               <div className='max-w-2xl px-8 lg:px-12'>
                 <h1 className='text-sitora-white mb-6 text-4xl leading-tight font-bold lg:text-6xl'>{title}</h1>
                 <p className='text-sitora-white mb-8 text-lg leading-relaxed opacity-90 lg:text-xl'>{subtitle}</p>
-                <Button size='lg' className='bg-sitora-primary hover:bg-sitora-primary/90 text-sitora-white group'>
-                  <span className='text-sitora-white'>{button}</span>
-                  <ArrowRight className='ml-2 h-5 w-5 transition-transform group-hover:translate-x-1' />
+                <Button variant='default' size='lg' className='group-btn hover:text-sitora-primary rounded-2xl shadow-none hover:bg-transparent' asChild>
+                  <Link href='/contact-us'>{button}</Link>
+                  <ArrowRight className='group-btn-hover:text-sitora-primary group-btn-hover:translate-x-1 ml-2 h-5 w-5 transition-transform' />
                 </Button>
               </div>
             </div>

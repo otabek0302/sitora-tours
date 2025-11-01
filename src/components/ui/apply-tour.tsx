@@ -82,7 +82,7 @@ export const ApplyTour = ({ open, setOpen, tour }: ApplyTourProps) => {
 
     try {
       const selectedBooking = tour.booking_pricing?.find(b => b.id === formData.selectedDate)
-      
+
       // Check if dates are valid
       const startDate = selectedBooking?.dateStart ? new Date(selectedBooking.dateStart) : null
       const endDate = selectedBooking?.dateEnd ? new Date(selectedBooking.dateEnd) : null
@@ -165,10 +165,10 @@ export const ApplyTour = ({ open, setOpen, tour }: ApplyTourProps) => {
                 </SelectTrigger>
                 <SelectContent>
                   {tour.booking_pricing?.map((booking, index) => {
-                    const { fullText, dateText } = formatBookingOptionText(booking)
+                    const { fullText } = formatBookingOptionText(booking)
 
                     return (
-                      <SelectItem key={booking.id || `booking-${index}`} value={booking.id || `booking-${index}`} title={fullText}>
+                      <SelectItem key={booking.id || `booking-${index}`} value={booking.id || `booking-${index}`} title={fullText} className='w-full'>
                         {fullText}
                       </SelectItem>
                     )
