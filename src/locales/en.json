@@ -568,7 +568,9 @@
         "driver_requirements_value": "Valid driver's license required",
         "insurance": "Insurance",
         "insurance_value": "Full insurance included",
-        "book_button": "Book This Car"
+        "book_button": "Book This Car",
+        "book_now": "Book Now",
+        "contact_us": "Contact Us"
       }
     }
   },

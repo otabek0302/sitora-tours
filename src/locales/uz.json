@@ -569,7 +569,9 @@
         "driver_requirements_value": "Haqiqiy haydovchilik guvohnomasi talab qilinadi",
         "insurance": "Sug'urta",
         "insurance_value": "To'liq sug'urta kiritilgan",
-        "book_button": "Avtomobilni band qilish"
+        "book_button": "Avtomobilni band qilish",
+        "book_now": "Buyurtma berish",
+        "contact_us": "Biz bilan bog'laning"
       }
     }
   },
