@@ -78,7 +78,7 @@ const Hero = () => {
 
               return (
                 <div key={post.id || index} onClick={() => videoUrl && handleVideoClick(videoUrl, reviewName, reviewComment)} className='bg-card border-border group h-[300px] cursor-pointer overflow-hidden rounded-[26px] border shadow-none transition-all duration-300 hover:shadow-sm lg:h-[350px]'>
-                  <div className='flex h-full'>
+                  <div className='flex h-full flex-col md:flex-row'>
                     {/* Video Section */}
                     <div className='border-border relative h-full w-full overflow-hidden border-r md:w-1/2'>
                       {videoUrl ? (
@@ -101,7 +101,7 @@ const Hero = () => {
                     </div>
 
                     {/* Review Content Section */}
-                    <div className='flex w-full flex-col justify-center p-6 md:w-1/2'>
+                    <div className='flex w-full flex-col justify-start p-6 md:w-1/2 md:justify-center'>
                       <h4 className='text-sitora-text-subtitle mb-2 text-base font-bold'>{reviewName}</h4>
                       <p className='text-sitora-body line-clamp-3 text-sm leading-relaxed'>&quot;{reviewComment}&quot;</p>
                       <div className='mt-4 flex items-center justify-start gap-1'>

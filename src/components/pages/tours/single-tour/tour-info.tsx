@@ -46,13 +46,16 @@ const TourInfo = ({ tour }: TourInfoProps) => {
               </p>
             </div>
           )}
-          {tour.rating && Number(tour.rating) > 0 && (
-            <>
+          {tour?.rating && Number(tour?.rating) > 0 ? (
+            <div className='flex items-center gap-1'>
               <span className='text-sitora-body text-sm font-medium'>|</span>
               <span className='flex items-center gap-1'>
-                <Star className='text-sitora-gold-medium h-4 w-4 fill-current' /> {tour.rating.toFixed(1)}
+                <Star className='text-sitora-gold-medium h-4 w-4 fill-current' /> {tour?.rating?.toFixed(1)}
               </span>
-            </>
+            </div>
+          ) : (
+            // Empty space to maintain consistent layout when no rating
+            <div className='h-6' />
           )}
         </div>
         {tour.description && <p className='text-sitora-body text-sm leading-tight font-normal'>{tour.description}</p>}

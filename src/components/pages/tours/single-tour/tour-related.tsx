@@ -60,7 +60,7 @@ const TourRelated = ({ tour }: TourRelatedProps) => {
                 <div className='mb-4 space-y-2'>
                   <div className='flex items-center gap-2'>
                     <Clock className='text-sitora-primary h-4 w-4' />
-                    <span className='text-sitora-body text-sm font-medium'>
+                    <span>
                       {relatedTour.duration_days} {relatedTour.duration_days !== 1 ? t('days') : t('day')}
                       {relatedTour.duration_nights != null && Number(relatedTour.duration_nights) > 0 && (
                         <>
@@ -77,27 +77,35 @@ const TourRelated = ({ tour }: TourRelatedProps) => {
                     </div>
                   )}
                   {relatedTour.cities && relatedTour.cities.length > 0 && (
-                    <div className='flex items-center gap-2'>
-                      <MapPin className='text-sitora-primary h-4 w-4' />
-                      {relatedTour.cities.map((city: { id: string | number; name?: string }, index: number) => (
-                        <span key={city.id} className='text-sitora-body text-sm font-medium'>
-                          {city.name} {relatedTour.cities && relatedTour.cities.length > 1 && index < relatedTour.cities.length - 1 ? '→' : ''}
-                        </span>
-                      ))}
+                    <div className='flex items-start gap-1'>
+                      <MapPin className='text-sitora-primary h-4 w-4 flex-shrink-0' />
+                      <div className='flex flex-wrap items-center gap-1'>
+                        {relatedTour.cities.map((city: { id: string | number; name?: string }, index: number) => (
+                          <span key={city.id} className='flex items-center gap-1'>
+                            {city.name || ''}
+                            {index < (relatedTour.cities?.length || 0) - 1 && <span className='mx-1'>→</span>}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>
 
                 {/* Rating */}
-                {relatedTour?.rating && relatedTour?.rating > 0 && (
-                  <div className='mb-4 flex items-center gap-2'>
+                {relatedTour?.rating && Number(relatedTour?.rating) > 0 ? (
+                  <div className='flex items-center gap-2'>
                     <div className='flex items-center gap-1'>
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className={`h-4 w-4 ${i < Math.floor(relatedTour.rating || 0) ? 'text-sitora-gold-medium fill-current' : 'text-sitora-text-muted'}`} />
+                        <Star key={i} className={`h-4 w-4 ${i < Math.floor(relatedTour?.rating || 0) ? 'text-sitora-gold-medium fill-current' : 'text-sitora-text-muted'}`} />
                       ))}
                     </div>
-                    <span className='text-sitora-body text-sm font-medium'>{relatedTour?.rating.toFixed(1)}</span>
+                    <span className='text-sitora-body text-sm'>
+                      {relatedTour?.rating?.toFixed(1)} {t('rating')}
+                    </span>
                   </div>
+                ) : (
+                  // Empty space to maintain consistent layout when no rating
+                  <div className='h-6' />
                 )}
 
                 {/* Price */}

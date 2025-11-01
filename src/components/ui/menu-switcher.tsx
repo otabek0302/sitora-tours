@@ -54,32 +54,32 @@ export const MenuSwitcher = () => {
         <AnimatePresence mode='wait' onExitComplete={() => (!open ? setContainerOpen(false) : null)}>
           {open && (
             <motion.div key='menu-content' initial={{ opacity: 0, y: -10, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -10, scale: 0.98 }} transition={{ duration: 0.3 }} className='space-y-2 px-2 py-14'>
-              <motion.p className={`bg-sitora-primary-light block border-l-2 px-2 py-2 ${pathname == '/en' || pathname == '/ru' || pathname == '/uz' ? 'border-sitora-primary' : 'border-border'}`}>
+              <motion.p className={`block border-l-2 px-2 py-2 ${pathname == '/en' || pathname == '/ru' || pathname == '/uz' ? 'border-sitora-primary bg-sitora-primary-light' : 'border-border'}`}>
                 <Link href='/' onClick={() => setOpen(false)} className='text-sitora-body text-md hover:text-sitora-primary-dark rounded-md leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
                   <span className='block'>{t('home')}</span>
                 </Link>
               </motion.p>
-              <motion.p className={`block border-l-2 px-2 py-2 ${pathname.includes('/about-us') ? 'border-sitora-primary' : 'border-border'}`}>
+              <motion.p className={`block border-l-2 px-2 py-2 ${pathname.includes('/about-us') ? 'border-sitora-primary bg-sitora-primary-light' : 'border-border'}`}>
                 <Link href='/about-us' onClick={() => setOpen(false)} className='text-sitora-body text-md hover:text-sitora-primary-dark rounded-md leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
                   <span className='block'>{t('about')}</span>
                 </Link>
               </motion.p>
-              <motion.p className={`block border-l-2 px-2 py-2 ${pathname.includes('/local-tours') ? 'border-sitora-primary' : 'border-border'}`}>
+              <motion.p className={`block border-l-2 px-2 py-2 ${pathname.includes('/local-tours') ? 'border-sitora-primary bg-sitora-primary-light' : 'border-border'}`}>
                 <Link href='/local-tours' onClick={() => setOpen(false)} className='text-sitora-body text-md hover:text-sitora-primary-dark rounded-md leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
                   <span className='block'>{t('local_tours')}</span>
                 </Link>
               </motion.p>
-              <motion.p className={`block border-l-2 px-2 py-2 ${pathname.includes('/abroad-tours') ? 'border-sitora-primary' : 'border-border'}`}>
+              <motion.p className={`block border-l-2 px-2 py-2 ${pathname.includes('/abroad-tours') ? 'border-sitora-primary bg-sitora-primary-light' : 'border-border'}`}>
                 <Link href='/abroad-tours' onClick={() => setOpen(false)} className='text-sitora-body text-md hover:text-sitora-primary-dark rounded-md leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
                   <span className='block'>{t('abroad_tours')}</span>
                 </Link>
               </motion.p>
-              <motion.p className={`block border-l-2 px-2 py-2 ${pathname.includes('/cities') ? 'border-sitora-primary' : 'border-border'}`}>
+              <motion.p className={`block border-l-2 px-2 py-2 ${pathname.includes('/cities') ? 'border-sitora-primary bg-sitora-primary-light' : 'border-border'}`}>
                 <Link href='/cities' onClick={() => setOpen(false)} className='text-sitora-body text-md hover:text-sitora-primary-dark rounded-md leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
                   <span className='block'>{t('cities')}</span>
                 </Link>
               </motion.p>
-              <motion.p className={`block border-l-2 px-2 py-2 ${pathname.includes('/cars') ? 'border-sitora-primary' : 'border-border'}`}>
+              <motion.p className={`block border-l-2 px-2 py-2 ${pathname.includes('/cars') ? 'border-sitora-primary bg-sitora-primary-light' : 'border-border'}`}>
                 <Link href='/cars' onClick={() => setOpen(false)} className='text-sitora-body text-md hover:text-sitora-primary-dark rounded-md leading-tight font-normal transition-all duration-300 hover:scale-105 hover:font-medium'>
                   <span className='block'>{t('cars')}</span>
                 </Link>
