@@ -78,13 +78,16 @@ const ToursCard = ({ tour }: ToursCardProps) => {
                 </div>
               )}
               {tour.cities && tour.cities.length > 0 && (
-                <div className='flex items-center gap-2'>
-                  <MapPin className='text-sitora-primary h-4 w-4' />
-                  {tour.cities.map((city: { id: string | number; name?: string }, index: number) => (
-                    <span key={city.id} className='text-sitora-body text-sm font-medium'>
-                      {city.name || ''} {tour.cities && tour.cities.length > 1 && index < tour.cities.length - 1 ? '→' : ''}
-                    </span>
-                  ))}
+                <div className='flex items-start gap-1'>
+                  <MapPin className='text-sitora-primary mt-0.5 h-4 w-4 flex-shrink-0 md:mt-0' />
+                  <div className='flex flex-wrap items-center gap-1'>
+                    {tour.cities.map((city: { id: string | number; name?: string }, index: number) => (
+                      <span key={city.id} className='flex items-center gap-1'>
+                        {city.name || ''}
+                        {index < (tour.cities?.length || 0) - 1 && <span className='mx-1'>→</span>}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>

@@ -77,7 +77,7 @@ const Hero = () => {
               const videoUrl = typeof post.video === 'object' && post.video !== null ? post.video.url : undefined
 
               return (
-                <div key={post.id || index} onClick={() => videoUrl && handleVideoClick(videoUrl, reviewName, reviewComment)} className='bg-card border-border group h-[300px] cursor-pointer overflow-hidden rounded-[26px] border shadow-none transition-all duration-300 hover:shadow-sm lg:h-[350px]'>
+                <div key={post.id || index} onClick={() => videoUrl && handleVideoClick(videoUrl, reviewName, reviewComment)} className='bg-card border-border group h-full cursor-pointer overflow-hidden rounded-[26px] border shadow-none transition-all duration-300 hover:shadow-sm lg:h-[350px]'>
                   <div className='flex h-full flex-col md:flex-row'>
                     {/* Video Section */}
                     <div className='border-border relative h-52 w-full overflow-hidden rounded-[26px] border-r md:h-full md:w-1/2 md:rounded-none'>
