@@ -21,7 +21,7 @@ export const RecommendedToursCard = ({ tour }: { tour: Tour }) => {
 
   return (
     <div key={tour.id} className='embla__slide w-full flex-shrink-0 lg:w-[calc(33.333%-16px)]'>
-      <div className='bg-card border-border group overflow-hidden rounded-[26px] border shadow-none transition-all duration-300 hover:shadow-sm'>
+      <div className='bg-card border-border group flex h-full flex-col overflow-hidden rounded-[26px] border shadow-none transition-all duration-300 hover:shadow-sm'>
         {/* Tour Image */}
         <Link href={`/tours/${tour.slug}`}>
           <div className='relative h-48 w-full overflow-hidden'>
@@ -36,9 +36,10 @@ export const RecommendedToursCard = ({ tour }: { tour: Tour }) => {
         </Link>
 
         {/* Tour Details */}
-        <div className='p-6'>
+        <div className='flex h-full flex-col p-6'>
           <Link href={`/tours/${tour.slug}`}>
-            <h3 className='text-sitora-text-subtitle hover:text-sitora-primary mb-4 line-clamp-2 text-lg font-semibold transition-colors'>{tour?.name || ''}</h3>
+            {/* Fixed height for title - allows 2 lines */}
+            <h3 className='text-sitora-text-subtitle hover:text-sitora-primary mb-4 min-h-[3.5rem] line-clamp-2 text-lg font-semibold leading-tight transition-colors'>{tour?.name || ''}</h3>
           </Link>
 
           {/* Tour Info */}
@@ -69,8 +70,8 @@ export const RecommendedToursCard = ({ tour }: { tour: Tour }) => {
                 ))}
             </div>
           </div>
-          {/* Rating */}
-          {tour.rating && tour.rating > 0 && (
+          {/* Rating - Only show if rating exists and is greater than 0 */}
+          {tour.rating && tour.rating > 0 ? (
             <div className='mb-4 flex items-center gap-2'>
               <div className='flex items-center gap-1'>
                 {[...Array(5)].map((_, i) => (
@@ -79,6 +80,9 @@ export const RecommendedToursCard = ({ tour }: { tour: Tour }) => {
               </div>
               <span className='text-sitora-body text-sm font-medium'>{tour?.rating.toFixed(1)}</span>
             </div>
+          ) : (
+            // Empty space to maintain consistent layout when no rating
+            <div className='mb-4 h-6' />
           )}
 
           {/* Price */}

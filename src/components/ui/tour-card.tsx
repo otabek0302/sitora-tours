@@ -17,8 +17,8 @@ const ToursCard = ({ tour }: ToursCardProps) => {
   const t = useTranslations('pages.tours')
 
   return (
-    <Card className='bg-card border-border overflow-hidden rounded-[26px] border shadow-none'>
-      <div className='flex flex-col lg:flex-row'>
+    <Card className='bg-card border-border h-full overflow-hidden rounded-[26px] border shadow-none'>
+      <div className='flex h-full flex-col lg:flex-row'>
         {/* Tour Image */}
         <div className='relative h-48 overflow-hidden lg:h-auto lg:w-1/3'>
           {tour.images && tour.images.length > 0 && tour.images[0]?.image ? (
@@ -38,9 +38,9 @@ const ToursCard = ({ tour }: ToursCardProps) => {
 
           {/* Rating Badge */}
           {tour.rating && tour.rating > 0 && (
-          <div className='absolute top-4 right-4'>
+            <div className='absolute top-4 right-4'>
               <div className='bg-background/90 flex items-center gap-1 rounded-full px-2 py-1 backdrop-blur-sm'>
-              <Star className='text-sitora-gold-medium h-3 w-3 fill-current' />
+                <Star className='text-sitora-gold-medium h-3 w-3 fill-current' />
                 <span className='text-sitora-text-subtitle text-xs font-semibold'>{tour.rating.toFixed(1)}</span>
               </div>
             </div>
@@ -48,13 +48,15 @@ const ToursCard = ({ tour }: ToursCardProps) => {
         </div>
 
         {/* Tour Content */}
-        <div className='flex-1 p-6'>
+        <div className='flex flex-1 flex-col p-6'>
           <CardHeader className='mb-4 p-0'>
-            <CardTitle className='text-sitora-text-subtitle mb-2 text-xl font-bold'>{tour.name}</CardTitle>
-            {tour.description && <p className='text-sitora-body line-clamp-3 text-sm leading-relaxed'>{tour.description}</p>}
+            {/* Fixed height for title - allows 2 lines with line-clamp */}
+            <CardTitle className='text-sitora-text-subtitle mb-2 line-clamp-2 min-h-[3.5rem] text-xl leading-tight font-bold'>{tour.name}</CardTitle>
+            {/* Fixed height for description - always shows 3 lines or empty space */}
+            <div className='min-h-[4.5rem]'>{tour.description ? <p className='text-sitora-body line-clamp-3 text-sm leading-relaxed'>{tour.description}</p> : <div className='h-full' />}</div>
           </CardHeader>
 
-          <CardContent className='flex flex-col gap-4 p-0'>
+          <CardContent className='flex flex-1 flex-col gap-4 p-0'>
             {/* Tour Details */}
             <div className='text-sitora-body flex flex-wrap gap-4 text-sm'>
               <div className='flex items-center gap-1'>
@@ -70,13 +72,13 @@ const ToursCard = ({ tour }: ToursCardProps) => {
                 </span>
               </div>
               {tour.cities && tour.cities.length > 0 && (
-                <div className='flex items-center gap-1 flex-wrap'>
+                <div className='flex flex-wrap items-center gap-1'>
                   <MapPin className='text-sitora-primary h-4 w-4 flex-shrink-0' />
-                  <span className='flex items-center gap-1 flex-wrap'>
+                  <span className='flex flex-wrap items-center gap-1'>
                     {tour.cities.map((city: { id: string | number; name?: string }, index: number) => (
                       <span key={city.id}>
                         {city.name || ''}
-                        {index < tour.cities.length - 1 && <span className='mx-1'>→</span>}
+                        {index < (tour.cities?.length || 0) - 1 && <span className='mx-1'>→</span>}
                       </span>
                     ))}
                   </span>
@@ -84,8 +86,8 @@ const ToursCard = ({ tour }: ToursCardProps) => {
               )}
             </div>
 
-            {/* Rating */}
-            {tour.rating && tour.rating > 0 && (
+            {/* Rating - Only show if rating exists and is greater than 0 */}
+            {tour.rating && tour.rating > 0 ? (
               <div className='flex items-center gap-2'>
                 <div className='flex items-center gap-1'>
                   {[...Array(5)].map((_, i) => (
@@ -96,6 +98,9 @@ const ToursCard = ({ tour }: ToursCardProps) => {
                   {tour.rating.toFixed(1)} {t('rating')}
                 </span>
               </div>
+            ) : (
+              // Empty space to maintain consistent layout when no rating
+              <div className='h-6' />
             )}
 
             {/* Price and Book Button */}
