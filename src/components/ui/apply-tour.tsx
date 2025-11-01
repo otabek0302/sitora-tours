@@ -163,7 +163,7 @@ export const ApplyTour = ({ open, setOpen, tour }: ApplyTourProps) => {
                 <SelectTrigger className={FORM_STYLES.select} disabled={isSubmitting}>
                   <SelectValue placeholder={t('form.select_tour_date')} />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className='w-full'>
                   {tour.booking_pricing?.map((booking, index) => {
                     const { fullText } = formatBookingOptionText(booking)
 
