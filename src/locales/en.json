@@ -178,6 +178,12 @@
         },
         "main_services_heading": "Additional Services",
         "main_services": {
+          "flight": "Flight Booking",
+          "car_rental": "Car Rental",
+          "hotel_booking": "Hotel Booking",
+          "local_guide": "Local Guide",
+          "group_tours": "Group Tours",
+          "custom_itinerary": "Custom Itinerary",
           "group_visa": "Group visa assistance",
           "catering": "Meal provision and restaurant service arrangements with full board (breakfast, lunch, dinner) or half board (breakfast and lunch/dinner)",
           "university_meetings": "Meetings with university professors and conference organization",

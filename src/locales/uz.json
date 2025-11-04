@@ -179,6 +179,12 @@
         },
         "main_services_heading": "Qo'shimcha xizmatlar",
         "main_services": {
+          "flight": "Aviabiletlar bron qilish",
+          "car_rental": "Mashina ijarasi",
+          "hotel_booking": "Mehmonxona bron qilish",
+          "local_guide": "Mahalliy rahbar",
+          "group_tours": "Guruhli sayohatlar",
+          "custom_itinerary": "Maxsus marshrut",
           "group_visa": "Guruhli visa ta'minlash",
           "catering": "Ovqatlanishni ta'minlash va restoran xizmatini buyurtma qilish to'liq pansiyon asosida (nonushta, tushlik, kechki ovqat) yoki yarim pansiyon asosida (nonushta va tushlik/kechki ovqat)",
           "university_meetings": "Oliy ta'lim muassasalari o'qituvchilari bilan uchrashuvlar va konferensiyalar tashkil etish",
