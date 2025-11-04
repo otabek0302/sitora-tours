@@ -114,8 +114,8 @@ export const Pages: GlobalConfig = {
                 {
                   label: 'Number',
                   name: 'number',
-                  type: 'number',
-                  required: true,
+                  type: 'text',
+                  required: false,
                 },
                 {
                   label: 'Text',
