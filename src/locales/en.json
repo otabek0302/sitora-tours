@@ -2,11 +2,11 @@
   "navigation": {
     "home": "Home",
     "tours": "Tours",
-    "local_tours": "Uzbekistan Tours",
-    "abroad_tours": "International Tours",
-    "cities": "Cities",
+    "local_tours": "Tours in Uzbekistan",
+    "abroad_tours": "Tours abroad",
+    "cities": "Pearl of the East",
     "hotels": "Hotels",
-    "cars": "Cars",
+    "cars": "Transportation services",
     "about": "About",
     "contact": "Contact Us"
   },
@@ -142,29 +142,48 @@
         "categories": {
           "transportation": {
             "title": "Transportation",
-            "description": "We offer comprehensive transportation solutions including flights, car rentals, and private transfers to ensure comfortable and convenient travel throughout your journey."
+            "description": "We offer comprehensive transportation solutions including flights, car rentals, and private transfers to ensure comfortable and convenient travel throughout your journey.",
+            "services": {
+              "airport_transfer": "Airport and train station meet and greet services, transfers with preferred air-conditioned vehicles",
+              "ticket_booking": "Flight and train ticket booking"
+            }
           },
           "accommodation": {
             "title": "Accommodation",
-            "description": "From luxury hotels to traditional guesthouses, we provide carefully selected accommodations that match your preferences and budget for an authentic experience."
+            "description": "From luxury hotels to traditional guesthouses, we provide carefully selected accommodations that match your preferences and budget for an authentic experience.",
+            "services": {
+              "accommodation_booking": "Hotel booking (3***-5***** stars), local homestays, or yurts, according to client preference"
+            }
           },
           "guided_tours": {
             "title": "Guided Tours",
-            "description": "Our expert local guides provide insightful tours of historical sites, cultural landmarks, and hidden gems, offering deep cultural understanding and memorable experiences."
+            "description": "Our expert local guides provide insightful tours of historical sites, cultural landmarks, and hidden gems, offering deep cultural understanding and memorable experiences.",
+            "services": {
+              "sightseeing": "Tours to historical and architectural sites",
+              "guide_translator": "Qualified guide-translator services",
+              "factory_tours": "Educational tours to factories (carpet, ceramic, winery, etc.)",
+              "entrance_tickets": "All types of entrance tickets to monuments, as well as theater tickets"
+            }
           },
           "cultural_experience": {
             "title": "Cultural Experience",
-            "description": "Immerse yourself in local traditions, cuisine, and customs through authentic cultural experiences, workshops, and interactions with local communities."
+            "description": "Immerse yourself in local traditions, cuisine, and customs through authentic cultural experiences, workshops, and interactions with local communities.",
+            "services": {
+              "cooking_masterclass": "Master classes on preparing national dishes, sweets, and pastries",
+              "folklore_performances": "Organization of national folklore group performances from Samarkand, Bukhara, and other cities of Uzbekistan",
+              "cultural_events": "Attendance at national evenings and celebrations",
+              "desert_experience": "Trekking, camel riding, and meetings with nomads in the desert"
+            }
           }
         },
-        "main_services_heading": "Main Services",
+        "main_services_heading": "Additional Services",
         "main_services": {
-          "flight": "Flight Booking",
-          "car_rental": "Car Rental",
-          "hotel_booking": "Hotel Booking",
-          "local_guide": "Local Guide",
-          "group_tours": "Group Tours",
-          "custom_itinerary": "Custom Itinerary"
+          "group_visa": "Group visa assistance",
+          "catering": "Meal provision and restaurant service arrangements with full board (breakfast, lunch, dinner) or half board (breakfast and lunch/dinner)",
+          "university_meetings": "Meetings with university professors and conference organization",
+          "conference_organization": "Organization and hosting of conferences, congresses, seminars, and other events",
+          "conference_halls": "Booking of halls for conferences, congresses, seminars, symposiums",
+          "conference_equipment": "Provision of equipment for conferences"
         },
         "view_more": "View More"
       },
@@ -560,10 +579,10 @@
         "passengers": "passengers",
         "rental_info": "Rental Information",
         "pricing_and_booking": "Pricing and Booking",
-        "price_per_day": "Price per Day",
-        "transfer_airport_hotel": "Transfer: (airport - hotel - airport)",
-        "transfer_hotel_dinner": "Transfer: (hotel - dinner - hotel)",
-        "long_route_7days": "On a long route (from 7 days)",
+        "price_per_day": "City route",
+        "transfer_airport_hotel": "Transfer: (airport - hotel / hotel - airport)",
+        "transfer_hotel_dinner": "Transfer: (hotel - dinner / dinner - hotel)",
+        "long_route_7days": "Extended route",
         "min_rental": "Minimum Rental Period",
         "min_rental_value": "1 day",
         "driver_requirements": "Driver Requirements",

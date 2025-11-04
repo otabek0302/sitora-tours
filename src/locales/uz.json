@@ -3,10 +3,10 @@
     "home": "Bosh sahifa",
     "tours": "Turlar",
     "local_tours": "O'zbekiston bo'ylab sayohatlar",
-    "abroad_tours": "Xalqaro turlar",
+    "abroad_tours": "Chet elga sayohatlar",
     "cities": "Shaharlar",
     "hotels": "Mehmonxonalar",
-    "cars": "Avtomobillar",
+    "cars": "Transport xizmatlari",
     "about": "Biz haqimizda",
     "contact": "Biz bilan bog'laning"
   },
@@ -143,29 +143,48 @@
         "categories": {
           "transportation": {
             "title": "Transport",
-            "description": "Biz parvozlar, mashina ijarasi va shaxsiy transferlar kabi keng qamrovli transport yechimlarini taklif qilamiz."
+            "description": "Biz parvozlar, mashina ijarasi va shaxsiy transferlar kabi keng qamrovli transport yechimlarini taklif qilamiz.",
+            "services": {
+              "airport_transfer": "Aeroport va temir yo'l vokzalida kutib olish va jo'natish, mijozning xohlagan konditsionerli avtotransporti bilan transfer",
+              "ticket_booking": "Aviabiletlar va temir yo'l biletlari bron qilish"
+            }
           },
           "accommodation": {
             "title": "Yashash joyi",
-            "description": "Hashamatli mehmonxonalardan an'anaviy mehmonxonalargacha, biz sizning didingiz va byudjetingizga mos keladigan diqqat bilan tanlangan yashash joylarini taqdim etamiz."
+            "description": "Hashamatli mehmonxonalardan an'anaviy mehmonxonalargacha, biz sizning didingiz va byudjetingizga mos keladigan diqqat bilan tanlangan yashash joylarini taqdim etamiz.",
+            "services": {
+              "accommodation_booking": "Mehmonxonalar bron qilish (3***-5***** yulduz), mahalliy aholi uylarida yoki yurtada, mijozning xohishiga ko'ra"
+            }
           },
           "guided_tours": {
             "title": "Rahbarlik bilan sayohatlar",
-            "description": "Bizning tajribali mahalliy rahbarlar tarixiy joylar, madaniy diqqatga sazovor joylar va yashirin jozibalar bo'ylab ma'lumotli ekskursiyalar o'tkazadilar."
+            "description": "Bizning tajribali mahalliy rahbarlar tarixiy joylar, madaniy diqqatga sazovor joylar va yashirin jozibalar bo'ylab ma'lumotli ekskursiyalar o'tkazadilar.",
+            "services": {
+              "sightseeing": "Yodgorlik va me'moriy joylarga ekskursiyalar",
+              "guide_translator": "Malakali rahbar-tarjimonlar xizmatlarini ta'minlash",
+              "factory_tours": "Zavodlar va fabrikalarga tanishuv ekskursiyalari (gilam, keramika, vino va boshqalar)",
+              "entrance_tickets": "Yodgorliklarga barcha turdagi kirish biletlari, shuningdek teatrga biletlar"
+            }
           },
           "cultural_experience": {
             "title": "Madaniy tajriba",
-            "description": "Mahalliy an'analar, oshxona va urf-odatlar bilan tanishib chiqing, haqiqiy madaniy tadbirlar, ustaxonalar va mahalliy jamiyatlar bilan aloqa orqali."
+            "description": "Mahalliy an'analar, oshxona va urf-odatlar bilan tanishib chiqing, haqiqiy madaniy tadbirlar, ustaxonalar va mahalliy jamiyatlar bilan aloqa orqali.",
+            "services": {
+              "cooking_masterclass": "Milliy taomlar, shirinliklar va qandolatlar tayyorlash bo'yicha master-klasslar",
+              "folklore_performances": "Samarqand, Buxoro va O'zbekistonning boshqa shaharlaridan milliy folklor guruhlari chiqishlarini tashkil etish",
+              "cultural_events": "Milliy kechalar va tantanalarga tashrif buyurish",
+              "desert_experience": "Sahroda trekking, tuya minish va ko'chmanchilar bilan uchrashuvlar"
+            }
           }
         },
-        "main_services_heading": "Asosiy xizmatlar",
+        "main_services_heading": "Qo'shimcha xizmatlar",
         "main_services": {
-          "flight": "Aviabiletlar bron qilish",
-          "car_rental": "Mashina ijarasi",
-          "hotel_booking": "Mehmonxona bron qilish",
-          "local_guide": "Mahalliy rahbar",
-          "group_tours": "Guruhli sayohatlar",
-          "custom_itinerary": "Maxsus marshrut"
+          "group_visa": "Guruhli visa ta'minlash",
+          "catering": "Ovqatlanishni ta'minlash va restoran xizmatini buyurtma qilish to'liq pansiyon asosida (nonushta, tushlik, kechki ovqat) yoki yarim pansiyon asosida (nonushta va tushlik/kechki ovqat)",
+          "university_meetings": "Oliy ta'lim muassasalari o'qituvchilari bilan uchrashuvlar va konferensiyalar tashkil etish",
+          "conference_organization": "Konferensiyalar, kongresslar, seminarlar va boshqa tadbirlarni tashkil etish va o'tkazish",
+          "conference_halls": "Konferensiyalar, kongresslar, seminarlar, simpoziumlar uchun zalarni bron qilish",
+          "conference_equipment": "Konferensiyalar uchun jihozlarni ta'minlash"
         },
         "view_more": "Ko'proq ko'rish"
       },
@@ -562,9 +581,9 @@
         "rental_info": "Ijara haqida ma'lumot",
         "pricing_and_booking": "Narxlar va bron qilish",
         "price_per_day": "Kunlik narx",
-        "transfer_airport_hotel": "Transfer: (aeroport - mehmonxona - aeroport)",
-        "transfer_hotel_dinner": "Transfer: (mehmonxona - kechki ovqat - mehmonxona)",
-        "long_route_7days": "Uzoq marshrut (7 kundan)",
+        "transfer_airport_hotel": "Transfer: (aeroport - mehmonxona / mehmonxona - aeroport)",
+        "transfer_hotel_dinner": "Transfer: (mehmonxona - kechki ovqat / kechki ovqat - mehmonxona)",
+        "long_route_7days": "Uzoq marshrut",
         "min_rental": "Minimal ijara muddati",
         "min_rental_value": "1 kun",
         "driver_requirements": "Haydovchiga talablar",

@@ -22,8 +22,8 @@ export const HotelSchema = z.object({
   city: CityRelationSchema.optional(),
   address: z.string().optional(),
   phone: z.string().optional(),
-  website: z.string().optional(),
-  email: z.string().optional(),
+  website: z.string().nullish(),
+  email: z.string().nullish(),
   rating: z.string().optional(), // '1', '2', '3', '4', '5' from select
   features: z.array(z.object({ id: z.string().optional(), name: z.string() })).optional(),
   image: ImageSchema.nullish(),

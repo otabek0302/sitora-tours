@@ -109,9 +109,26 @@ const RecommendedCarsSectionSchema = z.object({
     .nullable(),
 })
 
+// Statistics Section
+const StatsSectionSchema = z.object({
+  blockType: z.literal('stats'),
+  blockName: z.string().nullish(),
+  id: z.string().optional(),
+  statistics: z
+    .array(
+      z.object({
+        id: z.string().optional(),
+        number: z.number().optional(),
+        text: z.string().optional(),
+      }),
+    )
+    .optional(),
+})
+
 // Union of all section types
 const SectionSchema = z.discriminatedUnion('blockType', [
   HeroSectionSchema,
+  StatsSectionSchema,
   FAQSectionSchema,
   SpecialOffersSectionSchema,
   RecommendedLocalToursSectionSchema,
@@ -139,3 +156,4 @@ export type RecommendedAbroadToursSection = z.infer<typeof RecommendedAbroadTour
 export type RecommendedToursSection = z.infer<typeof RecommendedToursSectionSchema> // Legacy
 export type RecommendedCitiesSection = z.infer<typeof RecommendedCitiesSectionSchema>
 export type RecommendedCarsSection = z.infer<typeof RecommendedCarsSectionSchema>
+export type StatsSection = z.infer<typeof StatsSectionSchema>

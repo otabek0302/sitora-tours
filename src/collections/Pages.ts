@@ -16,6 +16,7 @@ export const Pages: GlobalConfig = {
         if (!doc?.sections || doc.sections.length === 0) {
           doc.sections = [
             { blockType: 'hero', blockName: 'Hero Section' },
+            { blockType: 'stats', blockName: 'Statistics Section' },
             { blockType: 'faq', blockName: 'FAQ Section' },
             { blockType: 'special-offers', blockName: 'Special Offers' },
             { blockType: 'recommended-local-tours', blockName: 'Recommended Local Tours' },
@@ -32,8 +33,8 @@ export const Pages: GlobalConfig = {
     {
       name: 'sections',
       type: 'blocks',
-      minRows: 7,
-      maxRows: 7,
+      minRows: 8,
+      maxRows: 8,
       admin: {
         description: 'Website sections - Fixed structure, edit content only',
         initCollapsed: false,
@@ -92,6 +93,36 @@ export const Pages: GlobalConfig = {
                   filterOptions: {
                     mimeType: { contains: 'video/' },
                   },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          slug: 'stats',
+          labels: {
+            singular: 'Statistics Section',
+            plural: 'Statistics Sections',
+          },
+          fields: [
+            {
+              name: 'statistics',
+              type: 'array',
+              minRows: 1,
+              maxRows: 4,
+              fields: [
+                {
+                  label: 'Number',
+                  name: 'number',
+                  type: 'number',
+                  required: true,
+                },
+                {
+                  label: 'Text',
+                  name: 'text',
+                  type: 'text',
+                  required: true,
+                  localized: true,
                 },
               ],
             },

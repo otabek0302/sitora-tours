@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { Pages, HeroSection, FAQSection, SpecialOffersSection, RecommendedLocalToursSection, RecommendedAbroadToursSection, RecommendedToursSection, RecommendedCitiesSection, RecommendedCarsSection } from '@/lib/schemas/pages'
+import { Pages, HeroSection, StatsSection, FAQSection, SpecialOffersSection, RecommendedLocalToursSection, RecommendedAbroadToursSection, RecommendedToursSection, RecommendedCitiesSection, RecommendedCarsSection } from '@/lib/schemas/pages'
 import { fetchPages as fetchPagesAPI } from '@/lib/api/pages'
 
 interface PagesState {
@@ -20,6 +20,7 @@ interface PagesState {
 
   // Section getters
   getHeroSection: () => HeroSection | undefined
+  getStatsSection: () => StatsSection | undefined
   getFAQSection: () => FAQSection | undefined
   getSpecialOffersSection: () => SpecialOffersSection | undefined
   getRecommendedLocalToursSection: () => RecommendedLocalToursSection | undefined
@@ -64,6 +65,11 @@ export const usePagesStore = create<PagesState>((set, get) => ({
   getHeroSection: () => {
     const { pages } = get()
     return pages?.sections?.find(section => section.blockType === 'hero') as HeroSection | undefined
+  },
+
+  getStatsSection: () => {
+    const { pages } = get()
+    return pages?.sections?.find(section => section.blockType === 'stats') as StatsSection | undefined
   },
 
   getFAQSection: () => {
