@@ -117,7 +117,7 @@ export async function up({ db, payload: _payload, req: _req }: MigrateUpArgs): P
   );
   
   CREATE TABLE "tours_itinerary_activities_locales" (
-  	"activity" varchar NOT NULL,
+  	"activity" text NOT NULL,
   	"id" serial PRIMARY KEY NOT NULL,
   	"_locale" "_locales" NOT NULL,
   	"_parent_id" varchar NOT NULL
@@ -260,7 +260,10 @@ export async function up({ db, payload: _payload, req: _req }: MigrateUpArgs): P
   	"slug" varchar NOT NULL,
   	"brand" varchar NOT NULL,
   	"capacity" numeric NOT NULL,
-  	"price" numeric NOT NULL,
+  	"pricing_price_per_day_in_city" numeric NOT NULL,
+  	"pricing_transfer_airport_hotel_airport" numeric,
+  	"pricing_transfer_hotel_dinner_hotel" numeric,
+  	"pricing_long_route_from7_days" numeric,
   	"image_id" integer NOT NULL,
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
   	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
@@ -269,7 +272,11 @@ export async function up({ db, payload: _payload, req: _req }: MigrateUpArgs): P
   CREATE TABLE "cars_locales" (
   	"name" varchar NOT NULL,
   	"type" varchar NOT NULL,
-  	"model" varchar NOT NULL,
+  	"description" text,
+  	"pricing_price_per_day_in_city_label" varchar,
+  	"pricing_transfer_airport_hotel_airport_label" varchar,
+  	"pricing_transfer_hotel_dinner_hotel_label" varchar,
+  	"pricing_long_route_from7_days_label" varchar,
   	"id" serial PRIMARY KEY NOT NULL,
   	"_locale" "_locales" NOT NULL,
   	"_parent_id" integer NOT NULL

@@ -118,7 +118,7 @@ const StatsSectionSchema = z.object({
     .array(
       z.object({
         id: z.string().optional(),
-        number: z.number().optional(),
+        number: z.union([z.number(), z.string()]).optional(),
         text: z.string().optional(),
       }),
     )
@@ -126,21 +126,11 @@ const StatsSectionSchema = z.object({
 })
 
 // Union of all section types
-const SectionSchema = z.discriminatedUnion('blockType', [
-  HeroSectionSchema,
-  StatsSectionSchema,
-  FAQSectionSchema,
-  SpecialOffersSectionSchema,
-  RecommendedLocalToursSectionSchema,
-  RecommendedAbroadToursSectionSchema,
-  RecommendedToursSectionSchema, // Legacy, for backward compatibility
-  RecommendedCitiesSectionSchema,
-  RecommendedCarsSectionSchema,
-])
+const SectionSchema = z.discriminatedUnion('blockType', [HeroSectionSchema, StatsSectionSchema, FAQSectionSchema, SpecialOffersSectionSchema, RecommendedLocalToursSectionSchema, RecommendedAbroadToursSectionSchema, RecommendedToursSectionSchema, RecommendedCitiesSectionSchema, RecommendedCarsSectionSchema])
 
 // Pages schema
 export const PagesSchema = z.object({
-  id: z.number().optional(),
+  id: z.union([z.string(), z.number()]).optional(),
   sections: z.array(SectionSchema).optional(),
   updatedAt: z.string().optional(),
   createdAt: z.string().optional(),

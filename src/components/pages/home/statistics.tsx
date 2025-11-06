@@ -20,7 +20,7 @@ const Statistics = () => {
           {statistics.map((stat, index) => (
             <div key={stat.id || index} className={`border-border text-center md:border-r md:pr-4 md:text-left ${index === statistics.length - 1 ? 'md:border-r-0' : ''}`}>
               <div className='mb-2 md:mb-4'>
-                <span className='text-sitora-text-subtitle text-3xl font-bold sm:text-4xl lg:text-6xl'>{stat.number?.toLocaleString() || '0'}</span>
+                <span className='text-sitora-text-subtitle text-3xl font-bold sm:text-4xl lg:text-6xl'>{typeof stat.number === 'number' ? stat.number.toLocaleString() : stat.number && stat.number.trim() !== '' ? stat.number : '0'}</span>
               </div>
               <p className='text-sitora-body text-xs leading-relaxed font-normal sm:text-sm lg:text-base'>{stat.text || ''}</p>
             </div>
