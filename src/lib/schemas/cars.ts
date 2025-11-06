@@ -10,9 +10,13 @@ const ImageSchema = z.object({
 const CarPricingSchema = z
   .object({
     pricePerDayInCity: z.number().nullable().optional(),
+    pricePerDayInCityLabel: z.string().nullable().optional(),
     transferAirportHotelAirport: z.number().nullable().optional(),
+    transferAirportHotelAirportLabel: z.string().nullable().optional(),
     transferHotelDinnerHotel: z.number().nullable().optional(),
+    transferHotelDinnerHotelLabel: z.string().nullable().optional(),
     longRouteFrom7Days: z.number().nullable().optional(),
+    longRouteFrom7DaysLabel: z.string().nullable().optional(),
   })
   .nullable()
   .optional()
@@ -26,6 +30,7 @@ export const CarSchema = z
     slug: z.string(),
     brand: z.string(),
     capacity: z.number(),
+    description: z.string().optional().nullable(),
     // Support both old (price) and new (pricing) structures during migration
     price: z.number().optional(), // Old field for backward compatibility
     pricing: CarPricingSchema,

@@ -29,7 +29,7 @@ const CarRental = ({ car }: CarRentalProps) => {
           <div className='flex items-center justify-between'>
             <div className='flex items-start gap-3'>
               <div className='flex-1'>
-                <h3 className='text-sitora-text-subtitle mb-1 text-sm font-semibold'>{t('price_per_day')}</h3>
+                <h3 className='text-sitora-text-subtitle mb-1 text-sm font-semibold'>{car.pricing?.pricePerDayInCityLabel || t('price_per_day')}</h3>
                 <p className='text-sitora-primary text-3xl font-bold'>${car.pricing?.pricePerDayInCity || 0}</p>
               </div>
             </div>
@@ -40,7 +40,7 @@ const CarRental = ({ car }: CarRentalProps) => {
             <div className='border-border flex items-center justify-between border-t pt-4'>
               <div className='flex items-start gap-3'>
                 <div className='flex-1'>
-                  <h3 className='text-sitora-text-subtitle mb-1 text-sm font-semibold'>{t('transfer_airport_hotel')}</h3>
+                  <h3 className='text-sitora-text-subtitle mb-1 text-sm font-semibold'>{car.pricing?.transferAirportHotelAirportLabel || t('transfer_airport_hotel')}</h3>
                   <p className='text-sitora-primary text-2xl font-bold'>${car.pricing.transferAirportHotelAirport}</p>
                 </div>
               </div>
@@ -52,7 +52,7 @@ const CarRental = ({ car }: CarRentalProps) => {
             <div className='border-border flex items-center justify-between border-t pt-4'>
               <div className='flex items-start gap-3'>
                 <div className='flex-1'>
-                  <h3 className='text-sitora-text-subtitle mb-1 text-sm font-semibold'>{t('transfer_hotel_dinner')}</h3>
+                  <h3 className='text-sitora-text-subtitle mb-1 text-sm font-semibold'>{car.pricing?.transferHotelDinnerHotelLabel || t('transfer_hotel_dinner')}</h3>
                   <p className='text-sitora-primary text-2xl font-bold'>${car.pricing.transferHotelDinnerHotel}</p>
                 </div>
               </div>
@@ -64,7 +64,7 @@ const CarRental = ({ car }: CarRentalProps) => {
             <div className='border-border flex items-center justify-between border-t pt-4'>
               <div className='flex items-start gap-3'>
                 <div className='flex-1'>
-                  <h3 className='text-sitora-text-subtitle mb-1 text-sm font-semibold'>{t('long_route_7days')}</h3>
+                  <h3 className='text-sitora-text-subtitle mb-1 text-sm font-semibold'>{car.pricing?.longRouteFrom7DaysLabel || t('long_route_7days')}</h3>
                   <p className='text-sitora-primary text-2xl font-bold'>${car.pricing.longRouteFrom7Days}</p>
                 </div>
               </div>

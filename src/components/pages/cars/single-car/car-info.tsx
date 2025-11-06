@@ -18,9 +18,7 @@ const CarInfo = ({ car }: CarInfoProps) => {
         {/* Brand */}
         <div className='flex items-center gap-2'>
           <CarIcon className='text-sitora-primary h-5 w-5' />
-          <span className='text-sitora-body text-base font-medium'>
-            {car.brand}
-          </span>
+          <span className='text-sitora-body text-base font-medium'>{car.brand}</span>
         </div>
 
         {/* Separator */}
@@ -42,6 +40,13 @@ const CarInfo = ({ car }: CarInfoProps) => {
           <span className='text-sitora-text-subtitle text-base font-semibold'>4.5/5</span>
         </div>
       </div>
+
+      {/* Description */}
+      {car.description && (
+        <div className='pt-4'>
+          <p className='text-sitora-body text-base leading-relaxed whitespace-pre-line'>{car.description}</p>
+        </div>
+      )}
     </div>
   )
 }

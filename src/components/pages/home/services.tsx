@@ -113,6 +113,83 @@ const Services = () => {
             </div>
           </div>
         </div>
+
+        {/* Detailed Services List */}
+        <div className='mt-8'>
+          <h3 className='text-sitora-text-subtitle mb-6 text-xl font-bold lg:text-2xl'>{t('detailed_services_heading')}</h3>
+          <div className='bg-card border-border rounded-[26px] border p-6 shadow-none'>
+            <ul className='grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3'>
+              <li className='flex items-start gap-3'>
+                <span className='text-sitora-primary mt-1 flex-shrink-0 text-lg font-bold'>—</span>
+                <span className='text-sitora-body text-sm leading-relaxed'>{t('detailed_services.airport_transfer')}</span>
+              </li>
+              <li className='flex items-start gap-3'>
+                <span className='text-sitora-primary mt-1 flex-shrink-0 text-lg font-bold'>—</span>
+                <span className='text-sitora-body text-sm leading-relaxed'>{t('detailed_services.ticket_booking')}</span>
+              </li>
+              <li className='flex items-start gap-3'>
+                <span className='text-sitora-primary mt-1 flex-shrink-0 text-lg font-bold'>—</span>
+                <span className='text-sitora-body text-sm leading-relaxed'>{t('detailed_services.group_visa')}</span>
+              </li>
+              <li className='flex items-start gap-3'>
+                <span className='text-sitora-primary mt-1 flex-shrink-0 text-lg font-bold'>—</span>
+                <span className='text-sitora-body text-sm leading-relaxed'>{t('detailed_services.hotel_booking')}</span>
+              </li>
+              <li className='flex items-start gap-3'>
+                <span className='text-sitora-primary mt-1 flex-shrink-0 text-lg font-bold'>—</span>
+                <span className='text-sitora-body text-sm leading-relaxed'>{t('detailed_services.sightseeing')}</span>
+              </li>
+              <li className='flex items-start gap-3'>
+                <span className='text-sitora-primary mt-1 flex-shrink-0 text-lg font-bold'>—</span>
+                <span className='text-sitora-body text-sm leading-relaxed'>{t('detailed_services.catering')}</span>
+              </li>
+              <li className='flex items-start gap-3'>
+                <span className='text-sitora-primary mt-1 flex-shrink-0 text-lg font-bold'>—</span>
+                <span className='text-sitora-body text-sm leading-relaxed'>{t('detailed_services.cooking_masterclass')}</span>
+              </li>
+              <li className='flex items-start gap-3'>
+                <span className='text-sitora-primary mt-1 flex-shrink-0 text-lg font-bold'>—</span>
+                <span className='text-sitora-body text-sm leading-relaxed'>{t('detailed_services.guide_translator')}</span>
+              </li>
+              <li className='flex items-start gap-3'>
+                <span className='text-sitora-primary mt-1 flex-shrink-0 text-lg font-bold'>—</span>
+                <span className='text-sitora-body text-sm leading-relaxed'>{t('detailed_services.university_meetings')}</span>
+              </li>
+              <li className='flex items-start gap-3'>
+                <span className='text-sitora-primary mt-1 flex-shrink-0 text-lg font-bold'>—</span>
+                <span className='text-sitora-body text-sm leading-relaxed'>{t('detailed_services.folklore_performances')}</span>
+              </li>
+              <li className='flex items-start gap-3'>
+                <span className='text-sitora-primary mt-1 flex-shrink-0 text-lg font-bold'>—</span>
+                <span className='text-sitora-body text-sm leading-relaxed'>{t('detailed_services.cultural_events')}</span>
+              </li>
+              <li className='flex items-start gap-3'>
+                <span className='text-sitora-primary mt-1 flex-shrink-0 text-lg font-bold'>—</span>
+                <span className='text-sitora-body text-sm leading-relaxed'>{t('detailed_services.desert_experience')}</span>
+              </li>
+              <li className='flex items-start gap-3'>
+                <span className='text-sitora-primary mt-1 flex-shrink-0 text-lg font-bold'>—</span>
+                <span className='text-sitora-body text-sm leading-relaxed'>{t('detailed_services.factory_tours')}</span>
+              </li>
+              <li className='flex items-start gap-3'>
+                <span className='text-sitora-primary mt-1 flex-shrink-0 text-lg font-bold'>—</span>
+                <span className='text-sitora-body text-sm leading-relaxed'>{t('detailed_services.entrance_tickets')}</span>
+              </li>
+              <li className='flex items-start gap-3'>
+                <span className='text-sitora-primary mt-1 flex-shrink-0 text-lg font-bold'>—</span>
+                <span className='text-sitora-body text-sm leading-relaxed'>{t('detailed_services.conference_organization')}</span>
+              </li>
+              <li className='flex items-start gap-3'>
+                <span className='text-sitora-primary mt-1 flex-shrink-0 text-lg font-bold'>—</span>
+                <span className='text-sitora-body text-sm leading-relaxed'>{t('detailed_services.conference_halls')}</span>
+              </li>
+              <li className='flex items-start gap-3'>
+                <span className='text-sitora-primary mt-1 flex-shrink-0 text-lg font-bold'>—</span>
+                <span className='text-sitora-body text-sm leading-relaxed'>{t('detailed_services.conference_equipment')}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
   )

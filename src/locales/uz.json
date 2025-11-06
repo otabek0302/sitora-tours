@@ -192,6 +192,26 @@
           "conference_halls": "Konferensiyalar, kongresslar, seminarlar, simpoziumlar uchun zalarni bron qilish",
           "conference_equipment": "Konferensiyalar uchun jihozlarni ta'minlash"
         },
+        "detailed_services_heading": "Bizning xizmatlarimiz",
+        "detailed_services": {
+          "airport_transfer": "Aeroport va temir yo'l vokzalida kutib olish va jo'natish, mijozning xohlagan konditsionerli avtotransporti bilan transfer",
+          "ticket_booking": "Aviabiletlar va temir yo'l biletlari bron qilish",
+          "group_visa": "Guruhli visa ta'minlash",
+          "hotel_booking": "Mehmonxonalar bron qilish (3***-5***** yulduz), mahalliy aholi uylarida yoki yurtada, mijozning xohishiga ko'ra",
+          "sightseeing": "Yodgorlik va me'moriy joylarga ekskursiyalar",
+          "catering": "Ovqatlanishni ta'minlash va restoran xizmatini buyurtma qilish to'liq pansiyon asosida (nonushta, tushlik, kechki ovqat) yoki yarim pansiyon asosida (nonushta va tushlik/kechki ovqat)",
+          "cooking_masterclass": "Milliy taomlar, shirinliklar va qandolatlar tayyorlash bo'yicha master-klasslar",
+          "guide_translator": "Malakali rahbar-tarjimonlar xizmatlarini ta'minlash",
+          "university_meetings": "Oliy ta'lim muassasalari o'qituvchilari bilan uchrashuvlar va konferensiyalar tashkil etish",
+          "folklore_performances": "Samarqand, Buxoro va O'zbekistonning boshqa shaharlaridan milliy folklor guruhlari chiqishlarini tashkil etish",
+          "cultural_events": "Milliy kechalar va tantanalarga tashrif buyurish",
+          "desert_experience": "Sahroda trekking, tuya minish va ko'chmanchilar bilan uchrashuvlar",
+          "factory_tours": "Zavodlar va fabrikalarga tanishuv ekskursiyalari (gilam, keramika, vino va boshqalar)",
+          "entrance_tickets": "Yodgorliklarga barcha turdagi kirish biletlari, shuningdek teatrga biletlar",
+          "conference_organization": "Konferensiyalar, kongresslar, seminarlar va boshqa tadbirlarni tashkil etish va o'tkazish",
+          "conference_halls": "Konferensiyalar, kongresslar, seminarlar, simpoziumlar uchun zalarni bron qilish",
+          "conference_equipment": "Konferensiyalar uchun jihozlarni ta'minlash"
+        },
         "view_more": "Ko'proq ko'rish"
       },
       "recommended_cities": {

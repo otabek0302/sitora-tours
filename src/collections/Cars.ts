@@ -56,6 +56,13 @@ export const Cars: CollectionConfig = {
       required: true,
     },
     {
+      name: 'description',
+      label: 'Description',
+      type: 'textarea',
+      required: false,
+      localized: true,
+    },
+    {
       name: 'pricing',
       label: 'Pricing',
       type: 'group',
@@ -67,10 +74,30 @@ export const Cars: CollectionConfig = {
           required: true,
         },
         {
+          name: 'pricePerDayInCityLabel',
+          label: 'Price per day label',
+          type: 'text',
+          required: false,
+          localized: true,
+          admin: {
+            description: 'Label text for price per day (e.g., "per day", "в день")',
+          },
+        },
+        {
           name: 'transferAirportHotelAirport',
           label: 'Transfer: (airport - hotel - airport)',
           type: 'number',
           required: false,
+        },
+        {
+          name: 'transferAirportHotelAirportLabel',
+          label: 'Transfer airport-hotel label',
+          type: 'text',
+          required: false,
+          localized: true,
+          admin: {
+            description: 'Label text for airport-hotel transfer',
+          },
         },
         {
           name: 'transferHotelDinnerHotel',
@@ -79,10 +106,30 @@ export const Cars: CollectionConfig = {
           required: false,
         },
         {
+          name: 'transferHotelDinnerHotelLabel',
+          label: 'Transfer hotel-dinner label',
+          type: 'text',
+          required: false,
+          localized: true,
+          admin: {
+            description: 'Label text for hotel-dinner transfer',
+          },
+        },
+        {
           name: 'longRouteFrom7Days',
           label: 'On a long route (from 7 days)',
           type: 'number',
           required: false,
+        },
+        {
+          name: 'longRouteFrom7DaysLabel',
+          label: 'Long route label',
+          type: 'text',
+          required: false,
+          localized: true,
+          admin: {
+            description: 'Label text for long route pricing',
+          },
         },
       ],
     },

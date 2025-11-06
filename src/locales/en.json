@@ -191,6 +191,26 @@
           "conference_halls": "Booking of halls for conferences, congresses, seminars, symposiums",
           "conference_equipment": "Provision of equipment for conferences"
         },
+        "detailed_services_heading": "Our Services",
+        "detailed_services": {
+          "airport_transfer": "Airport and train station meet and greet services, transfers with preferred air-conditioned vehicles",
+          "ticket_booking": "Flight and train ticket booking",
+          "group_visa": "Group visa assistance",
+          "hotel_booking": "Hotel booking (3***-5***** stars), local homestays, or yurts, according to client preference",
+          "sightseeing": "Tours to historical and architectural sites",
+          "catering": "Meal provision and restaurant service arrangements with full board (breakfast, lunch, dinner) or half board (breakfast and lunch/dinner)",
+          "cooking_masterclass": "Master classes on preparing national dishes, sweets, and pastries",
+          "guide_translator": "Qualified guide-translator services",
+          "university_meetings": "Meetings with university professors and conference organization",
+          "folklore_performances": "Organization of national folklore group performances from Samarkand, Bukhara, and other cities of Uzbekistan",
+          "cultural_events": "Attendance at national evenings and celebrations",
+          "desert_experience": "Trekking, camel riding, and meetings with nomads in the desert",
+          "factory_tours": "Educational tours to factories (carpet, ceramic, winery, etc.)",
+          "entrance_tickets": "All types of entrance tickets to monuments, as well as theater tickets",
+          "conference_organization": "Organization and hosting of conferences, congresses, seminars, and other events",
+          "conference_halls": "Booking of halls for conferences, congresses, seminars, symposiums",
+          "conference_equipment": "Provision of equipment for conferences"
+        },
         "view_more": "View More"
       },
       "recommended_cities": {

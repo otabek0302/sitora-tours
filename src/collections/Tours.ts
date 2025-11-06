@@ -156,7 +156,17 @@ export const Tours: CollectionConfig = {
         {
           name: 'activities',
           type: 'array',
-          fields: [{ name: 'activity', type: 'text', required: true, localized: true }],
+          fields: [
+            {
+              name: 'activity',
+              type: 'textarea',
+              required: true,
+              localized: true,
+              admin: {
+                description: 'Enter activity description. Spaces and special characters are allowed.',
+              },
+            },
+          ],
         },
       ],
     },

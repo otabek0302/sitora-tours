@@ -1,12 +1,18 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 
 import { Button } from '@/components/ui'
 import { Phone, Mail } from 'lucide-react'
 import { useTranslations } from 'next-intl'
+import { usePagesContext } from '@/lib/stores/pages'
 
 const AboutHero = () => {
   const t = useTranslations('pages.about_us')
+  const { getStatsSection } = usePagesContext()
+  const statsSection = getStatsSection()
+  const statistics = statsSection?.statistics || []
 
   return (
     <div className='flex flex-col-reverse gap-4 lg:flex-row'>
@@ -39,22 +45,34 @@ const AboutHero = () => {
           </div>
         </div>
         <div className='border-border grid grid-cols-2 gap-3 rounded-[32px] border p-3 shadow-none sm:gap-4 sm:p-4 lg:h-72'>
-          <div className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-3 shadow-none sm:p-4'>
-            <h3 className='text-sitora-text-subtitle text-2xl font-bold sm:text-3xl lg:text-4xl'>5,368+</h3>
-            <p className='text-sitora-body text-xs leading-relaxed font-normal sm:text-sm lg:text-base'>{t('happy_travelers')}</p>
-          </div>
-          <div className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-3 shadow-none sm:p-4'>
-            <h3 className='text-sitora-text-subtitle text-2xl font-bold sm:text-3xl lg:text-4xl'>+100</h3>
-            <p className='text-sitora-body text-xs leading-relaxed font-normal sm:text-sm lg:text-base'>{t('destinations')}</p>
-          </div>
-          <div className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-3 shadow-none sm:p-4'>
-            <h3 className='text-sitora-text-subtitle text-2xl font-bold sm:text-3xl lg:text-4xl'>10+</h3>
-            <p className='text-sitora-body text-xs leading-relaxed font-normal sm:text-sm lg:text-base'>{t('years_experience')}</p>
-          </div>
-          <div className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-3 shadow-none sm:p-4'>
-            <h3 className='text-sitora-text-subtitle text-2xl font-bold sm:text-3xl lg:text-4xl'>120+</h3>
-            <p className='text-sitora-body text-xs leading-relaxed font-normal sm:text-sm lg:text-base'>{t('packages')}</p>
-          </div>
+          {statistics.length > 0 ? (
+            statistics.slice(0, 4).map((stat, index) => (
+              <div key={stat.id || index} className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-3 shadow-none sm:p-4'>
+                <h3 className='text-sitora-text-subtitle text-2xl font-bold sm:text-3xl lg:text-4xl'>{typeof stat.number === 'number' ? stat.number.toLocaleString() : stat.number || '0'}</h3>
+                <p className='text-sitora-body text-xs leading-relaxed font-normal sm:text-sm lg:text-base'>{stat.text || ''}</p>
+              </div>
+            ))
+          ) : (
+            // Fallback to hardcoded values if no statistics from CMS
+            <>
+              <div className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-3 shadow-none sm:p-4'>
+                <h3 className='text-sitora-text-subtitle text-2xl font-bold sm:text-3xl lg:text-4xl'>5,368+</h3>
+                <p className='text-sitora-body text-xs leading-relaxed font-normal sm:text-sm lg:text-base'>{t('happy_travelers')}</p>
+              </div>
+              <div className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-3 shadow-none sm:p-4'>
+                <h3 className='text-sitora-text-subtitle text-2xl font-bold sm:text-3xl lg:text-4xl'>+100</h3>
+                <p className='text-sitora-body text-xs leading-relaxed font-normal sm:text-sm lg:text-base'>{t('destinations')}</p>
+              </div>
+              <div className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-3 shadow-none sm:p-4'>
+                <h3 className='text-sitora-text-subtitle text-2xl font-bold sm:text-3xl lg:text-4xl'>10+</h3>
+                <p className='text-sitora-body text-xs leading-relaxed font-normal sm:text-sm lg:text-base'>{t('years_experience')}</p>
+              </div>
+              <div className='border-border bg-muted flex flex-col justify-center rounded-[26px] border p-3 shadow-none sm:p-4'>
+                <h3 className='text-sitora-text-subtitle text-2xl font-bold sm:text-3xl lg:text-4xl'>120+</h3>
+                <p className='text-sitora-body text-xs leading-relaxed font-normal sm:text-sm lg:text-base'>{t('packages')}</p>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
