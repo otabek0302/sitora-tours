@@ -246,6 +246,7 @@
       "sidebar": {
         "filterBy": "Filtrlash",
         "city": "Shahar",
+        "country": "Mamlakat",
         "price": "Narxi",
         "duration": "Davomiyligi",
         "reset": "Filtrlarni tozalash",

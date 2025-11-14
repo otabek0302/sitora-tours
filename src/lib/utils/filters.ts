@@ -18,6 +18,9 @@ export function filtersToUrlParams(filters: Partial<TourFilters>, pagination: Pa
   // City filters using Payload's 'in' operator
   if (filters.cities && filters.cities.length > 0) params.set('where[cities][in]', filters.cities.join(','))
 
+  // Country filters for abroad tours
+  if (filters.countries && filters.countries.length > 0) params.set('where[countries][in]', filters.countries.join(','))
+
   // Price range filters using Payload's comparison operators
   if (filters.minPrice && filters.minPrice > 0) params.set('where[price][greater_than_equal]', filters.minPrice.toString())
   if (filters.maxPrice && filters.maxPrice < 999999) params.set('where[price][less_than_equal]', filters.maxPrice.toString())
@@ -45,6 +48,7 @@ export function validateFilters(filters: Partial<TourFilters>): boolean {
 
   // Validate arrays
   if (filters.cities !== undefined && !Array.isArray(filters.cities)) errors.push('Cities must be an array')
+  if (filters.countries !== undefined && !Array.isArray(filters.countries)) errors.push('Countries must be an array')
 
   return errors.length === 0
 }

@@ -11,8 +11,8 @@ interface TourInfoProps {
 const TourInfo = ({ tour }: TourInfoProps) => {
   const t = useTranslations('pages.single_tour')
 
-  const cities = tour.cities
-    ?.map(c => c.name)
+  const locations = (tour.tourType === 'abroad' ? tour.countries : tour.cities)
+    ?.map(location => location.name)
     .filter(Boolean)
     .join(', ')
 
@@ -38,11 +38,11 @@ const TourInfo = ({ tour }: TourInfoProps) => {
               <span className='font-semibold italic'>{tour.category.name}</span>
             </>
           )}
-          {cities && (
+          {locations && (
             <div className='flex flex-wrap items-center gap-1'>
               <p className='flex items-center gap-1'>
                 <span className='text-sitora-body text-sm font-medium'>|</span>
-                <span className='italic'>{cities}</span>
+                <span className='italic'>{locations}</span>
               </p>
             </div>
           )}

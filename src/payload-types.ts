@@ -222,6 +222,23 @@ export interface City {
   updatedAt: string;
   createdAt: string;
 }
+export interface Country {
+  id: number;
+  name: string;
+  /**
+   * Auto-generated from English name
+   */
+  slug: string;
+  description?: string | null;
+  cities?:
+    | {
+        id?: string | null;
+        city: string;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "tours".
@@ -238,7 +255,8 @@ export interface Tour {
   duration_nights: number;
   price: number;
   category: number | Category;
-  cities: (number | City)[];
+  cities?: (number | City)[];
+  countries?: (number | Country)[];
   /**
    * Select whether this tour is within Uzbekistan (local) or abroad
    */

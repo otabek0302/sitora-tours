@@ -15,6 +15,7 @@ interface ToursCardProps {
 
 const ToursCard = ({ tour }: ToursCardProps) => {
   const t = useTranslations('pages.tours')
+  const locations = tour.tourType === 'abroad' ? tour.countries : tour.cities
 
   return (
     <Card className='bg-card border-border h-full overflow-hidden rounded-[26px] border shadow-none'>
@@ -77,14 +78,14 @@ const ToursCard = ({ tour }: ToursCardProps) => {
                   <span className='text-sitora-body text-sm font-medium'>{tour.category.name}</span>
                 </div>
               )}
-              {tour.cities && tour.cities.length > 0 && (
+              {locations && locations.length > 0 && (
                 <div className='flex items-start gap-1'>
                   <MapPin className='text-sitora-primary mt-1 h-4 w-4 flex-shrink-0 md:mt-0' />
                   <div className='flex flex-wrap items-center gap-1'>
-                    {tour.cities.map((city: { id: string | number; name?: string }, index: number) => (
-                      <span key={city.id} className='flex items-center gap-1'>
-                        {city.name || ''}
-                        {index < (tour.cities?.length || 0) - 1 && <span className='mx-1'>→</span>}
+                    {locations.map((location: { id: string | number; name?: string }, index: number) => (
+                      <span key={location.id ?? index} className='flex items-center gap-1'>
+                        {location.name || ''}
+                        {index < (locations?.length || 0) - 1 && <span className='mx-1'>→</span>}
                       </span>
                     ))}
                   </div>

@@ -97,7 +97,36 @@ export const Tours: CollectionConfig = {
                   type: 'relationship',
                   relationTo: 'cities',
                   hasMany: true,
-                  required: true,
+                  required: false,
+                  admin: {
+                    condition: (_, siblingData) => (siblingData as { tourType?: string })?.tourType !== 'abroad',
+                    description: 'Select cities for local (Uzbekistan) tours',
+                  },
+                  validate: (value, { siblingData }) => {
+                    const tourType = (siblingData as { tourType?: string })?.tourType
+                    if (tourType !== 'abroad' && (!value || value.length === 0)) {
+                      return 'Please select at least one city for local tours'
+                    }
+                    return true
+                  },
+                },
+                {
+                  name: 'countries',
+                  label: 'Tour Countries',
+                  type: 'relationship',
+                  relationTo: 'countries' as any,
+                  hasMany: true,
+                  admin: {
+                    condition: (_, siblingData) => (siblingData as { tourType?: string })?.tourType === 'abroad',
+                    description: 'Select the destination countries for abroad tours',
+                  },
+                  validate: (value, { siblingData }) => {
+                    const tourType = (siblingData as { tourType?: string })?.tourType
+                    if (tourType === 'abroad' && (!value || value.length === 0)) {
+                      return 'Please select at least one country for abroad tours'
+                    }
+                    return true
+                  },
                 },
               ],
             },

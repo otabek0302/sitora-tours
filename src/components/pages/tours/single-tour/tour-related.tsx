@@ -76,16 +76,18 @@ const TourRelated = ({ tour }: TourRelatedProps) => {
                       <span className='text-sitora-body text-sm font-medium'>{relatedTour.category.name}</span>
                     </div>
                   )}
-                  {relatedTour.cities && relatedTour.cities.length > 0 && (
+                  {(relatedTour.tourType === 'abroad' ? relatedTour.countries : relatedTour.cities)?.length > 0 && (
                     <div className='flex items-start gap-1'>
                       <MapPin className='text-sitora-primary mt-1 h-4 w-4 flex-shrink-0 md:mt-0' />
                       <div className='flex flex-wrap items-center gap-1'>
-                        {relatedTour.cities.map((city: { id: string | number; name?: string }, index: number) => (
-                          <span key={city.id} className='flex items-center gap-1'>
-                            {city.name || ''}
-                            {index < (relatedTour.cities?.length || 0) - 1 && <span className='mx-1'>→</span>}
-                          </span>
-                        ))}
+                        {(relatedTour.tourType === 'abroad' ? relatedTour.countries : relatedTour.cities)?.map(
+                          (location: { id: string | number; name?: string }, index: number, array) => (
+                            <span key={location.id ?? index} className='flex items-center gap-1'>
+                              {location.name || ''}
+                              {index < (array?.length || 0) - 1 && <span className='mx-1'>→</span>}
+                            </span>
+                          ),
+                        )}
                       </div>
                     </div>
                   )}

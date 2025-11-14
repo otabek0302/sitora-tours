@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url'
 import path from 'path'
 import sharp from 'sharp'
 
-import { Users, Media, Categories, Cities, Tours, Hotels, Cars, Reviews } from './collections'
+import { Users, Media, Categories, Cities, Countries, Tours, Hotels, Cars, Reviews } from './collections'
 import { Pages } from './globals'
 import { env } from './lib/env'
 
@@ -25,7 +25,7 @@ export default buildConfig({
       titleSuffix: '- Sitora Tours',
     },
   },
-  collections: [Users, Media, Categories, Cities, Tours, Hotels, Cars, Reviews],
+  collections: [Users, Media, Categories, Cities, Countries, Tours, Hotels, Cars, Reviews],
   globals: [Pages],
   secret: env.PAYLOAD_SECRET,
   typescript: { outputFile: path.resolve(dirname, 'payload-types.ts') },

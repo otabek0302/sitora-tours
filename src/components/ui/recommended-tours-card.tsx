@@ -12,6 +12,7 @@ import { useTranslations } from 'next-intl'
 export const RecommendedToursCard = ({ tour }: { tour: Tour }) => {
   const t = useTranslations('pages.home.recommended_tours')
   const [applyOpen, setApplyOpen] = useState(false)
+  const locations = tour.tourType === 'abroad' ? tour.countries : tour.cities
 
   const handleBookNow = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -60,18 +61,19 @@ export const RecommendedToursCard = ({ tour }: { tour: Tour }) => {
               <Tag className='text-sitora-primary h-4 w-4' />
               <span className='text-sitora-body text-sm font-medium'>{tour.category?.name || ''}</span>
             </div>
-            <div className='flex items-start gap-1'>
-              <MapPin className='text-sitora-primary mt-0.5 h-4 w-4 flex-shrink-0 md:mt-0' />
-              <div className='flex flex-wrap items-center gap-1'>
-                {tour.cities &&
-                  tour.cities.map((city: { id: string | number; name?: string }, index: number) => (
-                    <span key={city.id} className='flex items-center gap-1'>
-                      {city.name || ''}
-                      {index < (tour.cities?.length || 0) - 1 && <span className='mx-1'>→</span>}
+            {locations && locations.length > 0 && (
+              <div className='flex items-start gap-1'>
+                <MapPin className='text-sitora-primary mt-0.5 h-4 w-4 flex-shrink-0 md:mt-0' />
+                <div className='flex flex-wrap items-center gap-1'>
+                  {locations.map((location: { id: string | number; name?: string }, index: number) => (
+                    <span key={location.id ?? index} className='flex items-center gap-1'>
+                      {location.name || ''}
+                      {index < (locations?.length || 0) - 1 && <span className='mx-1'>→</span>}
                     </span>
                   ))}
+                </div>
               </div>
-            </div>
+            )}
           </div>
           {/* Rating - Only show if rating exists and is greater than 0 */}
           {tour.rating && tour.rating > 0 ? (

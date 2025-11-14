@@ -121,7 +121,7 @@ const TourPricing = ({ tour }: TourPricingProps) => {
                   )}
                 </span>
                 <div className='flex flex-col items-end justify-end gap-2'>
-                  <span className='text-sitora-text-heading text-2xl font-bold'>${tour.price?.toLocaleString() || '0'}</span>
+                <span className='text-sitora-text-heading text-2xl font-bold'>${tour.price?.toLocaleString() || '0'}</span>
                   <p className='text-sitora-primary text-xs font-normal'>{t('per_person')}</p>
                 </div>
               </div>

@@ -24,6 +24,7 @@ export const TourSchema = z.object({
 
   category: RelationObjectSchema.optional(),
   cities: z.array(RelationObjectSchema).optional(),
+  countries: z.array(RelationObjectSchema).optional(),
   tourType: z.enum(['local', 'abroad']).optional(),
 
   locations: z
@@ -146,6 +147,7 @@ export const ToursResponseSchema = z.object({
 export const TourFiltersSchema = z.object({
   category: z.number().nullable().optional(),
   cities: z.array(z.number()).optional(),
+  countries: z.array(z.number()).optional(),
   tourType: z.enum(['local', 'abroad']).optional(),
   minPrice: z.number().min(0).optional(),
   maxPrice: z.number().min(0).optional(),

@@ -245,6 +245,7 @@
       "sidebar": {
         "filterBy": "Filter By",
         "city": "City",
+        "country": "Country",
         "price": "Price",
         "duration": "Duration",
         "reset": "Reset Filters",
