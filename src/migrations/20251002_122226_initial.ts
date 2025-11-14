@@ -85,6 +85,34 @@ export async function up({ db, payload: _payload, req: _req }: MigrateUpArgs): P
   	"_parent_id" integer NOT NULL
   );
   
+  CREATE TABLE "countries" (
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"slug" varchar NOT NULL,
+  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+  );
+  
+  CREATE TABLE "countries_locales" (
+  	"name" varchar NOT NULL,
+  	"description" text,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
+  CREATE TABLE "countries_cities" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL
+  );
+  
+  CREATE TABLE "countries_cities_locales" (
+  	"city" varchar NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" varchar NOT NULL
+  );
+  
   CREATE TABLE "tours_locations" (
   	"_order" integer NOT NULL,
   	"_parent_id" integer NOT NULL,
@@ -204,6 +232,7 @@ export async function up({ db, payload: _payload, req: _req }: MigrateUpArgs): P
   	"parent_id" integer NOT NULL,
   	"path" varchar NOT NULL,
   	"cities_id" integer,
+  	"countries_id" integer,
   	"hotels_id" integer
   );
   
@@ -310,6 +339,7 @@ export async function up({ db, payload: _payload, req: _req }: MigrateUpArgs): P
   	"media_id" integer,
   	"categories_id" integer,
   	"cities_id" integer,
+  	"countries_id" integer,
   	"tours_id" integer,
   	"hotels_id" integer,
   	"cars_id" integer,
@@ -441,6 +471,9 @@ export async function up({ db, payload: _payload, req: _req }: MigrateUpArgs): P
   ALTER TABLE "categories_locales" ADD CONSTRAINT "categories_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."categories"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "cities" ADD CONSTRAINT "cities_image_id_media_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "cities_locales" ADD CONSTRAINT "cities_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."cities"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "countries_locales" ADD CONSTRAINT "countries_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."countries"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "countries_cities" ADD CONSTRAINT "countries_cities_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."countries"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "countries_cities_locales" ADD CONSTRAINT "countries_cities_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."countries_cities"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "tours_locations" ADD CONSTRAINT "tours_locations_from_id_cities_id_fk" FOREIGN KEY ("from_id") REFERENCES "public"."cities"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "tours_locations" ADD CONSTRAINT "tours_locations_to_id_cities_id_fk" FOREIGN KEY ("to_id") REFERENCES "public"."cities"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "tours_locations" ADD CONSTRAINT "tours_locations_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."tours"("id") ON DELETE cascade ON UPDATE no action;
@@ -462,6 +495,7 @@ export async function up({ db, payload: _payload, req: _req }: MigrateUpArgs): P
   ALTER TABLE "tours_locales" ADD CONSTRAINT "tours_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."tours"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "tours_rels" ADD CONSTRAINT "tours_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."tours"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "tours_rels" ADD CONSTRAINT "tours_rels_cities_fk" FOREIGN KEY ("cities_id") REFERENCES "public"."cities"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "tours_rels" ADD CONSTRAINT "tours_rels_countries_fk" FOREIGN KEY ("countries_id") REFERENCES "public"."countries"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "tours_rels" ADD CONSTRAINT "tours_rels_hotels_fk" FOREIGN KEY ("hotels_id") REFERENCES "public"."hotels"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "hotels_features" ADD CONSTRAINT "hotels_features_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."hotels"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "hotels_images" ADD CONSTRAINT "hotels_images_image_id_media_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
@@ -479,6 +513,7 @@ export async function up({ db, payload: _payload, req: _req }: MigrateUpArgs): P
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_media_fk" FOREIGN KEY ("media_id") REFERENCES "public"."media"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_categories_fk" FOREIGN KEY ("categories_id") REFERENCES "public"."categories"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_cities_fk" FOREIGN KEY ("cities_id") REFERENCES "public"."cities"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_countries_fk" FOREIGN KEY ("countries_id") REFERENCES "public"."countries"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_tours_fk" FOREIGN KEY ("tours_id") REFERENCES "public"."tours"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_hotels_fk" FOREIGN KEY ("hotels_id") REFERENCES "public"."hotels"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_cars_fk" FOREIGN KEY ("cars_id") REFERENCES "public"."cars"("id") ON DELETE cascade ON UPDATE no action;
@@ -526,6 +561,14 @@ export async function up({ db, payload: _payload, req: _req }: MigrateUpArgs): P
   CREATE INDEX "cities_name_idx" ON "cities_locales" USING btree ("name","_locale");
   CREATE INDEX "cities_description_idx" ON "cities_locales" USING btree ("description","_locale");
   CREATE UNIQUE INDEX "cities_locales_locale_parent_id_unique" ON "cities_locales" USING btree ("_locale","_parent_id");
+  CREATE UNIQUE INDEX "countries_slug_idx" ON "countries" USING btree ("slug");
+  CREATE INDEX "countries_updated_at_idx" ON "countries" USING btree ("updated_at");
+  CREATE INDEX "countries_created_at_idx" ON "countries" USING btree ("created_at");
+  CREATE INDEX "countries_name_idx" ON "countries_locales" USING btree ("name","_locale");
+  CREATE UNIQUE INDEX "countries_locales_locale_parent_id_unique" ON "countries_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "countries_cities_order_idx" ON "countries_cities" USING btree ("_order");
+  CREATE INDEX "countries_cities_parent_id_idx" ON "countries_cities" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "countries_cities_locales_locale_parent_id_unique" ON "countries_cities_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "tours_locations_order_idx" ON "tours_locations" USING btree ("_order");
   CREATE INDEX "tours_locations_parent_id_idx" ON "tours_locations" USING btree ("_parent_id");
   CREATE INDEX "tours_locations_from_idx" ON "tours_locations" USING btree ("from_id");
@@ -561,6 +604,7 @@ export async function up({ db, payload: _payload, req: _req }: MigrateUpArgs): P
   CREATE INDEX "tours_rels_parent_idx" ON "tours_rels" USING btree ("parent_id");
   CREATE INDEX "tours_rels_path_idx" ON "tours_rels" USING btree ("path");
   CREATE INDEX "tours_rels_cities_id_idx" ON "tours_rels" USING btree ("cities_id");
+  CREATE INDEX "tours_rels_countries_id_idx" ON "tours_rels" USING btree ("countries_id");
   CREATE INDEX "tours_rels_hotels_id_idx" ON "tours_rels" USING btree ("hotels_id");
   CREATE INDEX "hotels_features_order_idx" ON "hotels_features" USING btree ("_order");
   CREATE INDEX "hotels_features_parent_id_idx" ON "hotels_features" USING btree ("_parent_id");
@@ -599,6 +643,7 @@ export async function up({ db, payload: _payload, req: _req }: MigrateUpArgs): P
   CREATE INDEX "payload_locked_documents_rels_media_id_idx" ON "payload_locked_documents_rels" USING btree ("media_id");
   CREATE INDEX "payload_locked_documents_rels_categories_id_idx" ON "payload_locked_documents_rels" USING btree ("categories_id");
   CREATE INDEX "payload_locked_documents_rels_cities_id_idx" ON "payload_locked_documents_rels" USING btree ("cities_id");
+  CREATE INDEX "payload_locked_documents_rels_countries_id_idx" ON "payload_locked_documents_rels" USING btree ("countries_id");
   CREATE INDEX "payload_locked_documents_rels_tours_id_idx" ON "payload_locked_documents_rels" USING btree ("tours_id");
   CREATE INDEX "payload_locked_documents_rels_hotels_id_idx" ON "payload_locked_documents_rels" USING btree ("hotels_id");
   CREATE INDEX "payload_locked_documents_rels_cars_id_idx" ON "payload_locked_documents_rels" USING btree ("cars_id");
@@ -657,6 +702,10 @@ export async function down({ db, payload: _payload, req: _req }: MigrateDownArgs
   DROP TABLE "categories_locales" CASCADE;
   DROP TABLE "cities" CASCADE;
   DROP TABLE "cities_locales" CASCADE;
+  DROP TABLE "countries_cities_locales" CASCADE;
+  DROP TABLE "countries_cities" CASCADE;
+  DROP TABLE "countries_locales" CASCADE;
+  DROP TABLE "countries" CASCADE;
   DROP TABLE "tours_locations" CASCADE;
   DROP TABLE "tours_locations_locales" CASCADE;
   DROP TABLE "tours_accommodation" CASCADE;
