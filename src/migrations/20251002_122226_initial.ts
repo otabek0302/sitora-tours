@@ -303,9 +303,13 @@ export async function up({ db, payload: _payload, req: _req }: MigrateUpArgs): P
   	"type" varchar NOT NULL,
   	"description" text,
   	"pricing_price_per_day_in_city_label" varchar,
+  	"pricing_price_per_day_in_city_suffix" varchar,
   	"pricing_transfer_airport_hotel_airport_label" varchar,
+  	"pricing_transfer_airport_hotel_airport_suffix" varchar,
   	"pricing_transfer_hotel_dinner_hotel_label" varchar,
+  	"pricing_transfer_hotel_dinner_hotel_suffix" varchar,
   	"pricing_long_route_from7_days_label" varchar,
+  	"pricing_long_route_from7_days_suffix" varchar,
   	"id" serial PRIMARY KEY NOT NULL,
   	"_locale" "_locales" NOT NULL,
   	"_parent_id" integer NOT NULL

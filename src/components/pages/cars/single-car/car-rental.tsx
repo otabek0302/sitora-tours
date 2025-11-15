@@ -17,12 +17,12 @@ const CarRental = ({ car }: CarRentalProps) => {
   const t = useTranslations('pages.cars.single')
   const [applyOpen, setApplyOpen] = useState(false)
 
-  const renderPrice = (amount?: number | null, label?: string | null) => {
+  const renderPrice = (amount?: number | null, suffix?: string | null) => {
     if (!amount) return null
     return (
       <div className='flex items-baseline gap-2'>
         <span className='text-sitora-primary text-3xl font-bold'>${amount}</span>
-        {label && <span className='text-sitora-body text-sm font-medium'>+ {label}</span>}
+        {suffix && <span className='text-sitora-body text-sm font-medium'>{suffix}</span>}
       </div>
     )
   }
@@ -40,7 +40,10 @@ const CarRental = ({ car }: CarRentalProps) => {
             <div className='flex items-start gap-3'>
               <div className='flex-1'>
                 <h3 className='text-sitora-text-subtitle mb-1 text-sm font-semibold'>{car.pricing?.pricePerDayInCityLabel || t('price_per_day')}</h3>
-                {renderPrice(car.pricing?.pricePerDayInCity || 0, car.pricing?.pricePerDayInCityLabel || t('price_per_day'))}
+                {renderPrice(
+                  car.pricing?.pricePerDayInCity || 0,
+                  car.pricing?.pricePerDayInCitySuffix || car.pricing?.pricePerDayInCityLabel || t('price_per_day'),
+                )}
               </div>
             </div>
           </div>
@@ -51,7 +54,10 @@ const CarRental = ({ car }: CarRentalProps) => {
               <div className='flex items-start gap-3'>
                 <div className='flex-1'>
                   <h3 className='text-sitora-text-subtitle mb-1 text-sm font-semibold'>{car.pricing?.transferAirportHotelAirportLabel || t('transfer_airport_hotel')}</h3>
-                  {renderPrice(car.pricing.transferAirportHotelAirport, car.pricing?.transferAirportHotelAirportLabel || t('transfer_airport_hotel'))}
+                  {renderPrice(
+                    car.pricing.transferAirportHotelAirport,
+                    car.pricing?.transferAirportHotelAirportSuffix || car.pricing?.transferAirportHotelAirportLabel || t('transfer_airport_hotel'),
+                  )}
                 </div>
               </div>
             </div>
@@ -63,7 +69,10 @@ const CarRental = ({ car }: CarRentalProps) => {
               <div className='flex items-start gap-3'>
                 <div className='flex-1'>
                   <h3 className='text-sitora-text-subtitle mb-1 text-sm font-semibold'>{car.pricing?.transferHotelDinnerHotelLabel || t('transfer_hotel_dinner')}</h3>
-                  {renderPrice(car.pricing.transferHotelDinnerHotel, car.pricing?.transferHotelDinnerHotelLabel || t('transfer_hotel_dinner'))}
+                  {renderPrice(
+                    car.pricing.transferHotelDinnerHotel,
+                    car.pricing?.transferHotelDinnerHotelSuffix || car.pricing?.transferHotelDinnerHotelLabel || t('transfer_hotel_dinner'),
+                  )}
                 </div>
               </div>
             </div>
@@ -75,7 +84,10 @@ const CarRental = ({ car }: CarRentalProps) => {
               <div className='flex items-start gap-3'>
                 <div className='flex-1'>
                   <h3 className='text-sitora-text-subtitle mb-1 text-sm font-semibold'>{car.pricing?.longRouteFrom7DaysLabel || t('long_route_7days')}</h3>
-                  {renderPrice(car.pricing.longRouteFrom7Days, car.pricing?.longRouteFrom7DaysLabel || t('long_route_7days'))}
+                  {renderPrice(
+                    car.pricing.longRouteFrom7Days,
+                    car.pricing?.longRouteFrom7DaysSuffix || car.pricing?.longRouteFrom7DaysLabel || t('long_route_7days'),
+                  )}
                 </div>
               </div>
             </div>

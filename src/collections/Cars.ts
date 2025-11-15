@@ -84,6 +84,16 @@ export const Cars: CollectionConfig = {
           },
         },
         {
+          name: 'pricePerDayInCitySuffix',
+          label: 'Price per day suffix',
+          type: 'text',
+          required: false,
+          localized: true,
+          admin: {
+            description: 'Small text shown inline after the price (e.g., "+ per day")',
+          },
+        },
+        {
           name: 'transferAirportHotelAirport',
           label: 'Transfer: (airport - hotel - airport)',
           type: 'number',
@@ -97,6 +107,16 @@ export const Cars: CollectionConfig = {
           localized: true,
           admin: {
             description: 'Label text for airport-hotel transfer',
+          },
+        },
+        {
+          name: 'transferAirportHotelAirportSuffix',
+          label: 'Transfer airport-hotel suffix',
+          type: 'text',
+          required: false,
+          localized: true,
+          admin: {
+            description: 'Small text shown inline after the airport-hotel transfer price',
           },
         },
         {
@@ -116,6 +136,16 @@ export const Cars: CollectionConfig = {
           },
         },
         {
+          name: 'transferHotelDinnerHotelSuffix',
+          label: 'Transfer hotel-dinner suffix',
+          type: 'text',
+          required: false,
+          localized: true,
+          admin: {
+            description: 'Small text shown inline after the hotel-dinner transfer price',
+          },
+        },
+        {
           name: 'longRouteFrom7Days',
           label: 'On a long route (from 7 days)',
           type: 'number',
@@ -129,6 +159,16 @@ export const Cars: CollectionConfig = {
           localized: true,
           admin: {
             description: 'Label text for long route pricing',
+          },
+        },
+        {
+          name: 'longRouteFrom7DaysSuffix',
+          label: 'Long route suffix',
+          type: 'text',
+          required: false,
+          localized: true,
+          admin: {
+            description: 'Small text shown inline after the long route price',
           },
         },
       ],

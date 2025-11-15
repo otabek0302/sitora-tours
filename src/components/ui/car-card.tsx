@@ -17,12 +17,12 @@ const CarsCard = ({ car }: CarsCardProps) => {
   const t = useTranslations('pages.cars')
   const tSingle = useTranslations('pages.cars.single')
 
-  const renderPrice = (amount?: number | null, label?: string | null, amountClasses = 'text-2xl', labelClasses = 'text-xs') => {
+  const renderPrice = (amount?: number | null, suffix?: string | null, amountClasses = 'text-2xl', suffixClasses = 'text-xs') => {
     if (!amount) return null
     return (
       <div className='flex items-baseline gap-2'>
         <span className={`text-sitora-primary font-bold ${amountClasses}`}>${amount}</span>
-        {label && <span className={`text-sitora-body font-medium ${labelClasses}`}>+ {label}</span>}
+        {suffix && <span className={`text-sitora-body font-medium ${suffixClasses}`}>{suffix}</span>}
       </div>
     )
   }
@@ -70,16 +70,14 @@ const CarsCard = ({ car }: CarsCardProps) => {
             <div className='border-border border-t pt-4'>
               {/* Mobile/Tablet: Show only per day price */}
               <div className='flex items-center justify-between lg:hidden'>
-              <div className='flex flex-col'>
-                  {renderPrice(car.pricing?.pricePerDayInCity || 0, car.pricing?.pricePerDayInCityLabel || t('per_day'), 'text-2xl')}
-              </div>
+                <div className='flex flex-col'>{renderPrice(car.pricing?.pricePerDayInCity || 0, car.pricing?.pricePerDayInCitySuffix || car.pricing?.pricePerDayInCityLabel || t('per_day'), 'text-2xl')}</div>
                 <div className='flex items-center justify-end'>
                   <Button variant='default' size='sm' className='group w-fit shadow-none'>
                     <Link href={`/cars/${car.slug}`} className='text-md flex w-full items-center justify-center gap-2 leading-tight font-normal'>
-                  <span className='text-sitora-white group-hover:text-sitora-primary block'>{t('see_details')}</span>
-                  <ArrowRight className='text-sitora-white group-hover:text-sitora-primary h-4 w-4' />
-                </Link>
-              </Button>
+                      <span className='text-sitora-white group-hover:text-sitora-primary block'>{t('see_details')}</span>
+                      <ArrowRight className='text-sitora-white group-hover:text-sitora-primary h-4 w-4' />
+                    </Link>
+                  </Button>
                 </div>
               </div>
 
@@ -87,39 +85,25 @@ const CarsCard = ({ car }: CarsCardProps) => {
               <div className='hidden lg:block'>
                 <div className='mb-4 grid grid-cols-2 gap-4'>
                   {/* Price per day */}
-                  <div className='col-span-1 mb-0 flex flex-col items-start justify-start gap-2 border-r pr-1'>
-                    {renderPrice(car.pricing?.pricePerDayInCity || 0, car.pricing?.pricePerDayInCityLabel || t('per_day'), 'text-2xl', 'text-xs')}
-                  </div>
+                  <div className='col-span-1 mb-0 flex flex-col items-start justify-start gap-2 border-r pr-1'>{renderPrice(car.pricing?.pricePerDayInCity || 0, car.pricing?.pricePerDayInCitySuffix || car.pricing?.pricePerDayInCityLabel || t('per_day'), 'text-2xl', 'text-xs')}</div>
 
                   {/* Transfer: airport - hotel - airport */}
-                  {car.pricing?.transferAirportHotelAirport && (
-                    <div className='col-span-1 flex flex-col items-start justify-start gap-2'>
-                      {renderPrice(car.pricing.transferAirportHotelAirport, car.pricing?.transferAirportHotelAirportLabel || tSingle('transfer_airport_hotel'), 'text-xl', 'text-xs')}
-                    </div>
-                  )}
+                  {car.pricing?.transferAirportHotelAirport && <div className='col-span-1 flex flex-col items-start justify-start gap-2'>{renderPrice(car.pricing.transferAirportHotelAirport, car.pricing?.transferAirportHotelAirportSuffix || car.pricing?.transferAirportHotelAirportLabel || tSingle('transfer_airport_hotel'), 'text-xl', 'text-xs')}</div>}
 
                   {/* Transfer: hotel - dinner - hotel */}
-                  {car.pricing?.transferHotelDinnerHotel && (
-                    <div className='col-span-1 flex flex-col items-start justify-start gap-2 border-r pr-1'>
-                      {renderPrice(car.pricing.transferHotelDinnerHotel, car.pricing?.transferHotelDinnerHotelLabel || tSingle('transfer_hotel_dinner'), 'text-xl', 'text-xs')}
-                    </div>
-                  )}
+                  {car.pricing?.transferHotelDinnerHotel && <div className='col-span-1 flex flex-col items-start justify-start gap-2 border-r pr-1'>{renderPrice(car.pricing.transferHotelDinnerHotel, car.pricing?.transferHotelDinnerHotelSuffix || car.pricing?.transferHotelDinnerHotelLabel || tSingle('transfer_hotel_dinner'), 'text-xl', 'text-xs')}</div>}
 
                   {/* On a long route (from 7 days) */}
-                  {car.pricing?.longRouteFrom7Days && (
-                    <div className='col-span-1 flex flex-col items-start justify-start gap-2'>
-                      {renderPrice(car.pricing.longRouteFrom7Days, car.pricing?.longRouteFrom7DaysLabel || tSingle('long_route_7days'), 'text-xl', 'text-xs')}
-                    </div>
-                  )}
+                  {car.pricing?.longRouteFrom7Days && <div className='col-span-1 flex flex-col items-start justify-start gap-2'>{renderPrice(car.pricing.longRouteFrom7Days, car.pricing?.longRouteFrom7DaysSuffix || car.pricing?.longRouteFrom7DaysLabel || tSingle('long_route_7days'), 'text-xl', 'text-xs')}</div>}
                 </div>
 
                 <div className='flex items-center justify-end'>
                   <Button variant='default' size='sm' className='group w-fit shadow-none'>
-                  <Link href={`/cars/${car.slug}`} className='text-md flex items-center justify-center gap-2 leading-tight font-normal'>
-                    <span className='text-sitora-white group-hover:text-sitora-primary block'>{t('see_details')}</span>
-                    <ArrowRight className='text-sitora-white group-hover:text-sitora-primary h-4 w-4' />
-                  </Link>
-                </Button>
+                    <Link href={`/cars/${car.slug}`} className='text-md flex items-center justify-center gap-2 leading-tight font-normal'>
+                      <span className='text-sitora-white group-hover:text-sitora-primary block'>{t('see_details')}</span>
+                      <ArrowRight className='text-sitora-white group-hover:text-sitora-primary h-4 w-4' />
+                    </Link>
+                  </Button>
                 </div>
               </div>
             </div>

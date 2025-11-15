@@ -11,12 +11,16 @@ const CarPricingSchema = z
   .object({
     pricePerDayInCity: z.number().nullable().optional(),
     pricePerDayInCityLabel: z.string().nullable().optional(),
+    pricePerDayInCitySuffix: z.string().nullable().optional(),
     transferAirportHotelAirport: z.number().nullable().optional(),
     transferAirportHotelAirportLabel: z.string().nullable().optional(),
+    transferAirportHotelAirportSuffix: z.string().nullable().optional(),
     transferHotelDinnerHotel: z.number().nullable().optional(),
     transferHotelDinnerHotelLabel: z.string().nullable().optional(),
+    transferHotelDinnerHotelSuffix: z.string().nullable().optional(),
     longRouteFrom7Days: z.number().nullable().optional(),
     longRouteFrom7DaysLabel: z.string().nullable().optional(),
+    longRouteFrom7DaysSuffix: z.string().nullable().optional(),
   })
   .nullable()
   .optional()
