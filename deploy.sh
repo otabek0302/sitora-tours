@@ -198,7 +198,7 @@ if [ "$CURRENT_STEP" -lt 6 ]; then
         
         # Try migration inside Docker container (where 'postgres' hostname exists)
         echo -e "${YELLOW}Running migration inside Docker container...${NC}"
-        docker exec sitora-tour-app sh -c "cd /app && npx payload migrate" 2>/dev/null || {
+        docker exec sitora-tour-app sh -c "cd /app && PAYLOAD_MIGRATION_WRITE_DISABLE=1 pnpm payload migrate --operation apply" 2>/dev/null || {
             echo -e "${YELLOW}⚠️  Migration failed! Resetting database schema...${NC}"
             
             # Stop app to avoid conflicts
@@ -214,7 +214,7 @@ if [ "$CURRENT_STEP" -lt 6 ]; then
             
             # Run migration again inside container
             echo -e "${YELLOW}Running fresh migration inside container...${NC}"
-            docker exec sitora-tour-app sh -c "cd /app && npx payload migrate" || {
+            docker exec sitora-tour-app sh -c "cd /app && PAYLOAD_MIGRATION_WRITE_DISABLE=1 pnpm payload migrate --operation apply" || {
                 echo -e "${RED}❌ Migration still failed! Trying localhost connection...${NC}"
                 
                 # Create temporary .env for localhost connection
@@ -224,7 +224,7 @@ if [ "$CURRENT_STEP" -lt 6 ]; then
                 mv .env.tmp .env
                 
                 # Try migration with localhost
-                pnpm payload migrate || {
+                PAYLOAD_MIGRATION_WRITE_DISABLE=1 pnpm payload migrate --operation apply || {
                     echo -e "${RED}❌ Localhost migration also failed!${NC}"
                     echo -e "${YELLOW}Restoring original .env and continuing...${NC}"
                     mv .env.backup .env 2>/dev/null || true
