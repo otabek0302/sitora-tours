@@ -21,38 +21,21 @@ async function updateTourRating(req: PayloadRequest, tourId: number) {
 
       console.log(`[Reviews] Found ${reviews.docs?.length || 0} reviews for tour ${tourId}`)
 
-      // Calculate average rating
-      if (reviews.docs && reviews.docs.length > 0) {
-        const totalRating = reviews.docs.reduce((sum: number, review: { rating?: number }) => sum + (review.rating || 0), 0)
-        const averageRating = totalRating / reviews.docs.length
-        const roundedRating = Math.round(averageRating * 10) / 10
+      const ratings = reviews.docs?.map((review: { rating?: number }) => review.rating || 0) ?? []
+      const roundedRating = ratings.length > 0 ? Math.round((ratings.reduce((sum, rating) => sum + rating, 0) / ratings.length) * 10) / 10 : 0
 
-        console.log(`[Reviews] Calculated average rating: ${roundedRating}`)
+      console.log(`[Reviews] Calculated average rating: ${roundedRating}`)
 
-        // Update the tour with the new average rating (bypass hooks to prevent circular updates)
-        await req.payload.update({
-          collection: 'tours',
-          id: tourId,
-          data: {
-            rating: roundedRating,
-          },
-          overrideAccess: true,
-        })
+      // Update only the rating field to avoid re-validating the full tour payload.
+      await req.payload.update({
+        collection: 'tours',
+        id: tourId,
+        data: { rating: roundedRating },
+        overrideAccess: true,
+        locale: 'en',
+      })
 
-        console.log(`[Reviews] Successfully updated tour ${tourId} rating to ${roundedRating}`)
-      } else {
-        // No reviews, set rating to 0
-        await req.payload.update({
-          collection: 'tours',
-          id: tourId,
-          data: {
-            rating: 0,
-          },
-          overrideAccess: true,
-        })
-
-        console.log(`[Reviews] Set tour ${tourId} rating to 0 (no reviews)`)
-      }
+      console.log(`[Reviews] Successfully updated tour ${tourId} rating to ${roundedRating}`)
     } catch (error) {
       console.error(`[Reviews] Error updating tour ${tourId} rating:`, error)
     }

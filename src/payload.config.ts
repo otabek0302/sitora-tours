@@ -30,9 +30,7 @@ export default buildConfig({
   secret: env.PAYLOAD_SECRET,
   typescript: { outputFile: path.resolve(dirname, 'payload-types.ts') },
   db: postgresAdapter({
-    idType: 'uuid',
     pool: { connectionString: env.DATABASE_URI },
-    autoMigrate: true,
   }),
   sharp,
   plugins: [payloadCloudPlugin()],
@@ -44,5 +42,5 @@ export default buildConfig({
   csrf: ['http://localhost:3000', 'https://sitoratour.com', 'http://sitoratour.com'],
 
   // Express middleware CORS settings
-  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'https://sitoratour.com',
+  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3000',
 })

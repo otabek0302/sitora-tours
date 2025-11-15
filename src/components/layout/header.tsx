@@ -17,7 +17,7 @@ const Header = () => {
           {/* Logo */}
           <div className='flex-shrink-0'>
             <div className='xs:h-8 xs:w-24 relative h-7 w-20 sm:h-9 sm:w-28 md:h-10 md:w-32'>
-              <Image src={logo} fill alt='Sitora Tours' className='object-contain' sizes='(max-width: 475px) 80px, (max-width: 640px) 96px, (max-width: 768px) 112px, 128px' />
+              <Image src={logo} fill priority alt='Sitora Tours' className='object-contain' sizes='(max-width: 475px) 80px, (max-width: 640px) 96px, (max-width: 768px) 112px, 128px' />
             </div>
           </div>
 

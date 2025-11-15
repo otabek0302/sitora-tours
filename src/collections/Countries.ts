@@ -70,4 +70,3 @@ export const Countries: CollectionConfig = {
   },
   timestamps: true,
 }
-

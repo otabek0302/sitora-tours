@@ -217,6 +217,11 @@ input {
     margin-right: 0.5rem;
 }
 
+.nav__link[id="nav-countries"] .nav__link-label::before {
+    content: "🌍 ";
+    margin-right: 0.5rem;
+}
+
 .nav__link[id="nav-reviews"] .nav__link-label::before {
     content: "⭐ ";
     margin-right: 0.5rem;

@@ -39,7 +39,7 @@ const SpecialTour = () => {
 
         {/* Special Tour Display */}
         <div className='bg-card border-border group relative h-[420px] overflow-hidden rounded-[32px] border shadow-none transition-all duration-300 hover:shadow-sm lg:h-[540px]'>
-          <Link href={`/tours/${tour?.slug}`}>
+          <Link href={`/tours/${tour?.slug}`} className='relative block h-full w-full'>
             {/* Background Image */}
             {tour?.images?.[0]?.image?.url ? (
               <Image src={tour.images[0].image.url} alt={tour?.name || ''} fill className='object-cover transition-transform duration-700 group-hover:scale-105' sizes='100vw' priority />

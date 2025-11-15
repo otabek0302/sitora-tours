@@ -1,5 +1,5 @@
 {
-  "id": "888ba3f9-11b5-4a5f-b8bc-55025ae1fd04",
+  "id": "ac01b39f-1897-4088-97e8-78768e23b8fc",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -16,7 +16,7 @@
         },
         "_parent_id": {
           "name": "_parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -98,10 +98,9 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "uuid",
+          "type": "serial",
           "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "notNull": true
         },
         "first_name": {
           "name": "first_name",
@@ -233,10 +232,9 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "uuid",
+          "type": "serial",
           "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "notNull": true
         },
         "alt": {
           "name": "alt",
@@ -490,10 +488,9 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "uuid",
+          "type": "serial",
           "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "notNull": true
         },
         "slug": {
           "name": "slug",
@@ -595,7 +592,7 @@
         },
         "_parent_id": {
           "name": "_parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         }
@@ -671,10 +668,9 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "uuid",
+          "type": "serial",
           "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "notNull": true
         },
         "slug": {
           "name": "slug",
@@ -684,7 +680,7 @@
         },
         "image_id": {
           "name": "image_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
@@ -817,7 +813,7 @@
         },
         "_parent_id": {
           "name": "_parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         }
@@ -908,343 +904,6 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.countries_cities": {
-      "name": "countries_cities",
-      "schema": "",
-      "columns": {
-        "_order": {
-          "name": "_order",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "_parent_id": {
-          "name": "_parent_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "id": {
-          "name": "id",
-          "type": "varchar",
-          "primaryKey": true,
-          "notNull": true
-        }
-      },
-      "indexes": {
-        "countries_cities_order_idx": {
-          "name": "countries_cities_order_idx",
-          "columns": [
-            {
-              "expression": "_order",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "countries_cities_parent_id_idx": {
-          "name": "countries_cities_parent_id_idx",
-          "columns": [
-            {
-              "expression": "_parent_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {
-        "countries_cities_parent_id_fk": {
-          "name": "countries_cities_parent_id_fk",
-          "tableFrom": "countries_cities",
-          "tableTo": "countries",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.countries_cities_locales": {
-      "name": "countries_cities_locales",
-      "schema": "",
-      "columns": {
-        "city": {
-          "name": "city",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "id": {
-          "name": "id",
-          "type": "serial",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "_locale": {
-          "name": "_locale",
-          "type": "_locales",
-          "typeSchema": "public",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "_parent_id": {
-          "name": "_parent_id",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "indexes": {
-        "countries_cities_locales_locale_parent_id_unique": {
-          "name": "countries_cities_locales_locale_parent_id_unique",
-          "columns": [
-            {
-              "expression": "_locale",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            },
-            {
-              "expression": "_parent_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": true,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {
-        "countries_cities_locales_parent_id_fk": {
-          "name": "countries_cities_locales_parent_id_fk",
-          "tableFrom": "countries_cities_locales",
-          "tableTo": "countries_cities",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.countries": {
-      "name": "countries",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
-        },
-        "slug": {
-          "name": "slug",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "updated_at": {
-          "name": "updated_at",
-          "type": "timestamp(3) with time zone",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp(3) with time zone",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        }
-      },
-      "indexes": {
-        "countries_slug_idx": {
-          "name": "countries_slug_idx",
-          "columns": [
-            {
-              "expression": "slug",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": true,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "countries_updated_at_idx": {
-          "name": "countries_updated_at_idx",
-          "columns": [
-            {
-              "expression": "updated_at",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "countries_created_at_idx": {
-          "name": "countries_created_at_idx",
-          "columns": [
-            {
-              "expression": "created_at",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.countries_locales": {
-      "name": "countries_locales",
-      "schema": "",
-      "columns": {
-        "name": {
-          "name": "name",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "description": {
-          "name": "description",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "id": {
-          "name": "id",
-          "type": "serial",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "_locale": {
-          "name": "_locale",
-          "type": "_locales",
-          "typeSchema": "public",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "_parent_id": {
-          "name": "_parent_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "indexes": {
-        "countries_name_idx": {
-          "name": "countries_name_idx",
-          "columns": [
-            {
-              "expression": "name",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            },
-            {
-              "expression": "_locale",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "countries_locales_locale_parent_id_unique": {
-          "name": "countries_locales_locale_parent_id_unique",
-          "columns": [
-            {
-              "expression": "_locale",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            },
-            {
-              "expression": "_parent_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": true,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {
-        "countries_locales_parent_id_fk": {
-          "name": "countries_locales_parent_id_fk",
-          "tableFrom": "countries_locales",
-          "tableTo": "countries",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
     "public.tours_locations": {
       "name": "tours_locations",
       "schema": "",
@@ -1257,7 +916,7 @@
         },
         "_parent_id": {
           "name": "_parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -1269,13 +928,13 @@
         },
         "from_id": {
           "name": "from_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
         "to_id": {
           "name": "to_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -1283,19 +942,19 @@
           "name": "from_time",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "to_time": {
           "name": "to_time",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "duration": {
           "name": "duration",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         }
       },
       "indexes": {
@@ -1493,7 +1152,7 @@
         },
         "_parent_id": {
           "name": "_parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -1505,7 +1164,7 @@
         },
         "city_id": {
           "name": "city_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         }
@@ -1753,7 +1412,7 @@
         },
         "_parent_id": {
           "name": "_parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -1903,7 +1562,7 @@
         },
         "_parent_id": {
           "name": "_parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -2053,7 +1712,7 @@
         },
         "_parent_id": {
           "name": "_parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -2203,7 +1862,7 @@
         },
         "_parent_id": {
           "name": "_parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -2217,19 +1876,13 @@
           "name": "date_start",
           "type": "timestamp(3) with time zone",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "date_end": {
           "name": "date_end",
           "type": "timestamp(3) with time zone",
           "primaryKey": false,
-          "notNull": false
-        },
-        "number_of_persons": {
-          "name": "number_of_persons",
-          "type": "numeric",
-          "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "price_per_person": {
           "name": "price_per_person",
@@ -2303,7 +1956,7 @@
         },
         "_parent_id": {
           "name": "_parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -2315,7 +1968,7 @@
         },
         "image_id": {
           "name": "image_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         }
@@ -2407,10 +2060,9 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "uuid",
+          "type": "serial",
           "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "notNull": true
         },
         "slug": {
           "name": "slug",
@@ -2438,17 +2090,9 @@
         },
         "category_id": {
           "name": "category_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
-        },
-        "tour_type": {
-          "name": "tour_type",
-          "type": "enum_tours_tour_type",
-          "typeSchema": "public",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "'local'"
         },
         "rating": {
           "name": "rating",
@@ -2586,7 +2230,7 @@
         },
         "_parent_id": {
           "name": "_parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         }
@@ -2674,7 +2318,7 @@
         },
         "parent_id": {
           "name": "parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -2686,19 +2330,13 @@
         },
         "cities_id": {
           "name": "cities_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "countries_id": {
-          "name": "countries_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
         "hotels_id": {
           "name": "hotels_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false
         }
@@ -2764,21 +2402,6 @@
           "method": "btree",
           "with": {}
         },
-        "tours_rels_countries_id_idx": {
-          "name": "tours_rels_countries_id_idx",
-          "columns": [
-            {
-              "expression": "countries_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
         "tours_rels_hotels_id_idx": {
           "name": "tours_rels_hotels_id_idx",
           "columns": [
@@ -2822,19 +2445,6 @@
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
-        "tours_rels_countries_fk": {
-          "name": "tours_rels_countries_fk",
-          "tableFrom": "tours_rels",
-          "tableTo": "countries",
-          "columnsFrom": [
-            "countries_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        },
         "tours_rels_hotels_fk": {
           "name": "tours_rels_hotels_fk",
           "tableFrom": "tours_rels",
@@ -2867,7 +2477,7 @@
         },
         "_parent_id": {
           "name": "_parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -2971,7 +2581,7 @@
         },
         "_parent_id": {
           "name": "_parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -2983,7 +2593,7 @@
         },
         "image_id": {
           "name": "image_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         }
@@ -3075,10 +2685,9 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "uuid",
+          "type": "serial",
           "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "notNull": true
         },
         "slug": {
           "name": "slug",
@@ -3088,7 +2697,7 @@
         },
         "city_id": {
           "name": "city_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -3097,18 +2706,6 @@
           "type": "varchar",
           "primaryKey": false,
           "notNull": true
-        },
-        "website": {
-          "name": "website",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "email": {
-          "name": "email",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": false
         },
         "rating": {
           "name": "rating",
@@ -3119,7 +2716,7 @@
         },
         "image_id": {
           "name": "image_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -3322,7 +2919,7 @@
         },
         "_parent_id": {
           "name": "_parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         }
@@ -3404,7 +3001,7 @@
         },
         "_parent_id": {
           "name": "_parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -3416,7 +3013,7 @@
         },
         "image_id": {
           "name": "image_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         }
@@ -3508,10 +3105,9 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "uuid",
+          "type": "serial",
           "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "notNull": true
         },
         "slug": {
           "name": "slug",
@@ -3531,33 +3127,15 @@
           "primaryKey": false,
           "notNull": true
         },
-        "pricing_price_per_day_in_city": {
-          "name": "pricing_price_per_day_in_city",
+        "price": {
+          "name": "price",
           "type": "numeric",
           "primaryKey": false,
           "notNull": true
         },
-        "pricing_transfer_airport_hotel_airport": {
-          "name": "pricing_transfer_airport_hotel_airport",
-          "type": "numeric",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "pricing_transfer_hotel_dinner_hotel": {
-          "name": "pricing_transfer_hotel_dinner_hotel",
-          "type": "numeric",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "pricing_long_route_from7_days": {
-          "name": "pricing_long_route_from7_days",
-          "type": "numeric",
-          "primaryKey": false,
-          "notNull": false
-        },
         "image_id": {
           "name": "image_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -3675,59 +3253,11 @@
           "primaryKey": false,
           "notNull": true
         },
-        "description": {
-          "name": "description",
+        "model": {
+          "name": "model",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": false
-        },
-        "pricing_price_per_day_in_city_label": {
-          "name": "pricing_price_per_day_in_city_label",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "pricing_price_per_day_in_city_suffix": {
-          "name": "pricing_price_per_day_in_city_suffix",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "pricing_transfer_airport_hotel_airport_label": {
-          "name": "pricing_transfer_airport_hotel_airport_label",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "pricing_transfer_airport_hotel_airport_suffix": {
-          "name": "pricing_transfer_airport_hotel_airport_suffix",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "pricing_transfer_hotel_dinner_hotel_label": {
-          "name": "pricing_transfer_hotel_dinner_hotel_label",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "pricing_transfer_hotel_dinner_hotel_suffix": {
-          "name": "pricing_transfer_hotel_dinner_hotel_suffix",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "pricing_long_route_from7_days_label": {
-          "name": "pricing_long_route_from7_days_label",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "pricing_long_route_from7_days_suffix": {
-          "name": "pricing_long_route_from7_days_suffix",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "id": {
           "name": "id",
@@ -3744,7 +3274,7 @@
         },
         "_parent_id": {
           "name": "_parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         }
@@ -3841,10 +3371,9 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "uuid",
+          "type": "serial",
           "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "notNull": true
         },
         "slug": {
           "name": "slug",
@@ -3878,7 +3407,7 @@
         },
         "tour_id": {
           "name": "tour_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -3986,10 +3515,9 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "uuid",
+          "type": "serial",
           "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "notNull": true
         },
         "global_slug": {
           "name": "global_slug",
@@ -4084,7 +3612,7 @@
         },
         "parent_id": {
           "name": "parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -4096,55 +3624,49 @@
         },
         "users_id": {
           "name": "users_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
         "media_id": {
           "name": "media_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
         "categories_id": {
           "name": "categories_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
         "cities_id": {
           "name": "cities_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "countries_id": {
-          "name": "countries_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
         "tours_id": {
           "name": "tours_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
         "hotels_id": {
           "name": "hotels_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
         "cars_id": {
           "name": "cars_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
         "reviews_id": {
           "name": "reviews_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false
         }
@@ -4245,21 +3767,6 @@
           "columns": [
             {
               "expression": "cities_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "payload_locked_documents_rels_countries_id_idx": {
-          "name": "payload_locked_documents_rels_countries_id_idx",
-          "columns": [
-            {
-              "expression": "countries_id",
               "isExpression": false,
               "asc": true,
               "nulls": "last"
@@ -4397,19 +3904,6 @@
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
-        "payload_locked_documents_rels_countries_fk": {
-          "name": "payload_locked_documents_rels_countries_fk",
-          "tableFrom": "payload_locked_documents_rels",
-          "tableTo": "countries",
-          "columnsFrom": [
-            "countries_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        },
         "payload_locked_documents_rels_tours_fk": {
           "name": "payload_locked_documents_rels_tours_fk",
           "tableFrom": "payload_locked_documents_rels",
@@ -4475,10 +3969,9 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "uuid",
+          "type": "serial",
           "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "notNull": true
         },
         "key": {
           "name": "key",
@@ -4579,7 +4072,7 @@
         },
         "parent_id": {
           "name": "parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -4591,7 +4084,7 @@
         },
         "users_id": {
           "name": "users_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false
         }
@@ -4698,10 +4191,9 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "uuid",
+          "type": "serial",
           "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "notNull": true
         },
         "name": {
           "name": "name",
@@ -4793,13 +4285,13 @@
         },
         "review_id": {
           "name": "review_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
         "video_id": {
           "name": "video_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false
         }
@@ -4925,7 +4417,7 @@
         },
         "_parent_id": {
           "name": "_parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -4943,7 +4435,7 @@
         },
         "image_id": {
           "name": "image_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -5136,265 +4628,6 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.pages_blocks_stats_statistics": {
-      "name": "pages_blocks_stats_statistics",
-      "schema": "",
-      "columns": {
-        "_order": {
-          "name": "_order",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "_parent_id": {
-          "name": "_parent_id",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "id": {
-          "name": "id",
-          "type": "varchar",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "number": {
-          "name": "number",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": false
-        }
-      },
-      "indexes": {
-        "pages_blocks_stats_statistics_order_idx": {
-          "name": "pages_blocks_stats_statistics_order_idx",
-          "columns": [
-            {
-              "expression": "_order",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "pages_blocks_stats_statistics_parent_id_idx": {
-          "name": "pages_blocks_stats_statistics_parent_id_idx",
-          "columns": [
-            {
-              "expression": "_parent_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {
-        "pages_blocks_stats_statistics_parent_id_fk": {
-          "name": "pages_blocks_stats_statistics_parent_id_fk",
-          "tableFrom": "pages_blocks_stats_statistics",
-          "tableTo": "pages_blocks_stats",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.pages_blocks_stats_statistics_locales": {
-      "name": "pages_blocks_stats_statistics_locales",
-      "schema": "",
-      "columns": {
-        "text": {
-          "name": "text",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "id": {
-          "name": "id",
-          "type": "serial",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "_locale": {
-          "name": "_locale",
-          "type": "_locales",
-          "typeSchema": "public",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "_parent_id": {
-          "name": "_parent_id",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "indexes": {
-        "pages_blocks_stats_statistics_locales_locale_parent_id_unique": {
-          "name": "pages_blocks_stats_statistics_locales_locale_parent_id_unique",
-          "columns": [
-            {
-              "expression": "_locale",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            },
-            {
-              "expression": "_parent_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": true,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {
-        "pages_blocks_stats_statistics_locales_parent_id_fk": {
-          "name": "pages_blocks_stats_statistics_locales_parent_id_fk",
-          "tableFrom": "pages_blocks_stats_statistics_locales",
-          "tableTo": "pages_blocks_stats_statistics",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.pages_blocks_stats": {
-      "name": "pages_blocks_stats",
-      "schema": "",
-      "columns": {
-        "_order": {
-          "name": "_order",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "_parent_id": {
-          "name": "_parent_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "_path": {
-          "name": "_path",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "id": {
-          "name": "id",
-          "type": "varchar",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "block_name": {
-          "name": "block_name",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": false
-        }
-      },
-      "indexes": {
-        "pages_blocks_stats_order_idx": {
-          "name": "pages_blocks_stats_order_idx",
-          "columns": [
-            {
-              "expression": "_order",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "pages_blocks_stats_parent_id_idx": {
-          "name": "pages_blocks_stats_parent_id_idx",
-          "columns": [
-            {
-              "expression": "_parent_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "pages_blocks_stats_path_idx": {
-          "name": "pages_blocks_stats_path_idx",
-          "columns": [
-            {
-              "expression": "_path",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {
-        "pages_blocks_stats_parent_id_fk": {
-          "name": "pages_blocks_stats_parent_id_fk",
-          "tableFrom": "pages_blocks_stats",
-          "tableTo": "pages",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
     "public.pages_blocks_faq_faqs": {
       "name": "pages_blocks_faq_faqs",
       "schema": "",
@@ -5563,7 +4796,7 @@
         },
         "_parent_id": {
           "name": "_parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -5666,7 +4899,7 @@
         },
         "_parent_id": {
           "name": "_parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -5684,9 +4917,9 @@
         },
         "tours_id": {
           "name": "tours_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "block_name": {
           "name": "block_name",
@@ -5791,8 +5024,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.pages_blocks_recommended_local_tours": {
-      "name": "pages_blocks_recommended_local_tours",
+    "public.pages_blocks_recommended_tours": {
+      "name": "pages_blocks_recommended_tours",
       "schema": "",
       "columns": {
         "_order": {
@@ -5803,7 +5036,7 @@
         },
         "_parent_id": {
           "name": "_parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -5827,8 +5060,8 @@
         }
       },
       "indexes": {
-        "pages_blocks_recommended_local_tours_order_idx": {
-          "name": "pages_blocks_recommended_local_tours_order_idx",
+        "pages_blocks_recommended_tours_order_idx": {
+          "name": "pages_blocks_recommended_tours_order_idx",
           "columns": [
             {
               "expression": "_order",
@@ -5842,8 +5075,8 @@
           "method": "btree",
           "with": {}
         },
-        "pages_blocks_recommended_local_tours_parent_id_idx": {
-          "name": "pages_blocks_recommended_local_tours_parent_id_idx",
+        "pages_blocks_recommended_tours_parent_id_idx": {
+          "name": "pages_blocks_recommended_tours_parent_id_idx",
           "columns": [
             {
               "expression": "_parent_id",
@@ -5857,8 +5090,8 @@
           "method": "btree",
           "with": {}
         },
-        "pages_blocks_recommended_local_tours_path_idx": {
-          "name": "pages_blocks_recommended_local_tours_path_idx",
+        "pages_blocks_recommended_tours_path_idx": {
+          "name": "pages_blocks_recommended_tours_path_idx",
           "columns": [
             {
               "expression": "_path",
@@ -5874,112 +5107,9 @@
         }
       },
       "foreignKeys": {
-        "pages_blocks_recommended_local_tours_parent_id_fk": {
-          "name": "pages_blocks_recommended_local_tours_parent_id_fk",
-          "tableFrom": "pages_blocks_recommended_local_tours",
-          "tableTo": "pages",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.pages_blocks_recommended_abroad_tours": {
-      "name": "pages_blocks_recommended_abroad_tours",
-      "schema": "",
-      "columns": {
-        "_order": {
-          "name": "_order",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "_parent_id": {
-          "name": "_parent_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "_path": {
-          "name": "_path",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "id": {
-          "name": "id",
-          "type": "varchar",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "block_name": {
-          "name": "block_name",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": false
-        }
-      },
-      "indexes": {
-        "pages_blocks_recommended_abroad_tours_order_idx": {
-          "name": "pages_blocks_recommended_abroad_tours_order_idx",
-          "columns": [
-            {
-              "expression": "_order",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "pages_blocks_recommended_abroad_tours_parent_id_idx": {
-          "name": "pages_blocks_recommended_abroad_tours_parent_id_idx",
-          "columns": [
-            {
-              "expression": "_parent_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "pages_blocks_recommended_abroad_tours_path_idx": {
-          "name": "pages_blocks_recommended_abroad_tours_path_idx",
-          "columns": [
-            {
-              "expression": "_path",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {
-        "pages_blocks_recommended_abroad_tours_parent_id_fk": {
-          "name": "pages_blocks_recommended_abroad_tours_parent_id_fk",
-          "tableFrom": "pages_blocks_recommended_abroad_tours",
+        "pages_blocks_recommended_tours_parent_id_fk": {
+          "name": "pages_blocks_recommended_tours_parent_id_fk",
+          "tableFrom": "pages_blocks_recommended_tours",
           "tableTo": "pages",
           "columnsFrom": [
             "_parent_id"
@@ -6009,7 +5139,7 @@
         },
         "_parent_id": {
           "name": "_parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -6112,7 +5242,7 @@
         },
         "_parent_id": {
           "name": "_parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -6209,10 +5339,9 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "uuid",
+          "type": "serial",
           "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "notNull": true
         },
         "updated_at": {
           "name": "updated_at",
@@ -6253,7 +5382,7 @@
         },
         "parent_id": {
           "name": "parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -6265,19 +5394,19 @@
         },
         "tours_id": {
           "name": "tours_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
         "cities_id": {
           "name": "cities_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
         "cars_id": {
           "name": "cars_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false
         }
@@ -6443,14 +5572,6 @@
         "uz",
         "ru",
         "en"
-      ]
-    },
-    "public.enum_tours_tour_type": {
-      "name": "enum_tours_tour_type",
-      "schema": "public",
-      "values": [
-        "local",
-        "abroad"
       ]
     },
     "public.enum_hotels_rating": {

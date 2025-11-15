@@ -71,6 +71,7 @@ export interface Config {
     media: Media;
     categories: Category;
     cities: City;
+    countries: Country;
     tours: Tour;
     hotels: Hotel;
     cars: Car;
@@ -85,6 +86,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     cities: CitiesSelect<false> | CitiesSelect<true>;
+    countries: CountriesSelect<false> | CountriesSelect<true>;
     tours: ToursSelect<false> | ToursSelect<true>;
     hotels: HotelsSelect<false> | HotelsSelect<true>;
     cars: CarsSelect<false> | CarsSelect<true>;
@@ -222,6 +224,10 @@ export interface City {
   updatedAt: string;
   createdAt: string;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "countries".
+ */
 export interface Country {
   id: number;
   name: string;
@@ -230,10 +236,13 @@ export interface Country {
    */
   slug: string;
   description?: string | null;
+  /**
+   * List key cities covered within this country tours
+   */
   cities?:
     | {
-        id?: string | null;
         city: string;
+        id?: string | null;
       }[]
     | null;
   updatedAt: string;
@@ -255,8 +264,14 @@ export interface Tour {
   duration_nights: number;
   price: number;
   category: number | Category;
-  cities?: (number | City)[];
-  countries?: (number | Country)[];
+  /**
+   * Select cities for local (Uzbekistan) tours
+   */
+  cities?: (number | City)[] | null;
+  /**
+   * Select the destination countries for abroad tours
+   */
+  countries?: (number | Country)[] | null;
   /**
    * Select whether this tour is within Uzbekistan (local) or abroad
    */
@@ -284,6 +299,9 @@ export interface Tour {
         day: string;
         activities?:
           | {
+              /**
+               * Enter activity description. Spaces and special characters are allowed.
+               */
               activity: string;
               id?: string | null;
             }[]
@@ -392,11 +410,44 @@ export interface Car {
   slug: string;
   brand: string;
   capacity: number;
+  description?: string | null;
   pricing: {
     pricePerDayInCity: number;
+    /**
+     * Label text for price per day (e.g., "per day", "в день")
+     */
+    pricePerDayInCityLabel?: string | null;
+    /**
+     * Small text shown inline after the price (e.g., "+ per day")
+     */
+    pricePerDayInCitySuffix?: string | null;
     transferAirportHotelAirport?: number | null;
+    /**
+     * Label text for airport-hotel transfer
+     */
+    transferAirportHotelAirportLabel?: string | null;
+    /**
+     * Small text shown inline after the airport-hotel transfer price
+     */
+    transferAirportHotelAirportSuffix?: string | null;
     transferHotelDinnerHotel?: number | null;
+    /**
+     * Label text for hotel-dinner transfer
+     */
+    transferHotelDinnerHotelLabel?: string | null;
+    /**
+     * Small text shown inline after the hotel-dinner transfer price
+     */
+    transferHotelDinnerHotelSuffix?: string | null;
     longRouteFrom7Days?: number | null;
+    /**
+     * Label text for long route pricing
+     */
+    longRouteFrom7DaysLabel?: string | null;
+    /**
+     * Small text shown inline after the long route price
+     */
+    longRouteFrom7DaysSuffix?: string | null;
   };
   image: number | Media;
   images?:
@@ -448,6 +499,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'cities';
         value: number | City;
+      } | null)
+    | ({
+        relationTo: 'countries';
+        value: number | Country;
       } | null)
     | ({
         relationTo: 'tours';
@@ -597,6 +652,23 @@ export interface CitiesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "countries_select".
+ */
+export interface CountriesSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  description?: T;
+  cities?:
+    | T
+    | {
+        city?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "tours_select".
  */
 export interface ToursSelect<T extends boolean = true> {
@@ -608,6 +680,7 @@ export interface ToursSelect<T extends boolean = true> {
   price?: T;
   category?: T;
   cities?: T;
+  countries?: T;
   tourType?: T;
   locations?:
     | T
@@ -724,13 +797,22 @@ export interface CarsSelect<T extends boolean = true> {
   slug?: T;
   brand?: T;
   capacity?: T;
+  description?: T;
   pricing?:
     | T
     | {
         pricePerDayInCity?: T;
+        pricePerDayInCityLabel?: T;
+        pricePerDayInCitySuffix?: T;
         transferAirportHotelAirport?: T;
+        transferAirportHotelAirportLabel?: T;
+        transferAirportHotelAirportSuffix?: T;
         transferHotelDinnerHotel?: T;
+        transferHotelDinnerHotelLabel?: T;
+        transferHotelDinnerHotelSuffix?: T;
         longRouteFrom7Days?: T;
+        longRouteFrom7DaysLabel?: T;
+        longRouteFrom7DaysSuffix?: T;
       };
   image?: T;
   images?:
@@ -818,6 +900,18 @@ export interface Page {
             blockType: 'hero';
           }
         | {
+            statistics?:
+              | {
+                  number?: string | null;
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'stats';
+          }
+        | {
             faqs?:
               | {
                   question: string;
@@ -884,6 +978,19 @@ export interface PagesSelect<T extends boolean = true> {
                 | {
                     review?: T;
                     video?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        stats?:
+          | T
+          | {
+              statistics?:
+                | T
+                | {
+                    number?: T;
+                    text?: T;
                     id?: T;
                   };
               id?: T;

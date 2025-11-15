@@ -36,6 +36,9 @@ trap 'echo -e "\n⚠️  SSH disconnected — you can safely rerun ./deploy.sh t
 # Ensure cleanup even on Ctrl-C / SIGINT
 trap 'echo -e "\n🧹 Cleaning up temporary state..."; cleanup_state; exit 1' INT
 
+# Remove state/log files once the script finishes
+trap 'cleanup_state; rm -f "$LOG_FILE"' EXIT
+
 # Logging setup
 exec > >(tee -a "$LOG_FILE") 2>&1
 
@@ -219,19 +222,20 @@ if [ "$CURRENT_STEP" -lt 6 ]; then
                 
                 # Create temporary .env for localhost connection
                 echo -e "${YELLOW}Creating temporary localhost database connection...${NC}"
-                cp .env .env.backup 2>/dev/null || true
-                sed 's/postgresql:\/\/postgres:sitoratours2024@postgres:5432\/sitora_tour/postgresql:\/\/postgres:sitoratours2024@localhost:5432\/sitora_tour/' .env > .env.tmp
-                mv .env.tmp .env
-                
-                # Try migration with localhost
-                PAYLOAD_MIGRATION_WRITE_DISABLE=1 pnpm payload migrate --operation apply || {
-                    echo -e "${RED}❌ Localhost migration also failed!${NC}"
-                    echo -e "${YELLOW}Restoring original .env and continuing...${NC}"
-                    mv .env.backup .env 2>/dev/null || true
-                }
-                
-                # Restore original .env
-                mv .env.backup .env 2>/dev/null || true
+                LOCAL_DATABASE_URI=$(grep -m1 '^DATABASE_URI=' .env | cut -d '=' -f2- || true)
+
+                if [ -z "$LOCAL_DATABASE_URI" ]; then
+                    echo -e "${RED}❌ DATABASE_URI not found in .env. Cannot run localhost migration.${NC}"
+                else
+                    # Replace any docker service hostname with localhost so the host machine can reach the DB.
+                    if echo "$LOCAL_DATABASE_URI" | grep -q '@postgres:'; then
+                        LOCAL_DATABASE_URI=$(echo "$LOCAL_DATABASE_URI" | sed -E 's/@postgres:([0-9]+)/@localhost:\1/')
+                    fi
+
+                    if ! DATABASE_URI="$LOCAL_DATABASE_URI" PAYLOAD_MIGRATION_WRITE_DISABLE=1 pnpm payload migrate --operation apply; then
+                        echo -e "${RED}❌ Localhost migration also failed!${NC}"
+                    fi
+                fi
             }
         }
         echo -e "${GREEN}✅ Migrations completed${NC}"
