@@ -42,5 +42,5 @@ export default buildConfig({
   csrf: ['http://localhost:3000', 'https://sitoratour.com', 'http://sitoratour.com'],
 
   // Express middleware CORS settings
-  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3000',
+  serverURL: process.env.NEXT_PUBLIC_SERVER_URL || process.env.PAYLOAD_PUBLIC_SERVER_URL,
 })
