@@ -105,8 +105,8 @@ describe('Filters - Unit Tests', () => {
 
       expect(query).toContain('where[brand][equals]=Toyota')
       expect(query).toContain('where[type][equals]=SUV')
-      expect(query).toContain('where[price][greater_than_equal]=50')
-      expect(query).toContain('where[price][less_than_equal]=150')
+      expect(query).toContain('where[pricing.pricePerDayInCity][greater_than_equal]=50')
+      expect(query).toContain('where[pricing.pricePerDayInCity][less_than_equal]=150')
       expect(query).toContain('where[capacity][greater_than_equal]=4')
       expect(query).toContain('where[capacity][less_than_equal]=7')
     })

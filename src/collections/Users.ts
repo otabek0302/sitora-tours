@@ -27,22 +27,5 @@ export const Users: CollectionConfig = {
       type: 'text',
       required: true,
     },
-    {
-      name: 'slug',
-      type: 'text',
-      admin: {
-        readOnly: true,
-      },
-    },
   ],
-
-  hooks: {
-    beforeValidate: [
-      ({ data }) => {
-        if (!data?.slug && data?.first_name) {
-          data.slug = data.first_name.toLowerCase().replace(/\s+/g, '-')
-        }
-      },
-    ],
-  },
 }
