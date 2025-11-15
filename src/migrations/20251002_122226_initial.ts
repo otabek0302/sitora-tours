@@ -119,9 +119,9 @@ export async function up({ db, payload: _payload, req: _req }: MigrateUpArgs): P
   	"id" varchar PRIMARY KEY NOT NULL,
   	"from_id" integer NOT NULL,
   	"to_id" integer NOT NULL,
-  	"from_time" varchar NOT NULL,
-  	"to_time" varchar NOT NULL,
-  	"duration" varchar NOT NULL
+  	"from_time" varchar,
+  	"to_time" varchar,
+  	"duration" varchar
   );
   
   CREATE TABLE "tours_locations_locales" (
@@ -194,8 +194,9 @@ export async function up({ db, payload: _payload, req: _req }: MigrateUpArgs): P
   	"_order" integer NOT NULL,
   	"_parent_id" integer NOT NULL,
   	"id" varchar PRIMARY KEY NOT NULL,
-  	"date_start" timestamp(3) with time zone NOT NULL,
-  	"date_end" timestamp(3) with time zone NOT NULL,
+  	"date_start" timestamp(3) with time zone,
+  	"date_end" timestamp(3) with time zone,
+  	"number_of_persons" numeric,
   	"price_per_person" numeric NOT NULL
   );
   
@@ -213,6 +214,7 @@ export async function up({ db, payload: _payload, req: _req }: MigrateUpArgs): P
   	"duration_nights" numeric NOT NULL,
   	"price" numeric NOT NULL,
   	"category_id" integer NOT NULL,
+  	"tour_type" varchar DEFAULT 'local' NOT NULL,
   	"rating" numeric DEFAULT 0,
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
   	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
@@ -256,6 +258,8 @@ export async function up({ db, payload: _payload, req: _req }: MigrateUpArgs): P
   	"slug" varchar NOT NULL,
   	"city_id" integer NOT NULL,
   	"phone" varchar NOT NULL,
+  	"website" varchar,
+  	"email" varchar,
   	"rating" "enum_hotels_rating",
   	"image_id" integer NOT NULL,
   	"policies_check_in" varchar NOT NULL,
@@ -400,6 +404,28 @@ export async function up({ db, payload: _payload, req: _req }: MigrateUpArgs): P
   	"_parent_id" varchar NOT NULL
   );
   
+  CREATE TABLE "pages_blocks_stats_statistics" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" varchar NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL,
+  	"number" varchar
+  );
+  
+  CREATE TABLE "pages_blocks_stats_statistics_locales" (
+  	"text" varchar NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" varchar NOT NULL
+  );
+  
+  CREATE TABLE "pages_blocks_stats" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"_path" text NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL,
+  	"block_name" varchar
+  );
+  
   CREATE TABLE "pages_blocks_faq_faqs" (
   	"_order" integer NOT NULL,
   	"_parent_id" varchar NOT NULL,
@@ -427,11 +453,19 @@ export async function up({ db, payload: _payload, req: _req }: MigrateUpArgs): P
   	"_parent_id" integer NOT NULL,
   	"_path" text NOT NULL,
   	"id" varchar PRIMARY KEY NOT NULL,
-  	"tours_id" integer NOT NULL,
+  	"tours_id" integer,
   	"block_name" varchar
   );
   
-  CREATE TABLE "pages_blocks_recommended_tours" (
+  CREATE TABLE "pages_blocks_recommended_local_tours" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"_path" text NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL,
+  	"block_name" varchar
+  );
+  
+  CREATE TABLE "pages_blocks_recommended_abroad_tours" (
   	"_order" integer NOT NULL,
   	"_parent_id" integer NOT NULL,
   	"_path" text NOT NULL,
@@ -530,12 +564,16 @@ export async function up({ db, payload: _payload, req: _req }: MigrateUpArgs): P
   ALTER TABLE "pages_blocks_hero" ADD CONSTRAINT "pages_blocks_hero_image_id_media_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "pages_blocks_hero" ADD CONSTRAINT "pages_blocks_hero_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "pages_blocks_hero_locales" ADD CONSTRAINT "pages_blocks_hero_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages_blocks_hero"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "pages_blocks_stats_statistics" ADD CONSTRAINT "pages_blocks_stats_statistics_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages_blocks_stats"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "pages_blocks_stats_statistics_locales" ADD CONSTRAINT "pages_blocks_stats_statistics_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages_blocks_stats_statistics"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "pages_blocks_stats" ADD CONSTRAINT "pages_blocks_stats_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "pages_blocks_faq_faqs" ADD CONSTRAINT "pages_blocks_faq_faqs_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages_blocks_faq"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "pages_blocks_faq_faqs_locales" ADD CONSTRAINT "pages_blocks_faq_faqs_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages_blocks_faq_faqs"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "pages_blocks_faq" ADD CONSTRAINT "pages_blocks_faq_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "pages_blocks_special_offers" ADD CONSTRAINT "pages_blocks_special_offers_tours_id_tours_id_fk" FOREIGN KEY ("tours_id") REFERENCES "public"."tours"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "pages_blocks_special_offers" ADD CONSTRAINT "pages_blocks_special_offers_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "pages_blocks_recommended_tours" ADD CONSTRAINT "pages_blocks_recommended_tours_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "pages_blocks_recommended_local_tours" ADD CONSTRAINT "pages_blocks_recommended_local_tours_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "pages_blocks_recommended_abroad_tours" ADD CONSTRAINT "pages_blocks_recommended_abroad_tours_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "pages_blocks_recommended_cities" ADD CONSTRAINT "pages_blocks_recommended_cities_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "pages_blocks_recommended_cars" ADD CONSTRAINT "pages_blocks_recommended_cars_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "pages_rels" ADD CONSTRAINT "pages_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
@@ -670,6 +708,12 @@ export async function up({ db, payload: _payload, req: _req }: MigrateUpArgs): P
   CREATE INDEX "pages_blocks_hero_path_idx" ON "pages_blocks_hero" USING btree ("_path");
   CREATE INDEX "pages_blocks_hero_image_idx" ON "pages_blocks_hero" USING btree ("image_id");
   CREATE UNIQUE INDEX "pages_blocks_hero_locales_locale_parent_id_unique" ON "pages_blocks_hero_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "pages_blocks_stats_statistics_order_idx" ON "pages_blocks_stats_statistics" USING btree ("_order");
+  CREATE INDEX "pages_blocks_stats_statistics_parent_id_idx" ON "pages_blocks_stats_statistics" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "pages_blocks_stats_statistics_locales_locale_parent_id_unique" ON "pages_blocks_stats_statistics_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "pages_blocks_stats_order_idx" ON "pages_blocks_stats" USING btree ("_order");
+  CREATE INDEX "pages_blocks_stats_parent_id_idx" ON "pages_blocks_stats" USING btree ("_parent_id");
+  CREATE INDEX "pages_blocks_stats_path_idx" ON "pages_blocks_stats" USING btree ("_path");
   CREATE INDEX "pages_blocks_faq_faqs_order_idx" ON "pages_blocks_faq_faqs" USING btree ("_order");
   CREATE INDEX "pages_blocks_faq_faqs_parent_id_idx" ON "pages_blocks_faq_faqs" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "pages_blocks_faq_faqs_locales_locale_parent_id_unique" ON "pages_blocks_faq_faqs_locales" USING btree ("_locale","_parent_id");
@@ -680,9 +724,12 @@ export async function up({ db, payload: _payload, req: _req }: MigrateUpArgs): P
   CREATE INDEX "pages_blocks_special_offers_parent_id_idx" ON "pages_blocks_special_offers" USING btree ("_parent_id");
   CREATE INDEX "pages_blocks_special_offers_path_idx" ON "pages_blocks_special_offers" USING btree ("_path");
   CREATE INDEX "pages_blocks_special_offers_tours_idx" ON "pages_blocks_special_offers" USING btree ("tours_id");
-  CREATE INDEX "pages_blocks_recommended_tours_order_idx" ON "pages_blocks_recommended_tours" USING btree ("_order");
-  CREATE INDEX "pages_blocks_recommended_tours_parent_id_idx" ON "pages_blocks_recommended_tours" USING btree ("_parent_id");
-  CREATE INDEX "pages_blocks_recommended_tours_path_idx" ON "pages_blocks_recommended_tours" USING btree ("_path");
+  CREATE INDEX "pages_blocks_recommended_local_tours_order_idx" ON "pages_blocks_recommended_local_tours" USING btree ("_order");
+  CREATE INDEX "pages_blocks_recommended_local_tours_parent_id_idx" ON "pages_blocks_recommended_local_tours" USING btree ("_parent_id");
+  CREATE INDEX "pages_blocks_recommended_local_tours_path_idx" ON "pages_blocks_recommended_local_tours" USING btree ("_path");
+  CREATE INDEX "pages_blocks_recommended_abroad_tours_order_idx" ON "pages_blocks_recommended_abroad_tours" USING btree ("_order");
+  CREATE INDEX "pages_blocks_recommended_abroad_tours_parent_id_idx" ON "pages_blocks_recommended_abroad_tours" USING btree ("_parent_id");
+  CREATE INDEX "pages_blocks_recommended_abroad_tours_path_idx" ON "pages_blocks_recommended_abroad_tours" USING btree ("_path");
   CREATE INDEX "pages_blocks_recommended_cities_order_idx" ON "pages_blocks_recommended_cities" USING btree ("_order");
   CREATE INDEX "pages_blocks_recommended_cities_parent_id_idx" ON "pages_blocks_recommended_cities" USING btree ("_parent_id");
   CREATE INDEX "pages_blocks_recommended_cities_path_idx" ON "pages_blocks_recommended_cities" USING btree ("_path");
@@ -742,11 +789,15 @@ export async function down({ db, payload: _payload, req: _req }: MigrateDownArgs
   DROP TABLE "pages_blocks_hero_posts" CASCADE;
   DROP TABLE "pages_blocks_hero" CASCADE;
   DROP TABLE "pages_blocks_hero_locales" CASCADE;
+  DROP TABLE "pages_blocks_stats_statistics_locales" CASCADE;
+  DROP TABLE "pages_blocks_stats_statistics" CASCADE;
+  DROP TABLE "pages_blocks_stats" CASCADE;
   DROP TABLE "pages_blocks_faq_faqs" CASCADE;
   DROP TABLE "pages_blocks_faq_faqs_locales" CASCADE;
   DROP TABLE "pages_blocks_faq" CASCADE;
   DROP TABLE "pages_blocks_special_offers" CASCADE;
-  DROP TABLE "pages_blocks_recommended_tours" CASCADE;
+  DROP TABLE "pages_blocks_recommended_local_tours" CASCADE;
+  DROP TABLE "pages_blocks_recommended_abroad_tours" CASCADE;
   DROP TABLE "pages_blocks_recommended_cities" CASCADE;
   DROP TABLE "pages_blocks_recommended_cars" CASCADE;
   DROP TABLE "pages" CASCADE;
