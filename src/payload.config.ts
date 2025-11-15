@@ -30,8 +30,9 @@ export default buildConfig({
   secret: env.PAYLOAD_SECRET,
   typescript: { outputFile: path.resolve(dirname, 'payload-types.ts') },
   db: postgresAdapter({
+    idType: 'uuid',
     pool: { connectionString: env.DATABASE_URI },
-    push: true,
+    autoMigrate: true,
   }),
   sharp,
   plugins: [payloadCloudPlugin()],
