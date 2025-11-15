@@ -50,6 +50,7 @@ RUN chown nextjs:nodejs .next
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
+RUN chown -R nextjs:nodejs .next
 
 # Payload CMS source + deps
 COPY --from=builder /app/src ./src
@@ -71,5 +72,5 @@ ENV HOSTNAME="0.0.0.0"
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
   CMD node -e "require('http').get('http://localhost:3000/api/globals/pages', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"
 
-# Run Payload migrations before starting Next.js
-CMD pnpm payload migrate && node server.js
+# Run Payload jobs + migrations before Next.js
+CMD pnpm payload run -s users && pnpm payload migrate && node server.js
