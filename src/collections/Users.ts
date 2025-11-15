@@ -2,12 +2,21 @@ import type { CollectionConfig } from 'payload'
 
 export const Users: CollectionConfig = {
   slug: 'users',
+  auth: true,
+
   admin: {
     group: 'Setting',
     useAsTitle: 'first_name',
   },
-  auth: true,
+
   fields: [
+    {
+      name: 'email',
+      type: 'email',
+      required: true,
+      unique: true,
+      index: true,
+    },
     {
       name: 'first_name',
       type: 'text',
@@ -18,7 +27,15 @@ export const Users: CollectionConfig = {
       type: 'text',
       required: true,
     },
+    {
+      name: 'slug',
+      type: 'text',
+      admin: {
+        readOnly: true,
+      },
+    },
   ],
+
   hooks: {
     beforeValidate: [
       ({ data }) => {
